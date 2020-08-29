@@ -56,6 +56,11 @@ public class conveyorCanvas extends JPanel{
 		} else {
 			States.bottlePos5 = false;
 		}
+		if(this.bottlePos == 0) {
+			States.bottleLeft5 = true;
+		} else {
+			States.bottleLeft5 = false;
+		}
 		
 		Font f1 = new Font(Font.SANS_SERIF, Font.BOLD, 12);
 		g.setFont(f1);
