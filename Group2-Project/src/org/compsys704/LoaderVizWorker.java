@@ -9,42 +9,28 @@ public class LoaderVizWorker extends Worker{
 	public void setSignal(boolean status) {
 //		System.out.println(signame+"  "+status);
 		switch(signame){
-		case "pusherRetractedE":
-			States.PUSHER_RETRACTED = status;
-			break;
-		case "pusherExtendedE":
-			if(!States.MAG_EMPTY && !States.PUSHER_EXTENDED)
-				States.CAP_READY = true;
-			States.PUSHER_EXTENDED = status;
-			break;
-		case "WPgrippedE":
-			if(States.GRIPPED && States.ARM_AT_SOURCE){
-				if(!status)
-					States.CAP_READY = true;
-			}
-			States.GRIPPED = status;
-			if(States.GRIPPED && States.ARM_AT_SOURCE){
-				States.CAP_READY = false;
-			}
-			break;
-		case "armAtSourceE":
-			States.ARM_AT_SOURCE = status;
-			break;
-		case "armAtDestE":
-			States.ARM_AT_DEST = status;
-			break;
-		case "emptyE":
-			States.MAG_EMPTY = status;
-			break;
-		default: 
-			System.err.println("Wrong sig name : "+signame);
-			System.exit(1);
+			case "NbottleLeft5":
+				States.bottleLeft5 = true;
+				break;
+			case "requestConveyer":
+				if(!States.bottlePos5 && !States.bottlePos1)
+					States.MOTOR = true;
+				break;
+			case "NbottlePos1":
+				States.bottlePos1 = true;
+				break;
+			case "NbottlePos5":
+				States.bottlePos5 = status;
+				break;
+			default:
+				System.err.println("Wrong sig name : "+signame);
+				System.exit(1);
 		}
 	}
-	
-	
-	static final List<String> signames = Arrays.asList("pusherRetractedE","pusherExtendedE","WPgrippedE","armAtSourceE","armAtDestE","emptyE");
-	
+
+
+	static final List<String> signames = Arrays.asList("NbottleLeft5","requestConveyer","NbottlePos1","NbottlePos5");
+
 	@Override
 	public boolean hasSignal(String sn) {
 		return signames.contains(sn);
