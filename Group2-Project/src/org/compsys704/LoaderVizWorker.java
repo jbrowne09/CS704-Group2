@@ -12,9 +12,10 @@ public class LoaderVizWorker extends Worker{
 			case "bottleLeft5":
 				States.bottleLeft5 = true;
 				break;
-			case "request":
-				if(!States.bottlePos5 && !States.bottlePos1)
+			case "motor":
+				//if(!States.bottlePos5 && !States.bottlePos1) {
 					States.MOTOR = true;
+				//}
 				break;
 			case "bottlePos1":
 				States.bottlePos1 = true;
@@ -29,7 +30,7 @@ public class LoaderVizWorker extends Worker{
 	}
 
 
-	static final List<String> signames = Arrays.asList("NbottleLeft5","request","NbottlePos1","NbottlePos5");
+	static final List<String> signames = Arrays.asList("bottleLeft5","motor","bottlePos1","bottlePos5");
 
 	@Override
 	public boolean hasSignal(String sn) {

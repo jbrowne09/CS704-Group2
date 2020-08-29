@@ -16,177 +16,11 @@ public class conveyorController extends ClockDomain{
   public Signal bottlePos5 = new Signal("bottlePos5", Signal.INPUT);
   public Signal request = new Signal("request", Signal.INPUT);
   public Signal motor = new Signal("motor", Signal.OUTPUT);
-  private int S209 = 1;
-  private int S103 = 1;
-  private int S33 = 1;
-  private int S5 = 1;
-  private int S207 = 1;
-  private int S137 = 1;
-  private int S109 = 1;
+  private int S4 = 1;
   
-  private int[] ends = new int[4];
-  private int[] tdone = new int[4];
+  private int[] ends = new int[2];
+  private int[] tdone = new int[2];
   
-  public void thread215(int [] tdone, int [] ends){
-        switch(S207){
-      case 0 : 
-        active[3]=0;
-        ends[3]=0;
-        tdone[3]=1;
-        break;
-      
-      case 1 : 
-        switch(S137){
-          case 0 : 
-            if(bottlePos5.getprestatus()){//sysj\conveyorController.sysj line: 24, column: 13
-              S137=1;
-              S109=0;
-              motor.setPresent();//sysj\conveyorController.sysj line: 28, column: 10
-              currsigs.addElement(motor);
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            else {
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            break;
-          
-          case 1 : 
-            if(bottleLeft5.getprestatus()){//sysj\conveyorController.sysj line: 25, column: 13
-              S137=0;
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            else {
-              switch(S109){
-                case 0 : 
-                  if(bottlePos1.getprestatus()){//sysj\conveyorController.sysj line: 27, column: 15
-                    S109=1;
-                    active[3]=1;
-                    ends[3]=1;
-                    tdone[3]=1;
-                  }
-                  else {
-                    motor.setPresent();//sysj\conveyorController.sysj line: 28, column: 10
-                    currsigs.addElement(motor);
-                    active[3]=1;
-                    ends[3]=1;
-                    tdone[3]=1;
-                  }
-                  break;
-                
-                case 1 : 
-                  S109=1;
-                  S109=0;
-                  motor.setPresent();//sysj\conveyorController.sysj line: 28, column: 10
-                  currsigs.addElement(motor);
-                  active[3]=1;
-                  ends[3]=1;
-                  tdone[3]=1;
-                  break;
-                
-              }
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread214(int [] tdone, int [] ends){
-        switch(S103){
-      case 0 : 
-        active[2]=0;
-        ends[2]=0;
-        tdone[2]=1;
-        break;
-      
-      case 1 : 
-        switch(S33){
-          case 0 : 
-            if(request.getprestatus()){//sysj\conveyorController.sysj line: 10, column: 13
-              S33=1;
-              S5=0;
-              motor.setPresent();//sysj\conveyorController.sysj line: 14, column: 10
-              currsigs.addElement(motor);
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            else {
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            break;
-          
-          case 1 : 
-            if(bottlePos1.getprestatus()){//sysj\conveyorController.sysj line: 11, column: 13
-              S33=0;
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            else {
-              switch(S5){
-                case 0 : 
-                  if(bottleLeft5.getprestatus()){//sysj\conveyorController.sysj line: 13, column: 15
-                    S5=1;
-                    active[2]=1;
-                    ends[2]=1;
-                    tdone[2]=1;
-                  }
-                  else {
-                    motor.setPresent();//sysj\conveyorController.sysj line: 14, column: 10
-                    currsigs.addElement(motor);
-                    active[2]=1;
-                    ends[2]=1;
-                    tdone[2]=1;
-                  }
-                  break;
-                
-                case 1 : 
-                  S5=1;
-                  S5=0;
-                  motor.setPresent();//sysj\conveyorController.sysj line: 14, column: 10
-                  currsigs.addElement(motor);
-                  active[2]=1;
-                  ends[2]=1;
-                  tdone[2]=1;
-                  break;
-                
-              }
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread212(int [] tdone, int [] ends){
-        S207=1;
-    S137=0;
-    active[3]=1;
-    ends[3]=1;
-    tdone[3]=1;
-  }
-
-  public void thread211(int [] tdone, int [] ends){
-        S103=1;
-    S33=0;
-    active[2]=1;
-    ends[2]=1;
-    tdone[2]=1;
-  }
-
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
       ends[i] = 0;
@@ -194,61 +28,35 @@ public class conveyorController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S209){
+      switch(S4){
         case 0 : 
-          S209=0;
+          S4=0;
           break RUN;
         
         case 1 : 
-          S209=2;
-          S209=2;
-          thread211(tdone,ends);
-          thread212(tdone,ends);
-          int biggest213 = 0;
-          if(ends[2]>=biggest213){
-            biggest213=ends[2];
-          }
-          if(ends[3]>=biggest213){
-            biggest213=ends[3];
-          }
-          if(biggest213 == 1){
-            active[1]=1;
-            ends[1]=1;
-            break RUN;
-          }
+          S4=2;
+          S4=2;
+          motor.setPresent();//sysj\conveyorController.sysj line: 7, column: 5
+          currsigs.addElement(motor);
+          active[1]=1;
+          ends[1]=1;
+          break RUN;
         
         case 2 : 
-          thread214(tdone,ends);
-          thread215(tdone,ends);
-          int biggest216 = 0;
-          if(ends[2]>=biggest216){
-            biggest216=ends[2];
-          }
-          if(ends[3]>=biggest216){
-            biggest216=ends[3];
-          }
-          if(biggest216 == 1){
-            active[1]=1;
-            ends[1]=1;
-            break RUN;
-          }
-          //FINXME code
-          if(biggest216 == 0){
-            S209=0;
-            active[1]=0;
-            ends[1]=0;
-            S209=0;
-            break RUN;
-          }
+          motor.setPresent();//sysj\conveyorController.sysj line: 7, column: 5
+          currsigs.addElement(motor);
+          active[1]=1;
+          ends[1]=1;
+          break RUN;
         
       }
     }
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0};
+    char [] active1 = {1, 1};
+    char [] paused1 = {0, 0};
+    char [] suspended1 = {0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
