@@ -58,7 +58,7 @@ public class conveyorCanvas extends JPanel{
 		}
 		
 		Font f1 = new Font(Font.SANS_SERIF, Font.BOLD, 12);
-		this.setFont(f1);
+		g.setFont(f1);
 		
 		if(States.bottlePos5) {
 			g.setColor(Color.GREEN);
