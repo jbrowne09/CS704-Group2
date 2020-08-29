@@ -14,7 +14,7 @@ public class conveyerController extends ClockDomain{
   public Signal bottleLeft5 = new Signal("bottleLeft5", Signal.INPUT);
   public Signal bottlePos1 = new Signal("bottlePos1", Signal.INPUT);
   public Signal bottlePos5 = new Signal("bottlePos5", Signal.INPUT);
-  public Signal request = new Signal("request", Signal.INPUT);
+  public Signal requestConveyor = new Signal("requestConveyor", Signal.INPUT);
   public Signal motor = new Signal("motor", Signal.OUTPUT);
   private int S209 = 1;
   private int S103 = 1;
@@ -110,7 +110,7 @@ public class conveyerController extends ClockDomain{
       case 1 : 
         switch(S33){
           case 0 : 
-            if(request.getprestatus()){//sysj\conveyorController.sysj line: 10, column: 13
+            if(requestConveyor.getprestatus()){//sysj\conveyorController.sysj line: 10, column: 13
               S33=1;
               S5=0;
               motor.setPresent();//sysj\conveyorController.sysj line: 14, column: 10
@@ -270,7 +270,7 @@ public class conveyerController extends ClockDomain{
           bottleLeft5.gethook();
           bottlePos1.gethook();
           bottlePos5.gethook();
-          request.gethook();
+          requestConveyor.gethook();
           df = true;
         }
         runClockDomain();
@@ -278,7 +278,7 @@ public class conveyerController extends ClockDomain{
       bottleLeft5.setpreclear();
       bottlePos1.setpreclear();
       bottlePos5.setpreclear();
-      request.setpreclear();
+      requestConveyor.setpreclear();
       motor.setpreclear();
       int dummyint = 0;
       for(int qw=0;qw<currsigs.size();++qw){
@@ -295,9 +295,9 @@ public class conveyerController extends ClockDomain{
       dummyint = bottlePos5.getStatus() ? bottlePos5.setprepresent() : bottlePos5.setpreclear();
       bottlePos5.setpreval(bottlePos5.getValue());
       bottlePos5.setClear();
-      dummyint = request.getStatus() ? request.setprepresent() : request.setpreclear();
-      request.setpreval(request.getValue());
-      request.setClear();
+      dummyint = requestConveyor.getStatus() ? requestConveyor.setprepresent() : requestConveyor.setpreclear();
+      requestConveyor.setpreval(requestConveyor.getValue());
+      requestConveyor.setClear();
       motor.sethook();
       motor.setClear();
       if(paused[1]!=0 || suspended[1]!=0 || active[1]!=1);
@@ -305,7 +305,7 @@ public class conveyerController extends ClockDomain{
         bottleLeft5.gethook();
         bottlePos1.gethook();
         bottlePos5.gethook();
-        request.gethook();
+        requestConveyor.gethook();
       }
       runFinisher();
       if(active[1] == 0){
