@@ -9,17 +9,17 @@ public class LoaderVizWorker extends Worker{
 	public void setSignal(boolean status) {
 //		System.out.println(signame+"  "+status);
 		switch(signame){
-			case "NbottleLeft5":
+			case "bottleLeft5":
 				States.bottleLeft5 = true;
 				break;
 			case "request":
 				if(!States.bottlePos5 && !States.bottlePos1)
 					States.MOTOR = true;
 				break;
-			case "NbottlePos1":
+			case "bottlePos1":
 				States.bottlePos1 = true;
 				break;
-			case "NbottlePos5":
+			case "bottlePos5":
 				States.bottlePos5 = status;
 				break;
 			default:
