@@ -29,7 +29,7 @@ public class LoaderVizWorker extends Worker{
 	}
 
 
-	static final List<String> signames = Arrays.asList("NbottleLeft5","requestConveyer","NbottlePos1","NbottlePos5");
+	static final List<String> signames = Arrays.asList("NbottleLeft5","request","NbottlePos1","NbottlePos5");
 
 	@Override
 	public boolean hasSignal(String sn) {
