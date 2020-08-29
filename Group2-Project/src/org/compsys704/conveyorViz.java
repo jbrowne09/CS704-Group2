@@ -22,7 +22,7 @@ public class conveyorViz extends JFrame{
 	
 	public conveyorViz() {
 		panel = new conveyorCanvas();
-		panel.setPreferredSize(new Dimension(512, 512));
+		panel.setPreferredSize(new Dimension(1224, 512));
 		panel.setBackground(Color.WHITE);
 		JButton enable = new JButton("enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));

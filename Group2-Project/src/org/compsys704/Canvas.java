@@ -33,52 +33,52 @@ public class Canvas extends JPanel {
 		}
 	}
 	
-	@Override
-	protected void paintComponent(Graphics g){
-		super.paintComponent(g);
-		g.drawImage(loader, 0, 100, null);
-		
-		if(States.ARM_AT_DEST)
-			g.drawImage(arm1, 0, 0, null);
-		else
-			g.drawImage(arm2, 30, 0, null);
-		
-		if(States.GRIPPED){
-			if(States.ARM_AT_DEST){
-				g.setColor(Color.black);
-				g.fillOval(10, 11, 30, 30);
-				g.setColor(Color.red);
-				g.fillOval(10, 11, 15, 15);
-
-			}
-			else{
-				g.setColor(Color.black);
-				g.fillOval(40, 243, 30, 30);
-				g.setColor(Color.red);
-				g.fillOval(35, 232, 15, 15);
-			}
-			g.setColor(Color.black);
-		}
-//		else{
-			if(States.CAP_READY){ // A cap is pushed to the source pos
-				g.setColor(Color.black);
-				g.fillOval(40, 243, 30, 30);
-			}
+//	@Override
+//	protected void paintComponent(Graphics g){
+//		super.paintComponent(g);
+//		g.drawImage(loader, 0, 100, null);
+//		
+//		if(States.ARM_AT_DEST)
+//			g.drawImage(arm1, 0, 0, null);
+//		else
+//			g.drawImage(arm2, 30, 0, null);
+//		
+//		if(States.GRIPPED){
+//			if(States.ARM_AT_DEST){
+//				g.setColor(Color.black);
+//				g.fillOval(10, 11, 30, 30);
+//				g.setColor(Color.red);
+//				g.fillOval(10, 11, 15, 15);
+//
+//			}
+//			else{
+//				g.setColor(Color.black);
+//				g.fillOval(40, 243, 30, 30);
+//				g.setColor(Color.red);
+//				g.fillOval(35, 232, 15, 15);
+//			}
+//			g.setColor(Color.black);
 //		}
-		
-		if(States.PUSHER_RETRACTED){
-			g.drawImage(p1, 90, 225, null);
-			if(!States.MAG_EMPTY){
-				g.setColor(Color.black);
-				g.fillOval(154, 243, 30, 30);
-			}
-		}
-		else{
-			g.drawImage(p2, 90, 225, null);
-		}
-		
-		if(!States.MAG_EMPTY){
-			g.drawImage(cap, 152, 155, null);
-		}
-	}
+////		else{
+//			if(States.CAP_READY){ // A cap is pushed to the source pos
+//				g.setColor(Color.black);
+//				g.fillOval(40, 243, 30, 30);
+//			}
+////		}
+//		
+//		if(States.PUSHER_RETRACTED){
+//			g.drawImage(p1, 90, 225, null);
+//			if(!States.MAG_EMPTY){
+//				g.setColor(Color.black);
+//				g.fillOval(154, 243, 30, 30);
+//			}
+//		}
+//		else{
+//			g.drawImage(p2, 90, 225, null);
+//		}
+//		
+//		if(!States.MAG_EMPTY){
+//			g.drawImage(cap, 152, 155, null);
+//		}
+//	}
 }
