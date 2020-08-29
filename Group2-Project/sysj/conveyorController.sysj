@@ -1,0 +1,35 @@
+conveyorController(
+    input signal bottleLeft5, bottlePos1, bottlePos5, request;
+    output signal motor;
+    //input signal NbottleLeft5, NbottlePos1, Nmotor;
+)
+
+->{ 
+    {//LOADING CONVEYOR
+	    while(true){
+	    	await(request);
+	    	abort(bottlePos1){
+	    		while(true){
+			    	abort(bottleLeft5){
+		    			sustain motor;
+		    		}
+		    		pause;
+	    		}
+		    }
+		}
+    }
+    ||
+    {//UNLOADING CONVEYOR
+    	while(true){
+	    	await(bottlePos5);
+	    	abort(bottleLeft5){
+	    		while(true){
+		    		abort(bottlePos1){
+		    			sustain motor;
+		    		}
+		    		pause;
+	    		}
+	    	}
+    	}
+    }  
+}
