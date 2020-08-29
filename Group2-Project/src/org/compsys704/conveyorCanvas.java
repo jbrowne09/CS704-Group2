@@ -20,7 +20,6 @@ public class conveyorCanvas extends JPanel{
 	BufferedImage conveyorMove2;
 	BufferedImage conveyorStationary;
 	private int bottlePos = 1096;
-	private JButton rotary = new JButton("rotary");
 	
 	public conveyorCanvas(){
 		try {
@@ -30,6 +29,12 @@ public class conveyorCanvas extends JPanel{
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);;
+		}
+	}
+	
+	public void updateRotary() {
+		if (States.bottlePos1) {
+			this.bottlePos = 384;
 		}
 	}
 	
@@ -50,7 +55,6 @@ public class conveyorCanvas extends JPanel{
 		
 		if(this.bottlePos == 712) {
 			States.bottlePos1 = true;
-			this.bottlePos = 384;
 		} else {
 			States.bottlePos1 = false;
 		}
