@@ -4,7 +4,8 @@
 			<iSignal Name="motor" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="enable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="bottleLeft5" To="UI.bottleLeft5E" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="motorS" To="UI.motorS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="bottleLeft5" To="UI.NbottleLeft5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 		</ClockDomain>
 	</SubSystem>
 </System>

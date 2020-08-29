@@ -15,8 +15,9 @@ public class conveyorPlant extends ClockDomain{
   public Signal enable = new Signal("enable", Signal.INPUT);
   public Signal bottlePos5 = new Signal("bottlePos5", Signal.INPUT);
   public Signal bottleLeft5 = new Signal("bottleLeft5", Signal.OUTPUT);
-  private int S127 = 1;
-  private int S15 = 1;
+  public Signal motorS = new Signal("motorS", Signal.OUTPUT);
+  private int S74 = 1;
+  private int S36 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -28,27 +29,25 @@ public class conveyorPlant extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S127){
+      switch(S74){
         case 0 : 
-          S127=0;
+          S74=0;
           break RUN;
         
         case 1 : 
-          S127=2;
-          S127=2;
+          S74=2;
+          S74=2;
           new Thread(new conveyorGUI()).start();//sysj\conveyorPlant.sysj line: 7, column: 2
-          S15=0;
+          S36=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S15){
+          switch(S36){
             case 0 : 
               if(enable.getprestatus()){//sysj\conveyorPlant.sysj line: 11, column: 10
-                S15=1;
-                motor.setPresent();//sysj\conveyorPlant.sysj line: 13, column: 5
-                currsigs.addElement(motor);
+                S36=1;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -60,49 +59,26 @@ public class conveyorPlant extends ClockDomain{
               }
             
             case 1 : 
-              if(!bottlePos5.getprestatus()){//sysj\conveyorPlant.sysj line: 12, column: 10
-                S15=2;
+              if(motor.getprestatus()){//sysj\conveyorPlant.sysj line: 12, column: 10
+                S36=2;
+                motorS.setPresent();//sysj\conveyorPlant.sysj line: 13, column: 4
+                currsigs.addElement(motorS);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                motor.setPresent();//sysj\conveyorPlant.sysj line: 13, column: 5
-                currsigs.addElement(motor);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
             
             case 2 : 
-              if(!enable.getprestatus()){//sysj\conveyorPlant.sysj line: 15, column: 10
-                S15=3;
-                bottleLeft5.setPresent();//sysj\conveyorPlant.sysj line: 17, column: 5
-                currsigs.addElement(bottleLeft5);
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 3 : 
-              if(bottlePos5.getprestatus()){//sysj\conveyorPlant.sysj line: 16, column: 10
-                S15=0;
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                bottleLeft5.setPresent();//sysj\conveyorPlant.sysj line: 17, column: 5
-                currsigs.addElement(bottleLeft5);
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
+              motorS.setPresent();//sysj\conveyorPlant.sysj line: 13, column: 4
+              currsigs.addElement(motorS);
+              active[1]=1;
+              ends[1]=1;
+              break RUN;
             
           }
         
@@ -143,6 +119,7 @@ public class conveyorPlant extends ClockDomain{
       enable.setpreclear();
       bottlePos5.setpreclear();
       bottleLeft5.setpreclear();
+      motorS.setpreclear();
       int dummyint = 0;
       for(int qw=0;qw<currsigs.size();++qw){
         dummyint = ((Signal)currsigs.elementAt(qw)).getStatus() ? ((Signal)currsigs.elementAt(qw)).setprepresent() : ((Signal)currsigs.elementAt(qw)).setpreclear();
@@ -160,6 +137,8 @@ public class conveyorPlant extends ClockDomain{
       bottlePos5.setClear();
       bottleLeft5.sethook();
       bottleLeft5.setClear();
+      motorS.sethook();
+      motorS.setClear();
       if(paused[1]!=0 || suspended[1]!=0 || active[1]!=1);
       else{
         motor.gethook();

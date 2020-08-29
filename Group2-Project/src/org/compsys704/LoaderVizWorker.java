@@ -12,9 +12,10 @@ public class LoaderVizWorker extends Worker{
 			case "NbottleLeft5":
 				States.bottleLeft5 = true;
 				break;
-			case "Nmotor":
+			case "motorS":
 				//if(!States.bottlePos5 && !States.bottlePos1) {
 					States.MOTOR = true;
+					System.out.println("hello");
 				//}
 				break;
 			case "NbottlePos1":
@@ -30,7 +31,7 @@ public class LoaderVizWorker extends Worker{
 	}
 
 
-	static final List<String> signames = Arrays.asList("NbottleLeft5","Nmotor","NbottlePos1","NbottlePos5");
+	static final List<String> signames = Arrays.asList("NbottleLeft5","motorS","NbottlePos1","NbottlePos5");
 
 	@Override
 	public boolean hasSignal(String sn) {

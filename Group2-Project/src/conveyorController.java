@@ -16,7 +16,8 @@ public class conveyorController extends ClockDomain{
   public Signal bottlePos5 = new Signal("bottlePos5", Signal.INPUT);
   public Signal request = new Signal("request", Signal.INPUT);
   public Signal motor = new Signal("motor", Signal.OUTPUT);
-  private int S4 = 1;
+  private int S31 = 1;
+  private int S9 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -28,26 +29,52 @@ public class conveyorController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S4){
+      switch(S31){
         case 0 : 
-          S4=0;
+          S31=0;
           break RUN;
         
         case 1 : 
-          S4=2;
-          S4=2;
-          motor.setPresent();//sysj\conveyorController.sysj line: 7, column: 5
-          currsigs.addElement(motor);
+          S31=2;
+          S31=2;
+          S9=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          motor.setPresent();//sysj\conveyorController.sysj line: 7, column: 5
-          currsigs.addElement(motor);
-          active[1]=1;
-          ends[1]=1;
-          break RUN;
+          switch(S9){
+            case 0 : 
+              if(request.getprestatus()){//sysj\conveyorController.sysj line: 10, column: 9
+                S9=1;
+                motor.setPresent();//sysj\conveyorController.sysj line: 12, column: 4
+                currsigs.addElement(motor);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 1 : 
+              if(bottlePos1.getprestatus()){//sysj\conveyorController.sysj line: 11, column: 9
+                S9=0;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                motor.setPresent();//sysj\conveyorController.sysj line: 12, column: 4
+                currsigs.addElement(motor);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+          }
         
       }
     }
