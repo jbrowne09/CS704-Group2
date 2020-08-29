@@ -1,5 +1,5 @@
-conveyerController(
-    input signal bottleLeft5, bottlePos1, bottlePos5, requestConveyor;
+conveyorController(
+    input signal bottleLeft5, bottlePos1, bottlePos5, request;
     output signal motor;
     //input signal NbottleLeft5, NbottlePos1, Nmotor;
 )
@@ -7,7 +7,7 @@ conveyerController(
 ->{ 
     {//LOADING CONVEYOR
 	    while(true){
-	    	await(requestConveyor);
+	    	await(request);
 	    	abort(bottlePos1){
 	    		while(true){
 			    	abort(bottleLeft5){
