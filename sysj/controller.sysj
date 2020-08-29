@@ -1,0 +1,49 @@
+Controller(
+		input signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty,request;
+		output signal pusherExtend,vacOn,armSource,armDest;
+		input Integer signal mode;
+		input signal pusherExtendM,vacOnM,armSourceM,armDestM;
+		)
+->{
+/* TODO: Write control-logic */
+	{
+		int opMode = 0;
+		while(true){
+			present(request){
+				if(opMode == 0){//AUTOMATIC MODE
+					present(empty){
+						await(!empty);
+					}
+					abort(armAtDest){
+						sustain armDest;
+					}
+					abort(pusherExtended){
+						sustain pusherExtend;
+					}
+					await(pusherRetracted);
+					abort(armAtSource){
+						sustain armSource;
+					}
+					abort(armAtDest){
+						{
+							emit vacOn;
+						}
+						||
+						{
+							await(WPgripped);
+							sustain armDest;
+						}
+					}
+					await(!WPgripped);
+					abort(armAtSource){
+						sustain armSource;
+					}
+				}
+				if(opMode == 1){//MANUAL MODE
+					
+				}
+			}
+			pause;
+		}
+	}
+}
