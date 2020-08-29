@@ -1,0 +1,21 @@
+conveyorPlant(
+		input signal motor, enable, bottlePos5;
+		output signal bottleLeft5;
+		)
+->
+{
+	new Thread(new conveyorGUI()).start();
+	
+	{//Motor
+		while(true){
+			await(enable);
+			abort(!bottlePos5){
+				sustain motor;
+			}
+			await(!enable);
+			abort(bottlePos5){
+				sustain bottleLeft5;
+			}
+		}
+	}
+}

@@ -6,13 +6,6 @@ Plant(
 		)
 ->
 {
-	//Class declaration causes java.lang.NullPointerException
-	//for some reason.
-	class GUI implements java.lang.Runnable {
-		public void run() {
-			org.compsys704.CapLoader.main(null);
-		}
-	}
 	new Thread(new GUI()).start();
 	
 	signal capDec;
