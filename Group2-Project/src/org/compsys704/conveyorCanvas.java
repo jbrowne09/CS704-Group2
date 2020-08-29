@@ -15,7 +15,8 @@ public class conveyorCanvas extends JPanel{
 	BufferedImage conveyorMove1;
 	BufferedImage conveyorMove2;
 	BufferedImage conveyorStationary;
-	private int animation = 0;
+	private int loadPos = 384;
+	private int rotarypos = 0;
 	
 	public conveyorCanvas(){
 		try {
@@ -33,7 +34,7 @@ public class conveyorCanvas extends JPanel{
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.drawImage(conveyorStationary, 0, 100, null);
-		
+		g.fillOval(0, 164, 128, 128);
 		
 		//if(States.ARM_AT_DEST)
 		//	g.drawImage(arm1, 0, 0, null);
