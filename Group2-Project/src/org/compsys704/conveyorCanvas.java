@@ -3,11 +3,13 @@ package org.compsys704;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import javax.imageio.ImageIO;
@@ -17,10 +19,11 @@ public class conveyorCanvas extends JPanel{
 	BufferedImage conveyorMove2;
 	BufferedImage conveyorStationary;
 	private int bottlePos = 1096;
+	private JButton rotary = new JButton("rotary");
 	
 	public conveyorCanvas(){
 		try {
-			BufferedImage bi = ImageIO.read(new File("res/arm.png"));
+			//rotary.addActionListener(new ActionListener());
 			conveyorMove1 = ImageIO.read(new File("res/conveyorMove1.png"));
 			conveyorMove2 = ImageIO.read(new File("res/conveyorMove2.png"));
 			conveyorStationary = ImageIO.read(new File("res/conveyorStationary.png"));
