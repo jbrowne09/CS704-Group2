@@ -1,4 +1,4 @@
-conveyerController(
+conveyorController(
     input signal bottleLeft5, bottlePos1, bottlePos5, requestConveyor;
     output signal motor;
     //input signal NbottleLeft5, NbottlePos1, Nmotor;
