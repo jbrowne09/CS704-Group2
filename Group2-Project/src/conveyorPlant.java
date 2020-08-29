@@ -15,8 +15,8 @@ public class conveyorPlant extends ClockDomain{
   public Signal enable = new Signal("enable", Signal.INPUT);
   public Signal bottlePos5 = new Signal("bottlePos5", Signal.INPUT);
   public Signal bottleLeft5 = new Signal("bottleLeft5", Signal.OUTPUT);
-  private int S338 = 1;
-  private int S226 = 1;
+  private int S127 = 1;
+  private int S15 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -28,25 +28,25 @@ public class conveyorPlant extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S338){
+      switch(S127){
         case 0 : 
-          S338=0;
+          S127=0;
           break RUN;
         
         case 1 : 
-          S338=2;
-          S338=2;
+          S127=2;
+          S127=2;
           new Thread(new conveyorGUI()).start();//sysj\conveyorPlant.sysj line: 7, column: 2
-          S226=0;
+          S15=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S226){
+          switch(S15){
             case 0 : 
               if(enable.getprestatus()){//sysj\conveyorPlant.sysj line: 11, column: 10
-                S226=1;
+                S15=1;
                 motor.setPresent();//sysj\conveyorPlant.sysj line: 13, column: 5
                 currsigs.addElement(motor);
                 active[1]=1;
@@ -61,7 +61,7 @@ public class conveyorPlant extends ClockDomain{
             
             case 1 : 
               if(!bottlePos5.getprestatus()){//sysj\conveyorPlant.sysj line: 12, column: 10
-                S226=2;
+                S15=2;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -76,7 +76,7 @@ public class conveyorPlant extends ClockDomain{
             
             case 2 : 
               if(!enable.getprestatus()){//sysj\conveyorPlant.sysj line: 15, column: 10
-                S226=3;
+                S15=3;
                 bottleLeft5.setPresent();//sysj\conveyorPlant.sysj line: 17, column: 5
                 currsigs.addElement(bottleLeft5);
                 active[1]=1;
@@ -91,7 +91,7 @@ public class conveyorPlant extends ClockDomain{
             
             case 3 : 
               if(bottlePos5.getprestatus()){//sysj\conveyorPlant.sysj line: 16, column: 10
-                S226=0;
+                S15=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
