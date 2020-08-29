@@ -29,6 +29,7 @@ public class conveyorViz extends JFrame{
 		JButton request = new JButton("request");
 		request.addActionListener(new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.REQUEST_SIGNAL));
 		JButton rotary = new JButton("rotary");
+		rotary.addActionListener(new customActionListener(panel));
 		JPanel ss = new JPanel();
 		ss.add(enable);
 		ss.add(request);

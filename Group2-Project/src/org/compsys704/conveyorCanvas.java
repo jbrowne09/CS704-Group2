@@ -20,7 +20,6 @@ public class conveyorCanvas extends JPanel{
 	BufferedImage conveyorMove2;
 	BufferedImage conveyorStationary;
 	private int bottlePos = 1096;
-	private boolean rotaryAction = false;
 	
 	public conveyorCanvas(){
 		try {
@@ -33,8 +32,10 @@ public class conveyorCanvas extends JPanel{
 		}
 	}
 	
-	public void updateRotary(boolean status) {
-		this.rotaryAction = status;
+	public void updateRotary() {
+		if (States.bottlePos1) {
+			this.bottlePos = 384;
+		}
 	}
 	
 	@Override
@@ -52,9 +53,6 @@ public class conveyorCanvas extends JPanel{
 			this.bottlePos -= 1;
 		}
 		
-		if(this.rotaryAction && States.bottlePos1) {
-			this.bottlePos = 384;
-		}
 		if(this.bottlePos == 712) {
 			States.bottlePos1 = true;
 		} else {
