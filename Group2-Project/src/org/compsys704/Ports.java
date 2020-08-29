@@ -7,7 +7,7 @@ public class Ports {
 	public static final int PORT_LOADER_CONTROLLER = 10000;
 	public static final int PORT_LOADER_VIZ = 20000;
 	
-	// example of tick boxes 
+	// example of tick boxes? 
 	//public static final String SIGNAL_VACON           = "ControllerCD.vacOnM";
 
 }
