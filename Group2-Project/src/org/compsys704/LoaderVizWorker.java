@@ -12,7 +12,7 @@ public class LoaderVizWorker extends Worker{
 			case "NbottleLeft5":
 				States.bottleLeft5 = true;
 				break;
-			case "requestConveyer":
+			case "request":
 				if(!States.bottlePos5 && !States.bottlePos1)
 					States.MOTOR = true;
 				break;
