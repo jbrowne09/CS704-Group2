@@ -9,7 +9,7 @@ public class LoaderVizWorker extends Worker{
 	public void setSignal(boolean status) {
 //		System.out.println(signame+"  "+status);
 		switch(signame){
-			case "bottleLeft5":
+			case "bottleLeft5S":
 				States.bottleLeft5 = status;
 				break;
 			case "motorS":
@@ -17,10 +17,10 @@ public class LoaderVizWorker extends Worker{
 					States.MOTOR = status;
 				//}
 				break;
-			case "bottlePos1":
+			case "bottlePos1S":
 				States.bottlePos1 = status;
 				break;
-			case "bottlePos5":
+			case "bottlePos5S":
 				States.bottlePos5 = status;
 				break;
 			default:
@@ -30,7 +30,7 @@ public class LoaderVizWorker extends Worker{
 	}
 
 
-	static final List<String> signames = Arrays.asList("bottleLeft5","motorS","bottlePos1","bottlePos5");
+	static final List<String> signames = Arrays.asList("bottleLeft5S","motorS","bottlePos1S","bottlePos5S");
 
 	@Override
 	public boolean hasSignal(String sn) {

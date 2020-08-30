@@ -1,6 +1,7 @@
 conveyorPlant(
 		input signal motor, enable;
-		output signal bottleLeft5, bottlePos1, bottlePos5, motorS;
+		output signal bottleLeft5, bottlePos1, bottlePos5;
+		output signal bottleLeft5S, bottlePos1S, bottlePos5S, motorS;
 		)
 ->
 {
@@ -30,4 +31,13 @@ conveyorPlant(
 			sustain bottleLeft5;
 		}
 	}
+	||
+	{//To viz
+		{while(true) {present(bottlePos1) {emit bottlePos1S;} pause;}}
+		||
+		{while(true) {present(bottlePos5) {emit bottlePos5S;} pause;}}
+		||
+		{while(true) {present(bottleLeft5) {emit bottleLeft5S;} pause;}}
+	}
+	
 }
