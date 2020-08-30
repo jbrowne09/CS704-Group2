@@ -5,9 +5,9 @@
 			<iSignal Name="motor" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="enable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
-			<oSignal Name="bottlePos1" To="ControllerCD.bottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="bottlePos5"  To="ControllerCD.bottlePos5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="bottleLeft5" To="ControllerCD.bottleLeft5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
+			<oSignal Name="bottlePos1" To="CControllerCD.bottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottlePos5"  To="CControllerCD.bottlePos5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottleLeft5" To="CControllerCD.bottleLeft5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
 			
 			<oSignal Name="bottlePos1S" To="UI.bottlePos1S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="bottlePos5S" To="UI.bottlePos5S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
