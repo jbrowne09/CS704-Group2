@@ -45,10 +45,10 @@ public class conveyorController extends ClockDomain{
         case 2 : 
           switch(S17){
             case 0 : 
-              if(request.getprestatus()){//sysj\conveyorController.sysj line: 10, column: 9
+              if(request.getprestatus()){//sysj\conveyorController.sysj line: 9, column: 9
                 S17=1;
-                System.out.println("Pos1");//sysj\conveyorController.sysj line: 12, column: 4
-                motor.setPresent();//sysj\conveyorController.sysj line: 13, column: 4
+                System.out.println("Pos1");//sysj\conveyorController.sysj line: 11, column: 4
+                motor.setPresent();//sysj\conveyorController.sysj line: 12, column: 4
                 currsigs.addElement(motor);
                 active[1]=1;
                 ends[1]=1;
@@ -61,15 +61,15 @@ public class conveyorController extends ClockDomain{
               }
             
             case 1 : 
-              if(bottlePos1.getprestatus()){//sysj\conveyorController.sysj line: 11, column: 9
-                System.out.println("wait");//sysj\conveyorController.sysj line: 15, column: 3
+              if(bottlePos1.getprestatus()){//sysj\conveyorController.sysj line: 10, column: 9
+                System.out.println("wait");//sysj\conveyorController.sysj line: 14, column: 3
                 S17=2;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                motor.setPresent();//sysj\conveyorController.sysj line: 13, column: 4
+                motor.setPresent();//sysj\conveyorController.sysj line: 12, column: 4
                 currsigs.addElement(motor);
                 active[1]=1;
                 ends[1]=1;
@@ -77,10 +77,10 @@ public class conveyorController extends ClockDomain{
               }
             
             case 2 : 
-              if(bottlePos5.getprestatus()){//sysj\conveyorController.sysj line: 16, column: 9
+              if(bottlePos5.getprestatus()){//sysj\conveyorController.sysj line: 15, column: 9
                 S17=3;
-                System.out.println("Pos2");//sysj\conveyorController.sysj line: 18, column: 4
-                motor.setPresent();//sysj\conveyorController.sysj line: 19, column: 4
+                System.out.println("Pos2");//sysj\conveyorController.sysj line: 17, column: 4
+                motor.setPresent();//sysj\conveyorController.sysj line: 18, column: 4
                 currsigs.addElement(motor);
                 active[1]=1;
                 ends[1]=1;
@@ -93,14 +93,14 @@ public class conveyorController extends ClockDomain{
               }
             
             case 3 : 
-              if(bottleLeft5.getprestatus()){//sysj\conveyorController.sysj line: 17, column: 9
+              if(bottleLeft5.getprestatus()){//sysj\conveyorController.sysj line: 16, column: 9
                 S17=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                motor.setPresent();//sysj\conveyorController.sysj line: 19, column: 4
+                motor.setPresent();//sysj\conveyorController.sysj line: 18, column: 4
                 currsigs.addElement(motor);
                 active[1]=1;
                 ends[1]=1;
