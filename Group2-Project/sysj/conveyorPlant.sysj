@@ -8,9 +8,7 @@ conveyorPlant(
 	
 	{//Motor
 		while(true){
-			abort(enable && motor) {
-				halt;
-			}
+			await(motor);
 			abort (!motor) {
 				sustain motorS;
 			}
@@ -19,15 +17,17 @@ conveyorPlant(
 	||
 	{
 		while(true){
-			abort(enable && motor) {
-				halt;
-			}
+			await(enable);
+			await(!enable);
 			abort(enable){
 				sustain bottlePos1;
 			}
-			abort(enable && motor){
+			await(!enable);
+			abort(enable){
 				sustain bottlePos5;
 			}
+			await(!enable);
+			sustain bottleLeft5;
 		}
 	}
 }

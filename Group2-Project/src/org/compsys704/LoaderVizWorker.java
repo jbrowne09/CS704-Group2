@@ -10,18 +10,18 @@ public class LoaderVizWorker extends Worker{
 //		System.out.println(signame+"  "+status);
 		switch(signame){
 			case "bottleLeft5":
-				States.bottleLeft5 = true;
+				States.bottleLeft5 = status;
 				break;
 			case "motorS":
 				//if(!States.bottlePos5 && !States.bottlePos1) {
-					States.MOTOR = true;
+					States.MOTOR = status;
 				//}
 				break;
 			case "bottlePos1":
-				States.bottlePos1 = true;
+				States.bottlePos1 = status;
 				break;
 			case "bottlePos5":
-				States.bottlePos5 = true;
+				States.bottlePos5 = status;
 				break;
 			default:
 				System.err.println("Wrong sig name : "+signame);

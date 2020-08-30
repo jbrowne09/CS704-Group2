@@ -16,7 +16,7 @@ public class conveyorController extends ClockDomain{
   public Signal bottlePos5 = new Signal("bottlePos5", Signal.INPUT);
   public Signal request = new Signal("request", Signal.INPUT);
   public Signal motor = new Signal("motor", Signal.OUTPUT);
-  private int S31 = 1;
+  private int S61 = 1;
   private int S9 = 1;
   
   private int[] ends = new int[2];
@@ -29,14 +29,14 @@ public class conveyorController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S31){
+      switch(S61){
         case 0 : 
-          S31=0;
+          S61=0;
           break RUN;
         
         case 1 : 
-          S31=2;
-          S31=2;
+          S61=2;
+          S61=2;
           S9=0;
           active[1]=1;
           ends[1]=1;
@@ -61,13 +61,43 @@ public class conveyorController extends ClockDomain{
             
             case 1 : 
               if(bottlePos1.getprestatus()){//sysj\conveyorController.sysj line: 11, column: 9
-                S9=0;
+                S9=2;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
                 motor.setPresent();//sysj\conveyorController.sysj line: 12, column: 4
+                currsigs.addElement(motor);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 2 : 
+              if(bottlePos5.getprestatus()){//sysj\conveyorController.sysj line: 14, column: 9
+                S9=3;
+                motor.setPresent();//sysj\conveyorController.sysj line: 16, column: 4
+                currsigs.addElement(motor);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 3 : 
+              if(bottleLeft5.getprestatus()){//sysj\conveyorController.sysj line: 15, column: 9
+                S9=0;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                motor.setPresent();//sysj\conveyorController.sysj line: 16, column: 4
                 currsigs.addElement(motor);
                 active[1]=1;
                 ends[1]=1;

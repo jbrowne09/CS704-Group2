@@ -11,9 +11,11 @@ conveyorController(
 		abort(bottlePos1){
 			sustain motor;	
 		}
+		await(bottlePos5);
+		abort(bottleLeft5){
+			sustain motor;
+		}
 	}
-
-
 }
 
 
