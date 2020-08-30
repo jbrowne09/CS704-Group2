@@ -15,7 +15,6 @@ public class LoaderVizWorker extends Worker{
 			case "motorS":
 				//if(!States.bottlePos5 && !States.bottlePos1) {
 					States.MOTOR = true;
-					System.out.println("hello");
 				//}
 				break;
 			case "NbottlePos1":
