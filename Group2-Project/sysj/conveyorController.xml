@@ -4,6 +4,7 @@
 			<iSignal Name="bottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="request" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="bottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />			
 			<oSignal Name="motor" To="CPlantCD.motor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 		</ClockDomain>
 	</SubSystem>
