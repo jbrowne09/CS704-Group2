@@ -1,6 +1,6 @@
 conveyorPlant(
-		input signal motor, enable, bottlePos5;
-		output signal bottleLeft5, motorS;
+		input signal motor, enable;
+		output signal bottleLeft5, bottlePos1, bottlePos5, motorS;
 		)
 ->
 {
@@ -10,7 +10,23 @@ conveyorPlant(
 		while(true){
 			await(enable);
 			await(motor);
-			sustain motorS;
+			abort (!motor) {
+				sustain motorS;
+			}
+		}
 	}
-}
+	||
+	{
+		while(true){
+			abort(enable && motor) {
+				halt;
+			}
+			abort(enable){
+				sustain bottlePos1;
+			}
+			abort(enable && motor){
+				sustain bottlePos5;
+			}
+		}
+	}
 }
