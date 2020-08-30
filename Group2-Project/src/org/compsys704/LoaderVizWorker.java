@@ -21,7 +21,7 @@ public class LoaderVizWorker extends Worker{
 				States.bottlePos1 = true;
 				break;
 			case "bottlePos5":
-				States.bottlePos5 = status;
+				States.bottlePos5 = true;
 				break;
 			default:
 				System.err.println("Wrong sig name : "+signame);

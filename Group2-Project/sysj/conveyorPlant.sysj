@@ -8,8 +8,9 @@ conveyorPlant(
 	
 	{//Motor
 		while(true){
-			await(enable);
-			await(motor);
+			abort(enable && motor) {
+				halt;
+			}
 			abort (!motor) {
 				sustain motorS;
 			}
