@@ -9,10 +9,13 @@ conveyorController(
 	while(true){
 		await(request);
 		abort(bottlePos1){
+			System.out.println("Pos1");
 			sustain motor;	
 		}
+		System.out.println("wait");
 		await(bottlePos5);
 		abort(bottleLeft5){
+			System.out.println("Pos2");
 			sustain motor;
 		}
 	}
