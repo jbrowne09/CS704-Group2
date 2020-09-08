@@ -1,22 +1,24 @@
 conveyorController(
-    input signal bottleLeft5, bottlePos1, bottlePos5, request;
-    output signal motor;
+    input signal bottleLeft5, bottlePos1, bottlePos5, conveyer_enable;
+    output signal motor, conveyerDone;
 )
-
 
 ->{
 	while(true){
-		await(request);
+		await(conveyer_enable);
+	 {
 		abort(bottlePos1){
-			System.out.println("Pos1");
 			sustain motor;	
 		}
-		System.out.println("wait");
+		emit conveyerDone;
+	 }
+	 ||
+	 {
 		await(bottlePos5);
 		abort(bottleLeft5){
-			System.out.println("Pos2");
 			sustain motor;
 		}
+		emit conveyerDone;
+	 }
 	}
 }
-

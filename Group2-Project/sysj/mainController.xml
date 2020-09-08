@@ -1,0 +1,17 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS1" Local="true">
+		<ClockDomain Name="MControllerCD" Class="mainController">
+			<iSignal Name="conveyerDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="request" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="enable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+					
+			<oSignal Name="conveyer_enable" To="CControllerCD.conveyer_enable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="rotary_enable" 	To="RControllerCD.rotary_enable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="capper_enable" 	To="CapControllerCD.conveyer_enable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="filler_enable" 	To="FControllerCD.capper_enable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="bottleLoader_enable" To="BLControllerCD.bottleLoader_enable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="bottleUnloader_enable" To="BUControllerCD.bottleUnloader_enable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+
+		</ClockDomain>
+	</SubSystem>
+</System>

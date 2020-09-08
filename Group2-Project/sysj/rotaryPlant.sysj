@@ -2,7 +2,6 @@ rotaryPlant(
 		input signal rotate;
 		output signal aligned, bottlePos5, capPos1; //To controller
 		output signal alignedS, bottlePos5S, capPos1S, rotateS; //To viz
-		signal interrupt;
 		)
 ->
 {
