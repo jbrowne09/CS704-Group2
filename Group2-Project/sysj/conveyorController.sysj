@@ -20,34 +20,3 @@ conveyorController(
 	}
 }
 
-
-//->{ 
-  //  {//LOADING CONVEYOR
-	//    while(true){
-	  //  	await(request);
-	    	//abort(bottlePos1){
-	    	//	while(true){
-			//    	abort(bottleLeft5){
-		//	System.out.println("motor");
-		  //  			sustain motor;
-		    //		}
-		    //		pause;
-	    	//	}
-		 //   }
-	//	}
-//    }
- //   ||
- //   {//UNLOADING CONVEYOR
- //   	while(true){
-//	    	await(bottlePos5);
-//	    	abort(bottleLeft5){
-//	    		while(true){
-//		    		abort(bottlePos1){
-//		    			sustain motor;
-//		    		}
-//		    		pause;
-//	    		}
-//	    	}
-//    	}
-//    }  */
-//}

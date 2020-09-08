@@ -1,0 +1,19 @@
+rotaryController(
+    input signal aligned, bottlePos5, capPos1; //Come from plant sensors? 
+    input signal enableRotary; //Comes from main controller
+    output signal rotate; //Go to plant
+)
+
+->{
+	while(true){
+		await(enableRotary);
+		abort(!capPos1 && !bottlePos5){
+			System.out.println("cap on bottle in Pos1 or Pos5, please remove it");
+			halt;
+		}
+		abort(aligned){
+			System.out.println("rotating");
+			sustain rotate;
+		}
+	}
+}

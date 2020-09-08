@@ -1,0 +1,37 @@
+rotaryPlant(
+		input signal rotate;
+		output signal aligned, bottlePos5, capPos1; //To controller
+		output signal alignedS, bottlePos5S, capPos1S, rotateS; //To viz
+		signal interrupt;
+		)
+->
+{
+	//new Thread(new conveyorGUI()).start();
+	//Still need to output bottlePos5 and capPos1 somewhere
+	
+	{//Rotation
+		while(true){
+			await(rotate);
+			abort (!rotate) {
+				sustain rotateS;
+			}
+		}
+	}
+	||
+	{//aligned
+		while(true){ 
+			await(rotate);
+			Thread.sleep(500);
+			emit aligned;
+		}
+	}
+	||
+	{//To viz
+		{while(true) {present(aligned) {emit alignedS;} pause;}}
+		||
+		{while(true) {present(bottlePos5) {emit bottlePos5S;} pause;}}
+		||
+		{while(true) {present(capPos1) {emit capPos1S;} pause;}}
+	}
+	
+}

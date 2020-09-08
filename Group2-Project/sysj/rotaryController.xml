@@ -1,0 +1,13 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS1" Local="true">
+		<ClockDomain Name="RControllerCD" Class="rotaryController">
+			<iSignal Name="aligned" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="capPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			
+			<iSignal Name="enableRotary" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
+					
+			<oSignal Name="rotate" To="RPlantCD.rotate" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+		</ClockDomain>
+	</SubSystem> 
+</System>
