@@ -20,7 +20,7 @@ rotaryPlant(
 	{//aligned
 		while(true){ 
 			await(rotate);
-			Thread.sleep(500);
+			Thread.sleep(500); //Doesn't seem to like waitl(500 ms); but if this doesn't work, try it again
 			emit aligned;
 		}
 	}

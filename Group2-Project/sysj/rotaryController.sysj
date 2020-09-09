@@ -1,7 +1,8 @@
 rotaryController(
     input signal aligned, bottlePos5, capPos1; //Come from plant sensors? 
     input signal enableRotary; //Comes from main controller
-    output signal rotate; //Go to plant
+    output signal rotate; //Goes to plant
+    output signal rotaryDone; //Goes to main
 )
 
 ->{
@@ -15,5 +16,6 @@ rotaryController(
 			System.out.println("rotating");
 			sustain rotate;
 		}
+		emit rotaryDone;
 	}
 }

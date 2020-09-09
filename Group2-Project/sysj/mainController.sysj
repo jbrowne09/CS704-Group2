@@ -1,6 +1,6 @@
 mainController(
-    input signal conveyerDone, request, enable;
-    output signal conveyer_enable, rotary_enable, capper_enable, filler_enable, bottleLoader_enable, bottleUnloader_enable; //To controllers
+    input signal conveyerDone, rotaryDone, capperDone, request, enable;
+    output signal conveyerEnable, rotaryEnable, capperEnable, fillerEnable, bottleLoaderEnable, bottleUnloaderEnable; //To controllers
 )
 
 
@@ -8,7 +8,13 @@ mainController(
 	while(true){
 		await(request);
 		abort(conveyerDone) {
-			sustain conveyer_enable;
+			sustain conveyerEnable;
+		}
+		abort(rotaryDone) {
+			sustain rotaryEnable;
+		}
+		abort(capperDone) {
+			sustain capperEnable;
 		}
 	}
 }

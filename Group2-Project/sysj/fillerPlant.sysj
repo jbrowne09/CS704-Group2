@@ -1,0 +1,51 @@
+fillerPlant(
+		input signal inletOn, injectorOn, valveRetract, valveExtend, liquidPos1, liquidPos2, liquidPos3, liquidPos4;
+		output signal bottlePos2, canBottom, canTop, inletIsOn, injectorIsOn, valveRetracted, valveExtended;
+		output signal bottlePos2S, canBottomS, canTopS, liquidPos1S, liquidPos2S, liquidPos3S, liquidPos4S, inletIsOnS, injectorIsOnS, valveRetractedS, valveExtendedS;
+		)
+->
+{	
+	{
+		while(true){
+			abort(valveRetract){
+				sustain canBottom; 
+			}
+			abort(valveExtend) {
+				sustain canTop;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			abort() {
+			
+			}
+		}
+	}
+	||
+	{//To viz
+		{while(true) {present(bottlePos2) {emit bottlePos2S;} pause;}}
+		||
+		{while(true) {present(canBottom) {emit canBottomS;} pause;}}
+		||
+		{while(true) {present(canTop) {emit canTopS;} pause;}}
+		||
+		{while(true) {present(inletIsOn) {emit inletIsOnS;} pause;}}
+		||
+		{while(true) {present(injectorIsOn) {emit injectorIsOnS;} pause;}}
+		||
+		{while(true) {present(valveRetracted) {emit valveRetractedS;} pause;}}
+		||
+		{while(true) {present(valveExtended) {emit valveExtendedS;} pause;}}
+		||
+		{while(true) {present(liquidPos1) {emit liquidPos1S;} pause;}}
+		||
+		{while(true) {present(liquidPos2) {emit liquidPos2S;} pause;}}
+		||
+		{while(true) {present(liquidPos3) {emit liquidPos3S;} pause;}}
+		||
+		{while(true) {present(liquidPos4) {emit liquidPos4S;} pause;}}
+	}
+	
+}
