@@ -186,7 +186,12 @@ public class rotaryPlant extends ClockDomain{
       
       case 1 : 
         if(rotate.getprestatus()){//sysj\rotaryPlant.sysj line: 22, column: 10
-          Thread.sleep(500);//sysj\rotaryPlant.sysj line: 23, column: 4
+          try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//sysj\rotaryPlant.sysj line: 23, column: 4
           aligned.setPresent();//sysj\rotaryPlant.sysj line: 24, column: 4
           currsigs.addElement(aligned);
           active[3]=1;
