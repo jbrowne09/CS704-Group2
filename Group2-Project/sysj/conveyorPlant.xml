@@ -11,7 +11,7 @@
 			
 			<oSignal Name="bottlePos1S" To="UI.bottlePos1S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="bottlePos5S" To="UI.bottlePos5S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="motorS" To="UI.motorS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="motorS" 		To="UI.motorS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="bottleLeft5S" To="UI.bottleLeft5S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 		
 		</ClockDomain>

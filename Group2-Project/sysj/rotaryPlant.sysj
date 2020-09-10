@@ -20,7 +20,14 @@ rotaryPlant(
 	{//aligned
 		while(true){ 
 			await(rotate);
-			Thread.sleep(500); //Doesn't seem to like waitl(500 ms); but if this doesn't work, try it again
+			waitl(500 ms);
+			//try { 
+			//	Thread.sleep(500);
+			//} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+			//	System.out.println("Error, thread.sleep in rotaryplant.java");
+			//	e.printStackTrace();
+			//} 
 			emit aligned;
 		}
 	}

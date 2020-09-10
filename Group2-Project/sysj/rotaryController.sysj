@@ -13,7 +13,6 @@ rotaryController(
 			halt;
 		}
 		abort(aligned){
-			System.out.println("rotating");
 			sustain rotate;
 		}
 		emit rotaryDone;

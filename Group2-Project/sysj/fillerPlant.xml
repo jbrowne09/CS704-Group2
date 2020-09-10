@@ -1,24 +1,31 @@
 <System xmlns="http://systemjtechnology.com">
 	<SubSystem Name="SS2" Local="true">
-		<ClockDomain Name="CapPlantCD" Class="capperPlant">
+		<ClockDomain Name="FPlantCD" Class="fillerPlant">
 			
-			<iSignal Name="clampBottle" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="gripCap" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="gripDown" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="twistGrip" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="untwistGrip" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="inletOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="injectorOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="valveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="valveExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="liquidPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="liquidPos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="liquidPos3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="liquidPos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
-			<oSignal Name="gripperLowered" To="CapControllerCD.gripperLowered" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="gripperLifted"  To="CapControllerCD.gripperLifted"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="gripperInit" To="CapControllerCD.gripperInit"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
-			<oSignal Name="gripperTurned" To="CapControllerCD.gripperTurned"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
-			<oSignal Name="bottlePos4" To="CapControllerCD.bottlePos4"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
+			<oSignal Name="bottlePos2" To="FControllerCD.bottlePos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="canBottom"  To="FControllerCD.canBottom"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="canTop" To="FControllerCD.canTop"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
+			<oSignal Name="inletIsOn" To="FControllerCD.inletIsOn"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
+			<oSignal Name="injectorIsOn" To="FControllerCD.injectorIsOn"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
 			
-			<oSignal Name="gripperLoweredS" To="UI.gripperLoweredS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="gripperLiftedS" To="UI.gripperLiftedS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="gripperInitS" To="UI.gripperInitS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="gripperTurnedS" To="UI.gripperTurnedS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="bottlePos4S" To="UI.bottlePos4S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="bottlePos2S" To="UI.bottlePos2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="canBottomS" To="UI.canBottomS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="canTopS" To="UI.canTopS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="liquidPos1S" To="UI.liquidPos1S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="liquidPos2S" To="UI.liquidPos2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="liquidPos3S" To="UI.liquidPos3S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="liquidPos4S" To="UI.liquidPos4S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="inletIsOnS" To="UI.inletIsOnS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="injectorIsOnS" To="UI.injectorIsOnS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 	
 		</ClockDomain>
 	</SubSystem>

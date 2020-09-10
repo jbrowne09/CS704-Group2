@@ -1,8 +1,7 @@
 mainController(
     input signal conveyerDone, rotaryDone, capperDone, request, enable;
-    output signal conveyerEnable, rotaryEnable, capperEnable, fillerEnable, bottleLoaderEnable, bottleUnloaderEnable; //To controllers
+    output signal conveyerEnable, rotaryEnable, capperEnable, fillerEnable; //To controllers
 )
-
 
 ->{
 	while(true){

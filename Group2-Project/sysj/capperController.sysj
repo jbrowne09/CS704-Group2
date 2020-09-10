@@ -26,7 +26,7 @@ capperController(
 		{
 			await(gripCap);
 			emit twistGrip;
-			{await gripperInit;} || {await gripperLifted;}
+			{await(gripperInit);} || {await(gripperLifted);}
 			emit capperDone;
 		}
 	}

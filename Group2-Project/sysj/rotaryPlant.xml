@@ -12,7 +12,7 @@
 			<oSignal Name="bottlePos5S" To="UI.bottlePos5S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="capPos1S" To="UI.capPos1S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="rotateS" To="UI.rotateS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			
+
 		</ClockDomain>
 	</SubSystem>
 </System>
