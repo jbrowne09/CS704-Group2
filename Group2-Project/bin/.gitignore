@@ -1,11 +1,4 @@
-/Controller.class
 /GUI.class
-/Plant.class
-/conveyerController.class
-/conveyorController.class
-/conveyorGUI.class
-/conveyorPlant.class
 /org/
-/mainController.class
-/rotaryController.class
 /rotaryPlant.class
+/systemGUI.class
