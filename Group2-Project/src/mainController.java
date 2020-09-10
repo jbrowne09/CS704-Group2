@@ -20,10 +20,8 @@ public class mainController extends ClockDomain{
   public Signal rotaryEnable = new Signal("rotaryEnable", Signal.OUTPUT);
   public Signal capperEnable = new Signal("capperEnable", Signal.OUTPUT);
   public Signal fillerEnable = new Signal("fillerEnable", Signal.OUTPUT);
-  public Signal bottleLoaderEnable = new Signal("bottleLoaderEnable", Signal.OUTPUT);
-  public Signal bottleUnloaderEnable = new Signal("bottleUnloaderEnable", Signal.OUTPUT);
-  private int S1587 = 1;
-  private int S1527 = 1;
+  private int S1563 = 1;
+  private int S1493 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -35,70 +33,79 @@ public class mainController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S1587){
+      switch(S1563){
         case 0 : 
-          S1587=0;
+          S1563=0;
           break RUN;
         
         case 1 : 
-          S1587=2;
-          S1587=2;
-          S1527=0;
-          System.out.println("conveyer enabled");//sysj\mainController.sysj line: 11, column: 3
-          conveyerEnable.setPresent();//sysj\mainController.sysj line: 12, column: 4
-          currsigs.addElement(conveyerEnable);
+          S1563=2;
+          S1563=2;
+          S1493=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S1527){
+          switch(S1493){
             case 0 : 
-              if(conveyerDone.getprestatus()){//sysj\mainController.sysj line: 10, column: 9
-                S1527=1;
-                rotaryEnable.setPresent();//sysj\mainController.sysj line: 15, column: 4
-                currsigs.addElement(rotaryEnable);
+              if(request.getprestatus()){//sysj\mainController.sysj line: 8, column: 9
+                S1493=1;
+                conveyerEnable.setPresent();//sysj\mainController.sysj line: 10, column: 4
+                currsigs.addElement(conveyerEnable);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                conveyerEnable.setPresent();//sysj\mainController.sysj line: 12, column: 4
-                currsigs.addElement(conveyerEnable);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
             
             case 1 : 
-              if(rotaryDone.getprestatus()){//sysj\mainController.sysj line: 14, column: 9
-                S1527=2;
-                capperEnable.setPresent();//sysj\mainController.sysj line: 18, column: 4
-                currsigs.addElement(capperEnable);
+              if(conveyerDone.getprestatus()){//sysj\mainController.sysj line: 9, column: 9
+                S1493=2;
+                rotaryEnable.setPresent();//sysj\mainController.sysj line: 13, column: 4
+                currsigs.addElement(rotaryEnable);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                rotaryEnable.setPresent();//sysj\mainController.sysj line: 15, column: 4
-                currsigs.addElement(rotaryEnable);
+                conveyerEnable.setPresent();//sysj\mainController.sysj line: 10, column: 4
+                currsigs.addElement(conveyerEnable);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
             
             case 2 : 
-              if(capperDone.getprestatus()){//sysj\mainController.sysj line: 17, column: 9
-                S1527=0;
-                System.out.println("conveyer enabled");//sysj\mainController.sysj line: 11, column: 3
-                conveyerEnable.setPresent();//sysj\mainController.sysj line: 12, column: 4
-                currsigs.addElement(conveyerEnable);
+              if(rotaryDone.getprestatus()){//sysj\mainController.sysj line: 12, column: 9
+                S1493=3;
+                capperEnable.setPresent();//sysj\mainController.sysj line: 16, column: 4
+                currsigs.addElement(capperEnable);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                capperEnable.setPresent();//sysj\mainController.sysj line: 18, column: 4
+                rotaryEnable.setPresent();//sysj\mainController.sysj line: 13, column: 4
+                currsigs.addElement(rotaryEnable);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 3 : 
+              if(capperDone.getprestatus()){//sysj\mainController.sysj line: 15, column: 9
+                S1493=0;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                capperEnable.setPresent();//sysj\mainController.sysj line: 16, column: 4
                 currsigs.addElement(capperEnable);
                 active[1]=1;
                 ends[1]=1;
@@ -151,8 +158,6 @@ public class mainController extends ClockDomain{
       rotaryEnable.setpreclear();
       capperEnable.setpreclear();
       fillerEnable.setpreclear();
-      bottleLoaderEnable.setpreclear();
-      bottleUnloaderEnable.setpreclear();
       int dummyint = 0;
       for(int qw=0;qw<currsigs.size();++qw){
         dummyint = ((Signal)currsigs.elementAt(qw)).getStatus() ? ((Signal)currsigs.elementAt(qw)).setprepresent() : ((Signal)currsigs.elementAt(qw)).setpreclear();
@@ -182,10 +187,6 @@ public class mainController extends ClockDomain{
       capperEnable.setClear();
       fillerEnable.sethook();
       fillerEnable.setClear();
-      bottleLoaderEnable.sethook();
-      bottleLoaderEnable.setClear();
-      bottleUnloaderEnable.sethook();
-      bottleUnloaderEnable.setClear();
       if(paused[1]!=0 || suspended[1]!=0 || active[1]!=1);
       else{
         conveyerDone.gethook();

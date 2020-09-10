@@ -17,17 +17,17 @@ public class conveyorController extends ClockDomain{
   public Signal conveyer_enable = new Signal("conveyer_enable", Signal.INPUT);
   public Signal motor = new Signal("motor", Signal.OUTPUT);
   public Signal conveyerDone = new Signal("conveyerDone", Signal.OUTPUT);
-  private int S624 = 1;
-  private int S490 = 1;
-  private int S500 = 1;
-  private int S511 = 1;
-  private int S510 = 1;
+  private int S597 = 1;
+  private int S523 = 1;
+  private int S494 = 1;
+  private int S505 = 1;
+  private int S504 = 1;
   
   private int[] ends = new int[4];
   private int[] tdone = new int[4];
   
-  public void thread630(int [] tdone, int [] ends){
-        switch(S511){
+  public void thread603(int [] tdone, int [] ends){
+        switch(S505){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -35,11 +35,11 @@ public class conveyorController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S510){
+        switch(S504){
           case 0 : 
-            if(bottlePos5.getprestatus()){//sysj\conveyorController.sysj line: 19, column: 9
-              S510=1;
-              motor.setPresent();//sysj\conveyorController.sysj line: 21, column: 4
+            if(bottlePos5.getprestatus()){//sysj\conveyorController.sysj line: 17, column: 9
+              S504=1;
+              motor.setPresent();//sysj\conveyorController.sysj line: 19, column: 4
               currsigs.addElement(motor);
               active[3]=1;
               ends[3]=1;
@@ -53,16 +53,16 @@ public class conveyorController extends ClockDomain{
             break;
           
           case 1 : 
-            if(bottleLeft5.getprestatus()){//sysj\conveyorController.sysj line: 20, column: 9
-              conveyerDone.setPresent();//sysj\conveyorController.sysj line: 23, column: 3
+            if(bottleLeft5.getprestatus()){//sysj\conveyorController.sysj line: 18, column: 9
+              conveyerDone.setPresent();//sysj\conveyorController.sysj line: 21, column: 3
               currsigs.addElement(conveyerDone);
-              S511=0;
+              S505=0;
               active[3]=0;
               ends[3]=0;
               tdone[3]=1;
             }
             else {
-              motor.setPresent();//sysj\conveyorController.sysj line: 21, column: 4
+              motor.setPresent();//sysj\conveyorController.sysj line: 19, column: 4
               currsigs.addElement(motor);
               active[3]=1;
               ends[3]=1;
@@ -76,8 +76,8 @@ public class conveyorController extends ClockDomain{
     }
   }
 
-  public void thread629(int [] tdone, int [] ends){
-        switch(S500){
+  public void thread602(int [] tdone, int [] ends){
+        switch(S494){
       case 0 : 
         active[2]=0;
         ends[2]=0;
@@ -85,16 +85,16 @@ public class conveyorController extends ClockDomain{
         break;
       
       case 1 : 
-        if(bottlePos1.getprestatus()){//sysj\conveyorController.sysj line: 11, column: 9
-          conveyerDone.setPresent();//sysj\conveyorController.sysj line: 15, column: 3
+        if(bottlePos1.getprestatus()){//sysj\conveyorController.sysj line: 10, column: 9
+          conveyerDone.setPresent();//sysj\conveyorController.sysj line: 13, column: 3
           currsigs.addElement(conveyerDone);
-          S500=0;
+          S494=0;
           active[2]=0;
           ends[2]=0;
           tdone[2]=1;
         }
         else {
-          motor.setPresent();//sysj\conveyorController.sysj line: 13, column: 4
+          motor.setPresent();//sysj\conveyorController.sysj line: 11, column: 4
           currsigs.addElement(motor);
           active[2]=1;
           ends[2]=1;
@@ -105,18 +105,17 @@ public class conveyorController extends ClockDomain{
     }
   }
 
-  public void thread627(int [] tdone, int [] ends){
-        S511=1;
-    S510=0;
+  public void thread600(int [] tdone, int [] ends){
+        S505=1;
+    S504=0;
     active[3]=1;
     ends[3]=1;
     tdone[3]=1;
   }
 
-  public void thread626(int [] tdone, int [] ends){
-        S500=1;
-    System.out.println("motor");//sysj\conveyorController.sysj line: 12, column: 3
-    motor.setPresent();//sysj\conveyorController.sysj line: 13, column: 4
+  public void thread599(int [] tdone, int [] ends){
+        S494=1;
+    motor.setPresent();//sysj\conveyorController.sysj line: 11, column: 4
     currsigs.addElement(motor);
     active[2]=1;
     ends[2]=1;
@@ -130,35 +129,34 @@ public class conveyorController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S624){
+      switch(S597){
         case 0 : 
-          S624=0;
+          S597=0;
           break RUN;
         
         case 1 : 
-          S624=2;
-          S624=2;
-          System.out.println("hello");//sysj\conveyorController.sysj line: 8, column: 2
-          S490=0;
+          S597=2;
+          S597=2;
+          S523=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S490){
+          switch(S523){
             case 0 : 
-              if(conveyer_enable.getprestatus()){//sysj\conveyorController.sysj line: 9, column: 9
-                S490=1;
-                thread626(tdone,ends);
-                thread627(tdone,ends);
-                int biggest628 = 0;
-                if(ends[2]>=biggest628){
-                  biggest628=ends[2];
+              if(conveyer_enable.getprestatus()){//sysj\conveyorController.sysj line: 8, column: 9
+                S523=1;
+                thread599(tdone,ends);
+                thread600(tdone,ends);
+                int biggest601 = 0;
+                if(ends[2]>=biggest601){
+                  biggest601=ends[2];
                 }
-                if(ends[3]>=biggest628){
-                  biggest628=ends[3];
+                if(ends[3]>=biggest601){
+                  biggest601=ends[3];
                 }
-                if(biggest628 == 1){
+                if(biggest601 == 1){
                   active[1]=1;
                   ends[1]=1;
                   break RUN;
@@ -171,24 +169,23 @@ public class conveyorController extends ClockDomain{
               }
             
             case 1 : 
-              thread629(tdone,ends);
-              thread630(tdone,ends);
-              int biggest631 = 0;
-              if(ends[2]>=biggest631){
-                biggest631=ends[2];
+              thread602(tdone,ends);
+              thread603(tdone,ends);
+              int biggest604 = 0;
+              if(ends[2]>=biggest604){
+                biggest604=ends[2];
               }
-              if(ends[3]>=biggest631){
-                biggest631=ends[3];
+              if(ends[3]>=biggest604){
+                biggest604=ends[3];
               }
-              if(biggest631 == 1){
+              if(biggest604 == 1){
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               //FINXME code
-              if(biggest631 == 0){
-                System.out.println("hello");//sysj\conveyorController.sysj line: 8, column: 2
-                S490=0;
+              if(biggest604 == 0){
+                S523=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
