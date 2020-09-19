@@ -1,5 +1,17 @@
+/Controller.class
+/GUI.class
+/Plant.class
+/capperController.class
+/capperPlant.class
+/conveyerController.class
+/conveyorController.class
+/conveyorGUI.class
+/conveyorPlant.class
 /fillerController.class
 /fillerPlant.class
+/loaderController.class
+/loaderPlant.class
+/mainController.class
 /org/
 /rotaryController.class
 /rotaryPlant.class
