@@ -1,0 +1,15 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS2" Local="true">
+		<ClockDomain Name="LPlantCD" Class="loaderPlant">
+			
+			<iSignal Name="CMD" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+
+			<oSignal Name="posBS" To="UI.posBS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="posCS" To="UI.posCS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="posDS" To="UI.posDS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="posAS" To="UI.posAS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="closeGripperS" To="UI.closeGripperS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="openGripperS" To="UI.openGripperS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+		</ClockDomain>
+	</SubSystem>
+</System>

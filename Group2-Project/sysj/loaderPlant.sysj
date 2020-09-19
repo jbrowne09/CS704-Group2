@@ -1,0 +1,30 @@
+loaderPlant(
+		input String signal CMD;
+		output signal posBS, posCS, posDS, posAS, closeGripperS, openGripperS;
+		)
+->
+{	
+	while(true){
+	await(CMD);
+	if (#CMD == "B") {
+		emit posBS;
+	}
+	else if (#CMD == "C") {
+		emit posCS;
+	}
+	else if (#CMD == "D") {
+		emit posDS;
+	}
+	else if (#CMD == "A") {
+		emit posAS;
+	}
+	else if (#CMD == "G") {
+		emit closeGripperS;
+	}
+	else if (#CMD == "O") {
+		emit openGripperS;
+	}
+	System.out.println("CMD is " + #CMD);
+	//pause;
+	}
+}

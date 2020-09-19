@@ -20,6 +20,12 @@ public class States {
 	public static volatile boolean injectorIsOn = false;
 	public static volatile boolean aligned = false;
 	public static volatile boolean capPos1 = false;
-
+	public static volatile boolean armtoB = false;
+	public static volatile boolean armtoC = false;
+	public static volatile boolean armtoD = false;
+	public static volatile boolean armtoA = false;
+	public static volatile boolean gripContainer = false;
+	public static volatile boolean releaseContainer = false;
+	
 }
 
