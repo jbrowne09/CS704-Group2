@@ -257,6 +257,18 @@ public class systemCanvas extends JPanel{
 		g.drawImage(systemBackground, 0, 0, null);
 		Graphics2D g2 = (Graphics2D) g;
 		
+		this.gripLoadBottle = States.gripContainer;
+		this.ungripLoadBottle = States.releaseContainer;
+		this.toA = States.armtoA;
+		this.toB = States.armtoB;
+		this.toC = States.armtoC;
+		
+		//TEMPORARY
+		if (loadPosX == -1) {
+			loadPosX = 81;
+			loadPosY = 448;
+		}
+		
 		if (this.tick) { 
 			
 			//Loading Arm

@@ -17,8 +17,8 @@ public class rotaryController extends ClockDomain{
   public Signal enableRotary = new Signal("enableRotary", Signal.INPUT);
   public Signal rotate = new Signal("rotate", Signal.OUTPUT);
   public Signal rotaryDone = new Signal("rotaryDone", Signal.OUTPUT);
-  private int S2070 = 1;
-  private int S2032 = 1;
+  private int S2076 = 1;
+  private int S2038 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -30,24 +30,24 @@ public class rotaryController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2070){
+      switch(S2076){
         case 0 : 
-          S2070=0;
+          S2076=0;
           break RUN;
         
         case 1 : 
-          S2070=2;
-          S2070=2;
-          S2032=0;
+          S2076=2;
+          S2076=2;
+          S2038=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S2032){
+          switch(S2038){
             case 0 : 
               if(enableRotary.getprestatus()){//sysj\rotaryController.sysj line: 10, column: 9
-                S2032=1;
+                S2038=1;
                 System.out.println("cap on bottle in Pos1 or Pos5, please remove it");//sysj\rotaryController.sysj line: 12, column: 4
                 active[1]=1;
                 ends[1]=1;
@@ -61,7 +61,7 @@ public class rotaryController extends ClockDomain{
             
             case 1 : 
               if(!capPos1.getprestatus() && !bottlePos5.getprestatus()){//sysj\rotaryController.sysj line: 11, column: 9
-                S2032=2;
+                S2038=2;
                 rotate.setPresent();//sysj\rotaryController.sysj line: 16, column: 4
                 currsigs.addElement(rotate);
                 active[1]=1;
@@ -78,7 +78,7 @@ public class rotaryController extends ClockDomain{
               if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 15, column: 9
                 rotaryDone.setPresent();//sysj\rotaryController.sysj line: 18, column: 3
                 currsigs.addElement(rotaryDone);
-                S2032=0;
+                S2038=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;

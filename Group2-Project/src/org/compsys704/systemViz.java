@@ -80,17 +80,14 @@ public class systemViz extends JFrame implements ActionListener {
 		//enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
 		//JButton request = new JButton("request");
 		//request.addActionListener(new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.REQUEST_SIGNAL));
-		//
-		//JPanel ss = new JPanel();
-		//ss.add(enable);
-		//ss.add(request);
 		
 		Font bold = new Font(Font.SANS_SERIF, Font.BOLD, 12);
 		Font normal = new Font(Font.SANS_SERIF, Font.PLAIN, 12);
 		
 		//tick button
 		tick.setEnabled(true);
-		tick.addActionListener(this);
+		//tick.addActionListener(this);
+		tick.addActionListener(new SignalClient(10000, "LControllerCD.tick"));
 		tick.setFont(bold);
 		
 		//conveyor
