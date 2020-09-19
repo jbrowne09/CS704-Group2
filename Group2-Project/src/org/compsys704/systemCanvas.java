@@ -45,10 +45,16 @@ public class systemCanvas extends JPanel{
 	private boolean liquidPos4 = false;
 	private boolean NbottleFilled = false;
 	
-	//Bottle-Loader
+	//Bottle-Loader/Unloader
 	private boolean bottleAtLoad = false;
-	private boolean finishLCMD = false;
-	private boolean NloadBottle = false;
+	private boolean gripLoadBottle = false;
+	private boolean toA = false;
+	private boolean toB = false;
+	private boolean toC = false;
+	private boolean gripUnloadBottle = false;
+	private boolean toA2 = false;
+	private boolean toB2 = false;
+	private boolean toC2 = false;
 	
 	//Capper
 	private boolean clampBottle = false;
@@ -68,7 +74,20 @@ public class systemCanvas extends JPanel{
 	int loadArmAngle = 45;
 	int loadArmX = 172;
 	int loadArmY = 411;
-	boolean loadingBottle = false;
+	boolean moveToLoadPoint = false;
+	boolean moveToLoadInit = false;
+	boolean moveToLoadConv = false;
+	boolean grippedLoadBottle = false;
+	
+	int unloadPosX = -1;
+	int unloadPosY = -1;
+	int unloadArmAngle = 45;
+	int unloadArmX = 851;
+	int unloadArmY = 411;
+	boolean moveToUnloadPoint = false;
+	boolean moveToUnloadInit = false;
+	boolean moveToUnloadConv = false;
+	boolean grippedUnloadBottle = false;
 	
 	int loadConvPos = -1;
 	int unloadConvPos = -1;
@@ -176,11 +195,29 @@ public class systemCanvas extends JPanel{
 			case "bottleAtLoad":
 				this.bottleAtLoad = status;
 				break;
-			case "finishLCMD":
-				this.finishLCMD = status;
+			case "gripLoadBottle":
+				this.gripLoadBottle = status;
 				break;
-			case "NloadBottle":
-				this.NloadBottle = status;
+			case "gripUnloadBottle":
+				this.gripUnloadBottle = status;
+				break;
+			case "toA":
+				this.toA = status;
+				break;
+			case "toB":
+				this.toB = status;
+				break;
+			case "toC":
+				this.toC = status;
+				break;
+			case "toA2":
+				this.toA2 = status;
+				break;
+			case "toB2":
+				this.toB2 = status;
+				break;
+			case "toC2":
+				this.toC2 = status;
 				break;
 			case "clampBottle":
 				this.clampBottle = status;
@@ -219,23 +256,75 @@ public class systemCanvas extends JPanel{
 				loadPosX = 81;
 				loadPosY = 448;
 			}
-			if(this.NloadBottle) {
-				loadingBottle = true;
+			if(this.toA) {
+				moveToLoadInit = true;
 			} else {
-				loadingBottle = false;
+				moveToLoadInit = false;
+			}
+			if(this.toB) {
+				moveToLoadPoint = true;
+			} else {
+				moveToLoadPoint = false;
+			}
+			if(this.toC) {
+				moveToLoadConv = true;
+			} else {
+				moveToLoadConv = false;
 			}
 			
-			//Conveyor
-			if(this.finishLCMD) {
-				loadConvPos = 179;
-				
-				if(loadPosX == 209 && loadPosY == 320) {
+			//Unloading Arm
+			if(this.bottleLeft5) {
+				unloadPosX = 814;
+				unloadPosY = 320;
+			}
+			if(this.toA2) {
+				moveToUnloadInit = true;
+			} else {
+				moveToUnloadInit = false;
+			}
+			if(this.toB2) {
+				moveToUnloadPoint = true;
+			} else {
+				moveToUnloadPoint = false;
+			}
+			if(this.toC2) {
+				moveToUnloadConv = true;
+			} else {
+				moveToUnloadConv = false;
+			}
+			
+			//Conveyor and updating grip status of unload/load bottles
+			if (this.gripLoadBottle) {
+				if (loadArmX == loadPosX && loadArmY == loadPosY) {
+					grippedLoadBottle = true;
+				}
+			} else {
+				if (!(loadPosX == 81 && loadPosY == 448)) {
+					if (loadPosX == 209 && loadPosY == 320) {
+						loadConvPos = 179;
+					}
 					loadPosX = -1;
 					loadPosY = -1;
 				}
+				grippedLoadBottle = false;
 			}
+			if (this.gripUnloadBottle) {
+				if (unloadArmX == unloadPosX && unloadArmY == unloadPosY) {
+					grippedUnloadBottle = true;
+				}
+				if (unloadPosX == 814 && loadPosY == 320) {
+					unloadConvPos = -1;
+				}
+			} else {
+				if (!(unloadPosX == 814 && loadPosY == 320)) {
+					unloadPosX = -1;
+					unloadPosY = -1;
+				}
+				grippedUnloadBottle = false;
+			}
+			
 			if(this.bottlePos1) {
-				if (!this.finishLCMD) { 
+				if (!(this.loadConvPos == 179)) { 
 					loadConvPos = -1;
 				}
 				
@@ -251,9 +340,12 @@ public class systemCanvas extends JPanel{
 				unloadConvPos = 593;
 			}
 			if(this.bottleLeft5) {
-				unloadConvPos = 785;
-			} else if (unloadConvPos == 785) {
-				unloadConvPos = -1;
+				if (!this.bottlePos5) {
+					unloadConvPos = -1;
+				}
+				
+				unloadPosX = 814;
+				unloadPosY = 320;
 			}
 			if(this.motor) {
 				motorRunning = true;
@@ -336,39 +428,74 @@ public class systemCanvas extends JPanel{
 		}
 		
 		//drawing loading bottle/arm
+		if (moveToLoadPoint) {
+			if (loadArmAngle > 0) {
+				loadArmAngle -= 1;
+			}
+		} else if (moveToLoadConv) {
+			if (loadArmAngle < 90) {
+				loadArmAngle += 1;
+			}
+		} else if (moveToLoadInit) {
+			if (loadArmAngle < 45) {
+				loadArmAngle += 1;
+			} else if (loadArmAngle > 45){
+				loadArmAngle -= 1;
+			}
+		}
+		loadArmX = 81 + (int)(128*Math.cos(Math.toRadians(90-loadArmAngle)));
+		loadArmY = 320 + (int)(128*Math.sin(Math.toRadians(90-loadArmAngle)));
+		
+		if (loadPosX != -1 && loadPosY != -1) {
+			if (grippedLoadBottle) {
+				loadPosX = loadArmX;
+				loadPosY = loadArmY;
+			}
+		}
 		g.setColor(Color.BLUE);
 		if(loadPosX != -1 && loadPosY != -1) {
 			g.fillOval(loadPosX-30, loadPosY-30, 60, 60);
 		}	
-		if (loadingBottle && loadArmX != -1 && loadArmY != -1) {
-			if(loadArmX == loadPosX && loadArmY == loadPosY) {
-				if (loadArmAngle < 90) {
-					loadArmAngle += 1;
-				}
-				loadArmX = (int)(128*Math.sin(Math.toRadians(loadArmAngle))+81);
-				loadArmY = (int)(128*Math.cos(Math.toRadians(loadArmAngle))+320);
-				loadPosX = loadArmX;
-				loadPosY = loadArmY;
-			} else {
-				if (loadArmAngle > 0) {
-					loadArmAngle -= 1;
-				}
-				loadArmX = (int)(128*Math.sin(Math.toRadians(loadArmAngle))+81);
-				loadArmY = (int)(128*Math.cos(Math.toRadians(loadArmAngle))+320);
-			}
-		} else {
-			if (loadArmAngle > 45) {
-				loadArmAngle -= 1;
-			} else if (loadArmAngle < 45) {
-				loadArmAngle += 1;
-			}
-			loadArmX = (int)(128*Math.sin(Math.toRadians(loadArmAngle))+81);
-			loadArmY = (int)(128*Math.cos(Math.toRadians(loadArmAngle))+320);
-		}
+		
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(8));
 		g2.drawLine(81, 320, loadArmX, loadArmY);
 		g2.fillOval(73, 312, 16, 16);
+		
+		//drawing unloading bottle/arm
+		if (moveToUnloadPoint) {
+			if (unloadArmAngle > 0) {
+				unloadArmAngle -= 1;
+			}
+		} else if (moveToUnloadConv) {
+			if (unloadArmAngle < 90) {
+				unloadArmAngle += 1;
+			}
+		} else if (moveToUnloadInit) {
+			if (unloadArmAngle < 45) {
+				unloadArmAngle += 1;
+			} else if (unloadArmAngle > 45){
+				unloadArmAngle -= 1;
+			}
+		}
+		unloadArmX = 942 - (int)(128*Math.cos(Math.toRadians(90-unloadArmAngle)));
+		unloadArmY = 320 + (int)(128*Math.sin(Math.toRadians(90-unloadArmAngle)));
+		
+		if (unloadPosX != -1 && unloadPosY != -1) {
+			if (grippedUnloadBottle) {
+				unloadPosX = unloadArmX;
+				unloadPosY = unloadArmY;
+			}
+		}
+		g.setColor(Color.BLUE);
+		if(unloadPosX != -1 && unloadPosY != -1) {
+			g.fillOval(unloadPosX-30, unloadPosY-30, 60, 60);
+		}	
+		
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(8));
+		g2.drawLine(942, 320, unloadArmX, unloadArmY);
+		g2.fillOval(934, 312, 16, 16);
 		
 		//drawing bottles on the conveyor
 		g.setColor(Color.BLUE);
@@ -382,7 +509,7 @@ public class systemCanvas extends JPanel{
 		if(unloadConvPos != -1) {
 			g.fillOval(unloadConvPos, 290, 60, 60);
 			
-			if(motorRunning && unloadConvPos < 785) {
+			if(motorRunning && unloadConvPos < 784) {
 				unloadConvPos += 1;
 			}
 		}

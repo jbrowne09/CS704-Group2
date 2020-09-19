@@ -1,0 +1,13 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS1" Local="true">
+		<ClockDomain Name="ULControllerCD" Class="unloaderController">
+	 	
+			<iSignal Name="bottleAtEnd" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="CMDfd" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+				 	
+			<oSignal Name="CMD2" To="ULPlantCD.CMD" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="unloaderDone" To="MControllerCD.capperDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+					
+		</ClockDomain>
+	</SubSystem>
+</System>

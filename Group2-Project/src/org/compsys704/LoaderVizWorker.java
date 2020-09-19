@@ -65,17 +65,18 @@ public class LoaderVizWorker extends Worker{
 			case "rotateS":
 				States.rotate = status;
 				break;
+			//Loading
 			case "posBS":
-				States.armtoB = status;
+				States.armtoB = status; //to loading point
 				break;
 			case "posCS":
-				States.armtoC = status;
+				States.armtoC = status; //To the conveyer
 				break;
 			case "posDS":
 				States.armtoD = status;
 				break;
 			case "posAS":
-				States.armtoA = status;
+				States.armtoA = status; //Original loading position
 				break;
 			case "closeGripperS":
 				States.gripContainer = status;
@@ -83,13 +84,32 @@ public class LoaderVizWorker extends Worker{
 			case "openGripperS":
 				States.releaseContainer = status;
 				break;
+			//Unloading
+			case "posB2S":
+				States.armtoB2 = status; //to unloading point
+				break;
+			case "posC2S":
+				States.armtoC2 = status; //To the end point/shipping container
+				break;
+			case "posD2S":
+				States.armtoD2 = status;
+				break;
+			case "posA2S":
+				States.armtoA2 = status; //Original unloading position
+				break;
+			case "closeGripper2S":
+				States.gripContainer2 = status;
+				break;
+			case "openGripper2S":
+				States.releaseContainer2 = status;
+				break;
 			default:
 				System.err.println("Wrong sig name : "+signame);
 				System.exit(1);
 		}
 	}  
 
-	static final List<String> signames = Arrays.asList("bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S","bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS", "signal posBS", "posCS", "posDS", "posAS", "closeGripperS", "openGripperS");
+	static final List<String> signames = Arrays.asList("bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S","bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS", "posBS", "posCS", "posDS", "posAS", "closeGripperS", "openGripperS", "posB2S", "posC2S", "posD2S", "posA2S", "closeGripper2S", "openGripper2S");
 	@Override
 	public boolean hasSignal(String sn) {
 		return signames.contains(sn);

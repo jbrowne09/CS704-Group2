@@ -26,6 +26,11 @@ public class States {
 	public static volatile boolean armtoA = false;
 	public static volatile boolean gripContainer = false;
 	public static volatile boolean releaseContainer = false;
-	
+	public static volatile boolean armtoB2 = false;
+	public static volatile boolean armtoC2 = false;
+	public static volatile boolean armtoD2 = false;
+	public static volatile boolean armtoA2 = false;
+	public static volatile boolean gripContainer2 = false;
+	public static volatile boolean releaseContainer2 = false;	
 }
 

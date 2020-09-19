@@ -45,9 +45,17 @@ public class systemViz extends JFrame implements ActionListener {
 	JLabel fillerLabel = new JLabel("filler");
 	
 	JCheckBox bottleAtLoad = new JCheckBox("bottleAtLoad");
-	JCheckBox finishLCMD = new JCheckBox("finishLCMD");
-	JCheckBox NloadBottle = new JCheckBox("NloadBottle");
+	JCheckBox gripLoadBottle = new JCheckBox("gripLoadBottle");
+	JCheckBox toA = new JCheckBox("toA");
+	JCheckBox toB = new JCheckBox("toB");
+	JCheckBox toC = new JCheckBox("toC");
 	JLabel loaderLabel = new JLabel("bottle-loader");
+	
+	JCheckBox gripUnloadBottle = new JCheckBox("gripUnloadBottle");
+	JCheckBox toA2 = new JCheckBox("toA2");
+	JCheckBox toB2 = new JCheckBox("toB2");
+	JCheckBox toC2 = new JCheckBox("toC2");
+	JLabel unloaderLabel = new JLabel("bottle-unloader");
 	
 	JCheckBox clampBottle = new JCheckBox("clampBottle");
 	JCheckBox gripCap = new JCheckBox("gripCap");
@@ -132,12 +140,32 @@ public class systemViz extends JFrame implements ActionListener {
 		bottleAtLoad.setEnabled(true);
 		bottleAtLoad.addActionListener(this);
 		bottleAtLoad.setFont(normal);
-		finishLCMD.setEnabled(true);
-		finishLCMD.addActionListener(this);
-		finishLCMD.setFont(normal);
-		NloadBottle.setEnabled(true);
-		NloadBottle.addActionListener(this);
-		NloadBottle.setFont(normal);
+		gripLoadBottle.setEnabled(true);
+		gripLoadBottle.addActionListener(this);
+		gripLoadBottle.setFont(normal);
+		toA.setEnabled(true);
+		toA.addActionListener(this);
+		toA.setFont(normal);
+		toB.setEnabled(true);
+		toB.addActionListener(this);
+		toB.setFont(normal);
+		toC.setEnabled(true);
+		toC.addActionListener(this);
+		toC.setFont(normal);
+		
+		//Bottle-Unloader
+		gripUnloadBottle.setEnabled(true);
+		gripUnloadBottle.addActionListener(this);
+		gripUnloadBottle.setFont(normal);
+		toA2.setEnabled(true);
+		toA2.addActionListener(this);
+		toA2.setFont(normal);
+		toB2.setEnabled(true);
+		toB2.addActionListener(this);
+		toB2.setFont(normal);
+		toC2.setEnabled(true);
+		toC2.addActionListener(this);
+		toC2.setFont(normal);
 		
 		//Capper
 		clampBottle.setEnabled(true);
@@ -229,34 +257,56 @@ public class systemViz extends JFrame implements ActionListener {
 		buttonPanel.add(bottleAtLoad, bc);
 		bc.gridx = 2;
 		bc.gridy = 3;
-		buttonPanel.add(finishLCMD, bc);
+		buttonPanel.add(gripLoadBottle, bc);
 		bc.gridx = 3;
 		bc.gridy = 3;
-		buttonPanel.add(NloadBottle, bc);
+		buttonPanel.add(toA, bc);
+		bc.gridx = 4;
+		bc.gridy = 3;
+		buttonPanel.add(toB, bc);
+		bc.gridx = 5;
+		bc.gridy = 3;
+		buttonPanel.add(toC, bc);
 		bc.gridx = 7;
 		bc.gridy = 3;
 		buttonPanel.add(loaderLabel, bc);
 		
 		bc.gridx = 1;
 		bc.gridy = 4;
-		buttonPanel.add(clampBottle, bc);
+		buttonPanel.add(gripUnloadBottle, bc);
 		bc.gridx = 2;
 		bc.gridy = 4;
-		buttonPanel.add(gripCap, bc);
+		buttonPanel.add(toA2, bc);
 		bc.gridx = 3;
 		bc.gridy = 4;
-		buttonPanel.add(gripDown, bc);
+		buttonPanel.add(toB2, bc);
 		bc.gridx = 4;
 		bc.gridy = 4;
-		buttonPanel.add(twistGrip, bc);
-		bc.gridx = 5;
-		bc.gridy = 4;
-		buttonPanel.add(untwistGrip, bc);
-		bc.gridx = 6;
-		bc.gridy = 4;
-		buttonPanel.add(NbottleCapped, bc);
+		buttonPanel.add(toC2, bc);
 		bc.gridx = 7;
 		bc.gridy = 4;
+		buttonPanel.add(unloaderLabel, bc);
+		
+		bc.gridx = 1;
+		bc.gridy = 5;
+		buttonPanel.add(clampBottle, bc);
+		bc.gridx = 2;
+		bc.gridy = 5;
+		buttonPanel.add(gripCap, bc);
+		bc.gridx = 3;
+		bc.gridy = 5;
+		buttonPanel.add(gripDown, bc);
+		bc.gridx = 4;
+		bc.gridy = 5;
+		buttonPanel.add(twistGrip, bc);
+		bc.gridx = 5;
+		bc.gridy = 5;
+		buttonPanel.add(untwistGrip, bc);
+		bc.gridx = 6;
+		bc.gridy = 5;
+		buttonPanel.add(NbottleCapped, bc);
+		bc.gridx = 7;
+		bc.gridy = 5;
 		buttonPanel.add(capperLabel, bc);
 		
 		//setup grid layout 1x2 (canvas on top of button panel)
@@ -352,15 +402,45 @@ public class systemViz extends JFrame implements ActionListener {
 		} else {
 			canvas.updateSignals("bottleAtLoad", false);
 		}
-		if (finishLCMD.isSelected()) {
-			canvas.updateSignals("finishLCMD", true);
+		if (gripLoadBottle.isSelected()) {
+			canvas.updateSignals("gripLoadBottle", true);
 		} else {
-			canvas.updateSignals("finishLCMD", false);
+			canvas.updateSignals("gripLoadBottle", false);
 		}
-		if (NloadBottle.isSelected()) {
-			canvas.updateSignals("NloadBottle", true);
+		if (toA.isSelected()) {
+			canvas.updateSignals("toA", true);
 		} else {
-			canvas.updateSignals("NloadBottle", false);
+			canvas.updateSignals("toA", false);
+		}
+		if (toB.isSelected()) {
+			canvas.updateSignals("toB", true);
+		} else {
+			canvas.updateSignals("toB", false);
+		}
+		if (toC.isSelected()) {
+			canvas.updateSignals("toC", true);
+		} else {
+			canvas.updateSignals("toC", false);
+		}
+		if (gripUnloadBottle.isSelected()) {
+			canvas.updateSignals("gripUnloadBottle", true);
+		} else {
+			canvas.updateSignals("gripUnloadBottle", false);
+		}
+		if (toA2.isSelected()) {
+			canvas.updateSignals("toA2", true);
+		} else {
+			canvas.updateSignals("toA2", false);
+		}
+		if (toB2.isSelected()) {
+			canvas.updateSignals("toB2", true);
+		} else {
+			canvas.updateSignals("toB2", false);
+		}
+		if (toC2.isSelected()) {
+			canvas.updateSignals("toC2", true);
+		} else {
+			canvas.updateSignals("toC2", false);
 		}
 		if (clampBottle.isSelected()) {
 			canvas.updateSignals("clampBottle", true);

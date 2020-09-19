@@ -1,5 +1,5 @@
 loaderController(
-	input signal bottleAtPoint, CMDfb, ready;
+	input signal bottleAtPoint, CMDfb;
     output signal loaderDone;
     output String signal CMD;
 )
