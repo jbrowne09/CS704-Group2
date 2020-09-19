@@ -65,14 +65,31 @@ public class LoaderVizWorker extends Worker{
 			case "rotateS":
 				States.rotate = status;
 				break;
+			case "posBS":
+				States.armtoB = status;
+				break;
+			case "posCS":
+				States.armtoC = status;
+				break;
+			case "posDS":
+				States.armtoD = status;
+				break;
+			case "posAS":
+				States.armtoA = status;
+				break;
+			case "closeGripperS":
+				States.gripContainer = status;
+				break;
+			case "openGripperS":
+				States.releaseContainer = status;
+				break;
 			default:
 				System.err.println("Wrong sig name : "+signame);
 				System.exit(1);
 		}
-	}      
-	   
+	}  
 
-	static final List<String> signames = Arrays.asList("bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S","bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS");
+	static final List<String> signames = Arrays.asList("bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S","bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS", "signal posBS", "posCS", "posDS", "posAS", "closeGripperS", "openGripperS");
 	@Override
 	public boolean hasSignal(String sn) {
 		return signames.contains(sn);
