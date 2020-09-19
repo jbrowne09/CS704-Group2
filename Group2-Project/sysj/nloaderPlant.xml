@@ -4,7 +4,7 @@
 			
 			<iSignal Name="CMD2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 
-			<oSignal Name="CMDfd" To="LControllerCD.CMDfb" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="CMDfd" To="ULControllerCD.CMDfd" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 
 			<oSignal Name="posB2S" To="UI.posB2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="posC2S" To="UI.posC2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
