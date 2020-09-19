@@ -1,5 +1,5 @@
 loaderController(
-	input signal bottleAtPoint, CMDfb;
+	input signal bottleAtPoint, CMDfb, ready;
     output signal loaderDone;
     output String signal CMD;
 )
@@ -7,15 +7,31 @@ loaderController(
 ->{
 	while(true){
 		await(bottleAtPoint);
-		emit CMD("B"); //Move to bottle
-		emit CMD("G"); //Grip bottle
-		emit CMD("C"); //Move to turntable pos1
-		emit CMD("D"); //Lower arm
-		emit CMD("O"); //Open gripper
-		emit CMD("A"): //Move back to original position
-		await(CMDfb); //At destination
+		await(!CMDfb);
+		abort(CMDfb) {
+			sustain CMD("B"); //Move to bottle
+		}
+		await(!CMDfb);
+		abort(CMDfb) {
+			sustain CMD("G"); //Grip bottle
+		}
+		await(!CMDfb);
+		abort(CMDfb) {
+			sustain CMD("C"); //Move to turntable pos1
+		}
+		await(!CMDfb);
+		abort(CMDfb) {
+			sustain CMD("D"); //Lower arm
+		}
+		await(!CMDfb);
+		abort(CMDfb) {
+			sustain CMD("O"); //Open gripper
+		}
+		await(!CMDfb);
+		abort(CMDfb) {
+			sustain CMD("A"); //Move back to original position
+		}
 		emit loaderDone;
-
-		//pause;
+		pause;
 	}
 }

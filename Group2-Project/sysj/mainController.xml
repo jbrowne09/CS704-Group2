@@ -12,6 +12,7 @@
 			<oSignal Name="rotaryEnable" 	To="RControllerCD.rotaryEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="capperEnable" 	To="CapControllerCD.conveyerEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="fillerEnable" 	To="FControllerCD.capperEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="bottleToLoad" 	To="LControllerCD.bottleAtPoint" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			
 		</ClockDomain>
 	</SubSystem>

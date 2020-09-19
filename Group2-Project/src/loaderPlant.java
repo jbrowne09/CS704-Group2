@@ -12,8 +12,16 @@ public class loaderPlant extends ClockDomain{
   private char [] paused;
   private char [] suspended;
   public Signal CMD = new Signal("CMD", Signal.INPUT);
-  private int S1500 = 1;
-  private int S1492 = 1;
+  public Signal posBS = new Signal("posBS", Signal.OUTPUT);
+  public Signal posCS = new Signal("posCS", Signal.OUTPUT);
+  public Signal posDS = new Signal("posDS", Signal.OUTPUT);
+  public Signal posAS = new Signal("posAS", Signal.OUTPUT);
+  public Signal closeGripperS = new Signal("closeGripperS", Signal.OUTPUT);
+  public Signal openGripperS = new Signal("openGripperS", Signal.OUTPUT);
+  public Signal CMDfb = new Signal("CMDfb", Signal.OUTPUT);
+  public Signal ready = new Signal("ready", Signal.OUTPUT);
+  private int S1710 = 1;
+  private int S1680 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -25,29 +33,109 @@ public class loaderPlant extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S1500){
+      switch(S1710){
         case 0 : 
-          S1500=0;
+          S1710=0;
           break RUN;
         
         case 1 : 
-          S1500=2;
-          S1500=2;
-          System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 7, column: 2
-          S1492=0;
+          S1710=2;
+          S1710=2;
+          S1680=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S1492){
+          switch(S1680){
             case 0 : 
-              if(CMD.getprestatus()){//sysj\loaderPlant.sysj line: 8, column: 8
-                System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 9, column: 2
-                S1492=1;
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
+              if(CMD.getprestatus()){//sysj\loaderPlant.sysj line: 9, column: 9
+                if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("B")){//sysj\loaderPlant.sysj line: 11, column: 3
+                  posBS.setPresent();//sysj\loaderPlant.sysj line: 12, column: 4
+                  currsigs.addElement(posBS);
+                  System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 32, column: 3
+                  CMDfb.setPresent();//sysj\loaderPlant.sysj line: 33, column: 3
+                  currsigs.addElement(CMDfb);
+                  S1680=1;
+                  active[1]=1;
+                  ends[1]=1;
+                  break RUN;
+                }
+                else {
+                  if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("C")){//sysj\loaderPlant.sysj line: 14, column: 8
+                    posCS.setPresent();//sysj\loaderPlant.sysj line: 15, column: 4
+                    currsigs.addElement(posCS);
+                    System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 32, column: 3
+                    CMDfb.setPresent();//sysj\loaderPlant.sysj line: 33, column: 3
+                    currsigs.addElement(CMDfb);
+                    S1680=1;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("D")){//sysj\loaderPlant.sysj line: 17, column: 8
+                      posDS.setPresent();//sysj\loaderPlant.sysj line: 18, column: 4
+                      currsigs.addElement(posDS);
+                      System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 32, column: 3
+                      CMDfb.setPresent();//sysj\loaderPlant.sysj line: 33, column: 3
+                      currsigs.addElement(CMDfb);
+                      S1680=1;
+                      active[1]=1;
+                      ends[1]=1;
+                      break RUN;
+                    }
+                    else {
+                      if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("A")){//sysj\loaderPlant.sysj line: 20, column: 8
+                        posAS.setPresent();//sysj\loaderPlant.sysj line: 21, column: 4
+                        currsigs.addElement(posAS);
+                        System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 32, column: 3
+                        CMDfb.setPresent();//sysj\loaderPlant.sysj line: 33, column: 3
+                        currsigs.addElement(CMDfb);
+                        S1680=1;
+                        active[1]=1;
+                        ends[1]=1;
+                        break RUN;
+                      }
+                      else {
+                        if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("G")){//sysj\loaderPlant.sysj line: 23, column: 8
+                          closeGripperS.setPresent();//sysj\loaderPlant.sysj line: 24, column: 4
+                          currsigs.addElement(closeGripperS);
+                          System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 32, column: 3
+                          CMDfb.setPresent();//sysj\loaderPlant.sysj line: 33, column: 3
+                          currsigs.addElement(CMDfb);
+                          S1680=1;
+                          active[1]=1;
+                          ends[1]=1;
+                          break RUN;
+                        }
+                        else {
+                          if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("O")){//sysj\loaderPlant.sysj line: 26, column: 8
+                            openGripperS.setPresent();//sysj\loaderPlant.sysj line: 27, column: 4
+                            currsigs.addElement(openGripperS);
+                            System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 32, column: 3
+                            CMDfb.setPresent();//sysj\loaderPlant.sysj line: 33, column: 3
+                            currsigs.addElement(CMDfb);
+                            S1680=1;
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                          else {
+                            System.out.println("CMD not working " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 30, column: 4
+                            System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 32, column: 3
+                            CMDfb.setPresent();//sysj\loaderPlant.sysj line: 33, column: 3
+                            currsigs.addElement(CMDfb);
+                            S1680=1;
+                            active[1]=1;
+                            ends[1]=1;
+                            break RUN;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
               else {
                 active[1]=1;
@@ -56,9 +144,8 @@ public class loaderPlant extends ClockDomain{
               }
             
             case 1 : 
-              S1492=1;
-              System.out.println("CMD is " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 7, column: 2
-              S1492=0;
+              S1680=1;
+              S1680=0;
               active[1]=1;
               ends[1]=1;
               break RUN;
@@ -97,6 +184,14 @@ public class loaderPlant extends ClockDomain{
         runClockDomain();
       }
       CMD.setpreclear();
+      posBS.setpreclear();
+      posCS.setpreclear();
+      posDS.setpreclear();
+      posAS.setpreclear();
+      closeGripperS.setpreclear();
+      openGripperS.setpreclear();
+      CMDfb.setpreclear();
+      ready.setpreclear();
       int dummyint = 0;
       for(int qw=0;qw<currsigs.size();++qw){
         dummyint = ((Signal)currsigs.elementAt(qw)).getStatus() ? ((Signal)currsigs.elementAt(qw)).setprepresent() : ((Signal)currsigs.elementAt(qw)).setpreclear();
@@ -106,6 +201,22 @@ public class loaderPlant extends ClockDomain{
       dummyint = CMD.getStatus() ? CMD.setprepresent() : CMD.setpreclear();
       CMD.setpreval(CMD.getValue());
       CMD.setClear();
+      posBS.sethook();
+      posBS.setClear();
+      posCS.sethook();
+      posCS.setClear();
+      posDS.sethook();
+      posDS.setClear();
+      posAS.sethook();
+      posAS.setClear();
+      closeGripperS.sethook();
+      closeGripperS.setClear();
+      openGripperS.sethook();
+      openGripperS.setClear();
+      CMDfb.sethook();
+      CMDfb.setClear();
+      ready.sethook();
+      ready.setClear();
       if(paused[1]!=0 || suspended[1]!=0 || active[1]!=1);
       else{
         CMD.gethook();

@@ -4,6 +4,8 @@
 			
 			<iSignal Name="CMD" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 
+			<oSignal Name="CMDfb" To="LControllerCD.CMDfb" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+
 			<oSignal Name="posBS" To="UI.posBS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="posCS" To="UI.posCS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="posDS" To="UI.posDS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
