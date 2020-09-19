@@ -1,0 +1,35 @@
+loaderPlant(
+		input String signal CMD2;
+		output signal posB2S, posC2S, posD2S, posA2S, closeGripper2S, openGripper2S, CMDfd;
+		)
+->
+{	
+	while(true){
+		await(CMD2);
+		
+		if (#CMD2.equals("B2")) {
+			emit posB2S;
+		}
+		else if (#CMD2.equals("C2")) {
+			emit posC2S;
+		}
+		else if (#CMD2.equals("D2")) {
+			emit posD2S;
+		}
+		else if (#CMD2.equals("A2")) {
+			emit posA2S;
+		}
+		else if (#CMD2.equals("G2")) {
+			emit closeGripper2S;
+		}
+		else if (#CMD2.equals("O2")) {
+			emit openGripper2S;
+		}
+		else {
+			System.out.println("CMD2 not working " + #CMD2);
+		}
+		emit CMDfd;
+		
+		pause;
+	}
+}

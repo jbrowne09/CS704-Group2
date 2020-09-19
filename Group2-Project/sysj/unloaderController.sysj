@@ -1,0 +1,37 @@
+unloaderController(
+	input signal bottleAtEnd, CMDfd;
+    output signal unloaderDone;
+    output String signal CMD2;
+)
+
+->{
+	while(true){
+		await(bottleAtEnd);
+		await(!CMDfd);
+		abort(CMDfd) {
+			sustain CMD2("B2"); //Move to bottle
+		}
+		await(!CMDfd);
+		abort(CMDfd) {
+			sustain CMD2("G2"); //Grip bottle
+		}
+		await(!CMDfd);
+		abort(CMDfd) {
+			sustain CMD2("C2"); //Move to shipping container
+		}
+		await(!CMDfd);
+		abort(CMDfd) {
+			sustain CMD2("D2"); //Lower arm
+		}
+		await(!CMDfd);
+		abort(CMDfd) {
+			sustain CMD2("O2"); //Open gripper
+		}
+		await(!CMDfd);
+		abort(CMDfd) {
+			sustain CMD2("A2"); //Move back to original position
+		}
+		emit unloaderDone;
+		pause;
+	}
+}

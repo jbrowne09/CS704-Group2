@@ -1,0 +1,17 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS2" Local="true">
+		<ClockDomain Name="ULPlantCD" Class="unloaderPlant">
+			
+			<iSignal Name="CMD2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+
+			<oSignal Name="CMDfd" To="LControllerCD.CMDfb" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+
+			<oSignal Name="posB2S" To="UI.posB2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="posC2S" To="UI.posC2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="posD2S" To="UI.posD2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="posA2S" To="UI.posA2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="closeGripper2S" To="UI.closeGripper2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="openGripper2S" To="UI.openGripper2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+		</ClockDomain>
+	</SubSystem>
+</System>

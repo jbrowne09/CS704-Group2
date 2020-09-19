@@ -1,5 +1,5 @@
 mainController(
-    input signal conveyerDone, rotaryDone, capperDone, loaderDone, request, enable;
+    input signal conveyerDone, rotaryDone, capperDone, loaderDone, unloaderDone, request, enable;
     output signal conveyerEnable, rotaryEnable, capperEnable, fillerEnable, bottleToLoad; //To controllers
 )
 
