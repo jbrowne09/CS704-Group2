@@ -38,10 +38,6 @@ public class systemCanvas extends JPanel{
 	private boolean bottlePos5 = false;
 	private boolean rotate = false;
 	
-	//Capper (simplified to a single signal for now indicating a bottle has 
-	//been capped)
-	private boolean NbottleCapped = false;
-	
 	//Filler (ignoring valves/injector signals for now)
 	private boolean liquidPos1 = false;
 	private boolean liquidPos2 = false;
@@ -53,6 +49,14 @@ public class systemCanvas extends JPanel{
 	private boolean bottleAtLoad = false;
 	private boolean finishLCMD = false;
 	private boolean NloadBottle = false;
+	
+	//Capper
+	private boolean clampBottle = false;
+	private boolean gripCap = false;
+	private boolean gripDown = false;
+	private boolean twistGrip = false;
+	private boolean untwistGrip = false; 
+	private boolean NbottleCapped = false;
 	
 	//tick button
 	private boolean tick = false;
@@ -87,6 +91,31 @@ public class systemCanvas extends JPanel{
 	int fillerX = 378;
 	int fillerY = 105;
 	boolean moveNozzle = false;
+	
+	int armExtend = 0;
+	int crossRadius = 64;
+	int capX = 664;
+	int capY = 168;
+	int capEndX = 0;
+	int capEndY = 0;
+	int crossX1 = 0;
+	int crossY1 = 0;
+	int crossX2 = 0;
+	int crossY2 = 0;
+	int grip1X1 = 0;
+	int grip1Y1 = 0;
+	int grip1X2 = 0;
+	int grip1Y2 = 0;
+	int grip2X1 = 0;
+	int grip2Y1 = 0;
+	int grip2X2 = 0;
+	int grip2Y2 = 0;
+	int clampPos = 0;
+	int gripAngle = 0;
+	boolean moveGrip = false;
+	boolean tightGrip = false;
+	boolean clamp = false;
+	boolean rotateGrip = false;
 	
 	public systemCanvas(){
 		try {
@@ -129,9 +158,6 @@ public class systemCanvas extends JPanel{
 			case "rotate":
 				this.rotate = status;
 				break;
-			case "NbottleCapped":
-				this.NbottleCapped = status;
-				break;
 			case "liquidPos1":
 				this.liquidPos1 = status;
 				break;
@@ -156,6 +182,24 @@ public class systemCanvas extends JPanel{
 			case "NloadBottle":
 				this.NloadBottle = status;
 				break;
+			case "clampBottle":
+				this.clampBottle = status;
+				break;
+			case "gripCap":
+				this.gripCap = status;
+				break;
+			case "gripDown":
+				this.gripDown = status;
+				break;
+			case "twistGrip":
+				this.twistGrip = status;
+				break;
+			case "untwistGrip":
+				this.untwistGrip = status;
+				break;
+			case "NbottleCapped":
+				this.NbottleCapped = status;
+				break;
 			case "tick":
 				this.tick = status;
 				break;
@@ -179,21 +223,6 @@ public class systemCanvas extends JPanel{
 				loadingBottle = true;
 			} else {
 				loadingBottle = false;
-			}
-			if(this.liquidPos1) {
-				selectedNozzle = 1;
-				moveNozzle = true;
-			} else if (this.liquidPos2) {
-				selectedNozzle = 2;
-				moveNozzle = true;
-			} else if (this.liquidPos3) {
-				selectedNozzle = 3;
-				moveNozzle = true;
-			} else if (this.liquidPos4) {
-				selectedNozzle = 4;
-				moveNozzle = true;
-			} else {
-				moveNozzle = false;
 			}
 			
 			//Conveyor
@@ -264,6 +293,45 @@ public class systemCanvas extends JPanel{
 				rotating = true;
 			} else {
 				rotating = false;
+			}
+			
+			//Filler
+			if(this.liquidPos1) {
+				selectedNozzle = 1;
+				moveNozzle = true;
+			} else if (this.liquidPos2) {
+				selectedNozzle = 2;
+				moveNozzle = true;
+			} else if (this.liquidPos3) {
+				selectedNozzle = 3;
+				moveNozzle = true;
+			} else if (this.liquidPos4) {
+				selectedNozzle = 4;
+				moveNozzle = true;
+			} else {
+				moveNozzle = false;
+			}
+			
+			//Capper
+			if (this.gripDown) {
+				moveGrip = true;
+			} else {
+				moveGrip = false;
+			}
+			if (this.gripCap) {
+				tightGrip = true;
+			} else {
+				tightGrip = false;
+			}
+			if (this.clampBottle) {
+				clamp = true;
+			} else {
+				clamp = false;
+			}
+			if (this.twistGrip) {
+				rotateGrip = true;
+			} else {
+				rotateGrip = false;
 			}
 		}
 		
@@ -439,6 +507,88 @@ public class systemCanvas extends JPanel{
 			g2.setColor(Color.YELLOW);
 			g2.drawLine(346, 160, 378, 104);
 		}
+		
+		//Capper
+		if (moveGrip) {
+			if (armExtend < 47) {
+				armExtend += 1;
+			}
+		} else {
+			if (armExtend > 0) {
+				armExtend -= 1;
+			}
+		}
+		if (tightGrip) {
+			if (crossRadius > 48) {
+				crossRadius -= 2;
+			}
+		} else {
+			if (crossRadius < 64) {
+				crossRadius += 2;
+			}
+		}
+		if (clamp) {
+			if (clampPos < 16) {
+				clampPos += 1;
+			}
+		} else {
+			if (clampPos > 0) {
+				clampPos -= 1;
+			}
+		}
+		if (rotateGrip) {
+			if (gripAngle < 90) {
+				gripAngle += 1;
+			}
+		} else {
+			if (gripAngle > 0) {
+				gripAngle -= 1;
+			}
+		}
+		
+		capX = 664 - (int)(armExtend*Math.cos(Math.toRadians(30)));
+		capY = 168 + (int)(armExtend*Math.sin(Math.toRadians(30)));
+		capEndX = capX + (int)(111*Math.cos(Math.toRadians(30)));
+		capEndY = capY - (int)(111*Math.sin(Math.toRadians(30)));
+		
+		if (gripAngle <= 60) {
+			crossX1 = capX - (int)((crossRadius/2)*Math.cos(Math.toRadians(60-gripAngle)));
+			crossX2 = capX + (int)((crossRadius/2)*Math.cos(Math.toRadians(60-gripAngle)));
+			crossY1 = capY - (int)((crossRadius/2)*Math.sin(Math.toRadians(60-gripAngle)));
+			crossY2 = capY + (int)((crossRadius/2)*Math.sin(Math.toRadians(60-gripAngle)));
+			grip1X1 = crossX1 - (int)(20*Math.cos(Math.toRadians(30+gripAngle)));
+			grip1X2 = crossX1 + (int)(20*Math.cos(Math.toRadians(30+gripAngle)));
+			grip1Y1 = crossY1 + (int)(20*Math.sin(Math.toRadians(30+gripAngle)));
+			grip1Y2 = crossY1 - (int)(20*Math.sin(Math.toRadians(30+gripAngle)));
+			grip2X1 = crossX2 - (int)(20*Math.cos(Math.toRadians(30+gripAngle)));
+			grip2X2 = crossX2 + (int)(20*Math.cos(Math.toRadians(30+gripAngle)));
+			grip2Y1 = crossY2 + (int)(20*Math.sin(Math.toRadians(30+gripAngle)));
+			grip2Y2 = crossY2 - (int)(20*Math.sin(Math.toRadians(30+gripAngle)));
+		} else {
+			crossX1 = capX - (int)((crossRadius/2)*Math.cos(Math.toRadians(gripAngle-60)));
+			crossX2 = capX + (int)((crossRadius/2)*Math.cos(Math.toRadians(gripAngle-60)));
+			crossY1 = capY + (int)((crossRadius/2)*Math.sin(Math.toRadians(gripAngle-60)));
+			crossY2 = capY - (int)((crossRadius/2)*Math.sin(Math.toRadians(gripAngle-60)));
+			grip1X1 = crossX1 + (int)(20*Math.cos(Math.toRadians(90-gripAngle+60)));
+			grip1X2 = crossX1 - (int)(20*Math.cos(Math.toRadians(90-gripAngle+60)));
+			grip1Y1 = crossY1 + (int)(20*Math.sin(Math.toRadians(90-gripAngle+60)));
+			grip1Y2 = crossY1 - (int)(20*Math.sin(Math.toRadians(90-gripAngle+60)));
+			grip2X1 = crossX2 + (int)(20*Math.cos(Math.toRadians(90-gripAngle+60)));
+			grip2X2 = crossX2 - (int)(20*Math.cos(Math.toRadians(90-gripAngle+60)));
+			grip2Y1 = crossY2 + (int)(20*Math.sin(Math.toRadians(90-gripAngle+60)));
+			grip2Y2 = crossY2 - (int)(20*Math.sin(Math.toRadians(90-gripAngle+60)));
+		}
+		
+		g2.setColor(Color.YELLOW);
+		g2.fillRect(665-clampPos, 188, 8, 8);
+		g2.fillRect(573+clampPos, 188, 8, 8);
+		
+		g2.setColor(Color.BLACK);
+		g2.drawLine(capX, capY, capEndX, capEndY);
+		g2.setStroke(new BasicStroke(4));
+		g2.drawLine(crossX1, crossY1, crossX2, crossY2);
+		g2.drawLine(grip1X1, grip1Y1, grip1X2, grip1Y2);
+		g2.drawLine(grip2X1, grip2Y1, grip2X2, grip2Y2);
 		
 		//reset tick at end
 		this.tick = false;

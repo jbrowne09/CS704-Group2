@@ -37,9 +37,6 @@ public class systemViz extends JFrame implements ActionListener {
 	JCheckBox rotate = new JCheckBox("rotate");
 	JLabel rotaryLabel = new JLabel("rotary-table");
 	
-	JCheckBox NbottleCapped = new JCheckBox("NbottleCapped");
-	JLabel capperLabel = new JLabel("capper");
-	
 	JCheckBox liquidPos1 = new JCheckBox("liquidPos1");
 	JCheckBox liquidPos2 = new JCheckBox("liquidPos2");
 	JCheckBox liquidPos3 = new JCheckBox("liquidPos3");
@@ -51,6 +48,15 @@ public class systemViz extends JFrame implements ActionListener {
 	JCheckBox finishLCMD = new JCheckBox("finishLCMD");
 	JCheckBox NloadBottle = new JCheckBox("NloadBottle");
 	JLabel loaderLabel = new JLabel("bottle-loader");
+	
+	JCheckBox clampBottle = new JCheckBox("clampBottle");
+	JCheckBox gripCap = new JCheckBox("gripCap");
+	JCheckBox gripDown = new JCheckBox("gripDown");
+	JCheckBox twistGrip = new JCheckBox("twistGrip");
+	JCheckBox untwistGrip = new JCheckBox("untwistGrip");
+	JCheckBox NbottleCapped = new JCheckBox("NbottleCapped");
+	JLabel capperLabel = new JLabel("capper");
+	
 	
 	public systemViz() {
 		
@@ -105,11 +111,6 @@ public class systemViz extends JFrame implements ActionListener {
 		rotate.addActionListener(this);
 		rotate.setFont(normal);
 		
-		//capper
-		NbottleCapped.setEnabled(true);
-		NbottleCapped.addActionListener(this);
-		NbottleCapped.setFont(normal);
-		
 		//filler
 		liquidPos1.setEnabled(true);
 		liquidPos1.addActionListener(this);
@@ -138,12 +139,33 @@ public class systemViz extends JFrame implements ActionListener {
 		NloadBottle.addActionListener(this);
 		NloadBottle.setFont(normal);
 		
+		//Capper
+		clampBottle.setEnabled(true);
+		clampBottle.addActionListener(this);
+		clampBottle.setFont(normal);
+		gripCap.setEnabled(true);
+		gripCap.addActionListener(this);
+		gripCap.setFont(normal);
+		gripDown.setEnabled(true);
+		gripDown.addActionListener(this);
+		gripDown.setFont(normal);
+		twistGrip.setEnabled(true);
+		twistGrip.addActionListener(this);
+		twistGrip.setFont(normal);
+		untwistGrip.setEnabled(true);
+		untwistGrip.addActionListener(this);
+		untwistGrip.setFont(normal);
+		NbottleCapped.setEnabled(true);
+		NbottleCapped.addActionListener(this);
+		NbottleCapped.setFont(normal);
+		
 		//machine labels
 		conveyorLabel.setFont(bold);
 		rotaryLabel.setFont(bold);
 		capperLabel.setFont(bold);
 		fillerLabel.setFont(bold);
 		loaderLabel.setFont(bold);
+		capperLabel.setFont(bold);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridBagLayout());
@@ -185,42 +207,57 @@ public class systemViz extends JFrame implements ActionListener {
 		
 		bc.gridx = 1;
 		bc.gridy = 2;
-		buttonPanel.add(NbottleCapped, bc);
-		bc.gridx = 7;
-		bc.gridy = 2;
-		buttonPanel.add(capperLabel, bc);
-		
-		bc.gridx = 1;
-		bc.gridy = 3;
 		buttonPanel.add(liquidPos1, bc);
 		bc.gridx = 2;
-		bc.gridy = 3;
+		bc.gridy = 2;
 		buttonPanel.add(liquidPos2, bc);
 		bc.gridx = 3;
-		bc.gridy = 3;
+		bc.gridy = 2;
 		buttonPanel.add(liquidPos3, bc);
 		bc.gridx = 4;
-		bc.gridy = 3;
+		bc.gridy = 2;
 		buttonPanel.add(liquidPos4, bc);
 		bc.gridx = 5;
-		bc.gridy = 3;
+		bc.gridy = 2;
 		buttonPanel.add(NbottleFilled, bc);
 		bc.gridx = 7;
-		bc.gridy = 3;
+		bc.gridy = 2;
 		buttonPanel.add(fillerLabel, bc);
 		
 		bc.gridx = 1;
-		bc.gridy = 4;
+		bc.gridy = 3;
 		buttonPanel.add(bottleAtLoad, bc);
 		bc.gridx = 2;
-		bc.gridy = 4;
+		bc.gridy = 3;
 		buttonPanel.add(finishLCMD, bc);
 		bc.gridx = 3;
-		bc.gridy = 4;
+		bc.gridy = 3;
 		buttonPanel.add(NloadBottle, bc);
 		bc.gridx = 7;
-		bc.gridy = 4;
+		bc.gridy = 3;
 		buttonPanel.add(loaderLabel, bc);
+		
+		bc.gridx = 1;
+		bc.gridy = 4;
+		buttonPanel.add(clampBottle, bc);
+		bc.gridx = 2;
+		bc.gridy = 4;
+		buttonPanel.add(gripCap, bc);
+		bc.gridx = 3;
+		bc.gridy = 4;
+		buttonPanel.add(gripDown, bc);
+		bc.gridx = 4;
+		bc.gridy = 4;
+		buttonPanel.add(twistGrip, bc);
+		bc.gridx = 5;
+		bc.gridy = 4;
+		buttonPanel.add(untwistGrip, bc);
+		bc.gridx = 6;
+		bc.gridy = 4;
+		buttonPanel.add(NbottleCapped, bc);
+		bc.gridx = 7;
+		bc.gridy = 4;
+		buttonPanel.add(capperLabel, bc);
 		
 		//setup grid layout 1x2 (canvas on top of button panel)
 		this.setLayout(new GridBagLayout());
@@ -324,6 +361,36 @@ public class systemViz extends JFrame implements ActionListener {
 			canvas.updateSignals("NloadBottle", true);
 		} else {
 			canvas.updateSignals("NloadBottle", false);
+		}
+		if (clampBottle.isSelected()) {
+			canvas.updateSignals("clampBottle", true);
+		} else {
+			canvas.updateSignals("clampBottle", false);
+		}
+		if (gripCap.isSelected()) {
+			canvas.updateSignals("gripCap", true);
+		} else {
+			canvas.updateSignals("gripCap", false);
+		}
+		if (gripDown.isSelected()) {
+			canvas.updateSignals("gripDown", true);
+		} else {
+			canvas.updateSignals("gripDown", false);
+		}
+		if (twistGrip.isSelected()) {
+			canvas.updateSignals("twistGrip", true);
+		} else {
+			canvas.updateSignals("twistGrip", false);
+		}
+		if (untwistGrip.isSelected()) {
+			canvas.updateSignals("untwistGrip", true);
+		} else {
+			canvas.updateSignals("untwistGrip", false);
+		}
+		if (NbottleCapped.isSelected()) {
+			canvas.updateSignals("NbottleCapped", true);
+		} else {
+			canvas.updateSignals("NbottleCapped", false);
 		}
 		if (e.getSource() == tick) {
 			canvas.updateSignals("tick", true);
