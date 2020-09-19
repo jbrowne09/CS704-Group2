@@ -46,12 +46,14 @@ public class systemViz extends JFrame implements ActionListener {
 	
 	JCheckBox bottleAtLoad = new JCheckBox("bottleAtLoad");
 	JCheckBox gripLoadBottle = new JCheckBox("gripLoadBottle");
+	JCheckBox ungripLoadBottle = new JCheckBox("ungripLoadBottle");
 	JCheckBox toA = new JCheckBox("toA");
 	JCheckBox toB = new JCheckBox("toB");
 	JCheckBox toC = new JCheckBox("toC");
 	JLabel loaderLabel = new JLabel("bottle-loader");
 	
 	JCheckBox gripUnloadBottle = new JCheckBox("gripUnloadBottle");
+	JCheckBox ungripUnloadBottle = new JCheckBox("ungripUnloadBottle");
 	JCheckBox toA2 = new JCheckBox("toA2");
 	JCheckBox toB2 = new JCheckBox("toB2");
 	JCheckBox toC2 = new JCheckBox("toC2");
@@ -143,6 +145,9 @@ public class systemViz extends JFrame implements ActionListener {
 		gripLoadBottle.setEnabled(true);
 		gripLoadBottle.addActionListener(this);
 		gripLoadBottle.setFont(normal);
+		ungripLoadBottle.setEnabled(true);
+		ungripLoadBottle.addActionListener(this);
+		ungripLoadBottle.setFont(normal);
 		toA.setEnabled(true);
 		toA.addActionListener(this);
 		toA.setFont(normal);
@@ -157,6 +162,9 @@ public class systemViz extends JFrame implements ActionListener {
 		gripUnloadBottle.setEnabled(true);
 		gripUnloadBottle.addActionListener(this);
 		gripUnloadBottle.setFont(normal);
+		ungripUnloadBottle.setEnabled(true);
+		ungripUnloadBottle.addActionListener(this);
+		ungripUnloadBottle.setFont(normal);
 		toA2.setEnabled(true);
 		toA2.addActionListener(this);
 		toA2.setFont(normal);
@@ -260,11 +268,14 @@ public class systemViz extends JFrame implements ActionListener {
 		buttonPanel.add(gripLoadBottle, bc);
 		bc.gridx = 3;
 		bc.gridy = 3;
-		buttonPanel.add(toA, bc);
+		buttonPanel.add(ungripLoadBottle, bc);
 		bc.gridx = 4;
 		bc.gridy = 3;
-		buttonPanel.add(toB, bc);
+		buttonPanel.add(toA, bc);
 		bc.gridx = 5;
+		bc.gridy = 3;
+		buttonPanel.add(toB, bc);
+		bc.gridx = 6;
 		bc.gridy = 3;
 		buttonPanel.add(toC, bc);
 		bc.gridx = 7;
@@ -276,11 +287,14 @@ public class systemViz extends JFrame implements ActionListener {
 		buttonPanel.add(gripUnloadBottle, bc);
 		bc.gridx = 2;
 		bc.gridy = 4;
-		buttonPanel.add(toA2, bc);
+		buttonPanel.add(ungripUnloadBottle, bc);
 		bc.gridx = 3;
 		bc.gridy = 4;
-		buttonPanel.add(toB2, bc);
+		buttonPanel.add(toA2, bc);
 		bc.gridx = 4;
+		bc.gridy = 4;
+		buttonPanel.add(toB2, bc);
+		bc.gridx = 5;
 		bc.gridy = 4;
 		buttonPanel.add(toC2, bc);
 		bc.gridx = 7;
@@ -407,6 +421,11 @@ public class systemViz extends JFrame implements ActionListener {
 		} else {
 			canvas.updateSignals("gripLoadBottle", false);
 		}
+		if (ungripLoadBottle.isSelected()) {
+			canvas.updateSignals("ungripLoadBottle", true);
+		} else {
+			canvas.updateSignals("ungripLoadBottle", false);
+		}
 		if (toA.isSelected()) {
 			canvas.updateSignals("toA", true);
 		} else {
@@ -426,6 +445,11 @@ public class systemViz extends JFrame implements ActionListener {
 			canvas.updateSignals("gripUnloadBottle", true);
 		} else {
 			canvas.updateSignals("gripUnloadBottle", false);
+		}
+		if (ungripUnloadBottle.isSelected()) {
+			canvas.updateSignals("ungripUnloadBottle", true);
+		} else {
+			canvas.updateSignals("ungripUnloadBottle", false);
 		}
 		if (toA2.isSelected()) {
 			canvas.updateSignals("toA2", true);

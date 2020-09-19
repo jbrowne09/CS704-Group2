@@ -48,10 +48,12 @@ public class systemCanvas extends JPanel{
 	//Bottle-Loader/Unloader
 	private boolean bottleAtLoad = false;
 	private boolean gripLoadBottle = false;
+	private boolean ungripLoadBottle = false;
 	private boolean toA = false;
 	private boolean toB = false;
 	private boolean toC = false;
 	private boolean gripUnloadBottle = false;
+	private boolean ungripUnloadBottle = false;
 	private boolean toA2 = false;
 	private boolean toB2 = false;
 	private boolean toC2 = false;
@@ -198,6 +200,12 @@ public class systemCanvas extends JPanel{
 			case "gripLoadBottle":
 				this.gripLoadBottle = status;
 				break;
+			case "ungripLoadBottle":
+				this.ungripLoadBottle = status;
+				break;
+			case "ungripUnloadBottle":
+				this.ungripUnloadBottle = status;
+				break;
 			case "gripUnloadBottle":
 				this.gripUnloadBottle = status;
 				break;
@@ -298,7 +306,8 @@ public class systemCanvas extends JPanel{
 				if (loadArmX == loadPosX && loadArmY == loadPosY) {
 					grippedLoadBottle = true;
 				}
-			} else {
+			} 
+			if (this.ungripLoadBottle) {
 				if (!(loadPosX == 81 && loadPosY == 448)) {
 					if (loadPosX == 209 && loadPosY == 320) {
 						loadConvPos = 179;
@@ -315,7 +324,8 @@ public class systemCanvas extends JPanel{
 				if (unloadPosX == 814 && loadPosY == 320) {
 					unloadConvPos = -1;
 				}
-			} else {
+			} 
+			if (this.ungripUnloadBottle) {
 				if (!(unloadPosX == 814 && loadPosY == 320)) {
 					unloadPosX = -1;
 					unloadPosY = -1;
