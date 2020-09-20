@@ -103,6 +103,7 @@ public class systemCanvas extends JPanel{
 	int pos4X = -1;
 	int pos4Y = -1;
 	boolean rotating = false;
+	boolean finishedRotation = true;
 	
 	int fillerAngle = 60;
 	int selectedNozzle = 1;
@@ -262,7 +263,16 @@ public class systemCanvas extends JPanel{
 		this.bottlePos3 = States.bottlePos3;
 		this.bottlePos4 = States.bottlePos4;
 		this.bottlePos5 = States.bottlePos5;
-		this.rotate = States.rotate;
+		
+		if (States.rotate) {
+			if (finishedRotation) {
+				this.rotate = true;
+			}
+			finishedRotation = false;
+		} else {
+			finishedRotation = true;
+			this.rotate = false;
+		}
 		
 		//filler
 		//this.liquidPos1 = States.liquidPos1;
