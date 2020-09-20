@@ -1,4 +1,13 @@
 ./metadata/
 /.metadata/
 .metadata/
-
+.metadata/.log
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs
+.metadata/.plugins/org.eclipse.jdt.core/3729783616.index
+.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps
+.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt
+.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat
+.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
+.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
+.metadata/version.ini
