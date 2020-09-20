@@ -28,7 +28,7 @@ unloaderPlant(
 		else {
 			System.out.println("CMD2 not working " + #CMD2);
 		}
-		emit CMDfd;
+		//emit CMDfd;
 		
 		pause;
 	}

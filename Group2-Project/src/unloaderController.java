@@ -13,10 +13,12 @@ public class unloaderController extends ClockDomain{
   private char [] suspended;
   public Signal bottleAtEnd = new Signal("bottleAtEnd", Signal.INPUT);
   public Signal CMDfd = new Signal("CMDfd", Signal.INPUT);
+  public Signal tick = new Signal("tick", Signal.INPUT);
   public Signal unloaderDone = new Signal("unloaderDone", Signal.OUTPUT);
   public Signal CMD2 = new Signal("CMD2", Signal.OUTPUT);
-  private int S2507 = 1;
-  private int S2323 = 1;
+  private int S2442 = 1;
+  private int S2441 = 1;
+  private int S2090 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -28,24 +30,25 @@ public class unloaderController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2507){
+      switch(S2442){
         case 0 : 
-          S2507=0;
+          S2442=0;
           break RUN;
         
         case 1 : 
-          S2507=2;
-          S2507=2;
-          S2323=0;
+          S2442=2;
+          S2442=2;
+          S2441=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S2323){
+          switch(S2441){
             case 0 : 
-              if(bottleAtEnd.getprestatus()){//sysj\nloaderController.sysj line: 9, column: 9
-                S2323=1;
+              if(tick.getprestatus()){//sysj\nloaderController.sysj line: 8, column: 8
+                S2441=1;
+                S2090=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -57,205 +60,210 @@ public class unloaderController extends ClockDomain{
               }
             
             case 1 : 
-              if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 10, column: 9
-                S2323=2;
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 12, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("B2");//sysj\nloaderController.sysj line: 12, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
+              switch(S2090){
+                case 0 : 
+                  if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 11, column: 9
+                    S2090=1;
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 13, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("B2");//sysj\nloaderController.sysj line: 13, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 1 : 
+                  if(tick.getprestatus()){//sysj\nloaderController.sysj line: 12, column: 9
+                    S2090=2;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 13, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("B2");//sysj\nloaderController.sysj line: 13, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 2 : 
+                  if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 15, column: 9
+                    S2090=3;
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 17, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("G2");//sysj\nloaderController.sysj line: 17, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 3 : 
+                  if(tick.getprestatus()){//sysj\nloaderController.sysj line: 16, column: 9
+                    S2090=4;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 17, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("G2");//sysj\nloaderController.sysj line: 17, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 4 : 
+                  if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 19, column: 9
+                    S2090=5;
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 21, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("C2");//sysj\nloaderController.sysj line: 21, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 5 : 
+                  if(tick.getprestatus()){//sysj\nloaderController.sysj line: 20, column: 9
+                    S2090=6;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 21, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("C2");//sysj\nloaderController.sysj line: 21, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 6 : 
+                  if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 23, column: 9
+                    S2090=7;
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 25, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("D2");//sysj\nloaderController.sysj line: 25, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 7 : 
+                  if(tick.getprestatus()){//sysj\nloaderController.sysj line: 24, column: 9
+                    S2090=8;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 25, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("D2");//sysj\nloaderController.sysj line: 25, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 8 : 
+                  if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 27, column: 9
+                    S2090=9;
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 29, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("O2");//sysj\nloaderController.sysj line: 29, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 9 : 
+                  if(tick.getprestatus()){//sysj\nloaderController.sysj line: 28, column: 9
+                    S2090=10;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 29, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("O2");//sysj\nloaderController.sysj line: 29, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 10 : 
+                  if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 31, column: 9
+                    S2090=11;
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 33, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("A2");//sysj\nloaderController.sysj line: 33, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 11 : 
+                  if(tick.getprestatus()){//sysj\nloaderController.sysj line: 32, column: 9
+                    unloaderDone.setPresent();//sysj\nloaderController.sysj line: 35, column: 3
+                    currsigs.addElement(unloaderDone);
+                    S2090=12;
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                  else {
+                    CMD2.setPresent();//sysj\nloaderController.sysj line: 33, column: 4
+                    currsigs.addElement(CMD2);
+                    CMD2.setValue("A2");//sysj\nloaderController.sysj line: 33, column: 4
+                    active[1]=1;
+                    ends[1]=1;
+                    break RUN;
+                  }
+                
+                case 12 : 
+                  S2090=12;
+                  S2090=0;
+                  active[1]=1;
+                  ends[1]=1;
+                  break RUN;
+                
               }
-              else {
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 2 : 
-              if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 11, column: 9
-                S2323=3;
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 12, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("B2");//sysj\nloaderController.sysj line: 12, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 3 : 
-              if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 14, column: 9
-                S2323=4;
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 16, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("G2");//sysj\nloaderController.sysj line: 16, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 4 : 
-              if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 15, column: 9
-                S2323=5;
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 16, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("G2");//sysj\nloaderController.sysj line: 16, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 5 : 
-              if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 18, column: 9
-                S2323=6;
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 20, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("C2");//sysj\nloaderController.sysj line: 20, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 6 : 
-              if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 19, column: 9
-                S2323=7;
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 20, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("C2");//sysj\nloaderController.sysj line: 20, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 7 : 
-              if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 22, column: 9
-                S2323=8;
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 24, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("D2");//sysj\nloaderController.sysj line: 24, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 8 : 
-              if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 23, column: 9
-                S2323=9;
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 24, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("D2");//sysj\nloaderController.sysj line: 24, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 9 : 
-              if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 26, column: 9
-                S2323=10;
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 28, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("O2");//sysj\nloaderController.sysj line: 28, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 10 : 
-              if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 27, column: 9
-                S2323=11;
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 28, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("O2");//sysj\nloaderController.sysj line: 28, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 11 : 
-              if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 30, column: 9
-                S2323=12;
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 32, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("A2");//sysj\nloaderController.sysj line: 32, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 12 : 
-              if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 31, column: 9
-                unloaderDone.setPresent();//sysj\nloaderController.sysj line: 34, column: 3
-                currsigs.addElement(unloaderDone);
-                S2323=13;
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-              else {
-                CMD2.setPresent();//sysj\nloaderController.sysj line: 32, column: 4
-                currsigs.addElement(CMD2);
-                CMD2.setValue("A2");//sysj\nloaderController.sysj line: 32, column: 4
-                active[1]=1;
-                ends[1]=1;
-                break RUN;
-              }
-            
-            case 13 : 
-              S2323=13;
-              S2323=0;
-              active[1]=1;
-              ends[1]=1;
-              break RUN;
+              break;
             
           }
         
@@ -287,12 +295,14 @@ public class unloaderController extends ClockDomain{
         if(!df){
           bottleAtEnd.gethook();
           CMDfd.gethook();
+          tick.gethook();
           df = true;
         }
         runClockDomain();
       }
       bottleAtEnd.setpreclear();
       CMDfd.setpreclear();
+      tick.setpreclear();
       unloaderDone.setpreclear();
       CMD2.setpreclear();
       int dummyint = 0;
@@ -307,6 +317,9 @@ public class unloaderController extends ClockDomain{
       dummyint = CMDfd.getStatus() ? CMDfd.setprepresent() : CMDfd.setpreclear();
       CMDfd.setpreval(CMDfd.getValue());
       CMDfd.setClear();
+      dummyint = tick.getStatus() ? tick.setprepresent() : tick.setpreclear();
+      tick.setpreval(tick.getValue());
+      tick.setClear();
       unloaderDone.sethook();
       unloaderDone.setClear();
       CMD2.sethook();
@@ -315,6 +328,7 @@ public class unloaderController extends ClockDomain{
       else{
         bottleAtEnd.gethook();
         CMDfd.gethook();
+        tick.gethook();
       }
       runFinisher();
       if(active[1] == 0){

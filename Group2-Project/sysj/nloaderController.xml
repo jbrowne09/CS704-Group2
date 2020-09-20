@@ -4,6 +4,7 @@
 	 	
 			<iSignal Name="bottleAtEnd" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="CMDfd" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 				 	
 			<oSignal Name="CMD2" To="ULPlantCD.CMD2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="unloaderDone" To="MControllerCD.unloaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
