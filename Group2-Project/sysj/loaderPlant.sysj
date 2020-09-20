@@ -28,8 +28,8 @@ loaderPlant(
 		else {
 			System.out.println("CMD not working " + #CMD);
 		}
-		emit CMDfb;
+		//emit CMDfb;
 		
-		pause;
+		//pause;
 	}
 }

@@ -5,74 +5,40 @@ loaderController(
 	)
 ->{
 	{
+	await(tick);
 		while(true){
 			//await(bottleAtPoint);
-			await(!CMDfb);
-			abort(CMDfb) {
-				System.out.println("Move to load point"); //#######
+			await(!tick);
+			abort(tick) {
 				sustain CMD("B"); //Move to bottle
 			}
-			
-			//#####################################################
+
 			await(!tick);
-			await(tick);
-			//#####################################################
-			
-			await(!CMDfb);
-			abort(CMDfb) {
-				System.out.println("Grip load bottle"); //#########
+			abort(tick) {
 				sustain CMD("G"); //Grip bottle
 			}
-			
-			//#####################################################
+
 			await(!tick);
-			await(tick);
-			//#####################################################
-			
-			await(!CMDfb);
-			abort(CMDfb) {
-				System.out.println("Move to load conveyor"); //####
+			abort(tick) {
 				sustain CMD("C"); //Move to turntable pos1
 			}
 			
-			//#####################################################
 			await(!tick);
-			await(tick);
-			//#####################################################
-			
-			await(!CMDfb);
-			abort(CMDfb) {
+			abort(tick) {
 				sustain CMD("D"); //Lower arm
 			}
-			
-			//#####################################################
+
 			await(!tick);
-			await(tick);
-			//#####################################################
-			
-			await(!CMDfb);
-			abort(CMDfb) {
-				System.out.println("Ungrip load bottle"); //#######
+			abort(tick) {
 				sustain CMD("O"); //Open gripper
 			}
-			
-			//#####################################################
+
 			await(!tick);
-			await(tick);
-			//#####################################################
-			
-			await(!CMDfb);
-			abort(CMDfb) {
-				System.out.println("Move to init load"); //########
+			abort(tick) {
 				sustain CMD("A"); //Move back to original position
 			}
 			emit loaderDone;
-			
-			//#####################################################
-			await(!tick);
-			await(tick);
-			//#####################################################
-			
+
 			pause;
 		}
 	}
