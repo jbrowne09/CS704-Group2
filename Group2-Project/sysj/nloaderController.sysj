@@ -10,7 +10,7 @@ unloaderController(
 		//await(bottleAtEnd);
 		await(!tick);
 		abort(tick) {
-			sustain CMD2("B2"); //Move to bottle
+			sustain CMD2("C2"); //Move to bottle
 		}
 		await(!tick);
 		abort(tick) {
@@ -18,11 +18,7 @@ unloaderController(
 		}
 		await(!tick);
 		abort(tick) {
-			sustain CMD2("C2"); //Move to shipping container
-		}
-		await(!tick);
-		abort(tick) {
-			sustain CMD2("D2"); //Lower arm
+			sustain CMD2("B2"); //Move to shipping container
 		}
 		await(!tick);
 		abort(tick) {
