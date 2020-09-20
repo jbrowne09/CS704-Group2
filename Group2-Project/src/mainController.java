@@ -23,8 +23,8 @@ public class mainController extends ClockDomain{
   public Signal capperEnable = new Signal("capperEnable", Signal.OUTPUT);
   public Signal fillerEnable = new Signal("fillerEnable", Signal.OUTPUT);
   public Signal bottleToLoad = new Signal("bottleToLoad", Signal.OUTPUT);
-  private int S1797 = 1;
-  private int S1719 = 1;
+  private int S1873 = 1;
+  private int S1795 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -36,26 +36,26 @@ public class mainController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S1797){
+      switch(S1873){
         case 0 : 
-          S1797=0;
+          S1873=0;
           break RUN;
         
         case 1 : 
-          S1797=2;
-          S1797=2;
-          S1719=0;
+          S1873=2;
+          S1873=2;
+          S1795=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S1719){
+          switch(S1795){
             case 0 : 
               if(request.getprestatus()){//sysj\mainController.sysj line: 8, column: 9
                 bottleToLoad.setPresent();//sysj\mainController.sysj line: 9, column: 3
                 currsigs.addElement(bottleToLoad);
-                S1719=1;
+                S1795=1;
                 conveyerEnable.setPresent();//sysj\mainController.sysj line: 11, column: 4
                 currsigs.addElement(conveyerEnable);
                 active[1]=1;
@@ -70,7 +70,7 @@ public class mainController extends ClockDomain{
             
             case 1 : 
               if(conveyerDone.getprestatus()){//sysj\mainController.sysj line: 10, column: 9
-                S1719=2;
+                S1795=2;
                 rotaryEnable.setPresent();//sysj\mainController.sysj line: 14, column: 4
                 currsigs.addElement(rotaryEnable);
                 active[1]=1;
@@ -87,7 +87,7 @@ public class mainController extends ClockDomain{
             
             case 2 : 
               if(rotaryDone.getprestatus()){//sysj\mainController.sysj line: 13, column: 9
-                S1719=3;
+                S1795=3;
                 capperEnable.setPresent();//sysj\mainController.sysj line: 17, column: 4
                 currsigs.addElement(capperEnable);
                 active[1]=1;
@@ -104,7 +104,7 @@ public class mainController extends ClockDomain{
             
             case 3 : 
               if(capperDone.getprestatus()){//sysj\mainController.sysj line: 16, column: 9
-                S1719=0;
+                S1795=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
