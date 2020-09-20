@@ -16,9 +16,9 @@ public class loaderController extends ClockDomain{
   public Signal tick = new Signal("tick", Signal.INPUT);
   public Signal loaderDone = new Signal("loaderDone", Signal.OUTPUT);
   public Signal CMD = new Signal("CMD", Signal.OUTPUT);
-  private int S1724 = 1;
-  private int S1723 = 1;
-  private int S1371 = 1;
+  private int S1720 = 1;
+  private int S1719 = 1;
+  private int S1367 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -30,26 +30,26 @@ public class loaderController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S1724){
+      switch(S1720){
         case 0 : 
-          S1724=0;
+          S1720=0;
           break RUN;
         
         case 1 : 
-          S1724=2;
-          S1724=2;
-          S1723=0;
+          S1720=2;
+          S1720=2;
+          S1719=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S1723){
+          switch(S1719){
             case 0 : 
               if(tick.getprestatus()){//sysj\loaderController.sysj line: 7, column: 8
-                S1723=1;
+                S1719=1;
                 System.out.println("in loader");//sysj\loaderController.sysj line: 9, column: 2
-                S1371=0;
+                S1367=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -61,11 +61,11 @@ public class loaderController extends ClockDomain{
               }
             
             case 1 : 
-              switch(S1371){
+              switch(S1367){
                 case 0 : 
                   if(bottleToLoad.getprestatus()){//sysj\loaderController.sysj line: 10, column: 9
                     System.out.println("received bottle");//sysj\loaderController.sysj line: 11, column: 3
-                    S1371=1;
+                    S1367=1;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -78,7 +78,7 @@ public class loaderController extends ClockDomain{
                 
                 case 1 : 
                   if(!tick.getprestatus()){//sysj\loaderController.sysj line: 12, column: 9
-                    S1371=2;
+                    S1367=2;
                     CMD.setPresent();//sysj\loaderController.sysj line: 14, column: 4
                     currsigs.addElement(CMD);
                     CMD.setValue("B");//sysj\loaderController.sysj line: 14, column: 4
@@ -94,7 +94,7 @@ public class loaderController extends ClockDomain{
                 
                 case 2 : 
                   if(tick.getprestatus()){//sysj\loaderController.sysj line: 13, column: 9
-                    S1371=3;
+                    S1367=3;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -110,7 +110,7 @@ public class loaderController extends ClockDomain{
                 
                 case 3 : 
                   if(!tick.getprestatus()){//sysj\loaderController.sysj line: 17, column: 9
-                    S1371=4;
+                    S1367=4;
                     CMD.setPresent();//sysj\loaderController.sysj line: 19, column: 4
                     currsigs.addElement(CMD);
                     CMD.setValue("G");//sysj\loaderController.sysj line: 19, column: 4
@@ -126,7 +126,7 @@ public class loaderController extends ClockDomain{
                 
                 case 4 : 
                   if(tick.getprestatus()){//sysj\loaderController.sysj line: 18, column: 9
-                    S1371=5;
+                    S1367=5;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -142,7 +142,7 @@ public class loaderController extends ClockDomain{
                 
                 case 5 : 
                   if(!tick.getprestatus()){//sysj\loaderController.sysj line: 22, column: 9
-                    S1371=6;
+                    S1367=6;
                     CMD.setPresent();//sysj\loaderController.sysj line: 24, column: 4
                     currsigs.addElement(CMD);
                     CMD.setValue("C");//sysj\loaderController.sysj line: 24, column: 4
@@ -158,7 +158,7 @@ public class loaderController extends ClockDomain{
                 
                 case 6 : 
                   if(tick.getprestatus()){//sysj\loaderController.sysj line: 23, column: 9
-                    S1371=7;
+                    S1367=7;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -174,7 +174,7 @@ public class loaderController extends ClockDomain{
                 
                 case 7 : 
                   if(!tick.getprestatus()){//sysj\loaderController.sysj line: 27, column: 9
-                    S1371=8;
+                    S1367=8;
                     CMD.setPresent();//sysj\loaderController.sysj line: 29, column: 4
                     currsigs.addElement(CMD);
                     CMD.setValue("O");//sysj\loaderController.sysj line: 29, column: 4
@@ -190,7 +190,7 @@ public class loaderController extends ClockDomain{
                 
                 case 8 : 
                   if(tick.getprestatus()){//sysj\loaderController.sysj line: 28, column: 9
-                    S1371=9;
+                    S1367=9;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -206,7 +206,7 @@ public class loaderController extends ClockDomain{
                 
                 case 9 : 
                   if(!tick.getprestatus()){//sysj\loaderController.sysj line: 32, column: 9
-                    S1371=10;
+                    S1367=10;
                     CMD.setPresent();//sysj\loaderController.sysj line: 34, column: 4
                     currsigs.addElement(CMD);
                     CMD.setValue("A");//sysj\loaderController.sysj line: 34, column: 4
@@ -222,7 +222,7 @@ public class loaderController extends ClockDomain{
                 
                 case 10 : 
                   if(tick.getprestatus()){//sysj\loaderController.sysj line: 33, column: 9
-                    S1371=11;
+                    S1367=11;
                     loaderDone.setPresent();//sysj\loaderController.sysj line: 36, column: 3
                     currsigs.addElement(loaderDone);
                     active[1]=1;
@@ -246,9 +246,9 @@ public class loaderController extends ClockDomain{
                   break RUN;
                 
                 case 12 : 
-                  S1371=12;
+                  S1367=12;
                   System.out.println("in loader");//sysj\loaderController.sysj line: 9, column: 2
-                  S1371=0;
+                  S1367=0;
                   active[1]=1;
                   ends[1]=1;
                   break RUN;

@@ -1,12 +1,10 @@
-rotaryController(
-//    input signal aligned, bottlePos5, capPos1, tick, enableRotary; 
-    
-    //adjusted input signals from plant
+rotaryController(  
+    //input signals from plant
     input signal bottlePos1, bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned, enableRotary;
     
+    //output signals
     output signal rotate, rotaryDone;
-)
-
+	)
 ->{ 
 	//Considers multiple bottles but completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
 	{
@@ -14,8 +12,12 @@ rotaryController(
 			abort(bottlePos1 || bottlePos2 || bottlePos3 || bottlePos4) {
 				halt;
 			}
+			await(!bottlePos5);
 			
-			await(!aligned);
+			abort(!bottlePos1 && !bottlePos2 && !bottlePos3 && !bottlePos4){
+				sustain rotate;
+			}
+			
 			abort(aligned) {
 				sustain rotate;
 			}
