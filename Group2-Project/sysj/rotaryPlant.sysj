@@ -38,4 +38,56 @@ rotaryPlant(
 		//{while(true) {present(bottlePos2) {emit bottlePos2S;} pause;}}
 	}
 	
+	
+	//Possible replacement below here:
+	//Early version, ONE bottle at a time only
+	//Needs additional bottlePosS signals for visualiser
+	{
+		await(!tick);
+		await(tick);
+		
+		abort(rotate) {
+			sustain bottlePos1;
+		}
+		
+		await(!tick);
+		await(tick);
+		
+		abort(rotate) {
+			sustain bottlePos2;
+		}
+		
+		await(!tick);
+		await(tick);
+		
+		abort(rotate) {
+			sustain bottlePos3;
+		}
+		
+		await(!tick);
+		await(tick);
+		
+		abort(rotate) {
+			sustain bottlePos4;
+		}
+		
+		await(!tick);
+		await(tick);
+		
+		abort(rotate) {
+			sustain bottlePos5;
+		}
+	}
+	||
+	{//To Viz
+		{ while(true) { present (bottlePos1) {emit bottlePos1S;} pause;}}
+		||
+		{ while(true) { present (bottlePos2) {emit bottlePos2S;} pause;}}
+		||
+		{ while(true) { present (bottlePos3) {emit bottlePos3S;} pause;}}
+		||
+		{ while(true) { present (bottlePos4) {emit bottlePos4S;} pause;}}
+		||
+		{ while(true) { present (bottlePos5) {emit bottlePos5S;} pause;}}
+	}
 }
