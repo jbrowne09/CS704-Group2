@@ -439,8 +439,6 @@ public class systemCanvas extends JPanel{
 		if(this.rotate && finishedRotation) {
 			rotating = true;
 			finishedRotation = false;
-		} else {
-			rotating = false;
 		}
 		
 		//Filler
