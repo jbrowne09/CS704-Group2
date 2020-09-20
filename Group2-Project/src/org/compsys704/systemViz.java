@@ -72,7 +72,7 @@ public class systemViz extends JFrame implements ActionListener {
 		
 		//Frame elements
 		canvas = new systemCanvas();
-		canvas.setPreferredSize(new Dimension(1024, 512));
+		canvas.setPreferredSize(new Dimension(1024, 752));
 		canvas.setBackground(Color.WHITE);
 		
 		//change all buttons back to using SignalClient actionListener
