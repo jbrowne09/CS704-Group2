@@ -15,8 +15,8 @@ public class unloaderController extends ClockDomain{
   public Signal CMDfd = new Signal("CMDfd", Signal.INPUT);
   public Signal unloaderDone = new Signal("unloaderDone", Signal.OUTPUT);
   public Signal CMD2 = new Signal("CMD2", Signal.OUTPUT);
-  private int S2194 = 1;
-  private int S2010 = 1;
+  private int S2507 = 1;
+  private int S2323 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -28,24 +28,24 @@ public class unloaderController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2194){
+      switch(S2507){
         case 0 : 
-          S2194=0;
+          S2507=0;
           break RUN;
         
         case 1 : 
-          S2194=2;
-          S2194=2;
-          S2010=0;
+          S2507=2;
+          S2507=2;
+          S2323=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S2010){
+          switch(S2323){
             case 0 : 
               if(bottleAtEnd.getprestatus()){//sysj\nloaderController.sysj line: 9, column: 9
-                S2010=1;
+                S2323=1;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -58,7 +58,7 @@ public class unloaderController extends ClockDomain{
             
             case 1 : 
               if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 10, column: 9
-                S2010=2;
+                S2323=2;
                 CMD2.setPresent();//sysj\nloaderController.sysj line: 12, column: 4
                 currsigs.addElement(CMD2);
                 CMD2.setValue("B2");//sysj\nloaderController.sysj line: 12, column: 4
@@ -74,7 +74,7 @@ public class unloaderController extends ClockDomain{
             
             case 2 : 
               if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 11, column: 9
-                S2010=3;
+                S2323=3;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -90,7 +90,7 @@ public class unloaderController extends ClockDomain{
             
             case 3 : 
               if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 14, column: 9
-                S2010=4;
+                S2323=4;
                 CMD2.setPresent();//sysj\nloaderController.sysj line: 16, column: 4
                 currsigs.addElement(CMD2);
                 CMD2.setValue("G2");//sysj\nloaderController.sysj line: 16, column: 4
@@ -106,7 +106,7 @@ public class unloaderController extends ClockDomain{
             
             case 4 : 
               if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 15, column: 9
-                S2010=5;
+                S2323=5;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -122,7 +122,7 @@ public class unloaderController extends ClockDomain{
             
             case 5 : 
               if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 18, column: 9
-                S2010=6;
+                S2323=6;
                 CMD2.setPresent();//sysj\nloaderController.sysj line: 20, column: 4
                 currsigs.addElement(CMD2);
                 CMD2.setValue("C2");//sysj\nloaderController.sysj line: 20, column: 4
@@ -138,7 +138,7 @@ public class unloaderController extends ClockDomain{
             
             case 6 : 
               if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 19, column: 9
-                S2010=7;
+                S2323=7;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -154,7 +154,7 @@ public class unloaderController extends ClockDomain{
             
             case 7 : 
               if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 22, column: 9
-                S2010=8;
+                S2323=8;
                 CMD2.setPresent();//sysj\nloaderController.sysj line: 24, column: 4
                 currsigs.addElement(CMD2);
                 CMD2.setValue("D2");//sysj\nloaderController.sysj line: 24, column: 4
@@ -170,7 +170,7 @@ public class unloaderController extends ClockDomain{
             
             case 8 : 
               if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 23, column: 9
-                S2010=9;
+                S2323=9;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -186,7 +186,7 @@ public class unloaderController extends ClockDomain{
             
             case 9 : 
               if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 26, column: 9
-                S2010=10;
+                S2323=10;
                 CMD2.setPresent();//sysj\nloaderController.sysj line: 28, column: 4
                 currsigs.addElement(CMD2);
                 CMD2.setValue("O2");//sysj\nloaderController.sysj line: 28, column: 4
@@ -202,7 +202,7 @@ public class unloaderController extends ClockDomain{
             
             case 10 : 
               if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 27, column: 9
-                S2010=11;
+                S2323=11;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -218,7 +218,7 @@ public class unloaderController extends ClockDomain{
             
             case 11 : 
               if(!CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 30, column: 9
-                S2010=12;
+                S2323=12;
                 CMD2.setPresent();//sysj\nloaderController.sysj line: 32, column: 4
                 currsigs.addElement(CMD2);
                 CMD2.setValue("A2");//sysj\nloaderController.sysj line: 32, column: 4
@@ -236,7 +236,7 @@ public class unloaderController extends ClockDomain{
               if(CMDfd.getprestatus()){//sysj\nloaderController.sysj line: 31, column: 9
                 unloaderDone.setPresent();//sysj\nloaderController.sysj line: 34, column: 3
                 currsigs.addElement(unloaderDone);
-                S2010=13;
+                S2323=13;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -251,8 +251,8 @@ public class unloaderController extends ClockDomain{
               }
             
             case 13 : 
-              S2010=13;
-              S2010=0;
+              S2323=13;
+              S2323=0;
               active[1]=1;
               ends[1]=1;
               break RUN;
