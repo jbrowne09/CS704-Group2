@@ -20,243 +20,12 @@ public class rotaryController extends ClockDomain{
   public Signal enableRotary = new Signal("enableRotary", Signal.INPUT);
   public Signal rotate = new Signal("rotate", Signal.OUTPUT);
   public Signal rotaryDone = new Signal("rotaryDone", Signal.OUTPUT);
-  private int S2558 = 1;
-  private int S2460 = 1;
-  private int S2438 = 1;
-  private int S2492 = 1;
-  private int S2470 = 1;
-  private int S2524 = 1;
-  private int S2502 = 1;
-  private int S2556 = 1;
-  private int S2534 = 1;
+  private int S2466 = 1;
+  private int S2432 = 1;
   
-  private int[] ends = new int[6];
-  private int[] tdone = new int[6];
+  private int[] ends = new int[2];
+  private int[] tdone = new int[2];
   
-  public void thread2568(int [] tdone, int [] ends){
-        switch(S2556){
-      case 0 : 
-        active[5]=0;
-        ends[5]=0;
-        tdone[5]=1;
-        break;
-      
-      case 1 : 
-        switch(S2534){
-          case 0 : 
-            if(bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 52, column: 10
-              S2534=1;
-              rotate.setPresent();//sysj\rotaryController.sysj line: 54, column: 5
-              currsigs.addElement(rotate);
-              active[5]=1;
-              ends[5]=1;
-              tdone[5]=1;
-            }
-            else {
-              active[5]=1;
-              ends[5]=1;
-              tdone[5]=1;
-            }
-            break;
-          
-          case 1 : 
-            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 53, column: 10
-              S2534=0;
-              active[5]=1;
-              ends[5]=1;
-              tdone[5]=1;
-            }
-            else {
-              rotate.setPresent();//sysj\rotaryController.sysj line: 54, column: 5
-              currsigs.addElement(rotate);
-              active[5]=1;
-              ends[5]=1;
-              tdone[5]=1;
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread2567(int [] tdone, int [] ends){
-        switch(S2524){
-      case 0 : 
-        active[4]=0;
-        ends[4]=0;
-        tdone[4]=1;
-        break;
-      
-      case 1 : 
-        switch(S2502){
-          case 0 : 
-            if(bottlePos3.getprestatus()){//sysj\rotaryController.sysj line: 43, column: 10
-              S2502=1;
-              rotate.setPresent();//sysj\rotaryController.sysj line: 45, column: 5
-              currsigs.addElement(rotate);
-              active[4]=1;
-              ends[4]=1;
-              tdone[4]=1;
-            }
-            else {
-              active[4]=1;
-              ends[4]=1;
-              tdone[4]=1;
-            }
-            break;
-          
-          case 1 : 
-            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 44, column: 10
-              S2502=0;
-              active[4]=1;
-              ends[4]=1;
-              tdone[4]=1;
-            }
-            else {
-              rotate.setPresent();//sysj\rotaryController.sysj line: 45, column: 5
-              currsigs.addElement(rotate);
-              active[4]=1;
-              ends[4]=1;
-              tdone[4]=1;
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread2566(int [] tdone, int [] ends){
-        switch(S2492){
-      case 0 : 
-        active[3]=0;
-        ends[3]=0;
-        tdone[3]=1;
-        break;
-      
-      case 1 : 
-        switch(S2470){
-          case 0 : 
-            if(bottlePos2.getprestatus()){//sysj\rotaryController.sysj line: 34, column: 10
-              S2470=1;
-              rotate.setPresent();//sysj\rotaryController.sysj line: 36, column: 5
-              currsigs.addElement(rotate);
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            else {
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            break;
-          
-          case 1 : 
-            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 35, column: 10
-              S2470=0;
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            else {
-              rotate.setPresent();//sysj\rotaryController.sysj line: 36, column: 5
-              currsigs.addElement(rotate);
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread2565(int [] tdone, int [] ends){
-        switch(S2460){
-      case 0 : 
-        active[2]=0;
-        ends[2]=0;
-        tdone[2]=1;
-        break;
-      
-      case 1 : 
-        switch(S2438){
-          case 0 : 
-            if(bottlePos1.getprestatus()){//sysj\rotaryController.sysj line: 25, column: 10
-              S2438=1;
-              rotate.setPresent();//sysj\rotaryController.sysj line: 27, column: 5
-              currsigs.addElement(rotate);
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            else {
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            break;
-          
-          case 1 : 
-            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 26, column: 10
-              S2438=0;
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            else {
-              rotate.setPresent();//sysj\rotaryController.sysj line: 27, column: 5
-              currsigs.addElement(rotate);
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread2563(int [] tdone, int [] ends){
-        S2556=1;
-    S2534=0;
-    active[5]=1;
-    ends[5]=1;
-    tdone[5]=1;
-  }
-
-  public void thread2562(int [] tdone, int [] ends){
-        S2524=1;
-    S2502=0;
-    active[4]=1;
-    ends[4]=1;
-    tdone[4]=1;
-  }
-
-  public void thread2561(int [] tdone, int [] ends){
-        S2492=1;
-    S2470=0;
-    active[3]=1;
-    ends[3]=1;
-    tdone[3]=1;
-  }
-
-  public void thread2560(int [] tdone, int [] ends){
-        S2460=1;
-    S2438=0;
-    active[2]=1;
-    ends[2]=1;
-    tdone[2]=1;
-  }
-
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
       ends[i] = 0;
@@ -264,67 +33,64 @@ public class rotaryController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2558){
+      switch(S2466){
         case 0 : 
-          S2558=0;
+          S2466=0;
           break RUN;
         
         case 1 : 
-          S2558=2;
-          S2558=2;
-          thread2560(tdone,ends);
-          thread2561(tdone,ends);
-          thread2562(tdone,ends);
-          thread2563(tdone,ends);
-          int biggest2564 = 0;
-          if(ends[2]>=biggest2564){
-            biggest2564=ends[2];
-          }
-          if(ends[3]>=biggest2564){
-            biggest2564=ends[3];
-          }
-          if(ends[4]>=biggest2564){
-            biggest2564=ends[4];
-          }
-          if(ends[5]>=biggest2564){
-            biggest2564=ends[5];
-          }
-          if(biggest2564 == 1){
-            active[1]=1;
-            ends[1]=1;
-            break RUN;
-          }
+          S2466=2;
+          S2466=2;
+          S2432=0;
+          active[1]=1;
+          ends[1]=1;
+          break RUN;
         
         case 2 : 
-          thread2565(tdone,ends);
-          thread2566(tdone,ends);
-          thread2567(tdone,ends);
-          thread2568(tdone,ends);
-          int biggest2569 = 0;
-          if(ends[2]>=biggest2569){
-            biggest2569=ends[2];
-          }
-          if(ends[3]>=biggest2569){
-            biggest2569=ends[3];
-          }
-          if(ends[4]>=biggest2569){
-            biggest2569=ends[4];
-          }
-          if(ends[5]>=biggest2569){
-            biggest2569=ends[5];
-          }
-          if(biggest2569 == 1){
-            active[1]=1;
-            ends[1]=1;
-            break RUN;
-          }
-          //FINXME code
-          if(biggest2569 == 0){
-            S2558=0;
-            active[1]=0;
-            ends[1]=0;
-            S2558=0;
-            break RUN;
+          switch(S2432){
+            case 0 : 
+              if(bottlePos1.getprestatus() || bottlePos2.getprestatus() || bottlePos3.getprestatus() || bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 14, column: 10
+                S2432=1;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 1 : 
+              if(!aligned.getprestatus()){//sysj\rotaryController.sysj line: 18, column: 10
+                S2432=2;
+                rotate.setPresent();//sysj\rotaryController.sysj line: 20, column: 5
+                currsigs.addElement(rotate);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 2 : 
+              if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 19, column: 10
+                S2432=0;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                rotate.setPresent();//sysj\rotaryController.sysj line: 20, column: 5
+                currsigs.addElement(rotate);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
           }
         
       }
@@ -332,9 +98,9 @@ public class rotaryController extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1};
+    char [] paused1 = {0, 0};
+    char [] suspended1 = {0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;

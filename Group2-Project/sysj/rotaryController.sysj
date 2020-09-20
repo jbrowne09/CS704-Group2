@@ -8,48 +8,14 @@ rotaryController(
 )
 
 ->{ 
-//	{
-//		while(true){
-//			await(tick);
-//			await(!tick);
-//			abort(tick){
-//				sustain rotate;
-//			}
-//		}
-//	}
-	
-	//Controller implementation for if tick is moved to plant, considers multiple bottles but
-	//completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
+	//Considers multiple bottles but completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
 	{
 		while(true){
-			await(bottlePos1);
-			abort(aligned) {
-				sustain rotate;
+			abort(bottlePos1 || bottlePos2 || bottlePos3 || bottlePos4) {
+				halt;
 			}
-		}
-	}
-	||
-	{
-		while(true){
-			await(bottlePos2);
-			abort(aligned) {
-				sustain rotate;
-			}
-		}
-	}
-	||
-	{
-		while(true){
-			await(bottlePos3);
-			abort(aligned) {
-				sustain rotate;
-			}
-		}
-	}
-	||
-	{
-		while(true){
-			await(bottlePos4);
+			
+			await(!aligned);
 			abort(aligned) {
 				sustain rotate;
 			}
