@@ -1,42 +1,48 @@
 rotaryPlant(
-		input signal rotate;
-		output signal aligned, bottlePos5, capPos1; //To controller
-		output signal alignedS, bottlePos5S, bottlePos2S, capPos1S, rotateS, bottlePos1S; //To viz
+		input signal rotate, tick;
+//		output signal aligned, bottlePos5, capPos1; //To controller
+//		output signal alignedS, bottlePos5S, bottlePos2S, capPos1S, rotateS, bottlePos1S; //To viz
+		
+		//adjusted plant signals (think we can dump capPos1)
+		output signal bottlePos1, bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned;
+		
+		//adjusted viz signals
+		output signal bottlePos1S, bottlePos2S, bottlePos3S, bottlePos4S, bottlePos5S, rotateS;
 		)
 ->{
 	//Still need to output bottlePos5 and capPos1 somewhere
 	
-	{//Rotation
-		while(true){
-			await(rotate);
-			emit rotateS;
-		}
-	}
-	||
-	{
-		while(true) {
-			//emit bottlePos1S;
-		
-			present(bottlePos1S){
-				await(rotate);
-				emit bottlePos2S;
-			}
-			else {
-				sustain bottlePos1S;
-			}
-			pause;
-		}
-	}
-	||
-	{//To viz
-		{while(true) {present(aligned) {emit alignedS;} pause;}}
-		||
-		{while(true) {present(bottlePos5) {emit bottlePos5S;} pause;}}
-		||
-		{while(true) {present(capPos1) {emit capPos1S;} pause;}}
-		//||
-		//{while(true) {present(bottlePos2) {emit bottlePos2S;} pause;}}
-	}
+//	{//Rotation
+//		while(true){
+//			await(rotate);
+//			emit rotateS;
+//		}
+//	}
+//	||
+//	{
+//		while(true) {
+//			//emit bottlePos1S;
+//		
+//			present(bottlePos1S){
+//				await(rotate);
+//				emit bottlePos2S;
+//			}
+//			else {
+//				sustain bottlePos1S;
+//			}
+//			pause;
+//		}
+//	}
+//	||
+//	{//To viz
+//		{while(true) {present(aligned) {emit alignedS;} pause;}}
+//		||
+//		{while(true) {present(bottlePos5) {emit bottlePos5S;} pause;}}
+//		||
+//		{while(true) {present(capPos1) {emit capPos1S;} pause;}}
+//		//||
+//		//{while(true) {present(bottlePos2) {emit bottlePos2S;} pause;}}
+//	}
 	
 	
 	//Possible replacement below here:
@@ -47,35 +53,55 @@ rotaryPlant(
 		await(tick);
 		
 		abort(rotate) {
-			sustain bottlePos1;
+			while(true) {
+				emit aligned;
+				emit bottlePos1;
+				pause;
+			}
 		}
 		
 		await(!tick);
 		await(tick);
 		
 		abort(rotate) {
-			sustain bottlePos2;
+			while(true) {
+				emit aligned;
+				emit bottlePos2;
+				pause;
+			}
 		}
 		
 		await(!tick);
 		await(tick);
 		
 		abort(rotate) {
-			sustain bottlePos3;
+			while(true) {
+				emit aligned;
+				emit bottlePos3;
+				pause;
+			}
 		}
 		
 		await(!tick);
 		await(tick);
 		
 		abort(rotate) {
-			sustain bottlePos4;
+			while(true) {
+				emit aligned;
+				emit bottlePos4;
+				pause;
+			}
 		}
 		
 		await(!tick);
 		await(tick);
 		
 		abort(rotate) {
-			sustain bottlePos5;
+			while(true) {
+				emit aligned;
+				emit bottlePos5;
+				pause;
+			}
 		}
 	}
 	||
@@ -89,5 +115,7 @@ rotaryPlant(
 		{ while(true) { present (bottlePos4) {emit bottlePos4S;} pause;}}
 		||
 		{ while(true) { present (bottlePos5) {emit bottlePos5S;} pause;}}
+		||
+		{ while(true) { present (rotate) {emit rotateS;} pause;}}
 	}
 }

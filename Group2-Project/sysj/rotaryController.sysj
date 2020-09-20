@@ -1,22 +1,59 @@
 rotaryController(
-    input signal aligned, bottlePos5, capPos1, tick, enableRotary; 
+//    input signal aligned, bottlePos5, capPos1, tick, enableRotary; 
+    
+    //adjusted input signals from plant
+    input signal bottlePos1, bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned;
+    
     output signal rotate, rotaryDone;
 )
 
 ->{ 
-{
-	while(true){
-		await(tick);
-		await(!tick);
-		abort(tick){
-			sustain rotate;
+//	{
+//		while(true){
+//			await(tick);
+//			await(!tick);
+//			abort(tick){
+//				sustain rotate;
+//			}
+//		}
+//	}
+	
+	
+	//Controller implementation for if tick is moved to plant, considers multiple bottles but
+	//completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
+	{
+		while(true){
+			await(bottlePos1);
+			abort(aligned) {
+				sustain rotate;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(bottlePos2);
+			abort(aligned) {
+				sustain rotate;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(bottlePos3);
+			abort(aligned) {
+				sustain rotate;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(bottlePos4);
+			abort(aligned) {
+				sustain rotate;
+			}
 		}
 	}
 }
-
-}
-		//await(enableRotary);
-		//abort(!capPos1 && !bottlePos5){
-		//	System.out.println("cap on bottle in Pos1 or Pos5, please remove it");
-		//	halt;
-		//}
