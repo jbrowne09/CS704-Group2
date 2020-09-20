@@ -1,15 +1,23 @@
 mainController(
-    input signal conveyerDone, rotaryDone, capperDone, loaderDone, unloaderDone, request, enable;
-    output signal conveyerEnable, rotaryEnable, capperEnable, fillerEnable, bottleToLoad; //To controllers
+    input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, tick;
+    output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable, bottleToLoad; //To controllers
 )
 
 ->{
 	while(true){
-		await(request);
-		emit bottleToLoad;
-		abort(conveyerDone) {
-			sustain conveyerEnable;
+		//await(tick);
+		System.out.println("sustaining bottle to load");
+		abort(loaderDone) {
+			sustain bottleToLoad;
 		}
+		System.out.println("exit loader");
+		abort(conveyorDone) {
+		System.out.println("conveyor");
+			sustain conveyorEnable;
+		}
+		
+		System.out.println("halting");
+		halt;
 		abort(rotaryDone) {
 			sustain rotaryEnable;
 		}

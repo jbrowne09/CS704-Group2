@@ -20,8 +20,8 @@ public class rotaryController extends ClockDomain{
   public Signal enableRotary = new Signal("enableRotary", Signal.INPUT);
   public Signal rotate = new Signal("rotate", Signal.OUTPUT);
   public Signal rotaryDone = new Signal("rotaryDone", Signal.OUTPUT);
-  private int S2466 = 1;
-  private int S2432 = 1;
+  private int S2355 = 1;
+  private int S2321 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -33,24 +33,24 @@ public class rotaryController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2466){
+      switch(S2355){
         case 0 : 
-          S2466=0;
+          S2355=0;
           break RUN;
         
         case 1 : 
-          S2466=2;
-          S2466=2;
-          S2432=0;
+          S2355=2;
+          S2355=2;
+          S2321=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S2432){
+          switch(S2321){
             case 0 : 
               if(bottlePos1.getprestatus() || bottlePos2.getprestatus() || bottlePos3.getprestatus() || bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 14, column: 10
-                S2432=1;
+                S2321=1;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -63,7 +63,7 @@ public class rotaryController extends ClockDomain{
             
             case 1 : 
               if(!aligned.getprestatus()){//sysj\rotaryController.sysj line: 18, column: 10
-                S2432=2;
+                S2321=2;
                 rotate.setPresent();//sysj\rotaryController.sysj line: 20, column: 5
                 currsigs.addElement(rotate);
                 active[1]=1;
@@ -78,7 +78,7 @@ public class rotaryController extends ClockDomain{
             
             case 2 : 
               if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 19, column: 10
-                S2432=0;
+                S2321=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;

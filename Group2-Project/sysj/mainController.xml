@@ -1,19 +1,18 @@
 <System xmlns="http://systemjtechnology.com">
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="MControllerCD" Class="mainController">
-			<iSignal Name="conveyerDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="conveyorDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="rotaryDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="capperDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="loaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="loaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10002" />
 			<iSignal Name="unloaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="request" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="enable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 					
-			<oSignal Name="conveyerEnable" To="CControllerCD.conveyerEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="rotaryEnable" 	To="RControllerCD.rotaryEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="capperEnable" 	To="CapControllerCD.conveyerEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="fillerEnable" 	To="FControllerCD.capperEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="bottleToLoad" 	To="LControllerCD.bottleAtPoint" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="conveyorEnable" To="CControllerCD.conveyorEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10003" />
+			<oSignal Name="rotaryEnable" 	To="RControllerCD.rotaryEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="capperEnable" 	To="CapControllerCD.conveyerEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="fillerEnable" 	To="FControllerCD.capperEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottleToLoad" 	To="LControllerCD.bottleToLoad" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			
 		</ClockDomain>
 	</SubSystem>

@@ -1,11 +1,11 @@
 conveyorPlant(
-		input signal motor, enable;
+		input signal motor, tick;
 		output signal bottleLeft5, bottlePos1, bottlePos5;
 		output signal bottleLeft5S, bottlePos1S, bottlePos5S, motorS;
 		)
 ->
 {
-	new Thread(new conveyorGUI()).start();
+	//new Thread(new conveyorGUI()).start();
 	
 	{//Motor
 		while(true){
@@ -18,16 +18,16 @@ conveyorPlant(
 	||
 	{
 		while(true){
-			await(enable);
-			await(!enable);
-			abort(enable){
+			await(tick);
+			await(!tick);
+			abort(tick){
 				sustain bottlePos1;
 			}
-			await(!enable);
-			abort(enable){
+			await(!tick);
+			abort(tick){
 				sustain bottlePos5;
 			}
-			await(!enable);
+			await(!tick);
 			sustain bottleLeft5;
 		}
 	}

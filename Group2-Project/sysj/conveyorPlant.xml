@@ -3,7 +3,7 @@
 		<ClockDomain Name="CPlantCD" Class="conveyorPlant">
 			
 			<iSignal Name="motor" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="enable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10011" />
 			
 			<oSignal Name="bottlePos1" To="CControllerCD.bottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="bottlePos5"  To="CControllerCD.bottlePos5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />

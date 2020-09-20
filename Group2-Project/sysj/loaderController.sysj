@@ -1,53 +1,40 @@
 loaderController(
-	input signal bottleAtPoint, CMDfb, tick;
+	input signal bottleToLoad, CMDfb, tick;
     output signal loaderDone;
     output String signal CMD;
 	)
-->{
-	{
+->{ 
 	await(tick);
-		while(true){
-			//await(bottleAtPoint);
-			await(!tick);
-			abort(tick) {
-				sustain CMD("B"); //Move to bottle
-			}
-
-			await(!tick);
-			abort(tick) {
-				sustain CMD("G"); //Grip bottle
-			}
-
-			await(!tick);
-			abort(tick) {
-				sustain CMD("C"); //Move to turntable pos1
-			}
-			
-			await(!tick);
-			abort(tick) {
-				sustain CMD("D"); //Lower arm
-			}
-
-			await(!tick);
-			abort(tick) {
-				sustain CMD("O"); //Open gripper
-			}
-
-			await(!tick);
-			abort(tick) {
-				sustain CMD("A"); //Move back to original position
-			}
-			emit loaderDone;
-
-			pause;
+	while(true){
+	System.out.println("in loader");
+		await(bottleToLoad);
+		System.out.println("received bottle");
+		await(!tick);
+		abort(tick) {
+			sustain CMD("B"); //Move to bottle
 		}
-	}
-	||
-	{
-		while(true){
-			await(tick);
-			System.out.println("doing tick");
-			await(!tick);
+
+		await(!tick);
+		abort(tick) {
+			sustain CMD("G"); //Grip bottle
 		}
+
+		await(!tick);
+		abort(tick) {
+			sustain CMD("C"); //Move to turntable pos1
+		}
+
+		await(!tick);
+		abort(tick) {
+			sustain CMD("O"); //Open gripper
+		}
+
+		await(!tick);
+		abort(tick) {
+			sustain CMD("A"); //Move back to original position
+		}
+		sustain loaderDone;
+
+		pause;
 	}
 }

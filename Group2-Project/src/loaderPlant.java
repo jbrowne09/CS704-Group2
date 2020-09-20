@@ -19,7 +19,7 @@ public class loaderPlant extends ClockDomain{
   public Signal closeGripperS = new Signal("closeGripperS", Signal.OUTPUT);
   public Signal openGripperS = new Signal("openGripperS", Signal.OUTPUT);
   public Signal CMDfb = new Signal("CMDfb", Signal.OUTPUT);
-  private int S1997 = 1;
+  private int S1853 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -31,14 +31,14 @@ public class loaderPlant extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S1997){
+      switch(S1853){
         case 0 : 
-          S1997=0;
+          S1853=0;
           break RUN;
         
         case 1 : 
-          S1997=2;
-          S1997=2;
+          S1853=2;
+          S1853=2;
           active[1]=1;
           ends[1]=1;
           break RUN;
