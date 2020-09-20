@@ -3,9 +3,8 @@ unloaderPlant(
 		output signal posB2S, posC2S, posD2S, posA2S, closeGripper2S, openGripper2S, CMDfd;
 		)
 ->
-{	
+{ 	
 	while(true){
-	
 		await(CMD2);
 		if (#CMD2.equals("B2")) {
 			emit posB2S;
