@@ -9,20 +9,20 @@ signal help;
 	while(true){
 		await(tick);
 		await(!tick);
-		abort(help){
-			sustain rotate;
-		}
+		//abort(help){
+			emit rotate;
+		//}
 	}
 }
 ||
 {
-	while(true) {
+//	while(true) {
 		await(rotate);
 		System.out.println("waiting");
 			waitl(500 ms);
 			emit help;
 			System.out.println("help");
-	}
+//	}
 }
 }
 		//await(enableRotary);
