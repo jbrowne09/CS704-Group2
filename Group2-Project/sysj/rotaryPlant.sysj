@@ -3,32 +3,16 @@ rotaryPlant(
 		output signal aligned, bottlePos5, capPos1; //To controller
 		output signal alignedS, bottlePos5S, capPos1S, rotateS; //To viz
 		)
-->
-{
-	//new Thread(new conveyorGUI()).start();
+->{
 	//Still need to output bottlePos5 and capPos1 somewhere
 	
 	{//Rotation
 		while(true){
 			await(rotate);
-			abort (!rotate) {
-				sustain rotateS;
-			}
-		}
-	}
-	||
-	{//aligned
-		while(true){ 
-			await(rotate);
-			waitl(500 ms);
-			//try { 
-			//	Thread.sleep(500);
-			//} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-			//	System.out.println("Error, thread.sleep in rotaryplant.java");
-			//	e.printStackTrace();
-			//} 
-			emit aligned;
+			//abort (!rotate) {
+			//	emit rotateS;
+				System.out.print("rotate?");
+			//}
 		}
 	}
 	||
@@ -38,6 +22,8 @@ rotaryPlant(
 		{while(true) {present(bottlePos5) {emit bottlePos5S;} pause;}}
 		||
 		{while(true) {present(capPos1) {emit capPos1S;} pause;}}
+		||
+		{while(true) {present(rotate) {emit rotateS;} pause;}}
 	}
 	
 }
