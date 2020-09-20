@@ -1,20 +1,38 @@
 rotaryController(
-    input signal aligned, bottlePos5, capPos1; //Come from plant sensors? 
-    input signal enableRotary; //Comes from main controller
-    output signal rotate; //Goes to plant
-    output signal rotaryDone; //Goes to main
+    input signal aligned, bottlePos5, capPos1, tick, enableRotary; 
+    output signal rotate, rotaryDone;
 )
 
-->{
+->{ 
+signal help;
+{
 	while(true){
-		await(enableRotary);
-		abort(!capPos1 && !bottlePos5){
-			System.out.println("cap on bottle in Pos1 or Pos5, please remove it");
-			halt;
-		}
-		abort(aligned){
+		await(tick);
+		await(!tick);
+		abort(help){
 			sustain rotate;
 		}
-		emit rotaryDone;
 	}
 }
+||
+{
+	while(true) {
+		await(rotate);
+		System.out.println("waiting");
+			waitl(500 ms);
+			emit help;
+			System.out.println("help");
+	}
+}
+}
+		//await(enableRotary);
+		//abort(!capPos1 && !bottlePos5){
+		//	System.out.println("cap on bottle in Pos1 or Pos5, please remove it");
+		//	halt;
+		//}
+		//abort(aligned){
+		//System.out.println("rotating");
+		//	sustain rotate;
+		//}
+		//System.out.println("aligned");
+		//emit rotaryDone;
