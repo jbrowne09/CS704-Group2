@@ -263,15 +263,9 @@ public class systemCanvas extends JPanel{
 		this.bottlePos3 = States.bottlePos3;
 		this.bottlePos4 = States.bottlePos4;
 		this.bottlePos5 = States.bottlePos5;
-		
-		if (States.rotate) {
-			if (finishedRotation) {
-				this.rotate = true;
-			}
-			finishedRotation = false;
-		} else {
+		this.rotate = States.rotate;
+		if (!States.rotate) {
 			finishedRotation = true;
-			this.rotate = false;
 		}
 		
 		//filler
@@ -442,8 +436,9 @@ public class systemCanvas extends JPanel{
 			pos4X = 623;
 			pos4Y = 192;
 		}
-		if(this.rotate) {
+		if(this.rotate && finishedRotation) {
 			rotating = true;
+			finishedRotation = false;
 		} else {
 			rotating = false;
 		}
