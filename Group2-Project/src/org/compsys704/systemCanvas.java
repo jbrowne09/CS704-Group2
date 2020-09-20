@@ -269,7 +269,7 @@ public class systemCanvas extends JPanel{
 			loadPosY = 448;
 		}
 		
-		if (this.tick) { 
+		//if (this.tick) { OLD TICK IF
 			
 			//Loading Arm
 			if(this.bottleAtLoad) {
@@ -447,7 +447,7 @@ public class systemCanvas extends JPanel{
 			} else {
 				rotateGrip = false;
 			}
-		}
+		//} END OF OLD TICK IF
 		
 		//drawing loading bottle/arm
 		if (moveToLoadPoint) {
