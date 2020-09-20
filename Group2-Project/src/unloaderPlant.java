@@ -19,8 +19,8 @@ public class unloaderPlant extends ClockDomain{
   public Signal closeGripper2S = new Signal("closeGripper2S", Signal.OUTPUT);
   public Signal openGripper2S = new Signal("openGripper2S", Signal.OUTPUT);
   public Signal CMDfd = new Signal("CMDfd", Signal.OUTPUT);
-  private int S2107 = 1;
-  private int S2077 = 1;
+  private int S2239 = 1;
+  private int S2209 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -32,21 +32,21 @@ public class unloaderPlant extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2107){
+      switch(S2239){
         case 0 : 
-          S2107=0;
+          S2239=0;
           break RUN;
         
         case 1 : 
-          S2107=2;
-          S2107=2;
-          S2077=0;
+          S2239=2;
+          S2239=2;
+          S2209=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S2077){
+          switch(S2209){
             case 0 : 
               if(CMD2.getprestatus()){//sysj\nloaderPlant.sysj line: 9, column: 9
                 if((CMD2.getpreval() == null ? null : ((String)CMD2.getpreval())).equals("B2")){//sysj\nloaderPlant.sysj line: 10, column: 3
@@ -54,7 +54,7 @@ public class unloaderPlant extends ClockDomain{
                   currsigs.addElement(posB2S);
                   CMDfd.setPresent();//sysj\nloaderPlant.sysj line: 31, column: 3
                   currsigs.addElement(CMDfd);
-                  S2077=1;
+                  S2209=1;
                   active[1]=1;
                   ends[1]=1;
                   break RUN;
@@ -65,7 +65,7 @@ public class unloaderPlant extends ClockDomain{
                     currsigs.addElement(posC2S);
                     CMDfd.setPresent();//sysj\nloaderPlant.sysj line: 31, column: 3
                     currsigs.addElement(CMDfd);
-                    S2077=1;
+                    S2209=1;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -76,7 +76,7 @@ public class unloaderPlant extends ClockDomain{
                       currsigs.addElement(posD2S);
                       CMDfd.setPresent();//sysj\nloaderPlant.sysj line: 31, column: 3
                       currsigs.addElement(CMDfd);
-                      S2077=1;
+                      S2209=1;
                       active[1]=1;
                       ends[1]=1;
                       break RUN;
@@ -87,7 +87,7 @@ public class unloaderPlant extends ClockDomain{
                         currsigs.addElement(posA2S);
                         CMDfd.setPresent();//sysj\nloaderPlant.sysj line: 31, column: 3
                         currsigs.addElement(CMDfd);
-                        S2077=1;
+                        S2209=1;
                         active[1]=1;
                         ends[1]=1;
                         break RUN;
@@ -98,7 +98,7 @@ public class unloaderPlant extends ClockDomain{
                           currsigs.addElement(closeGripper2S);
                           CMDfd.setPresent();//sysj\nloaderPlant.sysj line: 31, column: 3
                           currsigs.addElement(CMDfd);
-                          S2077=1;
+                          S2209=1;
                           active[1]=1;
                           ends[1]=1;
                           break RUN;
@@ -109,7 +109,7 @@ public class unloaderPlant extends ClockDomain{
                             currsigs.addElement(openGripper2S);
                             CMDfd.setPresent();//sysj\nloaderPlant.sysj line: 31, column: 3
                             currsigs.addElement(CMDfd);
-                            S2077=1;
+                            S2209=1;
                             active[1]=1;
                             ends[1]=1;
                             break RUN;
@@ -118,7 +118,7 @@ public class unloaderPlant extends ClockDomain{
                             System.out.println("CMD2 not working " + (CMD2.getpreval() == null ? null : ((String)CMD2.getpreval())));//sysj\nloaderPlant.sysj line: 29, column: 4
                             CMDfd.setPresent();//sysj\nloaderPlant.sysj line: 31, column: 3
                             currsigs.addElement(CMDfd);
-                            S2077=1;
+                            S2209=1;
                             active[1]=1;
                             ends[1]=1;
                             break RUN;
@@ -136,8 +136,8 @@ public class unloaderPlant extends ClockDomain{
               }
             
             case 1 : 
-              S2077=1;
-              S2077=0;
+              S2209=1;
+              S2209=0;
               active[1]=1;
               ends[1]=1;
               break RUN;

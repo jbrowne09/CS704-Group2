@@ -9,40 +9,70 @@ loaderController(
 			//await(bottleAtPoint);
 			await(!CMDfb);
 			abort(CMDfb) {
-				sustain CMD("B"); //Move to bottle
 				System.out.println("Move to load point"); //#######
+				sustain CMD("B"); //Move to bottle
 			}
-			await(tick); //########################################
+			
+			//#####################################################
+			await(!tick);
+			await(tick);
+			//#####################################################
+			
 			await(!CMDfb);
 			abort(CMDfb) {
-				sustain CMD("G"); //Grip bottle
 				System.out.println("Grip load bottle"); //#########
+				sustain CMD("G"); //Grip bottle
 			}
-			await(tick); //########################################
+			
+			//#####################################################
+			await(!tick);
+			await(tick);
+			//#####################################################
+			
 			await(!CMDfb);
 			abort(CMDfb) {
-				sustain CMD("C"); //Move to turntable pos1
 				System.out.println("Move to load conveyor"); //####
+				sustain CMD("C"); //Move to turntable pos1
 			}
-			await(tick); //########################################
+			
+			//#####################################################
+			await(!tick);
+			await(tick);
+			//#####################################################
+			
 			await(!CMDfb);
 			abort(CMDfb) {
 				sustain CMD("D"); //Lower arm
 			}
-			await(tick); //########################################
+			
+			//#####################################################
+			await(!tick);
+			await(tick);
+			//#####################################################
+			
 			await(!CMDfb);
 			abort(CMDfb) {
-				sustain CMD("O"); //Open gripper
 				System.out.println("Ungrip load bottle"); //#######
+				sustain CMD("O"); //Open gripper
 			}
-			await(tick); //########################################
+			
+			//#####################################################
+			await(!tick);
+			await(tick);
+			//#####################################################
+			
 			await(!CMDfb);
 			abort(CMDfb) {
-				sustain CMD("A"); //Move back to original position
 				System.out.println("Move to init load"); //########
+				sustain CMD("A"); //Move back to original position
 			}
 			emit loaderDone;
-			await(tick); //########################################
+			
+			//#####################################################
+			await(!tick);
+			await(tick);
+			//#####################################################
+			
 			pause;
 		}
 	}
@@ -51,6 +81,7 @@ loaderController(
 		while(true){
 			await(tick);
 			System.out.println("doing tick");
+			await(!tick);
 		}
 	}
 }
