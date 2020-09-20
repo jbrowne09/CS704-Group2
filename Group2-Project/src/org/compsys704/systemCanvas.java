@@ -778,215 +778,215 @@ public class systemCanvas extends JPanel{
 		//#######################################################################################
 		//SIGNAL STATUS DISPLAY
 		
-//		//loader
-//		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-//		g.setColor(Color.WHITE);
-//		g.drawString("LOADER", 16, 540);
-//		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
-//		if (this.gripLoadBottle) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("gripLoadBottle", 148, 540);
-//		if (this.ungripLoadBottle) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("ungripLoadBottle", 272, 540);
-//		if (this.toA) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("toA", 396, 540);
-//		if (this.toB) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("toB", 520, 540);
-//		if (this.toC) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("toC", 644, 540);
-//		
-//		//unloader
-//		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-//		g.setColor(Color.WHITE);
-//		g.drawString("UNLOADER", 16, 572);
-//		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
-//		if (this.gripUnloadBottle) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("gripUnloadBottle", 148, 572);
-//		if (this.ungripUnloadBottle) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("ungripUnloadBottle", 272, 572);
-//		if (this.toA2) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("toA2", 396, 572);
-//		if (this.toB2) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("toB2", 520, 572);
-//		if (this.toC2) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("toC2", 644, 572);
-//		
-//		//conveyor
-//		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-//		g.setColor(Color.WHITE);
-//		g.drawString("CONVEYOR", 16, 604);
-//		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
-//		if (this.bottleLeft5) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("bottleLeft5", 148, 604);
-//		if (this.motor) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("motor", 272, 604);
-//		
-//		//rotary table
-//		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-//		g.setColor(Color.WHITE);
-//		g.drawString("ROTARY", 16, 636);
-//		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
-//		if (this.bottlePos1) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("bottlePos1", 148, 636);
-//		if (this.bottlePos2) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("bottlePos2", 272, 636);
-//		if (this.bottlePos3) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("bottlePos3", 396, 636);
-//		if (this.bottlePos4) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("bottlePos4", 520, 636);
-//		if (this.bottlePos5) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("bottlePos5", 644, 636);
-//		if (this.rotate) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("rotate", 768, 636);
-//		
-//		//filler
-//		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-//		g.setColor(Color.WHITE);
-//		g.drawString("FILLER", 16, 668);
-//		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
-//		if (this.liquidPos1) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("liquidPos1", 148, 668);
-//		if (this.liquidPos2) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("liquidPos2", 272, 668);
-//		if (this.liquidPos3) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("liquidPos3", 396, 668);
-//		if (this.liquidPos4) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("liquidPos4", 520, 668);
-//		if (this.NbottleFilled) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("NbottleFilled", 644, 668);	
-//		
-//		//Capper
-//		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-//		g.setColor(Color.WHITE);
-//		g.drawString("CAPPER", 16, 700);
-//		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
-//		if (this.clampBottle) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("clampBottle", 148, 700);
-//		if (this.gripCap) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("gripCap", 272, 700);
-//		if (this.gripDown) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("gripDown", 396, 700);
-//		if (this.twistGrip) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("twistGrip", 520, 700);
-//		if (this.untwistGrip) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("untwistGrip", 644, 700);
-//		if (this.NbottleCapped) {
-//			g.setColor(new Color(50, 150, 50));
-//		} else {
-//			g.setColor(Color.BLACK);
-//		}
-//		g.drawString("NbottleCapped", 768, 700);
+		//loader
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+		g.setColor(Color.WHITE);
+		g.drawString("LOADER", 16, 540);
+		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
+		if (this.gripLoadBottle) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("gripLoadBottle", 148, 540);
+		if (this.ungripLoadBottle) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("ungripLoadBottle", 272, 540);
+		if (this.toA) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("toA", 396, 540);
+		if (this.toB) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("toB", 520, 540);
+		if (this.toC) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("toC", 644, 540);
+		
+		//unloader
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+		g.setColor(Color.WHITE);
+		g.drawString("UNLOADER", 16, 572);
+		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
+		if (this.gripUnloadBottle) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("gripUnloadBottle", 148, 572);
+		if (this.ungripUnloadBottle) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("ungripUnloadBottle", 272, 572);
+		if (this.toA2) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("toA2", 396, 572);
+		if (this.toB2) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("toB2", 520, 572);
+		if (this.toC2) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("toC2", 644, 572);
+		
+		//conveyor
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+		g.setColor(Color.WHITE);
+		g.drawString("CONVEYOR", 16, 604);
+		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
+		if (this.bottleLeft5) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("bottleLeft5", 148, 604);
+		if (this.motor) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("motor", 272, 604);
+		
+		//rotary table
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+		g.setColor(Color.WHITE);
+		g.drawString("ROTARY", 16, 636);
+		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
+		if (this.bottlePos1) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("bottlePos1", 148, 636);
+		if (this.bottlePos2) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("bottlePos2", 272, 636);
+		if (this.bottlePos3) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("bottlePos3", 396, 636);
+		if (this.bottlePos4) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("bottlePos4", 520, 636);
+		if (this.bottlePos5) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("bottlePos5", 644, 636);
+		if (this.rotate) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("rotate", 768, 636);
+		
+		//filler
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+		g.setColor(Color.WHITE);
+		g.drawString("FILLER", 16, 668);
+		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
+		if (this.liquidPos1) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("liquidPos1", 148, 668);
+		if (this.liquidPos2) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("liquidPos2", 272, 668);
+		if (this.liquidPos3) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("liquidPos3", 396, 668);
+		if (this.liquidPos4) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("liquidPos4", 520, 668);
+		if (this.NbottleFilled) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("NbottleFilled", 644, 668);	
+		
+		//Capper
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+		g.setColor(Color.WHITE);
+		g.drawString("CAPPER", 16, 700);
+		g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
+		if (this.clampBottle) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("clampBottle", 148, 700);
+		if (this.gripCap) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("gripCap", 272, 700);
+		if (this.gripDown) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("gripDown", 396, 700);
+		if (this.twistGrip) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("twistGrip", 520, 700);
+		if (this.untwistGrip) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("untwistGrip", 644, 700);
+		if (this.NbottleCapped) {
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("NbottleCapped", 768, 700);
 		
 		//END OF SIGNAL STATUS DISPLAY
 		//#######################################################################################
