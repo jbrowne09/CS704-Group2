@@ -257,197 +257,233 @@ public class systemCanvas extends JPanel{
 		g.drawImage(systemBackground, 0, 0, null);
 		Graphics2D g2 = (Graphics2D) g;
 		
+		//conveyor	
+		this.bottleLeft5 = States.bottleLeft5;
+		this.motor = States.MOTOR;
+		
+		//rotary-table
+		this.bottlePos1 = States.bottlePos1;
+		this.bottlePos2 = States.bottlePos2;
+		this.bottlePos3 = States.bottlePos3;
+		this.bottlePos4 = States.bottlePos4;
+		this.bottlePos5 = States.bottlePos5;
+		this.rotate = States.rotate;
+		
+		//filler
+		//this.liquidPos1 = States.liquidPos1;
+		//this.liquidPos2 = States.liquidPos2;
+		//this.liquidPos3 = States.liquidPos3;
+		//this.liquidPos4 = States.liquidPos4;
+		
+		//capper	
+		//this.clampBottle = 
+		//this.gripCap = 
+		//this.gripDown = States.gripperLowered;
+		//this.twistGrip = States.gripperTurned;
+		//this.untwistGrip = States.gripperInit;
+		
+		//bottle-loader
 		this.gripLoadBottle = States.gripContainer;
 		this.ungripLoadBottle = States.releaseContainer;
 		this.toA = States.armtoA;
 		this.toB = States.armtoB;
 		this.toC = States.armtoC;
 		
-		//TEMPORARY
+		//bottle-unloader
+		this.gripUnloadBottle = States.gripContainer2;
+		this.ungripUnloadBottle = States.releaseContainer2;
+		this.toA2 = States.armtoA2;
+		this.toB2 = States.armtoB2;
+		this.toC2 = States.armtoC2;
+		
+		//TEMPORARY (forcing bottleAtLoad to be true initially)
 		if (loadPosX == -1) {
 			loadPosX = 81;
 			loadPosY = 448;
 		}
+			
+		//#######################################################################################
+		//UPDATING ANIMATION STATUS BELOW
 		
-		//if (this.tick) { OLD TICK IF
+		//Loading Arm
+		if(this.bottleAtLoad) {
+			loadPosX = 81;
+			loadPosY = 448;
+		}
+		if(this.toA) {
+			moveToLoadInit = true;
+		} else {
+			moveToLoadInit = false;
+		}
+		if(this.toB) {
+			moveToLoadPoint = true;
+		} else {
+			moveToLoadPoint = false;
+		}
+		if(this.toC) {
+			moveToLoadConv = true;
+		} else {
+			moveToLoadConv = false;
+		}
 			
-			//Loading Arm
-			if(this.bottleAtLoad) {
-				loadPosX = 81;
-				loadPosY = 448;
+		//Unloading Arm
+		if(this.bottleLeft5) {
+			unloadPosX = 814;
+			unloadPosY = 320;
+		}
+		if(this.toA2) {
+			moveToUnloadInit = true;
+		} else {
+			moveToUnloadInit = false;
+		}
+		if(this.toB2) {
+			moveToUnloadPoint = true;
+		} else {
+			moveToUnloadPoint = false;
+		}
+		if(this.toC2) {
+			moveToUnloadConv = true;
+		} else {
+			moveToUnloadConv = false;
+		}
+			
+		//Conveyor and updating grip status of unload/load bottles
+		if (this.gripLoadBottle) {
+			if (loadArmX == loadPosX && loadArmY == loadPosY) {
+				grippedLoadBottle = true;
 			}
-			if(this.toA) {
-				moveToLoadInit = true;
-			} else {
-				moveToLoadInit = false;
+		} 
+		if (this.ungripLoadBottle) {
+			if (!(loadPosX == 81 && loadPosY == 448)) {
+				if (loadPosX == 209 && loadPosY == 320) {
+					loadConvPos = 179;
+				}
+				loadPosX = -1;
+				loadPosY = -1;
 			}
-			if(this.toB) {
-				moveToLoadPoint = true;
-			} else {
-				moveToLoadPoint = false;
+			grippedLoadBottle = false;
+		}
+		if (this.gripUnloadBottle) {
+			if (unloadArmX == unloadPosX && unloadArmY == unloadPosY) {
+				grippedUnloadBottle = true;
 			}
-			if(this.toC) {
-				moveToLoadConv = true;
-			} else {
-				moveToLoadConv = false;
+			if (unloadPosX == 814 && loadPosY == 320) {
+				unloadConvPos = -1;
+			}
+		} 
+		if (this.ungripUnloadBottle) {
+			if (!(unloadPosX == 814 && loadPosY == 320)) {
+				unloadPosX = -1;
+				unloadPosY = -1;
+			}
+			grippedUnloadBottle = false;
+		}
+		
+		if(this.bottlePos1) {
+			if (!(this.loadConvPos == 179)) { 
+				loadConvPos = -1;
 			}
 			
-			//Unloading Arm
-			if(this.bottleLeft5) {
-				unloadPosX = 814;
-				unloadPosY = 320;
-			}
-			if(this.toA2) {
-				moveToUnloadInit = true;
-			} else {
-				moveToUnloadInit = false;
-			}
-			if(this.toB2) {
-				moveToUnloadPoint = true;
-			} else {
-				moveToUnloadPoint = false;
-			}
-			if(this.toC2) {
-				moveToUnloadConv = true;
-			} else {
-				moveToUnloadConv = false;
+			pos1X = 401;
+			pos1Y = 320;
+		}
+		if(this.bottlePos5) {
+			if (!this.bottlePos4) {
+				pos4X = -1;
+				pos4Y = -1;
 			}
 			
-			//Conveyor and updating grip status of unload/load bottles
-			if (this.gripLoadBottle) {
-				if (loadArmX == loadPosX && loadArmY == loadPosY) {
-					grippedLoadBottle = true;
-				}
-			} 
-			if (this.ungripLoadBottle) {
-				if (!(loadPosX == 81 && loadPosY == 448)) {
-					if (loadPosX == 209 && loadPosY == 320) {
-						loadConvPos = 179;
-					}
-					loadPosX = -1;
-					loadPosY = -1;
-				}
-				grippedLoadBottle = false;
-			}
-			if (this.gripUnloadBottle) {
-				if (unloadArmX == unloadPosX && unloadArmY == unloadPosY) {
-					grippedUnloadBottle = true;
-				}
-				if (unloadPosX == 814 && loadPosY == 320) {
-					unloadConvPos = -1;
-				}
-			} 
-			if (this.ungripUnloadBottle) {
-				if (!(unloadPosX == 814 && loadPosY == 320)) {
-					unloadPosX = -1;
-					unloadPosY = -1;
-				}
-				grippedUnloadBottle = false;
+			unloadConvPos = 593;
+		}
+		if(this.bottleLeft5) {
+			if (!this.bottlePos5) {
+				unloadConvPos = -1;
 			}
 			
-			if(this.bottlePos1) {
-				if (!(this.loadConvPos == 179)) { 
-					loadConvPos = -1;
-				}
+			unloadPosX = 814;
+			unloadPosY = 320;
+		}
+		if(this.motor) {
+			motorRunning = true;
+		} else {
+			motorRunning = false;
+		}
+		
+		//Rotary-Table
+		if(this.bottlePos2) {
+			if (!this.bottlePos1) {
+				pos1X = -1;
+				pos1Y = -1;
+			}
+			
+			pos2X = 401;
+			pos2Y = 192;
+		}
+		if(this.bottlePos3) {
+			if(!this.bottlePos2) {
+				pos2X = -1;
+				pos2Y = -1;
+			}
 				
-				pos1X = 401;
-				pos1Y = 320;
-			}
-			if(this.bottlePos5) {
-				if (!this.bottlePos4) {
-					pos4X = -1;
-					pos4Y = -1;
-				}
-				
-				unloadConvPos = 593;
-			}
-			if(this.bottleLeft5) {
-				if (!this.bottlePos5) {
-					unloadConvPos = -1;
-				}
-				
-				unloadPosX = 814;
-				unloadPosY = 320;
-			}
-			if(this.motor) {
-				motorRunning = true;
-			} else {
-				motorRunning = false;
+			pos3X = 512;
+			pos3Y = 128;
+		}
+		if(this.bottlePos4) {
+			if(!this.bottlePos3) {
+				pos3X = -1;
+				pos3Y = -1;
 			}
 			
-			//Rotary-Table
-			if(this.bottlePos2) {
-				if (!this.bottlePos1) {
-					pos1X = -1;
-					pos1Y = -1;
-				}
-				
-				pos2X = 401;
-				pos2Y = 192;
-			}
-			if(this.bottlePos3) {
-				if(!this.bottlePos2) {
-					pos2X = -1;
-					pos2Y = -1;
-				}
-				
-				pos3X = 512;
-				pos3Y = 128;
-			}
-			if(this.bottlePos4) {
-				if(!this.bottlePos3) {
-					pos3X = -1;
-					pos3Y = -1;
-				}
-				
-				pos4X = 623;
-				pos4Y = 192;
-			}
-			if(this.rotate) {
-				rotating = true;
-			} else {
-				rotating = false;
-			}
+			pos4X = 623;
+			pos4Y = 192;
+		}
+		if(this.rotate) {
+			rotating = true;
+		} else {
+			rotating = false;
+		}
+		
+		//Filler
+		if(this.liquidPos1) {
+			selectedNozzle = 1;
+			moveNozzle = true;
+		} else if (this.liquidPos2) {
+			selectedNozzle = 2;
+			moveNozzle = true;
+		} else if (this.liquidPos3) {
+			selectedNozzle = 3;
+			moveNozzle = true;
+		} else if (this.liquidPos4) {
+			selectedNozzle = 4;
+			moveNozzle = true;
+		} else {
+			moveNozzle = false;
+		}
 			
-			//Filler
-			if(this.liquidPos1) {
-				selectedNozzle = 1;
-				moveNozzle = true;
-			} else if (this.liquidPos2) {
-				selectedNozzle = 2;
-				moveNozzle = true;
-			} else if (this.liquidPos3) {
-				selectedNozzle = 3;
-				moveNozzle = true;
-			} else if (this.liquidPos4) {
-				selectedNozzle = 4;
-				moveNozzle = true;
-			} else {
-				moveNozzle = false;
-			}
-			
-			//Capper
-			if (this.gripDown) {
-				moveGrip = true;
-			} else {
-				moveGrip = false;
-			}
-			if (this.gripCap) {
-				tightGrip = true;
-			} else {
-				tightGrip = false;
-			}
-			if (this.clampBottle) {
-				clamp = true;
-			} else {
-				clamp = false;
-			}
-			if (this.twistGrip) {
-				rotateGrip = true;
-			} else {
-				rotateGrip = false;
-			}
-		//} END OF OLD TICK IF
+		//Capper
+		if (this.gripDown) {
+			moveGrip = true;
+		} else {
+			moveGrip = false;
+		}
+		if (this.gripCap) {
+			tightGrip = true;
+		} else {
+			tightGrip = false;
+		}
+		if (this.clampBottle) {
+			clamp = true;
+		} else {
+			clamp = false;
+		}
+		if (this.twistGrip) {
+			rotateGrip = true;
+		} else if (this.untwistGrip) {
+			rotateGrip = false;
+		}
+		//END OF UPDATING ANIMATION STATUS
+		//#######################################################################################
+		
 		
 		//drawing loading bottle/arm
 		if (moveToLoadPoint) {
@@ -739,8 +775,7 @@ public class systemCanvas extends JPanel{
 		g2.drawLine(grip1X1, grip1Y1, grip1X2, grip1Y2);
 		g2.drawLine(grip2X1, grip2Y1, grip2X2, grip2Y2);
 		
-		//reset tick at end
-		this.tick = false;
+		
 		g2.dispose();
 //		
 //		if(States.MOTOR && this.bottlePos > 712) {
