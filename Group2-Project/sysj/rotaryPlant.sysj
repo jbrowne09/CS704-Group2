@@ -1,7 +1,7 @@
 rotaryPlant(
 		input signal rotate;
 		output signal aligned, bottlePos5, capPos1; //To controller
-		output signal alignedS, bottlePos5S, capPos1S, rotateS; //To viz
+		output signal alignedS, bottlePos5S, bottlePos2S, capPos1S, rotateS, bottlePos1S; //To viz
 		)
 ->{
 	//Still need to output bottlePos5 and capPos1 somewhere
@@ -9,10 +9,22 @@ rotaryPlant(
 	{//Rotation
 		while(true){
 			await(rotate);
-			//abort (!rotate) {
-			//	emit rotateS;
-				System.out.print("rotate?");
-			//}
+			emit rotateS;
+		}
+	}
+	||
+	{
+		while(true) {
+			//emit bottlePos1S;
+		
+			present(bottlePos1S){
+				await(rotate);
+				emit bottlePos2S;
+			}
+			else {
+				sustain bottlePos1S;
+			}
+			pause;
 		}
 	}
 	||
@@ -22,8 +34,8 @@ rotaryPlant(
 		{while(true) {present(bottlePos5) {emit bottlePos5S;} pause;}}
 		||
 		{while(true) {present(capPos1) {emit capPos1S;} pause;}}
-		||
-		{while(true) {present(rotate) {emit rotateS;} pause;}}
+		//||
+		//{while(true) {present(bottlePos2) {emit bottlePos2S;} pause;}}
 	}
 	
 }

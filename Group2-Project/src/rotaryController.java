@@ -18,143 +18,12 @@ public class rotaryController extends ClockDomain{
   public Signal enableRotary = new Signal("enableRotary", Signal.INPUT);
   public Signal rotate = new Signal("rotate", Signal.OUTPUT);
   public Signal rotaryDone = new Signal("rotaryDone", Signal.OUTPUT);
-  private Signal help_1;
-  private long __start_thread_3;//sysj\rotaryController.sysj line: 18, column: 1
-  private int S2476 = 1;
-  private int S2443 = 1;
-  private int S2433 = 1;
-  private int S2474 = 1;
-  private int S2445 = 1;
+  private int S2466 = 1;
+  private int S2432 = 1;
   
-  private int[] ends = new int[4];
-  private int[] tdone = new int[4];
+  private int[] ends = new int[2];
+  private int[] tdone = new int[2];
   
-  public void thread2482(int [] tdone, int [] ends){
-        switch(S2474){
-      case 0 : 
-        active[3]=0;
-        ends[3]=0;
-        tdone[3]=1;
-        break;
-      
-      case 1 : 
-        switch(S2445){
-          case 0 : 
-            if(rotate.getprestatus()){//sysj\rotaryController.sysj line: 20, column: 9
-              System.out.println("waiting");//sysj\rotaryController.sysj line: 21, column: 3
-              S2445=1;
-              __start_thread_3 = com.systemj.Timer.getMs();//sysj\rotaryController.sysj line: 18, column: 1
-              if(com.systemj.Timer.getMs() - __start_thread_3 >= 500){//sysj\rotaryController.sysj line: 18, column: 1
-                ends[3]=2;
-                ;//sysj\rotaryController.sysj line: 18, column: 1
-                help_1.setPresent();//sysj\rotaryController.sysj line: 23, column: 4
-                currsigs.addElement(help_1);
-                System.out.println("help");//sysj\rotaryController.sysj line: 24, column: 4
-                S2474=0;
-                active[3]=0;
-                ends[3]=0;
-                tdone[3]=1;
-              }
-              else {
-                active[3]=1;
-                ends[3]=1;
-                tdone[3]=1;
-              }
-            }
-            else {
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            break;
-          
-          case 1 : 
-            if(com.systemj.Timer.getMs() - __start_thread_3 >= 500){//sysj\rotaryController.sysj line: 18, column: 1
-              ends[3]=2;
-              ;//sysj\rotaryController.sysj line: 18, column: 1
-              help_1.setPresent();//sysj\rotaryController.sysj line: 23, column: 4
-              currsigs.addElement(help_1);
-              System.out.println("help");//sysj\rotaryController.sysj line: 24, column: 4
-              S2474=0;
-              active[3]=0;
-              ends[3]=0;
-              tdone[3]=1;
-            }
-            else {
-              active[3]=1;
-              ends[3]=1;
-              tdone[3]=1;
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread2481(int [] tdone, int [] ends){
-        switch(S2443){
-      case 0 : 
-        active[2]=0;
-        ends[2]=0;
-        tdone[2]=1;
-        break;
-      
-      case 1 : 
-        switch(S2433){
-          case 0 : 
-            if(tick.getprestatus()){//sysj\rotaryController.sysj line: 10, column: 9
-              S2433=1;
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            else {
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            break;
-          
-          case 1 : 
-            if(!tick.getprestatus()){//sysj\rotaryController.sysj line: 11, column: 9
-              rotate.setPresent();//sysj\rotaryController.sysj line: 13, column: 4
-              currsigs.addElement(rotate);
-              S2433=0;
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            else {
-              active[2]=1;
-              ends[2]=1;
-              tdone[2]=1;
-            }
-            break;
-          
-        }
-        break;
-      
-    }
-  }
-
-  public void thread2479(int [] tdone, int [] ends){
-        S2474=1;
-    S2445=0;
-    active[3]=1;
-    ends[3]=1;
-    tdone[3]=1;
-  }
-
-  public void thread2478(int [] tdone, int [] ends){
-        S2443=1;
-    S2433=0;
-    active[2]=1;
-    ends[2]=1;
-    tdone[2]=1;
-  }
-
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
       ends[i] = 0;
@@ -162,53 +31,64 @@ public class rotaryController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2476){
+      switch(S2466){
         case 0 : 
-          S2476=0;
+          S2466=0;
           break RUN;
         
         case 1 : 
-          S2476=2;
-          S2476=2;
-          help_1.setClear();//sysj\rotaryController.sysj line: 7, column: 1
-          thread2478(tdone,ends);
-          thread2479(tdone,ends);
-          int biggest2480 = 0;
-          if(ends[2]>=biggest2480){
-            biggest2480=ends[2];
-          }
-          if(ends[3]>=biggest2480){
-            biggest2480=ends[3];
-          }
-          if(biggest2480 == 1){
-            active[1]=1;
-            ends[1]=1;
-            break RUN;
-          }
+          S2466=2;
+          S2466=2;
+          S2432=0;
+          active[1]=1;
+          ends[1]=1;
+          break RUN;
         
         case 2 : 
-          help_1.setClear();//sysj\rotaryController.sysj line: 7, column: 1
-          thread2481(tdone,ends);
-          thread2482(tdone,ends);
-          int biggest2483 = 0;
-          if(ends[2]>=biggest2483){
-            biggest2483=ends[2];
-          }
-          if(ends[3]>=biggest2483){
-            biggest2483=ends[3];
-          }
-          if(biggest2483 == 1){
-            active[1]=1;
-            ends[1]=1;
-            break RUN;
-          }
-          //FINXME code
-          if(biggest2483 == 0){
-            S2476=0;
-            active[1]=0;
-            ends[1]=0;
-            S2476=0;
-            break RUN;
+          switch(S2432){
+            case 0 : 
+              if(tick.getprestatus()){//sysj\rotaryController.sysj line: 9, column: 9
+                S2432=1;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 1 : 
+              if(!tick.getprestatus()){//sysj\rotaryController.sysj line: 10, column: 9
+                S2432=2;
+                rotate.setPresent();//sysj\rotaryController.sysj line: 12, column: 4
+                currsigs.addElement(rotate);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 2 : 
+              if(tick.getprestatus()){//sysj\rotaryController.sysj line: 11, column: 9
+                S2432=0;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                rotate.setPresent();//sysj\rotaryController.sysj line: 12, column: 4
+                currsigs.addElement(rotate);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
           }
         
       }
@@ -216,14 +96,13 @@ public class rotaryController extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0};
+    char [] active1 = {1, 1};
+    char [] paused1 = {0, 0};
+    char [] suspended1 = {0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
     // Now instantiate all the local signals ONLY
-    help_1 = new Signal();
     // --------------------------------------------------
   }
   
@@ -254,7 +133,6 @@ public class rotaryController extends ClockDomain{
       enableRotary.setpreclear();
       rotate.setpreclear();
       rotaryDone.setpreclear();
-      help_1.setpreclear();
       int dummyint = 0;
       for(int qw=0;qw<currsigs.size();++qw){
         dummyint = ((Signal)currsigs.elementAt(qw)).getStatus() ? ((Signal)currsigs.elementAt(qw)).setprepresent() : ((Signal)currsigs.elementAt(qw)).setpreclear();
@@ -280,7 +158,6 @@ public class rotaryController extends ClockDomain{
       rotate.setClear();
       rotaryDone.sethook();
       rotaryDone.setClear();
-      help_1.setClear();
       if(paused[1]!=0 || suspended[1]!=0 || active[1]!=1);
       else{
         aligned.gethook();

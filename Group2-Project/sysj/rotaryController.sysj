@@ -4,35 +4,19 @@ rotaryController(
 )
 
 ->{ 
-signal help;
 {
 	while(true){
 		await(tick);
 		await(!tick);
-		//abort(help){
-			emit rotate;
-		//}
+		abort(tick){
+			sustain rotate;
+		}
 	}
 }
-||
-{
-//	while(true) {
-		await(rotate);
-		System.out.println("waiting");
-			waitl(500 ms);
-			emit help;
-			System.out.println("help");
-//	}
-}
+
 }
 		//await(enableRotary);
 		//abort(!capPos1 && !bottlePos5){
 		//	System.out.println("cap on bottle in Pos1 or Pos5, please remove it");
 		//	halt;
 		//}
-		//abort(aligned){
-		//System.out.println("rotating");
-		//	sustain rotate;
-		//}
-		//System.out.println("aligned");
-		//emit rotaryDone;
