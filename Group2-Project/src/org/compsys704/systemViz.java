@@ -89,7 +89,7 @@ public class systemViz extends JFrame implements ActionListener {
 		//tick.addActionListener(this);
 		tick.addActionListener(new SignalClient(10000, "LControllerCD.tick"));
 		tick.addActionListener(new SignalClient(10000, "ULControllerCD.tick"));
-		tick.addActionListener(new SignalClient(10000, "RControllerCD.tick"));
+		tick.addActionListener(new SignalClient(10001, "RPlantCD.tick"));
 		tick.setFont(bold);
 		
 		//conveyor

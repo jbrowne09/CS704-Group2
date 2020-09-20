@@ -50,9 +50,8 @@ rotaryPlant(
 	//Needs additional bottlePosS signals for visualiser
 	{
 		await(!tick);
-		await(tick);
-		
-		abort(rotate) {
+		abort(tick) {
+			System.out.println("emitting bottlePos1");
 			while(true) {
 				emit aligned;
 				emit bottlePos1;
@@ -61,9 +60,9 @@ rotaryPlant(
 		}
 		
 		await(!tick);
-		await(tick);
-		
-		abort(rotate) {
+		abort(tick) {
+			await(rotate);
+			System.out.println("emitting bottlePos2");
 			while(true) {
 				emit aligned;
 				emit bottlePos2;
@@ -71,10 +70,10 @@ rotaryPlant(
 			}
 		}
 		
-		await(!tick);
-		await(tick);
-		
-		abort(rotate) {
+		await(!tick);	
+		abort(tick) {
+			await(rotate);
+			System.out.println("emitting bottlePos3");
 			while(true) {
 				emit aligned;
 				emit bottlePos3;
@@ -82,10 +81,10 @@ rotaryPlant(
 			}
 		}
 		
-		await(!tick);
-		await(tick);
-		
-		abort(rotate) {
+		await(!tick);	
+		abort(tick) {
+			await(rotate);
+			System.out.println("emitting bottlePos4");
 			while(true) {
 				emit aligned;
 				emit bottlePos4;
@@ -94,9 +93,9 @@ rotaryPlant(
 		}
 		
 		await(!tick);
-		await(tick);
-		
-		abort(rotate) {
+		abort(tick) {
+			await(rotate);
+			System.out.println("emitting bottlePos5");
 			while(true) {
 				emit aligned;
 				emit bottlePos5;
@@ -117,5 +116,13 @@ rotaryPlant(
 		{ while(true) { present (bottlePos5) {emit bottlePos5S;} pause;}}
 		||
 		{ while(true) { present (rotate) {emit rotateS;} pause;}}
+	}
+	||
+	{//tick status (for debug)
+		while(true) {
+			await(tick);
+			System.out.println("tick");
+			await(!tick);
+		}
 	}
 }

@@ -17,6 +17,7 @@ public class rotaryController extends ClockDomain{
   public Signal bottlePos4 = new Signal("bottlePos4", Signal.INPUT);
   public Signal bottlePos5 = new Signal("bottlePos5", Signal.INPUT);
   public Signal aligned = new Signal("aligned", Signal.INPUT);
+  public Signal enableRotary = new Signal("enableRotary", Signal.INPUT);
   public Signal rotate = new Signal("rotate", Signal.OUTPUT);
   public Signal rotaryDone = new Signal("rotaryDone", Signal.OUTPUT);
   private int S2558 = 1;
@@ -43,9 +44,9 @@ public class rotaryController extends ClockDomain{
       case 1 : 
         switch(S2534){
           case 0 : 
-            if(bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 53, column: 10
+            if(bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 52, column: 10
               S2534=1;
-              rotate.setPresent();//sysj\rotaryController.sysj line: 55, column: 5
+              rotate.setPresent();//sysj\rotaryController.sysj line: 54, column: 5
               currsigs.addElement(rotate);
               active[5]=1;
               ends[5]=1;
@@ -59,14 +60,14 @@ public class rotaryController extends ClockDomain{
             break;
           
           case 1 : 
-            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 54, column: 10
+            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 53, column: 10
               S2534=0;
               active[5]=1;
               ends[5]=1;
               tdone[5]=1;
             }
             else {
-              rotate.setPresent();//sysj\rotaryController.sysj line: 55, column: 5
+              rotate.setPresent();//sysj\rotaryController.sysj line: 54, column: 5
               currsigs.addElement(rotate);
               active[5]=1;
               ends[5]=1;
@@ -91,9 +92,9 @@ public class rotaryController extends ClockDomain{
       case 1 : 
         switch(S2502){
           case 0 : 
-            if(bottlePos3.getprestatus()){//sysj\rotaryController.sysj line: 44, column: 10
+            if(bottlePos3.getprestatus()){//sysj\rotaryController.sysj line: 43, column: 10
               S2502=1;
-              rotate.setPresent();//sysj\rotaryController.sysj line: 46, column: 5
+              rotate.setPresent();//sysj\rotaryController.sysj line: 45, column: 5
               currsigs.addElement(rotate);
               active[4]=1;
               ends[4]=1;
@@ -107,14 +108,14 @@ public class rotaryController extends ClockDomain{
             break;
           
           case 1 : 
-            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 45, column: 10
+            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 44, column: 10
               S2502=0;
               active[4]=1;
               ends[4]=1;
               tdone[4]=1;
             }
             else {
-              rotate.setPresent();//sysj\rotaryController.sysj line: 46, column: 5
+              rotate.setPresent();//sysj\rotaryController.sysj line: 45, column: 5
               currsigs.addElement(rotate);
               active[4]=1;
               ends[4]=1;
@@ -139,9 +140,9 @@ public class rotaryController extends ClockDomain{
       case 1 : 
         switch(S2470){
           case 0 : 
-            if(bottlePos2.getprestatus()){//sysj\rotaryController.sysj line: 35, column: 10
+            if(bottlePos2.getprestatus()){//sysj\rotaryController.sysj line: 34, column: 10
               S2470=1;
-              rotate.setPresent();//sysj\rotaryController.sysj line: 37, column: 5
+              rotate.setPresent();//sysj\rotaryController.sysj line: 36, column: 5
               currsigs.addElement(rotate);
               active[3]=1;
               ends[3]=1;
@@ -155,14 +156,14 @@ public class rotaryController extends ClockDomain{
             break;
           
           case 1 : 
-            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 36, column: 10
+            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 35, column: 10
               S2470=0;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
             }
             else {
-              rotate.setPresent();//sysj\rotaryController.sysj line: 37, column: 5
+              rotate.setPresent();//sysj\rotaryController.sysj line: 36, column: 5
               currsigs.addElement(rotate);
               active[3]=1;
               ends[3]=1;
@@ -187,9 +188,9 @@ public class rotaryController extends ClockDomain{
       case 1 : 
         switch(S2438){
           case 0 : 
-            if(bottlePos1.getprestatus()){//sysj\rotaryController.sysj line: 26, column: 10
+            if(bottlePos1.getprestatus()){//sysj\rotaryController.sysj line: 25, column: 10
               S2438=1;
-              rotate.setPresent();//sysj\rotaryController.sysj line: 28, column: 5
+              rotate.setPresent();//sysj\rotaryController.sysj line: 27, column: 5
               currsigs.addElement(rotate);
               active[2]=1;
               ends[2]=1;
@@ -203,14 +204,14 @@ public class rotaryController extends ClockDomain{
             break;
           
           case 1 : 
-            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 27, column: 10
+            if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 26, column: 10
               S2438=0;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
             }
             else {
-              rotate.setPresent();//sysj\rotaryController.sysj line: 28, column: 5
+              rotate.setPresent();//sysj\rotaryController.sysj line: 27, column: 5
               currsigs.addElement(rotate);
               active[2]=1;
               ends[2]=1;
@@ -358,6 +359,7 @@ public class rotaryController extends ClockDomain{
           bottlePos4.gethook();
           bottlePos5.gethook();
           aligned.gethook();
+          enableRotary.gethook();
           df = true;
         }
         runClockDomain();
@@ -368,6 +370,7 @@ public class rotaryController extends ClockDomain{
       bottlePos4.setpreclear();
       bottlePos5.setpreclear();
       aligned.setpreclear();
+      enableRotary.setpreclear();
       rotate.setpreclear();
       rotaryDone.setpreclear();
       int dummyint = 0;
@@ -394,6 +397,9 @@ public class rotaryController extends ClockDomain{
       dummyint = aligned.getStatus() ? aligned.setprepresent() : aligned.setpreclear();
       aligned.setpreval(aligned.getValue());
       aligned.setClear();
+      dummyint = enableRotary.getStatus() ? enableRotary.setprepresent() : enableRotary.setpreclear();
+      enableRotary.setpreval(enableRotary.getValue());
+      enableRotary.setClear();
       rotate.sethook();
       rotate.setClear();
       rotaryDone.sethook();
@@ -406,6 +412,7 @@ public class rotaryController extends ClockDomain{
         bottlePos4.gethook();
         bottlePos5.gethook();
         aligned.gethook();
+        enableRotary.gethook();
       }
       runFinisher();
       if(active[1] == 0){

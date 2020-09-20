@@ -2,7 +2,7 @@ rotaryController(
 //    input signal aligned, bottlePos5, capPos1, tick, enableRotary; 
     
     //adjusted input signals from plant
-    input signal bottlePos1, bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned;
+    input signal bottlePos1, bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned, enableRotary;
     
     output signal rotate, rotaryDone;
 )
@@ -17,7 +17,6 @@ rotaryController(
 //			}
 //		}
 //	}
-	
 	
 	//Controller implementation for if tick is moved to plant, considers multiple bottles but
 	//completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
