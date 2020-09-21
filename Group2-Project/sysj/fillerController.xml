@@ -2,23 +2,15 @@
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="FControllerCD" Class="fillerController">
 		
-			<iSignal Name="bottlePos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="canBottom" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="canTop" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="liquid1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
-			<iSignal Name="liquid2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
-			<iSignal Name="liquid3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
-			<iSignal Name="liquid4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
 			<iSignal Name="fillerEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
-				 	
+			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11004" />
+			
 			<oSignal Name="inletOn" To="FPlantCD.inletOn" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="injectorOn" To="FPlantCD.injectorOn" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="valveRetract" To="FPlantCD.valveRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="valveExtend" To="FPlantCD.valveExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="liquidPos1" To="FPlantCD.liquidPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="liquidPos2" To="FPlantCD.liquidPos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="liquidPos3" To="FPlantCD.liquidPos3" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="liquidPos4" To="FPlantCD.liquidPos4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="fillerDone" To="MControllerCD.fillerDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 
 		</ClockDomain>

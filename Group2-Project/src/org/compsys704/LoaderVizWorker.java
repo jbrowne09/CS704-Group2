@@ -114,7 +114,7 @@ public class LoaderVizWorker extends Worker{
 				System.exit(1);
 		}
 	}  
-
+	
 	static final List<String> signames = Arrays.asList("bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S", "bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "gripCapS", "bottleClampedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS", "posBS", "posCS", "posDS", "posAS", "closeGripperS", "openGripperS", "posB2S", "posC2S", "posD2S", "posA2S", "closeGripper2S", "openGripper2S");
 	@Override
 	public boolean hasSignal(String sn) {
