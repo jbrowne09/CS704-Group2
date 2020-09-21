@@ -1,29 +1,103 @@
 mainController(
-    input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, tick;
-    output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable, bottleToLoad; //To controllers
-)
-
+	
+	//Conveyor to Main
+	input signal NbottleLeft5, NbottlePos1;
+	
+	//Rotary to Main
+	input signal NbottlePos2, NbottlePos3, NbottlePos4, NbottlePos5, Naligned;
+	
+	//Main to Controllers
+	output signal conveyorEnable, rotaryEnable;
+	
+	//Main to Rotary Plant
+	output signal NRbottlePos1, NRmotor;
+	
+	//Main to Conveyor Plant
+	output signal NCbottlePos5;
+	)
 ->{
-	while(true){
-		//await(tick);
-		System.out.println("sustaining bottle to load");
-		abort(loaderDone) {
-			sustain bottleToLoad;
+//	while(true){
+//		//await(tick);
+//		System.out.println("sustaining bottle to load");
+//		abort(loaderDone) {
+//			sustain bottleToLoad;
+//		}
+//		System.out.println("exit loader");
+//		abort(conveyorDone) {
+//		System.out.println("conveyor");
+//			sustain conveyorEnable;
+//		}
+//		
+//		System.out.println("halting");
+//		halt;
+//		abort(rotaryDone) {
+//			sustain rotaryEnable;
+//		}
+//		abort(capperDone) {
+//			sustain capperEnable;
+//		}
+//	}
+	
+	//Conveyor Control
+	//Currently ignoring loaderDone signal
+	{
+		while(true){
+			//await(loaderDone);
+			await(!NbottlePos1); //TEMPORARY FOR TESTING
+			
+			abort(!NbottlePos1 && !NbottleLeft5){
+				halt;
+			}
+				
+			abort(NbottlePos1 || NbottleLeft5){
+				sustain conveyorEnable;
+			}
 		}
-		System.out.println("exit loader");
-		abort(conveyorDone) {
-		System.out.println("conveyor");
-			sustain conveyorEnable;
+	}
+	||
+	{
+		while(true){
+			//await(NbottlePos5);
+			await(!NbottleLeft5); //TEMPORARY FOR TESTING
+			
+			abort(!NbottlePos1 && !NbottleLeft5){
+				halt;
+			}
+			
+			abort(NbottlePos1 || NbottleLeft5){
+				sustain conveyorEnable;
+			}
 		}
-		
-		System.out.println("halting");
-		halt;
-		abort(rotaryDone) {
-			sustain rotaryEnable;
+	}
+	||
+
+	//Rotary Control
+	//Considers multiple bottles but completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
+	{
+		while(true){
+			abort(NbottlePos1 || NbottlePos2 || NbottlePos3 || NbottlePos4) {
+				halt;
+			}
+			await(!NbottlePos5);
+			
+			abort(!NbottlePos1 && !NbottlePos2 && !NbottlePos3 && !NbottlePos4){
+				sustain rotaryEnable;
+			}
+			
+			abort(Naligned) {
+				sustain rotaryEnable;
+			}
 		}
-		abort(capperDone) {
-			sustain capperEnable;
-		}
+	}
+	||
+	
+	//To Plant where the signal is need for the plant to generate some signals
+	{
+		{ while(true) { present (NbottlePos1) {emit NRbottlePos1;} pause;}}
+		||
+		{ while(true) { present (conveyorEnable) {emit NRmotor;} pause;}}
+		||
+		{ while(true) { present (NbottlePos5) {emit NCbottlePos5;} pause;}}
 	}
 }
 

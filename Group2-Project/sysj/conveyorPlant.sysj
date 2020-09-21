@@ -1,77 +1,60 @@
 conveyorPlant(
-		//input from controller
-		input signal motor, tick;
+		input signal tick;
 		
-		//input from rotary plant
-		input signal NbottlePos5;
+		//Main to Plant
+		input signal NCbottlePos5;
 		
-		//output to controller
-		output signal bottleLeft5, bottlePos1, bottlePos5, bottleAtConvStart; //bottleAtConvStart is temporary for testing.
+		//Controller to Plant
+		input signal motor;
 		
-		//output to rotary plant
-		output signal NbottlePos1, NbottleLeft5, Nmotor;
+		//Plant to Controller
+		output signal bottleLeft5, bottlePos1;
 		
-		//output to viz
-		output signal bottleLeft5S, motorS;
+		//Plant to Visualiser
+		output signal bottleLeft5S, bottlePos1S, motorS;
 		)
 ->
 {
 	{
-		//while(true){
-			await(tick);
-			await(!tick);
+		while(true){
 		
-			abort(motor){
-				sustain bottleAtConvStart;
-			}
+			await(!tick); 			//TEMPORARY FOR TESTING
+			abort(tick){			//
+				sustain bottlePos1;	//
+			}						//
 			
-			await(tick);
 			await(!tick);
-			
-			abort(tick){
-				sustain bottlePos1;
+			abort(tick && motor){
+				halt;
 			}
-			await(!tick);
-		//}
+		}
 	}
 	||
 	{
 		while(true){
-			await(NbottlePos5);
+	
+			await(!tick);
+			await(NCbottlePos5);
 			
-			abort(motor){
-				sustain bottlePos5;
+			await(!tick);
+			abort(tick && motor){
+				halt;
 			}
 			
-			await(tick);
 			await(!tick);
-			
 			abort(tick){
 				sustain bottleLeft5;
 			}
-			await(!tick);
 		}
 	}
 	||
-	{//To viz/Other Plants
+	
+	//To Visualiser
+	{
 		{while(true) {present(bottleLeft5) {emit bottleLeft5S;} pause;}}
 		||
-		{while(true) {present(motor) {emit motorS; emit Nmotor;} pause;}}
+		{while(true) {present(bottlePos1) {emit bottlePos1S;} pause;}}
 		||
-		{while(true) {present(bottlePos1) {emit NbottlePos1;} pause;}}
-		||
-		{while(true) {present(bottleLeft5) {emit NbottleLeft5;} pause;}}
-		
-		//input from other plants
-		||
-		{while(true) {present(NbottlePos5) {emit bottlePos5;} pause;}}
-	}
-	||
-	{
-		while(true){
-			await(tick);
-			//System.out.println("tick");
-			await(!tick);
-		}
+		{while(true) {present(motor) {emit motorS; } pause;}}
 	}
 }
