@@ -1,14 +1,11 @@
 conveyorPlant(
 		input signal tick;
 		
-		//Main to Plant
-		input signal NCbottlePos5;
-		
 		//Controller to Plant
-		input signal motor;
+		input signal motor, CbottlePos5;
 		
 		//Plant to Controller
-		output signal bottleLeft5, bottlePos1;
+		output signal bottleLeft5, bottlePos1, loaderDone; //loaderDone is temporary for testing
 		
 		//Plant to Visualiser
 		output signal bottleLeft5S, bottlePos1S, motorS;
@@ -18,28 +15,34 @@ conveyorPlant(
 	{
 		while(true){
 		
-			await(!tick); 			//TEMPORARY FOR TESTING
-			abort(tick){			//
-				sustain bottlePos1;	//
-			}						//
+			await(tick);
+			await(!tick);
+			
+			abort(tick && motor){
+				sustain loaderDone;
+			}
 			
 			await(!tick);
-			abort(tick && motor){
-				halt;
+			abort(tick){
+				sustain bottlePos1;
 			}
 		}
 	}
 	||
 	{
-		while(true){
-	
-			await(!tick);
-			await(NCbottlePos5);
+		while(true){	
+			abort(tick && CbottlePos5){
+				halt;
+			}
 			
 			await(!tick);
 			abort(tick && motor){
 				halt;
 			}
+			
+			await(!tick);
+			await(tick);
+			await(!tick);
 			
 			await(!tick);
 			abort(tick){

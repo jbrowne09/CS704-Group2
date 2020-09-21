@@ -2,21 +2,23 @@
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="RControllerCD" Class="rotaryController">
 		
-			<iSignal Name="aligned" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
-			<iSignal Name="bottlePos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
-			<iSignal Name="bottlePos3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
-			<iSignal Name="bottlePos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
-			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
+			<iSignal Name="aligned" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10150" />
+			<iSignal Name="bottlePos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10151" />
+			<iSignal Name="bottlePos3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10152" />
+			<iSignal Name="bottlePos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10153" />
+			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10154" />
 			
-			<iSignal Name="rotaryEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20002" />	
+			<iSignal Name="rotaryEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10155" />	
 					
-			<oSignal Name="rotate" To="RPlantCD.rotate" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10003" />
+			<iSignal Name="NbottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10156" />	
+			<iSignal Name="Nmotor" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10157" />		
+					
+			<oSignal Name="rotate" To="RPlantCD.rotate" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10158" />
 			
-			<oSignal Name="NbottlePos2" To="MControllerCD.NbottlePos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
-			<oSignal Name="NbottlePos3" To="MControllerCD.NbottlePos3" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
-			<oSignal Name="NbottlePos4" To="MControllerCD.NbottlePos4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
-			<oSignal Name="NbottlePos5" To="MControllerCD.NbottlePos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
-			<oSignal Name="Naligned" To="MControllerCD.Naligned" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
+			<oSignal Name="NbottlePos5" To="CControllerCD.NbottlePos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10103" />
+			
+			<oSignal Name="CbottlePos1" To="RPlantCD.CbottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10164" />
+			<oSignal Name="Cmotor" To="RPlantCD.Cmotor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10165" />
 			
 		</ClockDomain>
 	</SubSystem> 

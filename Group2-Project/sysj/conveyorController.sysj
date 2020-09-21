@@ -1,31 +1,33 @@
 conveyorController(
     
     //Plant to Controller
-    input signal bottleLeft5, bottlePos1;
+    input signal bottleLeft5, bottlePos1, loaderDone; //loaderDone is temporary for testing
     
     //Main to Controller
     input signal conveyorEnable;
     
-    //Controller to Plant
-    output signal motor;
+    //From RotaryController
+    input signal NbottlePos5;
     
-    //Controller to Main
-    output signal NbottleLeft5, NbottlePos1;
+    //To RotaryController
+    output signal NbottlePos1, Nmotor;
+    
+    //Controller to Plant
+    output signal motor, CbottlePos5;
 	)
 ->{
 	//Conveyor Control
 	//Currently ignoring loaderDone signal
 	{
 		while(true){
-			//await(loaderDone);
-			await(!NbottlePos1); //TEMPORARY FOR TESTING
+			await(loaderDone);
 			
-			abort(!NbottlePos1 && !NbottleLeft5){
+			abort(!bottlePos1 && !bottleLeft5){
 				halt;
 			}
 				
-			abort(NbottlePos1 || NbottleLeft5){
-				sustain conveyorEnable;
+			abort(bottlePos1){
+				sustain motor;
 			}
 		}
 	}
@@ -34,13 +36,21 @@ conveyorController(
 		while(true){
 			await(NbottlePos5);
 			
-			abort(!NbottlePos1 && !NbottleLeft5){
+			abort(!bottlePos1 && !bottleLeft5){
 				halt;
 			}
 			
-			abort(NbottlePos1 || NbottleLeft5){
-				sustain conveyorEnable;
+			abort(bottleLeft5){
+				sustain motor;
 			}
 		}
 	}
+	||
+	
+	//signals to/from rotaryController
+	{ while(true) { present (NbottlePos5) {emit CbottlePos5;} pause;}}
+	||
+	{ while(true) { present (bottlePos1) {emit NbottlePos1;} pause;}}
+	||
+	{ while(true) { present (motor) {emit Nmotor;} pause;}}
 }

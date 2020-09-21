@@ -2,15 +2,19 @@
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="CControllerCD" Class="conveyorController">
 		
-			<iSignal Name="bottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12002" />
-			<iSignal Name="bottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12002" />
+			<iSignal Name="bottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10100" />
+			<iSignal Name="bottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10101" />
+			<iSignal Name="loaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10102" />
 			
-			<iSignal Name="conveyorEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20002" />
+			<iSignal Name="conveyorEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10102" />
+			
+			<iSignal Name="NbottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10103" />	
 					
-			<oSignal Name="motor" To="CPlantCD.motor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10002" />
+			<oSignal Name="motor" To="CPlantCD.motor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10104" />
+			<oSignal Name="CbottlePos5" To="CPlantCD.CbottlePos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10108" />
 			
-			<oSignal Name="NbottleLeft5" To="MControllerCD.NbottleLeft5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
-			<oSignal Name="NbottlePos1" To="MControllerCD.NbottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
+			<oSignal Name="NbottlePos1" To="RControllerCD.NbottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10156" />
+			<oSignal Name="Nmotor" To="RControllerCD.motor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10157" />
 			
 		</ClockDomain>
 	</SubSystem>

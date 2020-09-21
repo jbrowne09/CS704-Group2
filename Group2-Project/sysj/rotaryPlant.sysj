@@ -1,11 +1,8 @@
 rotaryPlant(
 		input signal tick;
 		
-		//Main to Plant
-		input signal NRbottlePos1, NRmotor;
-		
 		//Controller to Plant
-		input signal rotate;
+		input signal rotate, CbottlePos1, Cmotor;
 		
 		//Plant to Controller
 		output signal bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned;
@@ -15,14 +12,13 @@ rotaryPlant(
 	)
 ->{	
 	//Multiple Bottles version
+	signal rotateTo2, rotateTo3, rotateTo4, rotateTo5;
 	{
 		while(true){
-			await(NRbottlePos1);	
-			await(tick);
-			
-			await(!tick);
-			abort(rotate){
-				sustain bottlePos2;
+			await(CbottlePos1);
+			await(rotate);
+			abort(bottlePos2 && !rotate){
+				sustain rotateTo2;
 			}
 		}
 	}
@@ -30,11 +26,9 @@ rotaryPlant(
 	{
 		while(true){
 			await(bottlePos2);
-			await(tick);
-			
-			await(!tick);
-			abort(rotate){
-				sustain bottlePos3;
+			await(rotate);
+			abort(bottlePos3 && !rotate){
+				sustain rotateTo3;
 			}
 		}
 	}
@@ -42,11 +36,9 @@ rotaryPlant(
 	{
 		while(true){
 			await(bottlePos3);
-			await(tick);
-			
-			await(!tick);
-			abort(rotate){
-				sustain bottlePos4;
+			await(rotate);
+			abort(bottlePos4 && !rotate){
+				sustain rotateTo4;
 			}
 		}
 	}
@@ -54,10 +46,76 @@ rotaryPlant(
 	{
 		while(true){
 			await(bottlePos4);
+			await(rotate);
+			abort(bottlePos5 && !rotate){
+				sustain rotateTo5;
+			}
+		}
+	}
+	||
+	{	
+		while(true){
+			await(rotateTo2);
 			await(tick);
 			
+			System.out.println("Rotating to 2");
 			await(!tick);
-			abort(NRmotor){
+			await(tick);
+			await(!tick);
+			
+			abort(tick){
+				System.out.println("putting at 2");
+				sustain bottlePos2;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(rotateTo3);
+			await(tick);
+			
+			System.out.println("Rotating to 3");
+			await(!tick);
+			await(tick);
+			await(!tick);
+			
+			abort(tick){
+				System.out.println("putting at 3");
+				sustain bottlePos3;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(rotateTo4);
+			await(tick);
+			
+			System.out.println("Rotating to 4");
+			await(!tick);
+			await(tick);
+			await(!tick);
+			
+			abort(tick){
+				System.out.println("putting at 4");
+				sustain bottlePos4;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(rotateTo5);
+			await(tick);
+			
+			System.out.println("Rotating to 5");
+			await(!tick);
+			await(tick);
+			await(!tick);
+			
+			abort(tick){
+				System.out.println("putting at 5");
 				sustain bottlePos5;
 			}
 		}
@@ -65,12 +123,16 @@ rotaryPlant(
 	||
 	{
 		while(true){
-			abort(rotate){
+			abort(tick && (CbottlePos1 || bottlePos2 || bottlePos3 || bottlePos4)){
 				sustain aligned;
 			}
 			
-			abort(tick && rotate){
-				halt;
+			await(!tick);
+			await(tick);
+			await(!tick);
+			
+			abort(rotate){
+				sustain aligned;
 			}
 			
 			abort(!rotate){
