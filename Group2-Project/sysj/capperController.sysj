@@ -1,33 +1,20 @@
 capperController(
-    input signal gripperLowered, gripperLifted, gripperInit, gripperTurned, bottlePos4, capperEnable;
+    input signal gripperLowered, gripperLifted, gripperInit, gripperTurned, bottleClamped, bottlePos4, capperEnable, tick;
     output signal clampBottle, gripCap, gripDown, twistGrip, untwistGrip, capperDone;
 )
 
 ->{
 	while(true){
-		await(capperEnable);
-		await(bottlePos4);
-		{
-			abort(untwistGrip) { //Not sure if we can use output signals like this
-				{sustain clampBottle;}
-				||
-				{sustain gripDown;}
-			}
-		}
-		||
-		{
-			await(gripperLowered);
-			abort(gripperTurned) {
-				sustain gripCap;
-			}
-			emit untwistGrip;
-		}
-		||
-		{
-			await(gripCap);
-			emit twistGrip;
-			{await(gripperInit);} || {await(gripperLifted);}
-			emit capperDone;
-		}
+		//await(capperEnable);
+		//await(bottlePos4);		
+		await(tick);
+		emit gripDown;
+		emit clampBottle;
+		await(tick);
+		emit gripCap;
+		await(tick);
+		emit twistGrip;
+		await(tick);
+		emit untwistGrip;		
 	}
 }

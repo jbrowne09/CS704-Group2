@@ -20,8 +20,8 @@ public class rotaryController extends ClockDomain{
   public Signal enableRotary = new Signal("enableRotary", Signal.INPUT);
   public Signal rotate = new Signal("rotate", Signal.OUTPUT);
   public Signal rotaryDone = new Signal("rotaryDone", Signal.OUTPUT);
-  private int S2389 = 1;
-  private int S2331 = 1;
+  private int S2282 = 1;
+  private int S2224 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -33,24 +33,24 @@ public class rotaryController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2389){
+      switch(S2282){
         case 0 : 
-          S2389=0;
+          S2282=0;
           break RUN;
         
         case 1 : 
-          S2389=2;
-          S2389=2;
-          S2331=0;
+          S2282=2;
+          S2282=2;
+          S2224=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S2331){
+          switch(S2224){
             case 0 : 
               if(bottlePos1.getprestatus() || bottlePos2.getprestatus() || bottlePos3.getprestatus() || bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 12, column: 10
-                S2331=1;
+                S2224=1;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -63,7 +63,7 @@ public class rotaryController extends ClockDomain{
             
             case 1 : 
               if(!bottlePos5.getprestatus()){//sysj\rotaryController.sysj line: 15, column: 10
-                S2331=2;
+                S2224=2;
                 rotate.setPresent();//sysj\rotaryController.sysj line: 18, column: 5
                 currsigs.addElement(rotate);
                 active[1]=1;
@@ -78,7 +78,7 @@ public class rotaryController extends ClockDomain{
             
             case 2 : 
               if(!bottlePos1.getprestatus() && !bottlePos2.getprestatus() && !bottlePos3.getprestatus() && !bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 17, column: 10
-                S2331=3;
+                S2224=3;
                 rotate.setPresent();//sysj\rotaryController.sysj line: 22, column: 5
                 currsigs.addElement(rotate);
                 active[1]=1;
@@ -95,7 +95,7 @@ public class rotaryController extends ClockDomain{
             
             case 3 : 
               if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 21, column: 10
-                S2331=0;
+                S2224=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;

@@ -275,11 +275,11 @@ public class systemCanvas extends JPanel{
 		//this.liquidPos4 = States.liquidPos4;
 		
 		//capper	
-		//this.clampBottle = 
-		//this.gripCap = 
-		//this.gripDown = States.gripperLowered;
-		//this.twistGrip = States.gripperTurned;
-		//this.untwistGrip = States.gripperInit;
+		this.clampBottle = States.bottleClamped;
+		this.gripCap = States.gripCap;
+		this.gripDown = States.gripperLowered;
+		this.twistGrip = States.gripperTurned;
+		this.untwistGrip = States.gripperInit;
 		
 		//bottle-loader
 		this.gripLoadBottle = States.gripContainer;
