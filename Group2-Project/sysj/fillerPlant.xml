@@ -6,24 +6,12 @@
 			<iSignal Name="injectorOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="valveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="valveExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="liquidPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="liquidPos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="liquidPos3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="liquidPos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
-			<oSignal Name="bottlePos2" To="FControllerCD.bottlePos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="canBottom"  To="FControllerCD.canBottom"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="canTop" To="FControllerCD.canTop"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
-			<oSignal Name="inletIsOn" To="FControllerCD.inletIsOn"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
-			<oSignal Name="injectorIsOn" To="FControllerCD.injectorIsOn"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
 			
-			<oSignal Name="bottlePos2S" To="UI.bottlePos2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="canBottomS" To="UI.canBottomS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="canTopS" To="UI.canTopS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="liquidPos1S" To="UI.liquidPos1S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="liquidPos2S" To="UI.liquidPos2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="liquidPos3S" To="UI.liquidPos3S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
-			<oSignal Name="liquidPos4S" To="UI.liquidPos4S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="inletIsOnS" To="UI.inletIsOnS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="injectorIsOnS" To="UI.injectorIsOnS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 	
