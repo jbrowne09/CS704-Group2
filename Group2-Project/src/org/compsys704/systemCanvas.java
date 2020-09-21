@@ -25,8 +25,6 @@ public class systemCanvas extends JPanel{
 	BufferedImage rotaryTable;
 	BufferedImage signalBackground;
 
-	//TEMPORARY: signals used for testing, remove and use substituted signals
-	//from states.java i.e. States.MOTOR etc.
 	//conveyor
 	private boolean bottleLeft5 = false;
 	private boolean motor = false;
