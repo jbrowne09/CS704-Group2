@@ -1,25 +1,23 @@
 rotaryPlant(
-	//input from controller
-	input signal rotate, tick;
+		input signal tick;
 		
-	//input signals from conveyor plant
-	input signal NbottlePos1, Nmotor, NbottleLeft5;
+		//Main to Plant
+		input signal NRbottlePos1, NRmotor;
 		
-	//output signals to rotaryController
-	output signal bottlePos1, bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned;
-	
-	//output to conveyor plant
-	output signal NbottlePos5;
+		//Controller to Plant
+		input signal rotate;
 		
-	//viz signals
-	output signal bottlePos1S, bottlePos2S, bottlePos3S, bottlePos4S, bottlePos5S, rotateS;
+		//Plant to Controller
+		output signal bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned;
+		
+		//Plant to Visualiser
+		output signal bottlePos2S, bottlePos3S, bottlePos4S, bottlePos5S, rotateS;
 	)
 ->{	
 	//Multiple Bottles version
 	{
 		while(true){
-			await(bottlePos1);
-			System.out.println("I SEE POS1");		
+			//await(NRbottlePos1);	
 			await(tick);
 			
 			await(!tick);
@@ -58,9 +56,8 @@ rotaryPlant(
 			await(bottlePos4);
 			await(tick);
 			
-//adjust below with abort using motor signal + bottleLeft5 etc.
 			await(!tick);
-			abort(tick){
+			abort(NRmotor){
 				sustain bottlePos5;
 			}
 		}
@@ -82,9 +79,9 @@ rotaryPlant(
 		}
 	}
 	||
-	{//To Viz/Other plants
-		{ while(true) { present (bottlePos1) {emit bottlePos1S;} pause;}}
-		||
+	
+	//To Visualiser
+	{
 		{ while(true) { present (bottlePos2) {emit bottlePos2S;} pause;}}
 		||
 		{ while(true) { present (bottlePos3) {emit bottlePos3S;} pause;}}
@@ -94,18 +91,5 @@ rotaryPlant(
 		{ while(true) { present (bottlePos5) {emit bottlePos5S;} pause;}}
 		||
 		{ while(true) { present (rotate) {emit rotateS;} pause;}}
-		||
-		{ while(true) { present (bottlePos5) {emit NbottlePos5;} pause;}}
-		
-		//input from other plants
-		{ while(true) { present (NbottlePos1) {emit bottlePos1;} pause;}}
-	}
-	||
-	{
-		while(true){
-			await(tick);
-			//System.out.println("tick");
-			await(!tick);
-		}
 	}
 }

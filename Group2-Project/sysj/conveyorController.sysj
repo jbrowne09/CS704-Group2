@@ -1,34 +1,24 @@
 conveyorController(
-    input signal bottleLeft5, bottlePos1, bottlePos5, conveyorEnable, bottleAtConvStart; //bottleAtConvStart is temporary for testing.
-    output signal motor, conveyorDone;
-)
-
+    
+    //Plant to Controller
+    input signal bottleLeft5, bottlePos1;
+    
+    //Main to Controller
+    input signal conveyorEnable;
+    
+    //Controller to Plant
+    output signal motor;
+    
+    //Controller to Main
+    output signal NbottleLeft5, NbottlePos1;
+	)
 ->{
+	//To/From Main
 	{
-		while(true){
-			await(bottleAtConvStart);
-			
-			abort(!bottlePos1 && !bottleLeft5){
-				halt;
-			}
-		
-			abort(bottlePos1 || bottleLeft5){
-				sustain motor;
-			}
-		}
-	}
-	||
-	{
-		while(true){
-			await(bottlePos5);
-			
-			abort(!bottlePos1 && !bottleLeft5){
-				halt;
-			}
-			
-			abort(bottlePos1 || bottleLeft5){
-				sustain motor;
-			}
-		}
+		{while(true) {present(bottleLeft5) {emit NbottleLeft5;} pause;}}
+		||
+		{while(true) {present(bottlePos1) {emit NbottlePos1;} pause;}}
+		||
+		{while(true) {present(conveyorEnable) {emit motor;} pause;}}
 	}
 }

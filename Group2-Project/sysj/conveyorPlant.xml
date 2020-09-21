@@ -4,20 +4,16 @@
 			
 			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11002" />
 			
+			<iSignal Name="NCbottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20002" />
+			
 			<iSignal Name="motor" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10002" />
-			<iSignal Name="NbottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10002" />
 			
-			<oSignal Name="bottlePos1" To="CControllerCD.bottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="12002" />
-			<oSignal Name="bottlePos5"  To="CControllerCD.bottlePos5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="12002" />
 			<oSignal Name="bottleLeft5" To="CControllerCD.bottleLeft5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="12002" />
-			<oSignal Name="bottleAtConvStart" To="CControllerCD.bottleAtConvStart"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="12002" />
-				
-			<oSignal Name="NbottlePos1" To="RPlantCD.NbottlePos1"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10003" />	
-			<oSignal Name="NbottleLeft5" To="RPlantCD.bottleLeft5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10003" />	
-			<oSignal Name="Nmotor" To="RPlantCD.Nmotor"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10003" />		
+			<oSignal Name="bottlePos1" To="CControllerCD.bottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="12002" />	
 			
-			<oSignal Name="motorS" To="UI.motorS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="bottleLeft5S" To="UI.bottleLeft5S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="bottlePos1S" To="UI.bottlePos1S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="motorS" To="UI.motorS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 		
 		</ClockDomain>
 	</SubSystem>

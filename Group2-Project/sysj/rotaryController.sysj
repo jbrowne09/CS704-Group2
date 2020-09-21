@@ -1,26 +1,30 @@
 rotaryController(  
-    //input signals from plant
-    input signal bottlePos1, bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned, enableRotary;
-    
-    //output signals
-    output signal rotate, rotaryDone;
+   	
+   	//Plant to Controller
+   	input signal bottlePos2, bottlePos3, bottlePos4, bottlePos5, aligned;
+   	
+   	//Main to Controller
+   	input signal rotaryEnable;
+   	
+   	//Controller to Plant
+   	output signal rotate;
+   	
+   	//Controller to Main
+   	output signal NbottlePos2, NbottlePos3, NbottlePos4, NbottlePos5, Naligned;
 	)
-->{ 
-	//Considers multiple bottles but completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
+->{ 	
+	//To/From Main
 	{
-		while(true){
-			abort(bottlePos1 || bottlePos2 || bottlePos3 || bottlePos4) {
-				halt;
-			}
-			await(!bottlePos5);
-			
-			abort(!bottlePos1 && !bottlePos2 && !bottlePos3 && !bottlePos4){
-				sustain rotate;
-			}
-			
-			abort(aligned) {
-				sustain rotate;
-			}
-		}
+		{while(true) {present(bottlePos2) {emit NbottlePos2;} pause;}}
+		||
+		{while(true) {present(bottlePos3) {emit NbottlePos3;} pause;}}
+		||
+		{while(true) {present(bottlePos4) {emit NbottlePos4;} pause;}}
+		||
+		{while(true) {present(bottlePos5) {emit NbottlePos5;} pause;}}
+		||
+		{while(true) {present(aligned) {emit Naligned;} pause;}}
+		||
+		{while(true) {present(rotaryEnable) {emit rotate;} pause;}}
 	}
 }
