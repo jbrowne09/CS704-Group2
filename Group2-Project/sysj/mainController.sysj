@@ -1,35 +1,48 @@
 mainController(
+	input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, tick;
+    output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable, bottleToLoad;
 	
-	//Conveyor to Main
-	
-	
-	//Rotary to Main
-	
-	
-	//Main to Controllers
-	output signal conveyorEnable, rotaryEnable;
 	)
 ->{
-//	while(true){
-//		//await(tick);
-//		System.out.println("sustaining bottle to load");
-//		abort(loaderDone) {
-//			sustain bottleToLoad;
-//		}
-//		System.out.println("exit loader");
-//		abort(conveyorDone) {
-//		System.out.println("conveyor");
-//			sustain conveyorEnable;
-//		}
-//		
-//		System.out.println("halting");
-//		halt;
-//		abort(rotaryDone) {
-//			sustain rotaryEnable;
-//		}
-//		abort(capperDone) {
-//			sustain capperEnable;
-//		}
-//	}
+	while(true){
+	
+		await(tick);
+
+		System.out.println("entering loader");
+		abort(loaderDone) {
+			sustain bottleToLoad;
+		}
+		System.out.println("exit loader");
+		
+		abort(capperDone) {
+			System.out.println("entering capper");
+			sustain capperEnable;
+		}
+		System.out.println("exit capper");
+		
+		
+		halt;
+		
+		
+		
+		
+		abort(conveyorDone) {
+		System.out.println("entering conveyor");
+			sustain conveyorEnable;
+		}
+		System.out.println("exit conveyor");
+
+		abort(rotaryDone) {
+			System.out.println("entering rotary");
+			sustain rotaryEnable;
+		}
+		System.out.println("exit rotary");
+		
+		abort(capperDone) {
+			System.out.println("entering capper");
+			sustain capperEnable;
+		}
+		System.out.println("exit capper");
+	}
 }
 
