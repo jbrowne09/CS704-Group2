@@ -7,10 +7,20 @@ mainController(
 	)
 ->{
 	//Loader Control
+	signal bottleWaitAtLoad;
 	{
 		while(true){
-			await(bottleAtLoad);
 			await(!bottleAtLoad);
+			await(bottleAtLoad);
+			abort(!bottleToLoad){
+				sustain bottleWaitAtLoad;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(bottleWaitAtLoad);
 			
 			await(!loaderDone);
 			abort(loaderDone){

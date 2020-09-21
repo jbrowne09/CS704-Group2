@@ -78,6 +78,7 @@ public class systemCanvas extends JPanel{
 	boolean moveToLoadInit = false;
 	boolean moveToLoadConv = false;
 	boolean grippedLoadBottle = false;
+	boolean bottleWait = false;
 	
 	int unloadPosX = -1;
 	int unloadPosY = -1;
@@ -223,10 +224,15 @@ public class systemCanvas extends JPanel{
 		//UPDATING ANIMATION STATUS BELOW
 		
 		//Loading Arm
-		if(this.bottleAtLoad) {
+		if(this.bottleAtLoad && loadPosX != 81 && loadPosY != 448) {
+			bottleWait = true;
+		}
+		if(bottleWait && loadPosX == -1 && loadPosY == -1) {
 			loadPosX = 81;
 			loadPosY = 448;
+			bottleWait = false;
 		}
+		
 		if(this.toA) {
 			moveToLoadInit = true;
 		} else {
@@ -430,6 +436,9 @@ public class systemCanvas extends JPanel{
 		if(loadPosX != -1 && loadPosY != -1) {
 			g.fillOval(loadPosX-30, loadPosY-30, 60, 60);
 		}	
+		if(bottleWait) {
+			g.fillOval(81-30, 448-30, 60, 60);
+		}
 		
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(8));
