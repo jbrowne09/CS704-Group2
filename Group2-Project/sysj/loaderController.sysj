@@ -35,17 +35,11 @@ loaderController(
 			abort(tick) {
 				sustain CMD("A"); //Move back to original position
 			}
-			abort(!bottleToLoad){
+			
+			await(!tick);
+			abort(tick){
 				sustain loaderDone;
 			}
-			pause;
-		}
-	}
-	||
-	{//DEBUG for ticks
-		while(true){
-			await(tick);
-			System.out.println("tick");
 			await(!tick);
 		}
 	}

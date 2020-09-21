@@ -23,7 +23,7 @@ conveyorPlant(
 //				sustain loaderDone;
 //			}
 
-			abort(tick && CloaderDone){
+			abort(CloaderDone){
 				halt;
 			}
 			
@@ -33,13 +33,10 @@ conveyorPlant(
 			}
 			
 			await(!tick);
-			await(tick);
-			await(!tick);
-			
-			await(!tick);
 			abort(tick){
 				sustain bottlePos1;
 			}
+			await(!tick);
 		}
 	}
 	||
