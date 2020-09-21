@@ -21,6 +21,7 @@ conveyorController(
 ->{
 	{
 		while(true){
+			await(!NloaderDone);
 			await(NloaderDone);
 			
 			abort(!bottlePos1 && !bottleLeft5){
@@ -35,6 +36,7 @@ conveyorController(
 	||
 	{
 		while(true){
+			await(!NbottlePos5);
 			await(NbottlePos5);
 			
 			abort(!bottlePos1 && !bottleLeft5){

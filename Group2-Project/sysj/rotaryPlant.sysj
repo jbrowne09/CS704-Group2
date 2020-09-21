@@ -58,13 +58,11 @@ rotaryPlant(
 			await(rotateTo2);
 			await(tick);
 			
-			System.out.println("Rotating to 2");
 			await(!tick);
 			await(tick);
 			await(!tick);
 			
 			abort(tick){
-				System.out.println("putting at 2");
 				sustain bottlePos2;
 			}
 		}
@@ -75,13 +73,11 @@ rotaryPlant(
 			await(rotateTo3);
 			await(tick);
 			
-			System.out.println("Rotating to 3");
 			await(!tick);
 			await(tick);
 			await(!tick);
 			
 			abort(tick){
-				System.out.println("putting at 3");
 				sustain bottlePos3;
 			}
 		}
@@ -92,13 +88,11 @@ rotaryPlant(
 			await(rotateTo4);
 			await(tick);
 			
-			System.out.println("Rotating to 4");
 			await(!tick);
 			await(tick);
 			await(!tick);
 			
 			abort(tick){
-				System.out.println("putting at 4");
 				sustain bottlePos4;
 			}
 		}
@@ -109,13 +103,11 @@ rotaryPlant(
 			await(rotateTo5);
 			await(tick);
 			
-			System.out.println("Rotating to 5");
 			await(!tick);
 			await(tick);
 			await(!tick);
 			
 			abort(tick){
-				System.out.println("putting at 5");
 				sustain bottlePos5;
 			}
 		}

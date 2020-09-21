@@ -16,9 +16,9 @@ public class unloaderController extends ClockDomain{
   public Signal tick = new Signal("tick", Signal.INPUT);
   public Signal unloaderDone = new Signal("unloaderDone", Signal.OUTPUT);
   public Signal CMD2 = new Signal("CMD2", Signal.OUTPUT);
-  private int S2204 = 1;
-  private int S2203 = 1;
-  private int S1912 = 1;
+  private int S2216 = 1;
+  private int S2215 = 1;
+  private int S1924 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -30,25 +30,25 @@ public class unloaderController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2204){
+      switch(S2216){
         case 0 : 
-          S2204=0;
+          S2216=0;
           break RUN;
         
         case 1 : 
-          S2204=2;
-          S2204=2;
-          S2203=0;
+          S2216=2;
+          S2216=2;
+          S2215=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S2203){
+          switch(S2215){
             case 0 : 
               if(tick.getprestatus()){//sysj\nloaderController.sysj line: 8, column: 8
-                S2203=1;
-                S1912=0;
+                S2215=1;
+                S1924=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -60,10 +60,10 @@ public class unloaderController extends ClockDomain{
               }
             
             case 1 : 
-              switch(S1912){
+              switch(S1924){
                 case 0 : 
                   if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 11, column: 9
-                    S1912=1;
+                    S1924=1;
                     CMD2.setPresent();//sysj\nloaderController.sysj line: 13, column: 4
                     currsigs.addElement(CMD2);
                     CMD2.setValue("C2");//sysj\nloaderController.sysj line: 13, column: 4
@@ -79,7 +79,7 @@ public class unloaderController extends ClockDomain{
                 
                 case 1 : 
                   if(tick.getprestatus()){//sysj\nloaderController.sysj line: 12, column: 9
-                    S1912=2;
+                    S1924=2;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -95,7 +95,7 @@ public class unloaderController extends ClockDomain{
                 
                 case 2 : 
                   if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 15, column: 9
-                    S1912=3;
+                    S1924=3;
                     CMD2.setPresent();//sysj\nloaderController.sysj line: 17, column: 4
                     currsigs.addElement(CMD2);
                     CMD2.setValue("G2");//sysj\nloaderController.sysj line: 17, column: 4
@@ -111,7 +111,7 @@ public class unloaderController extends ClockDomain{
                 
                 case 3 : 
                   if(tick.getprestatus()){//sysj\nloaderController.sysj line: 16, column: 9
-                    S1912=4;
+                    S1924=4;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -127,7 +127,7 @@ public class unloaderController extends ClockDomain{
                 
                 case 4 : 
                   if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 19, column: 9
-                    S1912=5;
+                    S1924=5;
                     CMD2.setPresent();//sysj\nloaderController.sysj line: 21, column: 4
                     currsigs.addElement(CMD2);
                     CMD2.setValue("B2");//sysj\nloaderController.sysj line: 21, column: 4
@@ -143,7 +143,7 @@ public class unloaderController extends ClockDomain{
                 
                 case 5 : 
                   if(tick.getprestatus()){//sysj\nloaderController.sysj line: 20, column: 9
-                    S1912=6;
+                    S1924=6;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -159,7 +159,7 @@ public class unloaderController extends ClockDomain{
                 
                 case 6 : 
                   if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 23, column: 9
-                    S1912=7;
+                    S1924=7;
                     CMD2.setPresent();//sysj\nloaderController.sysj line: 25, column: 4
                     currsigs.addElement(CMD2);
                     CMD2.setValue("O2");//sysj\nloaderController.sysj line: 25, column: 4
@@ -175,7 +175,7 @@ public class unloaderController extends ClockDomain{
                 
                 case 7 : 
                   if(tick.getprestatus()){//sysj\nloaderController.sysj line: 24, column: 9
-                    S1912=8;
+                    S1924=8;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -191,7 +191,7 @@ public class unloaderController extends ClockDomain{
                 
                 case 8 : 
                   if(!tick.getprestatus()){//sysj\nloaderController.sysj line: 27, column: 9
-                    S1912=9;
+                    S1924=9;
                     CMD2.setPresent();//sysj\nloaderController.sysj line: 29, column: 4
                     currsigs.addElement(CMD2);
                     CMD2.setValue("A2");//sysj\nloaderController.sysj line: 29, column: 4
@@ -209,7 +209,7 @@ public class unloaderController extends ClockDomain{
                   if(tick.getprestatus()){//sysj\nloaderController.sysj line: 28, column: 9
                     unloaderDone.setPresent();//sysj\nloaderController.sysj line: 31, column: 3
                     currsigs.addElement(unloaderDone);
-                    S1912=10;
+                    S1924=10;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -224,8 +224,8 @@ public class unloaderController extends ClockDomain{
                   }
                 
                 case 10 : 
-                  S1912=10;
-                  S1912=0;
+                  S1924=10;
+                  S1924=0;
                   active[1]=1;
                   ends[1]=1;
                   break RUN;

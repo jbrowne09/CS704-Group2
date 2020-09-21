@@ -32,31 +32,31 @@ public class Plant extends ClockDomain{
   private Signal capDec_1;
   private Signal capPos_1;
   private int capcount_thread_6;//sysj\wLoaderPlant.sysj line: 80, column: 3
-  private int S4732 = 1;
-  private int S3459 = 1;
-  private int S3413 = 1;
-  private int S3512 = 1;
-  private int S3466 = 1;
-  private int S3556 = 1;
-  private int S3526 = 1;
-  private int S3521 = 1;
-  private int S3624 = 1;
-  private int S3578 = 1;
-  private int S3560 = 1;
-  private int S3686 = 1;
-  private int S3736 = 1;
-  private int S3694 = 1;
-  private int S3702 = 1;
-  private int S3710 = 1;
-  private int S3718 = 1;
-  private int S3726 = 1;
-  private int S3734 = 1;
+  private int S4648 = 1;
+  private int S3375 = 1;
+  private int S3329 = 1;
+  private int S3428 = 1;
+  private int S3382 = 1;
+  private int S3472 = 1;
+  private int S3442 = 1;
+  private int S3437 = 1;
+  private int S3540 = 1;
+  private int S3494 = 1;
+  private int S3476 = 1;
+  private int S3602 = 1;
+  private int S3652 = 1;
+  private int S3610 = 1;
+  private int S3618 = 1;
+  private int S3626 = 1;
+  private int S3634 = 1;
+  private int S3642 = 1;
+  private int S3650 = 1;
   
   private int[] ends = new int[14];
   private int[] tdone = new int[14];
   
-  public void thread4759(int [] tdone, int [] ends){
-        switch(S3734){
+  public void thread4675(int [] tdone, int [] ends){
+        switch(S3650){
       case 0 : 
         active[13]=0;
         ends[13]=0;
@@ -81,8 +81,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4758(int [] tdone, int [] ends){
-        switch(S3726){
+  public void thread4674(int [] tdone, int [] ends){
+        switch(S3642){
       case 0 : 
         active[12]=0;
         ends[12]=0;
@@ -107,8 +107,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4757(int [] tdone, int [] ends){
-        switch(S3718){
+  public void thread4673(int [] tdone, int [] ends){
+        switch(S3634){
       case 0 : 
         active[11]=0;
         ends[11]=0;
@@ -133,8 +133,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4756(int [] tdone, int [] ends){
-        switch(S3710){
+  public void thread4672(int [] tdone, int [] ends){
+        switch(S3626){
       case 0 : 
         active[10]=0;
         ends[10]=0;
@@ -159,8 +159,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4755(int [] tdone, int [] ends){
-        switch(S3702){
+  public void thread4671(int [] tdone, int [] ends){
+        switch(S3618){
       case 0 : 
         active[9]=0;
         ends[9]=0;
@@ -185,8 +185,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4754(int [] tdone, int [] ends){
-        switch(S3694){
+  public void thread4670(int [] tdone, int [] ends){
+        switch(S3610){
       case 0 : 
         active[8]=0;
         ends[8]=0;
@@ -211,8 +211,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4753(int [] tdone, int [] ends){
-        switch(S3736){
+  public void thread4669(int [] tdone, int [] ends){
+        switch(S3652){
       case 0 : 
         active[7]=0;
         ends[7]=0;
@@ -220,39 +220,39 @@ public class Plant extends ClockDomain{
         break;
       
       case 1 : 
-        thread4754(tdone,ends);
-        thread4755(tdone,ends);
-        thread4756(tdone,ends);
-        thread4757(tdone,ends);
-        thread4758(tdone,ends);
-        thread4759(tdone,ends);
-        int biggest4760 = 0;
-        if(ends[8]>=biggest4760){
-          biggest4760=ends[8];
+        thread4670(tdone,ends);
+        thread4671(tdone,ends);
+        thread4672(tdone,ends);
+        thread4673(tdone,ends);
+        thread4674(tdone,ends);
+        thread4675(tdone,ends);
+        int biggest4676 = 0;
+        if(ends[8]>=biggest4676){
+          biggest4676=ends[8];
         }
-        if(ends[9]>=biggest4760){
-          biggest4760=ends[9];
+        if(ends[9]>=biggest4676){
+          biggest4676=ends[9];
         }
-        if(ends[10]>=biggest4760){
-          biggest4760=ends[10];
+        if(ends[10]>=biggest4676){
+          biggest4676=ends[10];
         }
-        if(ends[11]>=biggest4760){
-          biggest4760=ends[11];
+        if(ends[11]>=biggest4676){
+          biggest4676=ends[11];
         }
-        if(ends[12]>=biggest4760){
-          biggest4760=ends[12];
+        if(ends[12]>=biggest4676){
+          biggest4676=ends[12];
         }
-        if(ends[13]>=biggest4760){
-          biggest4760=ends[13];
+        if(ends[13]>=biggest4676){
+          biggest4676=ends[13];
         }
-        if(biggest4760 == 1){
+        if(biggest4676 == 1){
           active[7]=1;
           ends[7]=1;
           tdone[7]=1;
         }
         //FINXME code
-        if(biggest4760 == 0){
-          S3736=0;
+        if(biggest4676 == 0){
+          S3652=0;
           active[7]=0;
           ends[7]=0;
           tdone[7]=1;
@@ -262,8 +262,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4752(int [] tdone, int [] ends){
-        switch(S3686){
+  public void thread4668(int [] tdone, int [] ends){
+        switch(S3602){
       case 0 : 
         active[6]=0;
         ends[6]=0;
@@ -341,8 +341,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4751(int [] tdone, int [] ends){
-        switch(S3624){
+  public void thread4667(int [] tdone, int [] ends){
+        switch(S3540){
       case 0 : 
         active[5]=0;
         ends[5]=0;
@@ -350,19 +350,19 @@ public class Plant extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S3578){
+        switch(S3494){
           case 0 : 
             if(empty.getprestatus()){//sysj\wLoaderPlant.sysj line: 65, column: 10
-              S3578=1;
+              S3494=1;
               active[5]=1;
               ends[5]=1;
               tdone[5]=1;
             }
             else {
-              switch(S3560){
+              switch(S3476){
                 case 0 : 
                   if(pusherRetracted.getprestatus()){//sysj\wLoaderPlant.sysj line: 67, column: 13
-                    S3560=1;
+                    S3476=1;
                     active[5]=1;
                     ends[5]=1;
                     tdone[5]=1;
@@ -379,7 +379,7 @@ public class Plant extends ClockDomain{
                     capPos_1.setPresent();//sysj\wLoaderPlant.sysj line: 70, column: 7
                     currsigs.addElement(capPos_1);
                     capPos_1.setValue(1);//sysj\wLoaderPlant.sysj line: 70, column: 7
-                    S3560=2;
+                    S3476=2;
                     active[5]=1;
                     ends[5]=1;
                     tdone[5]=1;
@@ -395,7 +395,7 @@ public class Plant extends ClockDomain{
                   if(pusherRetracted.getprestatus()){//sysj\wLoaderPlant.sysj line: 71, column: 13
                     capDec_1.setPresent();//sysj\wLoaderPlant.sysj line: 72, column: 7
                     currsigs.addElement(capDec_1);
-                    S3560=0;
+                    S3476=0;
                     active[5]=1;
                     ends[5]=1;
                     tdone[5]=1;
@@ -413,8 +413,8 @@ public class Plant extends ClockDomain{
           
           case 1 : 
             if(refill.getprestatus()){//sysj\wLoaderPlant.sysj line: 75, column: 10
-              S3578=0;
-              S3560=0;
+              S3494=0;
+              S3476=0;
               active[5]=1;
               ends[5]=1;
               tdone[5]=1;
@@ -432,8 +432,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4750(int [] tdone, int [] ends){
-        switch(S3556){
+  public void thread4666(int [] tdone, int [] ends){
+        switch(S3472){
       case 0 : 
         active[4]=0;
         ends[4]=0;
@@ -441,23 +441,23 @@ public class Plant extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S3526){
+        switch(S3442){
           case 0 : 
-            switch(S3521){
+            switch(S3437){
               case 0 : 
                 if(!vacOn.getprestatus()){//sysj\wLoaderPlant.sysj line: 45, column: 12
-                  S3521=1;
+                  S3437=1;
                   if(armAtSource.getprestatus()){//sysj\wLoaderPlant.sysj line: 48, column: 14
                     capPos_1.setPresent();//sysj\wLoaderPlant.sysj line: 49, column: 7
                     currsigs.addElement(capPos_1);
                     capPos_1.setValue(1);//sysj\wLoaderPlant.sysj line: 49, column: 7
-                    S3526=1;
+                    S3442=1;
                     active[4]=1;
                     ends[4]=1;
                     tdone[4]=1;
                   }
                   else {
-                    S3526=1;
+                    S3442=1;
                     active[4]=1;
                     ends[4]=1;
                     tdone[4]=1;
@@ -473,13 +473,13 @@ public class Plant extends ClockDomain{
                 break;
               
               case 1 : 
-                S3526=0;
+                S3442=0;
                 if(vacOn.getprestatus() && armAtSource.getprestatus()){//sysj\wLoaderPlant.sysj line: 42, column: 12
                   if((Integer)(capPos_1.getpreval() == null ? 0 : ((Integer)capPos_1.getpreval()).intValue()) == 1){//sysj\wLoaderPlant.sysj line: 43, column: 8
                     capPos_1.setPresent();//sysj\wLoaderPlant.sysj line: 44, column: 6
                     currsigs.addElement(capPos_1);
                     capPos_1.setValue(0);//sysj\wLoaderPlant.sysj line: 44, column: 6
-                    S3521=0;
+                    S3437=0;
                     WPgripped.setPresent();//sysj\wLoaderPlant.sysj line: 46, column: 7
                     currsigs.addElement(WPgripped);
                     active[4]=1;
@@ -487,14 +487,14 @@ public class Plant extends ClockDomain{
                     tdone[4]=1;
                   }
                   else {
-                    S3526=1;
+                    S3442=1;
                     active[4]=1;
                     ends[4]=1;
                     tdone[4]=1;
                   }
                 }
                 else {
-                  S3526=1;
+                  S3442=1;
                   active[4]=1;
                   ends[4]=1;
                   tdone[4]=1;
@@ -505,14 +505,14 @@ public class Plant extends ClockDomain{
             break;
           
           case 1 : 
-            S3526=1;
-            S3526=0;
+            S3442=1;
+            S3442=0;
             if(vacOn.getprestatus() && armAtSource.getprestatus()){//sysj\wLoaderPlant.sysj line: 42, column: 12
               if((Integer)(capPos_1.getpreval() == null ? 0 : ((Integer)capPos_1.getpreval()).intValue()) == 1){//sysj\wLoaderPlant.sysj line: 43, column: 8
                 capPos_1.setPresent();//sysj\wLoaderPlant.sysj line: 44, column: 6
                 currsigs.addElement(capPos_1);
                 capPos_1.setValue(0);//sysj\wLoaderPlant.sysj line: 44, column: 6
-                S3521=0;
+                S3437=0;
                 WPgripped.setPresent();//sysj\wLoaderPlant.sysj line: 46, column: 7
                 currsigs.addElement(WPgripped);
                 active[4]=1;
@@ -520,14 +520,14 @@ public class Plant extends ClockDomain{
                 tdone[4]=1;
               }
               else {
-                S3526=1;
+                S3442=1;
                 active[4]=1;
                 ends[4]=1;
                 tdone[4]=1;
               }
             }
             else {
-              S3526=1;
+              S3442=1;
               active[4]=1;
               ends[4]=1;
               tdone[4]=1;
@@ -540,8 +540,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4749(int [] tdone, int [] ends){
-        switch(S3512){
+  public void thread4665(int [] tdone, int [] ends){
+        switch(S3428){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -549,10 +549,10 @@ public class Plant extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S3466){
+        switch(S3382){
           case 0 : 
             if(pusherExtend.getprestatus() && enable.getprestatus()){//sysj\wLoaderPlant.sysj line: 29, column: 10
-              S3466=1;
+              S3382=1;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
@@ -568,7 +568,7 @@ public class Plant extends ClockDomain{
           
           case 1 : 
             if(!enable.getprestatus()){//sysj\wLoaderPlant.sysj line: 32, column: 10
-              S3466=2;
+              S3382=2;
               pusherExtended.setPresent();//sysj\wLoaderPlant.sysj line: 34, column: 5
               currsigs.addElement(pusherExtended);
               active[3]=1;
@@ -584,7 +584,7 @@ public class Plant extends ClockDomain{
           
           case 2 : 
             if(!pusherExtend.getprestatus() && enable.getprestatus()){//sysj\wLoaderPlant.sysj line: 33, column: 10
-              S3466=3;
+              S3382=3;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
@@ -600,7 +600,7 @@ public class Plant extends ClockDomain{
           
           case 3 : 
             if(!enable.getprestatus()){//sysj\wLoaderPlant.sysj line: 36, column: 10
-              S3466=0;
+              S3382=0;
               pusherRetracted.setPresent();//sysj\wLoaderPlant.sysj line: 30, column: 5
               currsigs.addElement(pusherRetracted);
               active[3]=1;
@@ -620,8 +620,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4748(int [] tdone, int [] ends){
-        switch(S3459){
+  public void thread4664(int [] tdone, int [] ends){
+        switch(S3375){
       case 0 : 
         active[2]=0;
         ends[2]=0;
@@ -629,10 +629,10 @@ public class Plant extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S3413){
+        switch(S3329){
           case 0 : 
             if(armSource.getprestatus() && enable.getprestatus()){//sysj\wLoaderPlant.sysj line: 16, column: 10
-              S3413=1;
+              S3329=1;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -648,7 +648,7 @@ public class Plant extends ClockDomain{
           
           case 1 : 
             if(!enable.getprestatus()){//sysj\wLoaderPlant.sysj line: 19, column: 10
-              S3413=2;
+              S3329=2;
               armAtSource.setPresent();//sysj\wLoaderPlant.sysj line: 21, column: 5
               currsigs.addElement(armAtSource);
               active[2]=1;
@@ -664,7 +664,7 @@ public class Plant extends ClockDomain{
           
           case 2 : 
             if(armDest.getprestatus() && enable.getprestatus()){//sysj\wLoaderPlant.sysj line: 20, column: 10
-              S3413=3;
+              S3329=3;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -680,7 +680,7 @@ public class Plant extends ClockDomain{
           
           case 3 : 
             if(!enable.getprestatus()){//sysj\wLoaderPlant.sysj line: 23, column: 10
-              S3413=0;
+              S3329=0;
               armAtDest.setPresent();//sysj\wLoaderPlant.sysj line: 17, column: 5
               currsigs.addElement(armAtDest);
               active[2]=1;
@@ -700,8 +700,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4745(int [] tdone, int [] ends){
-        S3734=1;
+  public void thread4661(int [] tdone, int [] ends){
+        S3650=1;
     if(empty.getprestatus()){//sysj\wLoaderPlant.sysj line: 108, column: 24
       emptyE.setPresent();//sysj\wLoaderPlant.sysj line: 108, column: 31
       currsigs.addElement(emptyE);
@@ -716,8 +716,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4744(int [] tdone, int [] ends){
-        S3726=1;
+  public void thread4660(int [] tdone, int [] ends){
+        S3642=1;
     if(armAtDest.getprestatus()){//sysj\wLoaderPlant.sysj line: 106, column: 24
       armAtDestE.setPresent();//sysj\wLoaderPlant.sysj line: 106, column: 35
       currsigs.addElement(armAtDestE);
@@ -732,8 +732,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4743(int [] tdone, int [] ends){
-        S3718=1;
+  public void thread4659(int [] tdone, int [] ends){
+        S3634=1;
     if(armAtSource.getprestatus()){//sysj\wLoaderPlant.sysj line: 104, column: 24
       armAtSourceE.setPresent();//sysj\wLoaderPlant.sysj line: 104, column: 37
       currsigs.addElement(armAtSourceE);
@@ -748,8 +748,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4742(int [] tdone, int [] ends){
-        S3710=1;
+  public void thread4658(int [] tdone, int [] ends){
+        S3626=1;
     if(WPgripped.getprestatus()){//sysj\wLoaderPlant.sysj line: 102, column: 24
       WPgrippedE.setPresent();//sysj\wLoaderPlant.sysj line: 102, column: 35
       currsigs.addElement(WPgrippedE);
@@ -764,8 +764,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4741(int [] tdone, int [] ends){
-        S3702=1;
+  public void thread4657(int [] tdone, int [] ends){
+        S3618=1;
     if(pusherExtended.getprestatus()){//sysj\wLoaderPlant.sysj line: 100, column: 24
       pusherExtendedE.setPresent();//sysj\wLoaderPlant.sysj line: 100, column: 40
       currsigs.addElement(pusherExtendedE);
@@ -780,8 +780,8 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4740(int [] tdone, int [] ends){
-        S3694=1;
+  public void thread4656(int [] tdone, int [] ends){
+        S3610=1;
     if(pusherRetracted.getprestatus()){//sysj\wLoaderPlant.sysj line: 98, column: 24
       pusherRetractedE.setPresent();//sysj\wLoaderPlant.sysj line: 98, column: 41
       currsigs.addElement(pusherRetractedE);
@@ -796,42 +796,42 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4739(int [] tdone, int [] ends){
-        S3736=1;
-    thread4740(tdone,ends);
-    thread4741(tdone,ends);
-    thread4742(tdone,ends);
-    thread4743(tdone,ends);
-    thread4744(tdone,ends);
-    thread4745(tdone,ends);
-    int biggest4746 = 0;
-    if(ends[8]>=biggest4746){
-      biggest4746=ends[8];
+  public void thread4655(int [] tdone, int [] ends){
+        S3652=1;
+    thread4656(tdone,ends);
+    thread4657(tdone,ends);
+    thread4658(tdone,ends);
+    thread4659(tdone,ends);
+    thread4660(tdone,ends);
+    thread4661(tdone,ends);
+    int biggest4662 = 0;
+    if(ends[8]>=biggest4662){
+      biggest4662=ends[8];
     }
-    if(ends[9]>=biggest4746){
-      biggest4746=ends[9];
+    if(ends[9]>=biggest4662){
+      biggest4662=ends[9];
     }
-    if(ends[10]>=biggest4746){
-      biggest4746=ends[10];
+    if(ends[10]>=biggest4662){
+      biggest4662=ends[10];
     }
-    if(ends[11]>=biggest4746){
-      biggest4746=ends[11];
+    if(ends[11]>=biggest4662){
+      biggest4662=ends[11];
     }
-    if(ends[12]>=biggest4746){
-      biggest4746=ends[12];
+    if(ends[12]>=biggest4662){
+      biggest4662=ends[12];
     }
-    if(ends[13]>=biggest4746){
-      biggest4746=ends[13];
+    if(ends[13]>=biggest4662){
+      biggest4662=ends[13];
     }
-    if(biggest4746 == 1){
+    if(biggest4662 == 1){
       active[7]=1;
       ends[7]=1;
       tdone[7]=1;
     }
   }
 
-  public void thread4738(int [] tdone, int [] ends){
-        S3686=1;
+  public void thread4654(int [] tdone, int [] ends){
+        S3602=1;
     capcount_thread_6 = 5;//sysj\wLoaderPlant.sysj line: 80, column: 3
     if(capDec_1.getprestatus()){//sysj\wLoaderPlant.sysj line: 82, column: 12
       if(capcount_thread_6 > 0) {//sysj\wLoaderPlant.sysj line: 83, column: 5
@@ -900,24 +900,24 @@ public class Plant extends ClockDomain{
     }
   }
 
-  public void thread4737(int [] tdone, int [] ends){
-        S3624=1;
-    S3578=0;
-    S3560=0;
+  public void thread4653(int [] tdone, int [] ends){
+        S3540=1;
+    S3494=0;
+    S3476=0;
     active[5]=1;
     ends[5]=1;
     tdone[5]=1;
   }
 
-  public void thread4736(int [] tdone, int [] ends){
-        S3556=1;
-    S3526=0;
+  public void thread4652(int [] tdone, int [] ends){
+        S3472=1;
+    S3442=0;
     if(vacOn.getprestatus() && armAtSource.getprestatus()){//sysj\wLoaderPlant.sysj line: 42, column: 12
       if((Integer)(capPos_1.getpreval() == null ? 0 : ((Integer)capPos_1.getpreval()).intValue()) == 1){//sysj\wLoaderPlant.sysj line: 43, column: 8
         capPos_1.setPresent();//sysj\wLoaderPlant.sysj line: 44, column: 6
         currsigs.addElement(capPos_1);
         capPos_1.setValue(0);//sysj\wLoaderPlant.sysj line: 44, column: 6
-        S3521=0;
+        S3437=0;
         WPgripped.setPresent();//sysj\wLoaderPlant.sysj line: 46, column: 7
         currsigs.addElement(WPgripped);
         active[4]=1;
@@ -925,23 +925,23 @@ public class Plant extends ClockDomain{
         tdone[4]=1;
       }
       else {
-        S3526=1;
+        S3442=1;
         active[4]=1;
         ends[4]=1;
         tdone[4]=1;
       }
     }
     else {
-      S3526=1;
+      S3442=1;
       active[4]=1;
       ends[4]=1;
       tdone[4]=1;
     }
   }
 
-  public void thread4735(int [] tdone, int [] ends){
-        S3512=1;
-    S3466=0;
+  public void thread4651(int [] tdone, int [] ends){
+        S3428=1;
+    S3382=0;
     pusherRetracted.setPresent();//sysj\wLoaderPlant.sysj line: 30, column: 5
     currsigs.addElement(pusherRetracted);
     active[3]=1;
@@ -949,9 +949,9 @@ public class Plant extends ClockDomain{
     tdone[3]=1;
   }
 
-  public void thread4734(int [] tdone, int [] ends){
-        S3459=1;
-    S3413=0;
+  public void thread4650(int [] tdone, int [] ends){
+        S3375=1;
+    S3329=0;
     armAtDest.setPresent();//sysj\wLoaderPlant.sysj line: 17, column: 5
     currsigs.addElement(armAtDest);
     active[2]=1;
@@ -966,46 +966,46 @@ public class Plant extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S4732){
+      switch(S4648){
         case 0 : 
-          S4732=0;
+          S4648=0;
           break RUN;
         
         case 1 : 
-          S4732=2;
-          S4732=2;
+          S4648=2;
+          S4648=2;
           new Thread(new GUI()).start();//sysj\wLoaderPlant.sysj line: 9, column: 2
           capDec_1.setClear();//sysj\wLoaderPlant.sysj line: 11, column: 2
           capPos_1.setClear();//sysj\wLoaderPlant.sysj line: 12, column: 2
           capPos_1.setPresent();//sysj\wLoaderPlant.sysj line: 13, column: 2
           currsigs.addElement(capPos_1);
           capPos_1.setValue(0);//sysj\wLoaderPlant.sysj line: 13, column: 2
-          thread4734(tdone,ends);
-          thread4735(tdone,ends);
-          thread4736(tdone,ends);
-          thread4737(tdone,ends);
-          thread4738(tdone,ends);
-          thread4739(tdone,ends);
-          int biggest4747 = 0;
-          if(ends[2]>=biggest4747){
-            biggest4747=ends[2];
+          thread4650(tdone,ends);
+          thread4651(tdone,ends);
+          thread4652(tdone,ends);
+          thread4653(tdone,ends);
+          thread4654(tdone,ends);
+          thread4655(tdone,ends);
+          int biggest4663 = 0;
+          if(ends[2]>=biggest4663){
+            biggest4663=ends[2];
           }
-          if(ends[3]>=biggest4747){
-            biggest4747=ends[3];
+          if(ends[3]>=biggest4663){
+            biggest4663=ends[3];
           }
-          if(ends[4]>=biggest4747){
-            biggest4747=ends[4];
+          if(ends[4]>=biggest4663){
+            biggest4663=ends[4];
           }
-          if(ends[5]>=biggest4747){
-            biggest4747=ends[5];
+          if(ends[5]>=biggest4663){
+            biggest4663=ends[5];
           }
-          if(ends[6]>=biggest4747){
-            biggest4747=ends[6];
+          if(ends[6]>=biggest4663){
+            biggest4663=ends[6];
           }
-          if(ends[7]>=biggest4747){
-            biggest4747=ends[7];
+          if(ends[7]>=biggest4663){
+            biggest4663=ends[7];
           }
-          if(biggest4747 == 1){
+          if(biggest4663 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
@@ -1014,42 +1014,42 @@ public class Plant extends ClockDomain{
         case 2 : 
           capDec_1.setClear();//sysj\wLoaderPlant.sysj line: 11, column: 2
           capPos_1.setClear();//sysj\wLoaderPlant.sysj line: 12, column: 2
-          thread4748(tdone,ends);
-          thread4749(tdone,ends);
-          thread4750(tdone,ends);
-          thread4751(tdone,ends);
-          thread4752(tdone,ends);
-          thread4753(tdone,ends);
-          int biggest4761 = 0;
-          if(ends[2]>=biggest4761){
-            biggest4761=ends[2];
+          thread4664(tdone,ends);
+          thread4665(tdone,ends);
+          thread4666(tdone,ends);
+          thread4667(tdone,ends);
+          thread4668(tdone,ends);
+          thread4669(tdone,ends);
+          int biggest4677 = 0;
+          if(ends[2]>=biggest4677){
+            biggest4677=ends[2];
           }
-          if(ends[3]>=biggest4761){
-            biggest4761=ends[3];
+          if(ends[3]>=biggest4677){
+            biggest4677=ends[3];
           }
-          if(ends[4]>=biggest4761){
-            biggest4761=ends[4];
+          if(ends[4]>=biggest4677){
+            biggest4677=ends[4];
           }
-          if(ends[5]>=biggest4761){
-            biggest4761=ends[5];
+          if(ends[5]>=biggest4677){
+            biggest4677=ends[5];
           }
-          if(ends[6]>=biggest4761){
-            biggest4761=ends[6];
+          if(ends[6]>=biggest4677){
+            biggest4677=ends[6];
           }
-          if(ends[7]>=biggest4761){
-            biggest4761=ends[7];
+          if(ends[7]>=biggest4677){
+            biggest4677=ends[7];
           }
-          if(biggest4761 == 1){
+          if(biggest4677 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest4761 == 0){
-            S4732=0;
+          if(biggest4677 == 0){
+            S4648=0;
             active[1]=0;
             ends[1]=0;
-            S4732=0;
+            S4648=0;
             break RUN;
           }
         
