@@ -1,13 +1,17 @@
 <System xmlns="http://systemjtechnology.com">
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="CControllerCD" Class="conveyorController">
-			<iSignal Name="bottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="conveyorEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
-			<iSignal Name="bottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
+		
+			<iSignal Name="bottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12002" />
+			<iSignal Name="bottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12002" />
+			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12002" />	
+			<iSignal Name="bottleAtConvStart" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12002" />	
+			
+			<iSignal Name="conveyorEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20002" />
 					
-			<oSignal Name="motor" To="CPlantCD.motor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="conveyorDone" To="MControllerCD.conveyerDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="motor" To="CPlantCD.motor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10002" />
+			
+			<oSignal Name="conveyorDone" To="MControllerCD.conveyerDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
 			
 		</ClockDomain>
 	</SubSystem>

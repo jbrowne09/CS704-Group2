@@ -1,43 +1,77 @@
 conveyorPlant(
+		//input from controller
 		input signal motor, tick;
-		output signal bottleLeft5, bottlePos1, bottlePos5;
-		output signal bottleLeft5S, bottlePos1S, bottlePos5S, motorS;
+		
+		//input from rotary plant
+		input signal NbottlePos5;
+		
+		//output to controller
+		output signal bottleLeft5, bottlePos1, bottlePos5, bottleAtConvStart; //bottleAtConvStart is temporary for testing.
+		
+		//output to rotary plant
+		output signal NbottlePos1, NbottleLeft5, Nmotor;
+		
+		//output to viz
+		output signal bottleLeft5S, motorS;
 		)
 ->
 {
-	//new Thread(new conveyorGUI()).start();
-	
-	{//Motor
-		while(true){
-			await(motor);
-			abort (!motor) {
-				sustain motorS;
+	{
+		//while(true){
+			await(tick);
+			await(!tick);
+		
+			abort(motor){
+				sustain bottleAtConvStart;
 			}
+			
+			await(tick);
+			await(!tick);
+			
+			abort(tick){
+				sustain bottlePos1;
+			}
+			await(!tick);
+		//}
+	}
+	||
+	{
+		while(true){
+			await(NbottlePos5);
+			
+			abort(motor){
+				sustain bottlePos5;
+			}
+			
+			await(tick);
+			await(!tick);
+			
+			abort(tick){
+				sustain bottleLeft5;
+			}
+			await(!tick);
 		}
+	}
+	||
+	{//To viz/Other Plants
+		{while(true) {present(bottleLeft5) {emit bottleLeft5S;} pause;}}
+		||
+		{while(true) {present(motor) {emit motorS; emit Nmotor;} pause;}}
+		||
+		{while(true) {present(bottlePos1) {emit NbottlePos1;} pause;}}
+		||
+		{while(true) {present(bottleLeft5) {emit NbottleLeft5;} pause;}}
+		
+		//input from other plants
+		||
+		{while(true) {present(NbottlePos5) {emit bottlePos5;} pause;}}
 	}
 	||
 	{
 		while(true){
 			await(tick);
+			//System.out.println("tick");
 			await(!tick);
-			abort(tick){
-				sustain bottlePos1;
-			}
-			await(!tick);
-			abort(tick){
-				sustain bottlePos5;
-			}
-			await(!tick);
-			sustain bottleLeft5;
 		}
 	}
-	||
-	{//To viz
-		{while(true) {present(bottlePos1) {emit bottlePos1S;} pause;}}
-		||
-		{while(true) {present(bottlePos5) {emit bottlePos5S;} pause;}}
-		||
-		{while(true) {present(bottleLeft5) {emit bottleLeft5S;} pause;}}
-	}
-	
 }

@@ -2,16 +2,18 @@
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="RControllerCD" Class="rotaryController">
 		
-			<iSignal Name="aligned" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="bottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="bottlePos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="bottlePos3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="bottlePos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="enableRotary" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
+			<iSignal Name="aligned" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
+			<iSignal Name="bottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
+			<iSignal Name="bottlePos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
+			<iSignal Name="bottlePos3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
+			<iSignal Name="bottlePos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
+			<iSignal Name="bottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12003" />
+			
+			<iSignal Name="enableRotary" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20002" />	
 					
-			<oSignal Name="rotate" To="RPlantCD.rotate" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="rotaryDone" To="MControllerCD.rotaryDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="rotate" To="RPlantCD.rotate" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10003" />
+			
+			<oSignal Name="rotaryDone" To="MControllerCD.rotaryDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20001" />
 			
 		</ClockDomain>
 	</SubSystem> 

@@ -295,10 +295,13 @@ public class systemCanvas extends JPanel{
 		this.toB2 = States.armtoB2;
 		this.toC2 = States.armtoC2;
 		
-		//TEMPORARY (forcing bottleAtLoad to be true initially)
+		//TEMPORARY (forcing signals to be true initially)
 		if (loadPosX == -1) {
 			loadPosX = 81;
 			loadPosY = 448;
+		}
+		if (loadConvPos == -1) {
+			loadConvPos = 179;
 		}
 			
 		//#######################################################################################
