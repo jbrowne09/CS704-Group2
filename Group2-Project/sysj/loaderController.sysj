@@ -4,11 +4,9 @@ loaderController(
     output String signal CMD;
 	)
 ->{ 
-	await(tick);
 	while(true){
-	System.out.println("in loader");
 		await(bottleToLoad);
-		System.out.println("received bottle");
+		await(tick);
 		await(!tick);
 		abort(tick) {
 			sustain CMD("B"); //Move to bottle
@@ -33,8 +31,9 @@ loaderController(
 		abort(tick) {
 			sustain CMD("A"); //Move back to original position
 		}
-		sustain loaderDone;
-
+		abort(!bottleToLoad){
+			sustain loaderDone;
+		}
 		pause;
 	}
 }

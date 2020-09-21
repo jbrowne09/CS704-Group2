@@ -7,7 +7,7 @@ public class States {
 	public static volatile boolean bottlePos1 = false;
 	public static volatile boolean bottlePos2 = false;
 	public static volatile boolean bottlePos3 = false;
-	public static volatile boolean bottlePos4 = false;
+	public static volatile boolean bottlePos4 = true;
 	public static volatile boolean bottlePos5 = false;
 	public static volatile boolean rotate = false;
 	public static volatile boolean gripperLifted = true;

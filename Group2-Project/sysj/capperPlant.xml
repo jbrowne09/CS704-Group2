@@ -4,7 +4,7 @@
 			
 			<iSignal Name="clampBottle" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10006" />
 			<iSignal Name="gripCap" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10007" />
-			<iSignal Name="gripDown" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10008" />
+			<iSignal Name="gripDown" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="12001" />
 			<iSignal Name="twistGrip" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10009" />
 			<iSignal Name="untwistGrip" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10012" />
 			

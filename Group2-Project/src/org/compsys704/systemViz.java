@@ -86,7 +86,7 @@ public class systemViz extends JFrame implements ActionListener {
 		
 		//tick button
 		tick.setEnabled(true);
-		tick.addActionListener(new SignalClient(10001, "MControllerCD.tick"));
+		tick.addActionListener(new SignalClient(10011, "MControllerCD.tick"));
 		tick.addActionListener(new SignalClient(11000, "LControllerCD.tick"));
 		tick.addActionListener(new SignalClient(11001, "ULControllerCD.tick"));
 		tick.addActionListener(new SignalClient(11002, "CPlantCD.tick"));

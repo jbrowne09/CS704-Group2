@@ -8,12 +8,12 @@
 			<iSignal Name="gripperTurned" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
 			<iSignal Name="bottleClamped" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
 			<iSignal Name="bottlePos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
-			<iSignal Name="capperEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
+			<iSignal Name="capperEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10008" />	
 			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11005" />
 				 	
 			<oSignal Name="clampBottle" To="CapPlantCD.clampBottle" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10006" />
 			<oSignal Name="gripCap" To="CapPlantCD.gripCap" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10007" />
-			<oSignal Name="gripDown" To="CapPlantCD.gripDown" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10008" />
+			<oSignal Name="gripDown" To="CapPlantCD.gripDown" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="12001" />
 			<oSignal Name="twistGrip" To="CapPlantCD.twistGrip" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10009" />
 			<oSignal Name="untwistGrip" To="CapPlantCD.untwistGrip" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10012" />
 			<oSignal Name="capperDone" To="MControllerCD.capperDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />

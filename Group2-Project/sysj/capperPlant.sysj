@@ -5,36 +5,45 @@ capperPlant(
 		)
 ->
 {
-	while(true){
+while(true){
 	{
+		while(true){
 			abort(immediate gripDown){
 				sustain gripperLifted; 
 			}
 			abort(untwistGrip) {
 				sustain gripperLowered;
 			}
+		}
 	}
 	||
 	{
+		while(true) {
 			abort(twistGrip) {
 				sustain gripperInit;
 			}
 			abort(untwistGrip) {
 				sustain gripperTurned;
 			}
-	}
-	||
-	{
-		await(gripCap);
-		abort(immediate untwistGrip) {
-			sustain gripCapS;
+			//sustain gripperInitS;
 		}
 	}
 	||
 	{
-		await(clampBottle);
-		abort(untwistGrip) {
-			sustain bottleClamped;
+		while(true){
+			await(gripCap);
+			abort(immediate untwistGrip) {
+				sustain gripCapS;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(clampBottle);
+			abort(untwistGrip) {
+				sustain bottleClamped;
+			}
 		}
 	}
 	||
