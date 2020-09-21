@@ -8,6 +8,8 @@
 				 	
 			<oSignal Name="CMD" To="LPlantCD.CMD" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="loaderDone" To="MControllerCD.loaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10002" />
+			
+			<oSignal Name="NloaderDone" To="CControllerCD.NloaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10109" />
 					
 		</ClockDomain>
 	</SubSystem>

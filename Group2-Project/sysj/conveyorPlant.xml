@@ -8,9 +8,10 @@
 			
 			<iSignal Name="CbottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10108" />
 			
+			<iSignal Name="CloaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10110" />
+			
 			<oSignal Name="bottleLeft5" To="CControllerCD.bottleLeft5"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10100" />
 			<oSignal Name="bottlePos1" To="CControllerCD.bottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10101" />
-			<oSignal Name="loaderDone" To="CControllerCD.loaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10102" />
 			
 			<oSignal Name="bottleLeft5S" To="UI.bottleLeft5S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="bottlePos1S" To="UI.bottlePos1S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />

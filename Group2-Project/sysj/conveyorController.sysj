@@ -1,7 +1,7 @@
 conveyorController(
     
     //Plant to Controller
-    input signal bottleLeft5, bottlePos1, loaderDone; //loaderDone is temporary for testing
+    input signal bottleLeft5, bottlePos1;
     
     //Main to Controller
     input signal conveyorEnable;
@@ -13,14 +13,15 @@ conveyorController(
     output signal NbottlePos1, Nmotor;
     
     //Controller to Plant
-    output signal motor, CbottlePos5;
+    output signal motor, CbottlePos5, CloaderDone;
+    
+    //From loaderController
+    input signal NloaderDone;
 	)
 ->{
-	//Conveyor Control
-	//Currently ignoring loaderDone signal
 	{
 		while(true){
-			await(loaderDone);
+			await(NloaderDone);
 			
 			abort(!bottlePos1 && !bottleLeft5){
 				halt;
@@ -47,8 +48,10 @@ conveyorController(
 	}
 	||
 	
-	//signals to/from rotaryController
+	//signals to/from rotaryController && loaderController
 	{ while(true) { present (NbottlePos5) {emit CbottlePos5;} pause;}}
+	||
+	{ while(true) { present (NloaderDone) {emit CloaderDone;} pause;}}
 	||
 	{ while(true) { present (bottlePos1) {emit NbottlePos1;} pause;}}
 	||

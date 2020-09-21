@@ -4,14 +4,17 @@
 		
 			<iSignal Name="bottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10100" />
 			<iSignal Name="bottlePos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10101" />
-			<iSignal Name="loaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10102" />
 			
 			<iSignal Name="conveyorEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10102" />
 			
 			<iSignal Name="NbottlePos5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10103" />	
+			
+			<iSignal Name="NloaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10109" />
 					
 			<oSignal Name="motor" To="CPlantCD.motor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10104" />
 			<oSignal Name="CbottlePos5" To="CPlantCD.CbottlePos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10108" />
+			
+			<oSignal Name="CloaderDone" To="CPlantCD.CloaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10110" />
 			
 			<oSignal Name="NbottlePos1" To="RControllerCD.NbottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10156" />
 			<oSignal Name="Nmotor" To="RControllerCD.motor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10157" />

@@ -2,38 +2,55 @@ loaderController(
 	input signal bottleToLoad, CMDfb, tick;
     output signal loaderDone;
     output String signal CMD;
+    
+    //To conveyorPlant
+    output signal NloaderDone;
 	)
 ->{ 
-	while(true){
-		await(bottleToLoad);
-		await(tick);
-		await(!tick);
-		abort(tick) {
-			sustain CMD("B"); //Move to bottle
+	{
+		while(true){
+			await(bottleToLoad);
+			await(tick);
+			await(!tick);
+			abort(tick) {
+				sustain CMD("B"); //Move to bottle
+			}
+	
+			await(!tick);
+			abort(tick) {
+				sustain CMD("G"); //Grip bottle
+			}
+	
+			await(!tick);
+			abort(tick) {
+				sustain CMD("C"); //Move to turntable pos1
+			}
+	
+			await(!tick);
+			abort(tick) {
+				sustain CMD("O"); //Open gripper
+			}
+	
+			await(!tick);
+			abort(tick) {
+				sustain CMD("A"); //Move back to original position
+			}
+			abort(!bottleToLoad){
+				sustain loaderDone;
+			}
+			pause;
 		}
-
-		await(!tick);
-		abort(tick) {
-			sustain CMD("G"); //Grip bottle
-		}
-
-		await(!tick);
-		abort(tick) {
-			sustain CMD("C"); //Move to turntable pos1
-		}
-
-		await(!tick);
-		abort(tick) {
-			sustain CMD("O"); //Open gripper
-		}
-
-		await(!tick);
-		abort(tick) {
-			sustain CMD("A"); //Move back to original position
-		}
-		abort(!bottleToLoad){
-			sustain loaderDone;
-		}
-		pause;
 	}
+	||
+	{//DEBUG for ticks
+		while(true){
+			await(tick);
+			System.out.println("tick");
+			await(!tick);
+		}
+	}
+	||
+	
+	//to conveyorPlant
+	{while(true) {present(loaderDone) {emit NloaderDone;} pause;}}
 }

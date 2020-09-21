@@ -2,10 +2,10 @@ conveyorPlant(
 		input signal tick;
 		
 		//Controller to Plant
-		input signal motor, CbottlePos5;
+		input signal motor, CbottlePos5, CloaderDone;
 		
 		//Plant to Controller
-		output signal bottleLeft5, bottlePos1, loaderDone; //loaderDone is temporary for testing
+		output signal bottleLeft5, bottlePos1;
 		
 		//Plant to Visualiser
 		output signal bottleLeft5S, bottlePos1S, motorS;
@@ -14,13 +14,27 @@ conveyorPlant(
 {
 	{
 		while(true){
-		
+
+//test without loader		
+//			await(tick);
+//			await(!tick);
+//			
+//			abort(tick && motor){
+//				sustain loaderDone;
+//			}
+
+			abort(tick && CloaderDone){
+				halt;
+			}
+			
+			await(!tick);
+			abort(tick && motor){
+				halt;
+			}
+			
+			await(!tick);
 			await(tick);
 			await(!tick);
-			
-			abort(tick && motor){
-				sustain loaderDone;
-			}
 			
 			await(!tick);
 			abort(tick){

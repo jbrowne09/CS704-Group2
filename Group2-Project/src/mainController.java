@@ -22,8 +22,8 @@ public class mainController extends ClockDomain{
   public Signal capperEnable = new Signal("capperEnable", Signal.OUTPUT);
   public Signal fillerEnable = new Signal("fillerEnable", Signal.OUTPUT);
   public Signal bottleToLoad = new Signal("bottleToLoad", Signal.OUTPUT);
-  private int S1955 = 1;
-  private int S1757 = 1;
+  private int S1997 = 1;
+  private int S1799 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -35,25 +35,25 @@ public class mainController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S1955){
+      switch(S1997){
         case 0 : 
-          S1955=0;
+          S1997=0;
           break RUN;
         
         case 1 : 
-          S1955=2;
-          S1955=2;
-          S1757=0;
+          S1997=2;
+          S1997=2;
+          S1799=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S1757){
+          switch(S1799){
             case 0 : 
               if(tick.getprestatus()){//sysj\mainController.sysj line: 9, column: 9
                 System.out.println("entering loader");//sysj\mainController.sysj line: 11, column: 3
-                S1757=1;
+                S1799=1;
                 bottleToLoad.setPresent();//sysj\mainController.sysj line: 13, column: 4
                 currsigs.addElement(bottleToLoad);
                 active[1]=1;
@@ -69,7 +69,7 @@ public class mainController extends ClockDomain{
             case 1 : 
               if(loaderDone.getprestatus()){//sysj\mainController.sysj line: 12, column: 9
                 System.out.println("exit loader");//sysj\mainController.sysj line: 15, column: 3
-                S1757=2;
+                S1799=2;
                 System.out.println("entering capper");//sysj\mainController.sysj line: 18, column: 4
                 capperEnable.setPresent();//sysj\mainController.sysj line: 19, column: 4
                 currsigs.addElement(capperEnable);
@@ -88,7 +88,7 @@ public class mainController extends ClockDomain{
             case 2 : 
               if(capperDone.getprestatus()){//sysj\mainController.sysj line: 17, column: 9
                 System.out.println("exit capper");//sysj\mainController.sysj line: 21, column: 3
-                S1757=3;
+                S1799=3;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -109,7 +109,7 @@ public class mainController extends ClockDomain{
             case 4 : 
               if(conveyorDone.getprestatus()){//sysj\mainController.sysj line: 29, column: 9
                 System.out.println("exit conveyor");//sysj\mainController.sysj line: 33, column: 3
-                S1757=5;
+                S1799=5;
                 System.out.println("entering rotary");//sysj\mainController.sysj line: 36, column: 4
                 rotaryEnable.setPresent();//sysj\mainController.sysj line: 37, column: 4
                 currsigs.addElement(rotaryEnable);
@@ -128,7 +128,7 @@ public class mainController extends ClockDomain{
             case 5 : 
               if(rotaryDone.getprestatus()){//sysj\mainController.sysj line: 35, column: 9
                 System.out.println("exit rotary");//sysj\mainController.sysj line: 39, column: 3
-                S1757=6;
+                S1799=6;
                 System.out.println("entering capper");//sysj\mainController.sysj line: 42, column: 4
                 capperEnable.setPresent();//sysj\mainController.sysj line: 43, column: 4
                 currsigs.addElement(capperEnable);
@@ -147,7 +147,7 @@ public class mainController extends ClockDomain{
             case 6 : 
               if(capperDone.getprestatus()){//sysj\mainController.sysj line: 41, column: 9
                 System.out.println("exit capper");//sysj\mainController.sysj line: 45, column: 3
-                S1757=0;
+                S1799=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
