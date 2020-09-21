@@ -1,16 +1,18 @@
 capperPlant(
 		input signal clampBottle, gripCap, gripDown, twistGrip, untwistGrip;
-		output signal gripperLowered, gripperLifted, gripperInit, gripperTurned, bottlePos4;
-		output signal gripperLoweredS, gripperLiftedS, gripperInitS, gripperTurnedS, bottlePos4S;
+		output signal gripperLowered, gripperLifted, gripperInit, gripperTurned, bottleClamped, bottlePos4;
+		output signal gripperLoweredS, gripperLiftedS, gripperInitS, gripperTurnedS, gripCapS, bottleClampedS, bottlePos4S;
 		)
 ->
-{	//Signals to use somewhere? clampBottle, gripCap, bottlePos4(need something to check the viz/main for a bottle)
+{
 	while(true){
 	{
 			abort(immediate gripDown){
 				sustain gripperLifted; 
 			}
-			emit gripperLowered;
+			abort(untwistGrip) {
+				sustain gripperLowered;
+			}
 	}
 	||
 	{
@@ -22,7 +24,21 @@ capperPlant(
 			}
 	}
 	||
-	{//To viz
+	{
+		await(gripCap);
+		abort(immediate untwistGrip) {
+			sustain gripCapS;
+		}
+	}
+	||
+	{
+		await(clampBottle);
+		abort(untwistGrip) {
+			sustain bottleClamped;
+		}
+	}
+	||
+	{//To viz 
 		{while(true) {present(gripperLowered) {emit gripperLoweredS;} pause;}}
 		||
 		{while(true) {present(gripperLifted) {emit gripperLiftedS;} pause;}}
@@ -30,6 +46,8 @@ capperPlant(
 		{while(true) {present(gripperInit) {emit gripperInitS;} pause;}}
 		||
 		{while(true) {present(gripperTurned) {emit gripperTurnedS;} pause;}}
+		||
+		{while(true) {present(bottleClamped) {emit bottleClampedS;} pause;}}
 		||
 		{while(true) {present(bottlePos4) {emit bottlePos4S;} pause;}}
 	}
