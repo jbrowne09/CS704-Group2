@@ -9,6 +9,9 @@ public class LoaderVizWorker extends Worker{
 	public void setSignal(boolean status) {
 //		System.out.println(signame+"  "+status);
 		switch(signame){
+			case "bottleAtLoadS":
+				States.bottleAtLoad = status;
+				break;
 			case "bottleLeft5S":
 				States.bottleLeft5 = status;
 				break;
@@ -115,7 +118,7 @@ public class LoaderVizWorker extends Worker{
 		}
 	}  
 	
-	static final List<String> signames = Arrays.asList("bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S", "bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "gripCapS", "bottleClampedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS", "posBS", "posCS", "posDS", "posAS", "closeGripperS", "openGripperS", "posB2S", "posC2S", "posD2S", "posA2S", "closeGripper2S", "openGripper2S");
+	static final List<String> signames = Arrays.asList("bottleAtLoadS","bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S", "bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "gripCapS", "bottleClampedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS", "posBS", "posCS", "posDS", "posAS", "closeGripperS", "openGripperS", "posB2S", "posC2S", "posD2S", "posA2S", "closeGripper2S", "openGripper2S");
 	@Override
 	public boolean hasSignal(String sn) {
 		return signames.contains(sn);

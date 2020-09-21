@@ -148,35 +148,9 @@ public class systemCanvas extends JPanel{
 		}
 	}
 	
-	//TEMPORARY: actionListeners to update signals based on checkboxes in the 
-	//mainframe, these signals will come from the plant in the final design
-	//i.e. states.bottlePos1, states.rotate, etc.
+	//actionListeners to update some filler signals from the GUI
 	public void updateSignals(String signal, boolean status) {
 		switch(signal) {
-			case "bottleLeft5":
-				this.bottleLeft5 = status;
-				break;
-			case "motor":
-				this.motor = status;
-				break;
-			case "bottlePos1":
-				this.bottlePos1 = status;
-				break;
-			case "bottlePos2":
-				this.bottlePos2 = status;
-				break;
-			case "bottlePos3":
-				this.bottlePos3 = status;
-				break;
-			case "bottlePos4":
-				this.bottlePos4 = status;
-				break;
-			case "bottlePos5":
-				this.bottlePos5 = status;
-				break;
-			case "rotate":
-				this.rotate = status;
-				break;
 			case "liquidPos1":
 				this.liquidPos1 = status;
 				break;
@@ -189,60 +163,6 @@ public class systemCanvas extends JPanel{
 			case "liquidPos4":
 				this.liquidPos4 = status;
 				break;
-			case "NbottleFilled":
-				this.NbottleFilled = status;
-				break;
-			case "bottleAtLoad":
-				this.bottleAtLoad = status;
-				break;
-			case "gripLoadBottle":
-				this.gripLoadBottle = status;
-				break;
-			case "ungripLoadBottle":
-				this.ungripLoadBottle = status;
-				break;
-			case "ungripUnloadBottle":
-				this.ungripUnloadBottle = status;
-				break;
-			case "gripUnloadBottle":
-				this.gripUnloadBottle = status;
-				break;
-			case "toA":
-				this.toA = status;
-				break;
-			case "toB":
-				this.toB = status;
-				break;
-			case "toC":
-				this.toC = status;
-				break;
-			case "toA2":
-				this.toA2 = status;
-				break;
-			case "toB2":
-				this.toB2 = status;
-				break;
-			case "toC2":
-				this.toC2 = status;
-				break;
-			case "clampBottle":
-				this.clampBottle = status;
-				break;
-			case "gripCap":
-				this.gripCap = status;
-				break;
-			case "gripDown":
-				this.gripDown = status;
-				break;
-			case "twistGrip":
-				this.twistGrip = status;
-				break;
-			case "untwistGrip":
-				this.untwistGrip = status;
-				break;
-			case "NbottleCapped":
-				this.NbottleCapped = status;
-				break;
 		}
 	}
 	
@@ -252,6 +172,9 @@ public class systemCanvas extends JPanel{
 		g.drawImage(systemBackground, 0, 0, null);
 		g.drawImage(signalBackground, 0, 512, null);
 		Graphics2D g2 = (Graphics2D) g;
+		
+		//initial bottleAtLoad
+		this.bottleAtLoad = States.bottleAtLoad;
 		
 		//conveyor	
 		this.bottleLeft5 = States.bottleLeft5;
@@ -295,15 +218,7 @@ public class systemCanvas extends JPanel{
 		this.toB2 = States.armtoB2;
 		this.toC2 = States.armtoC2;
 		
-		//TEMPORARY (forcing signals to be true initially)
-		if (loadPosX == -1) {
-			loadPosX = 81;
-			loadPosY = 448;
-		}
-		if (loadConvPos == -1) {
-			loadConvPos = 179;
-		}
-			
+		
 		//#######################################################################################
 		//UPDATING ANIMATION STATUS BELOW
 		

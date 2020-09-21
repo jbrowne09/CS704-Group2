@@ -1,48 +1,62 @@
 mainController(
-	input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, tick;
+	input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, tick, bottleAtLoad;
     output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable, bottleToLoad;
-	
+    
+    //to visualiser
+    output signal bottleAtLoadS;
 	)
 ->{
-	while(true){
+	{
+		while(true){
+		
+			await(tick);
 	
-		await(tick);
-
-		System.out.println("entering loader");
-		abort(loaderDone) {
-			sustain bottleToLoad;
+			System.out.println("entering loader");
+			abort(loaderDone) {
+				sustain bottleToLoad;
+			}
+			System.out.println("exit loader");
+			
+			abort(capperDone) {
+				System.out.println("entering capper");
+				sustain capperEnable;
+			}
+			System.out.println("exit capper");
+			
+			
+			halt;
+			
+			
+			
+			
+			abort(conveyorDone) {
+			System.out.println("entering conveyor");
+				sustain conveyorEnable;
+			}
+			System.out.println("exit conveyor");
+	
+			abort(rotaryDone) {
+				System.out.println("entering rotary");
+				sustain rotaryEnable;
+			}
+			System.out.println("exit rotary");
+			
+			abort(capperDone) {
+				System.out.println("entering capper");
+				sustain capperEnable;
+			}
+			System.out.println("exit capper");
 		}
-		System.out.println("exit loader");
-		
-		abort(capperDone) {
-			System.out.println("entering capper");
-			sustain capperEnable;
+	}
+	||
+	
+	//To Visualiser
+	{
+		while(true){
+			await(bottleAtLoad);
+			abort(!bottleAtLoad){
+				sustain bottleAtLoadS;
+			}
 		}
-		System.out.println("exit capper");
-		
-		
-		halt;
-		
-		
-		
-		
-		abort(conveyorDone) {
-		System.out.println("entering conveyor");
-			sustain conveyorEnable;
-		}
-		System.out.println("exit conveyor");
-
-		abort(rotaryDone) {
-			System.out.println("entering rotary");
-			sustain rotaryEnable;
-		}
-		System.out.println("exit rotary");
-		
-		abort(capperDone) {
-			System.out.println("entering capper");
-			sustain capperEnable;
-		}
-		System.out.println("exit capper");
 	}
 }
-
