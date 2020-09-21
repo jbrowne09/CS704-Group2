@@ -13,18 +13,23 @@ rotaryController(
    	output signal NbottlePos2, NbottlePos3, NbottlePos4, NbottlePos5, Naligned;
 	)
 ->{ 	
-	//To/From Main
+
+	//Rotary Control
+	//Considers multiple bottles but completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
 	{
-		{while(true) {present(bottlePos2) {emit NbottlePos2;} pause;}}
-		||
-		{while(true) {present(bottlePos3) {emit NbottlePos3;} pause;}}
-		||
-		{while(true) {present(bottlePos4) {emit NbottlePos4;} pause;}}
-		||
-		{while(true) {present(bottlePos5) {emit NbottlePos5;} pause;}}
-		||
-		{while(true) {present(aligned) {emit Naligned;} pause;}}
-		||
-		{while(true) {present(rotaryEnable) {emit rotate;} pause;}}
+		while(true){
+			abort(NbottlePos1 || NbottlePos2 || NbottlePos3 || NbottlePos4) {
+				halt;
+			}
+			await(!NbottlePos5);
+			
+			abort(!NbottlePos1 && !NbottlePos2 && !NbottlePos3 && !NbottlePos4){
+				sustain rotaryEnable;
+			}
+			
+			abort(Naligned) {
+				sustain rotaryEnable;
+			}
+		}
 	}
 }

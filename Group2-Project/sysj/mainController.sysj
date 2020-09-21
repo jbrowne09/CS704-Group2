@@ -1,19 +1,13 @@
 mainController(
 	
 	//Conveyor to Main
-	input signal NbottleLeft5, NbottlePos1;
+	
 	
 	//Rotary to Main
-	input signal NbottlePos2, NbottlePos3, NbottlePos4, NbottlePos5, Naligned;
+	
 	
 	//Main to Controllers
 	output signal conveyorEnable, rotaryEnable;
-	
-	//Main to Rotary Plant
-	output signal NRbottlePos1, NRmotor;
-	
-	//Main to Conveyor Plant
-	output signal NCbottlePos5;
 	)
 ->{
 //	while(true){
@@ -37,67 +31,5 @@ mainController(
 //			sustain capperEnable;
 //		}
 //	}
-	
-	//Conveyor Control
-	//Currently ignoring loaderDone signal
-	{
-		while(true){
-			//await(loaderDone);
-			await(!NbottlePos1); //TEMPORARY FOR TESTING
-			
-			abort(!NbottlePos1 && !NbottleLeft5){
-				halt;
-			}
-				
-			abort(NbottlePos1 || NbottleLeft5){
-				sustain conveyorEnable;
-			}
-		}
-	}
-	||
-	{
-		while(true){
-			//await(NbottlePos5);
-			await(!NbottleLeft5); //TEMPORARY FOR TESTING
-			
-			abort(!NbottlePos1 && !NbottleLeft5){
-				halt;
-			}
-			
-			abort(NbottlePos1 || NbottleLeft5){
-				sustain conveyorEnable;
-			}
-		}
-	}
-	||
-
-	//Rotary Control
-	//Considers multiple bottles but completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
-	{
-		while(true){
-			abort(NbottlePos1 || NbottlePos2 || NbottlePos3 || NbottlePos4) {
-				halt;
-			}
-			await(!NbottlePos5);
-			
-			abort(!NbottlePos1 && !NbottlePos2 && !NbottlePos3 && !NbottlePos4){
-				sustain rotaryEnable;
-			}
-			
-			abort(Naligned) {
-				sustain rotaryEnable;
-			}
-		}
-	}
-	||
-	
-	//To Plant where the signal is need for the plant to generate some signals
-	{
-		{ while(true) { present (NbottlePos1) {emit NRbottlePos1;} pause;}}
-		||
-		{ while(true) { present (conveyorEnable) {emit NRmotor;} pause;}}
-		||
-		{ while(true) { present (NbottlePos5) {emit NCbottlePos5;} pause;}}
-	}
 }
 

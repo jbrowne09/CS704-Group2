@@ -13,12 +13,34 @@ conveyorController(
     output signal NbottleLeft5, NbottlePos1;
 	)
 ->{
-	//To/From Main
+	//Conveyor Control
+	//Currently ignoring loaderDone signal
 	{
-		{while(true) {present(bottleLeft5) {emit NbottleLeft5;} pause;}}
-		||
-		{while(true) {present(bottlePos1) {emit NbottlePos1;} pause;}}
-		||
-		{while(true) {present(conveyorEnable) {emit motor;} pause;}}
+		while(true){
+			//await(loaderDone);
+			await(!NbottlePos1); //TEMPORARY FOR TESTING
+			
+			abort(!NbottlePos1 && !NbottleLeft5){
+				halt;
+			}
+				
+			abort(NbottlePos1 || NbottleLeft5){
+				sustain conveyorEnable;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(NbottlePos5);
+			
+			abort(!NbottlePos1 && !NbottleLeft5){
+				halt;
+			}
+			
+			abort(NbottlePos1 || NbottleLeft5){
+				sustain conveyorEnable;
+			}
+		}
 	}
 }

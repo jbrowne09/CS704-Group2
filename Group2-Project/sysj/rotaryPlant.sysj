@@ -17,7 +17,7 @@ rotaryPlant(
 	//Multiple Bottles version
 	{
 		while(true){
-			//await(NRbottlePos1);	
+			await(NRbottlePos1);	
 			await(tick);
 			
 			await(!tick);
