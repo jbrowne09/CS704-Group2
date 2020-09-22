@@ -65,6 +65,12 @@ public class systemCanvas extends JPanel{
 	private boolean untwistGrip = false; 
 	private boolean NbottleCapped = false;
 	
+	//LidLoader
+	private boolean pusherExtend = false;
+	private boolean toDest = false;
+	private boolean toInit = false;
+	private boolean vacOn = false;
+	
 	//various variables for tracking bottle positions (used for visualiser 
 	//printing)
 	int loadPosX = -1;
@@ -136,6 +142,15 @@ public class systemCanvas extends JPanel{
 	boolean clamp = false;
 	boolean rotateGrip = false;
 	
+	int lloaderArmX = 512;
+	int lloaderArmY = 64;
+	int lloaderArmAngle = 30;
+	int pusherX = 670;
+	int lidX = 640;
+	int lidY = 64;
+	boolean vacHold = false;
+	boolean newLid = false;
+	
 	public systemCanvas(){
 		try {
 			systemBackground = ImageIO.read(new File("res/systemBackground.png"));
@@ -161,6 +176,18 @@ public class systemCanvas extends JPanel{
 				break;
 			case "liquidPos4":
 				this.liquidPos4 = status;
+				break;
+			case "pusherExtend":
+				this.pusherExtend = status;
+				break;
+			case "toDest":
+				this.toDest = status;
+				break;
+			case "toInit":
+				this.toInit = status;
+				break;
+			case "vacOn":
+				this.vacOn = status;
 				break;
 		}
 	}
@@ -401,6 +428,7 @@ public class systemCanvas extends JPanel{
 		} else if (this.untwistGrip) {
 			rotateGrip = false;
 		}
+		
 		//END OF UPDATING ANIMATION STATUS
 		//#######################################################################################
 		
@@ -698,6 +726,74 @@ public class systemCanvas extends JPanel{
 		g2.drawLine(grip1X1, grip1Y1, grip1X2, grip1Y2);
 		g2.drawLine(grip2X1, grip2Y1, grip2X2, grip2Y2);
 		
+		//LidLoader
+		if (this.toInit) {
+			if (lloaderArmAngle < 30) {
+				lloaderArmAngle += 1;
+			}
+		} else if (this.toDest) {
+			if (lloaderArmAngle > -30) {
+				lloaderArmAngle -= 1;
+			}
+		}
+		if (this.pusherExtend) {
+			if (pusherX > 542) {
+				pusherX -= 1;
+			}
+		} else {
+			if (pusherX < 670) {
+				pusherX += 1;
+			}
+		}
+		if(pusherX == 670) {
+			newLid = false;
+		}
+		
+		if (lidY == 64 && lidX > pusherX-30 && newLid == false) {
+			lidX = pusherX-30;
+		}
+		
+		if (this.vacOn) {
+			if (lloaderArmX == 512 && lloaderArmY == 65 && lidX == 512 && (lidY == 64 || lidY == 65)) {
+				vacHold = true;
+			}
+		} else if (lidY != 64 && lidY != 65) {
+			lidX = 640;
+			lidY = 64;
+			vacHold = false;
+			newLid = true;
+		} else {
+			vacHold = false;
+		}
+		if (vacHold) {
+			lidX = lloaderArmX;
+			lidY = lloaderArmY;
+		}
+		
+		if (lloaderArmAngle >= 0) {
+			lloaderArmX = 457 + (int)(64*Math.cos(Math.toRadians(lloaderArmAngle)));
+			lloaderArmY = 96 - (int)(64*Math.sin(Math.toRadians(lloaderArmAngle)));
+		} else {
+			lloaderArmX = 457 + (int)(64*Math.cos(Math.toRadians(Math.abs(lloaderArmAngle))));
+			lloaderArmY = 96 + (int)(64*Math.sin(Math.toRadians(Math.abs(lloaderArmAngle))));
+		}
+		
+		g2.setColor(Color.RED);		
+		g2.fillOval(lidX-22, lidY-22, 44, 44);
+		
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(8));
+		g2.drawLine(pusherX, 64, pusherX+128, 64);
+		g2.fillRect(pusherX-8, 38, 16, 56);
+		
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(4));
+		g2.drawLine(457, 96, lloaderArmX, lloaderArmY);
+		g2.fillOval(449, 88, 16, 16);
+		
+		g2.setColor(Color.RED);
+		g2.fillOval(618, 42, 44, 44);
+		
 		//#######################################################################################
 		//SIGNAL STATUS DISPLAY
 		
@@ -966,6 +1062,43 @@ public class systemCanvas extends JPanel{
 			g.setColor(Color.BLACK);
 		}
 		g.drawString("NbottleCapped", 768, 700);
+		
+		//LidLoader
+		g.setFont(title);
+		g.setColor(Color.WHITE);
+		g.drawString("LIDLOADER", 16, 732);
+		if (this.pusherExtend) {
+			g.setFont(bold);
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setFont(plain);
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("pusherExtend", 148, 732);
+		if (this.toDest) {
+			g.setFont(bold);
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setFont(plain);
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("toDest", 272, 732);
+		if (this.toInit) {
+			g.setFont(bold);
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setFont(plain);
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("toInit", 396, 732);
+		if (this.vacOn) {
+			g.setFont(bold);
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setFont(plain);
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("vacOn", 520, 732);
 		
 		//END OF SIGNAL STATUS DISPLAY
 		//#######################################################################################
