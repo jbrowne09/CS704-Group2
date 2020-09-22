@@ -6,26 +6,40 @@ fillerController(
 ->{	
 	{
 		while(true){
-			await(fillerEnable);
+		System.out.println("filler");
+			//await(fillerEnable);
+			//System.out.println("started filler");
 			await(tick);
 			abort(canTop) {
-				{sustain injectorOn;}
+				{
+				System.out.println("sustain injectoron");
+				sustain injectorOn;}
 				||
 				{present (canBottom) {
-					emit valveRetract;
+				System.out.println("valve retract");
+					sustain valveRetract;
 				}
 				}
 			}
+			System.out.println("done pt1");
 			abort(canBottom) {
-				{sustain inletOn;}
+				{ System.out.println("sustain inlet on");
+				sustain inletOn;}
 				||
-				{sustain valveExtend;}	
+				{
+				System.out.println("sustain valve extend");
+				sustain valveExtend;}	
 			}
+			System.out.println("done");
 			emit fillerDone;
 		}
 	}
 	||
 	{//To plant
+	//await(fillerEnable);
+	await(tick);
+	await(!tick);
+	await(tick);
 		{while(true) {present(toFill1) {emit fill1;} pause;}}
 		||
 		{while(true) {present(toFill2) {emit fill2;} pause;}}
