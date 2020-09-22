@@ -9,7 +9,7 @@ fillerPlant(
 			abort(valveRetract){
 				sustain canBottom; 
 			}
-			abort(valveExtend) {
+			abort(!valveRetract) {
 				sustain canTop;
 			}
 		}
