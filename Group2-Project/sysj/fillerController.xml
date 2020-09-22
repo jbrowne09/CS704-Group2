@@ -11,7 +11,7 @@
 			<oSignal Name="injectorOn" To="FPlantCD.injectorOn" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="valveRetract" To="FPlantCD.valveRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 			<oSignal Name="valveExtend" To="FPlantCD.valveExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="fillerDone" To="MControllerCD.fillerDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="fillerDone" To="MControllerCD.fillerDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20055" />
 
 		</ClockDomain>
 	</SubSystem>

@@ -7,6 +7,7 @@
 			<iSignal Name="capperDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20052" />
 			<iSignal Name="loaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20053" />
 			<iSignal Name="unloaderDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20054" />
+			<iSignal Name="fillerDone" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="20055" />
 			
 			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11006" />
 			<iSignal Name="bottleAtLoad" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11007" />
