@@ -11,9 +11,11 @@ caploaderController(
 		abort(tick){
 			sustain pusherExtend;
 		}
+		await(!tick);
 		abort(tick){
 			sustain armSource;
 		}
+		await(!tick);
 		abort(tick){{
 			{sustain vacOn;} 
 			||
