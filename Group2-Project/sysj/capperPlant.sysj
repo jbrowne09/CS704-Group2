@@ -25,7 +25,6 @@ while(true){
 			abort(untwistGrip) {
 				sustain gripperTurned;
 			}
-			//sustain gripperInitS;
 		}
 	}
 	||

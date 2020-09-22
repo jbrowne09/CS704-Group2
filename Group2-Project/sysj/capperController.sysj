@@ -5,7 +5,7 @@ capperController(
 
 ->{
 	while(true){
-		await(capperEnable);
+		//await(capperEnable);
 		await(tick);		
 		emit gripDown;
 		emit clampBottle;
