@@ -13,8 +13,8 @@ public class States {
 	public static volatile boolean rotate = false;
 	public static volatile boolean gripperLifted = true;
 	public static volatile boolean gripperLowered = !gripperLifted;
-	public static volatile boolean gripperInit = true;
-	public static volatile boolean gripperTurned = !gripperInit;
+	public static volatile boolean gripperInit = false;
+	public static volatile boolean gripperTurned = false;
 	public static volatile boolean gripCap = false; 
 	public static volatile boolean bottleClamped = false;
 	public static volatile boolean canBottom = true;

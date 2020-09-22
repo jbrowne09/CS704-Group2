@@ -24,7 +24,7 @@ public class capperController extends ClockDomain{
   public Signal twistGrip = new Signal("twistGrip", Signal.OUTPUT);
   public Signal untwistGrip = new Signal("untwistGrip", Signal.OUTPUT);
   public Signal capperDone = new Signal("capperDone", Signal.OUTPUT);
-  private int S73 = 1;
+  private int S85 = 1;
   private int S3 = 1;
   
   private int[] ends = new int[2];
@@ -37,14 +37,14 @@ public class capperController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S73){
+      switch(S85){
         case 0 : 
-          S73=0;
+          S85=0;
           break RUN;
         
         case 1 : 
-          S73=2;
-          S73=2;
+          S85=2;
+          S85=2;
           S3=0;
           active[1]=1;
           ends[1]=1;
@@ -156,8 +156,6 @@ public class capperController extends ClockDomain{
                 untwistGrip.setPresent();//sysj\capperController.sysj line: 20, column: 3
                 currsigs.addElement(untwistGrip);
                 S3=8;
-                capperDone.setPresent();//sysj\capperController.sysj line: 22, column: 4
-                currsigs.addElement(capperDone);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -169,14 +167,42 @@ public class capperController extends ClockDomain{
               }
             
             case 8 : 
-              if(!capperEnable.getprestatus()){//sysj\capperController.sysj line: 21, column: 9
+              if(!tick.getprestatus()){//sysj\capperController.sysj line: 21, column: 9
+                S3=9;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 9 : 
+              if(tick.getprestatus()){//sysj\capperController.sysj line: 22, column: 9
+                S3=10;
+                capperDone.setPresent();//sysj\capperController.sysj line: 24, column: 4
+                currsigs.addElement(capperDone);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 10 : 
+              if(!capperEnable.getprestatus()){//sysj\capperController.sysj line: 23, column: 9
                 S3=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                capperDone.setPresent();//sysj\capperController.sysj line: 22, column: 4
+                capperDone.setPresent();//sysj\capperController.sysj line: 24, column: 4
                 currsigs.addElement(capperDone);
                 active[1]=1;
                 ends[1]=1;
