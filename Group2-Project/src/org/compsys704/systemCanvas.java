@@ -213,7 +213,6 @@ public class systemCanvas extends JPanel{
 		this.liquidPos2 = States.fill2;
 		this.liquidPos3 = States.fill3;
 		this.liquidPos4 = States.fill4;
-		
 		this.canTop = States.canTop;
 		this.inletIsOn = States.inletIsOn;
 		this.injectorIsOn = States.injectorIsOn;
@@ -239,6 +238,11 @@ public class systemCanvas extends JPanel{
 		this.toB2 = States.armtoB2;
 		this.toC2 = States.armtoC2;
 		
+		//caploader
+		this.pusherExtend = States.pusherExtend;
+		this.toDest = States.toDest;
+		this.toInit = States.toInit;
+		this.vacOn = States.vacOn;	
 		
 		//#######################################################################################
 		//UPDATING ANIMATION STATUS BELOW

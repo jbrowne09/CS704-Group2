@@ -2,7 +2,7 @@ caploaderPlant(
 		input signal armSource, armDest, pusherExtend, vacOn;
 		output signal armAtDest, armAtSource, pusherRetracted, pusherExtended, WPgripped;
 		output signal pusherExtendS, toInitS, toDestS, vacOnS;
-)->{
+)->{ 
 	{// Arm
 		while(true){
 			abort(armSource){
