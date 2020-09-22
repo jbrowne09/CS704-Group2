@@ -12,6 +12,7 @@ fillerPlant(
 			abort(valveExtend) {
 				sustain canTop;
 			}
+			pause;
 		}
 	}
 	||
@@ -19,6 +20,7 @@ fillerPlant(
 			present (inletOn) {
 				emit inletIsOnS;
 			}
+			pause;
 		}
 	}
 	||
@@ -27,6 +29,7 @@ fillerPlant(
 			present (injectorOn) {
 				emit injectorIsOnS;
 			}
+			pause;
 		}
 	}
 	||
