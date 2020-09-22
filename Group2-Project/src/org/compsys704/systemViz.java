@@ -32,6 +32,7 @@ public class systemViz extends JFrame implements ActionListener {
 	JButton liquidPos3 = new JButton("liquidPos3");
 	JButton liquidPos4 = new JButton("liquidPos4");
 	
+	//TEMPORARY FOR TESTING LIDLOADER
 	JCheckBox pusherExtend = new JCheckBox("pusherExtend");
 	JCheckBox toDest = new JCheckBox("toDest");
 	JCheckBox toInit = new JCheckBox("toInit");
