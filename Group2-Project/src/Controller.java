@@ -28,17 +28,17 @@ public class Controller extends ClockDomain{
   public Signal armSource = new Signal("armSource", Signal.OUTPUT);
   public Signal armDest = new Signal("armDest", Signal.OUTPUT);
   private int opMode_thread_1;//sysj\wLoaderController.sysj line: 10, column: 3
-  private int S6348 = 1;
-  private int S5986 = 1;
-  private int S5929 = 1;
-  private int S5958 = 1;
-  private int S5957 = 1;
+  private int S6297 = 1;
+  private int S5935 = 1;
+  private int S5878 = 1;
+  private int S5907 = 1;
+  private int S5906 = 1;
   
   private int[] ends = new int[4];
   private int[] tdone = new int[4];
   
-  public void thread6354(int [] tdone, int [] ends){
-        switch(S5958){
+  public void thread6303(int [] tdone, int [] ends){
+        switch(S5907){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -46,10 +46,10 @@ public class Controller extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S5957){
+        switch(S5906){
           case 0 : 
             if(WPgripped.getprestatus()){//sysj\wLoaderController.sysj line: 33, column: 14
-              S5957=1;
+              S5906=1;
               armDest.setPresent();//sysj\wLoaderController.sysj line: 34, column: 8
               currsigs.addElement(armDest);
               active[3]=1;
@@ -77,21 +77,21 @@ public class Controller extends ClockDomain{
     }
   }
 
-  public void thread6353(int [] tdone, int [] ends){
+  public void thread6302(int [] tdone, int [] ends){
         active[2]=0;
     ends[2]=0;
     tdone[2]=1;
   }
 
-  public void thread6351(int [] tdone, int [] ends){
-        S5958=1;
-    S5957=0;
+  public void thread6300(int [] tdone, int [] ends){
+        S5907=1;
+    S5906=0;
     active[3]=1;
     ends[3]=1;
     tdone[3]=1;
   }
 
-  public void thread6350(int [] tdone, int [] ends){
+  public void thread6299(int [] tdone, int [] ends){
         vacOn.setPresent();//sysj\wLoaderController.sysj line: 29, column: 8
     currsigs.addElement(vacOn);
     active[2]=0;
@@ -106,26 +106,26 @@ public class Controller extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S6348){
+      switch(S6297){
         case 0 : 
-          S6348=0;
+          S6297=0;
           break RUN;
         
         case 1 : 
-          S6348=2;
-          S6348=2;
+          S6297=2;
+          S6297=2;
           opMode_thread_1 = 0;//sysj\wLoaderController.sysj line: 10, column: 3
-          S5986=0;
+          S5935=0;
           if(request.getprestatus()){//sysj\wLoaderController.sysj line: 12, column: 12
             if(opMode_thread_1 == 0){//sysj\wLoaderController.sysj line: 13, column: 8
-              S5929=0;
+              S5878=0;
               if(empty.getprestatus()){//sysj\wLoaderController.sysj line: 14, column: 14
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                S5929=1;
+                S5878=1;
                 armDest.setPresent();//sysj\wLoaderController.sysj line: 18, column: 7
                 currsigs.addElement(armDest);
                 active[1]=1;
@@ -136,26 +136,26 @@ public class Controller extends ClockDomain{
             else {
               if(opMode_thread_1 == 1) {//sysj\wLoaderController.sysj line: 42, column: 20
               }
-              S5986=1;
+              S5935=1;
               active[1]=1;
               ends[1]=1;
               break RUN;
             }
           }
           else {
-            S5986=1;
+            S5935=1;
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          switch(S5986){
+          switch(S5935){
             case 0 : 
-              switch(S5929){
+              switch(S5878){
                 case 0 : 
                   if(!empty.getprestatus()){//sysj\wLoaderController.sysj line: 15, column: 13
-                    S5929=1;
+                    S5878=1;
                     armDest.setPresent();//sysj\wLoaderController.sysj line: 18, column: 7
                     currsigs.addElement(armDest);
                     active[1]=1;
@@ -170,7 +170,7 @@ public class Controller extends ClockDomain{
                 
                 case 1 : 
                   if(armAtDest.getprestatus()){//sysj\wLoaderController.sysj line: 17, column: 12
-                    S5929=2;
+                    S5878=2;
                     pusherExtend.setPresent();//sysj\wLoaderController.sysj line: 21, column: 7
                     currsigs.addElement(pusherExtend);
                     active[1]=1;
@@ -187,7 +187,7 @@ public class Controller extends ClockDomain{
                 
                 case 2 : 
                   if(pusherExtended.getprestatus()){//sysj\wLoaderController.sysj line: 20, column: 12
-                    S5929=3;
+                    S5878=3;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -202,7 +202,7 @@ public class Controller extends ClockDomain{
                 
                 case 3 : 
                   if(pusherRetracted.getprestatus()){//sysj\wLoaderController.sysj line: 23, column: 12
-                    S5929=4;
+                    S5878=4;
                     armSource.setPresent();//sysj\wLoaderController.sysj line: 25, column: 7
                     currsigs.addElement(armSource);
                     active[1]=1;
@@ -217,17 +217,17 @@ public class Controller extends ClockDomain{
                 
                 case 4 : 
                   if(armAtSource.getprestatus()){//sysj\wLoaderController.sysj line: 24, column: 12
-                    S5929=5;
-                    thread6350(tdone,ends);
-                    thread6351(tdone,ends);
-                    int biggest6352 = 0;
-                    if(ends[2]>=biggest6352){
-                      biggest6352=ends[2];
+                    S5878=5;
+                    thread6299(tdone,ends);
+                    thread6300(tdone,ends);
+                    int biggest6301 = 0;
+                    if(ends[2]>=biggest6301){
+                      biggest6301=ends[2];
                     }
-                    if(ends[3]>=biggest6352){
-                      biggest6352=ends[3];
+                    if(ends[3]>=biggest6301){
+                      biggest6301=ends[3];
                     }
-                    if(biggest6352 == 1){
+                    if(biggest6301 == 1){
                       active[1]=1;
                       ends[1]=1;
                       break RUN;
@@ -243,29 +243,29 @@ public class Controller extends ClockDomain{
                 
                 case 5 : 
                   if(armAtDest.getprestatus()){//sysj\wLoaderController.sysj line: 27, column: 12
-                    S5929=6;
+                    S5878=6;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
                   }
                   else {
-                    thread6353(tdone,ends);
-                    thread6354(tdone,ends);
-                    int biggest6355 = 0;
-                    if(ends[2]>=biggest6355){
-                      biggest6355=ends[2];
+                    thread6302(tdone,ends);
+                    thread6303(tdone,ends);
+                    int biggest6304 = 0;
+                    if(ends[2]>=biggest6304){
+                      biggest6304=ends[2];
                     }
-                    if(ends[3]>=biggest6355){
-                      biggest6355=ends[3];
+                    if(ends[3]>=biggest6304){
+                      biggest6304=ends[3];
                     }
-                    if(biggest6355 == 1){
+                    if(biggest6304 == 1){
                       active[1]=1;
                       ends[1]=1;
                       break RUN;
                     }
                     //FINXME code
-                    if(biggest6355 == 0){
-                      S5929=6;
+                    if(biggest6304 == 0){
+                      S5878=6;
                       active[1]=1;
                       ends[1]=1;
                       break RUN;
@@ -274,7 +274,7 @@ public class Controller extends ClockDomain{
                 
                 case 6 : 
                   if(!WPgripped.getprestatus()){//sysj\wLoaderController.sysj line: 37, column: 12
-                    S5929=7;
+                    S5878=7;
                     armSource.setPresent();//sysj\wLoaderController.sysj line: 39, column: 7
                     currsigs.addElement(armSource);
                     active[1]=1;
@@ -291,7 +291,7 @@ public class Controller extends ClockDomain{
                   if(armAtSource.getprestatus()){//sysj\wLoaderController.sysj line: 38, column: 12
                     if(opMode_thread_1 == 1) {//sysj\wLoaderController.sysj line: 42, column: 20
                     }
-                    S5986=1;
+                    S5935=1;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -308,18 +308,18 @@ public class Controller extends ClockDomain{
               break;
             
             case 1 : 
-              S5986=1;
-              S5986=0;
+              S5935=1;
+              S5935=0;
               if(request.getprestatus()){//sysj\wLoaderController.sysj line: 12, column: 12
                 if(opMode_thread_1 == 0){//sysj\wLoaderController.sysj line: 13, column: 8
-                  S5929=0;
+                  S5878=0;
                   if(empty.getprestatus()){//sysj\wLoaderController.sysj line: 14, column: 14
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
                   }
                   else {
-                    S5929=1;
+                    S5878=1;
                     armDest.setPresent();//sysj\wLoaderController.sysj line: 18, column: 7
                     currsigs.addElement(armDest);
                     active[1]=1;
@@ -330,14 +330,14 @@ public class Controller extends ClockDomain{
                 else {
                   if(opMode_thread_1 == 1) {//sysj\wLoaderController.sysj line: 42, column: 20
                   }
-                  S5986=1;
+                  S5935=1;
                   active[1]=1;
                   ends[1]=1;
                   break RUN;
                 }
               }
               else {
-                S5986=1;
+                S5935=1;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;

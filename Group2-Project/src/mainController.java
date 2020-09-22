@@ -34,29 +34,29 @@ public class mainController extends ClockDomain{
   public Signal bottleAtLoadS = new Signal("bottleAtLoadS", Signal.OUTPUT);
   private Signal bottleWaitAtLoad_1;
   private Signal bottleWaitAtEnd_1;
-  private int S4639 = 1;
-  private int S4383 = 1;
-  private int S4349 = 1;
-  private int S4421 = 1;
-  private int S4387 = 1;
-  private int S4459 = 1;
-  private int S4425 = 1;
-  private int S4497 = 1;
-  private int S4463 = 1;
-  private int S4535 = 1;
-  private int S4501 = 1;
-  private int S4573 = 1;
-  private int S4539 = 1;
-  private int S4605 = 1;
-  private int S4583 = 1;
-  private int S4637 = 1;
-  private int S4615 = 1;
+  private int S4630 = 1;
+  private int S4374 = 1;
+  private int S4340 = 1;
+  private int S4412 = 1;
+  private int S4378 = 1;
+  private int S4450 = 1;
+  private int S4416 = 1;
+  private int S4488 = 1;
+  private int S4454 = 1;
+  private int S4526 = 1;
+  private int S4492 = 1;
+  private int S4564 = 1;
+  private int S4530 = 1;
+  private int S4596 = 1;
+  private int S4574 = 1;
+  private int S4628 = 1;
+  private int S4606 = 1;
   
   private int[] ends = new int[10];
   private int[] tdone = new int[10];
   
-  public void thread4657(int [] tdone, int [] ends){
-        switch(S4637){
+  public void thread4648(int [] tdone, int [] ends){
+        switch(S4628){
       case 0 : 
         active[9]=0;
         ends[9]=0;
@@ -64,10 +64,10 @@ public class mainController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S4615){
+        switch(S4606){
           case 0 : 
             if(bottleAtLoad.getprestatus()){//sysj\mainController.sysj line: 102, column: 10
-              S4615=1;
+              S4606=1;
               bottleAtLoadS.setPresent();//sysj\mainController.sysj line: 104, column: 5
               currsigs.addElement(bottleAtLoadS);
               active[9]=1;
@@ -83,7 +83,7 @@ public class mainController extends ClockDomain{
           
           case 1 : 
             if(getBottle.getprestatus()){//sysj\mainController.sysj line: 103, column: 10
-              S4615=0;
+              S4606=0;
               active[9]=1;
               ends[9]=1;
               tdone[9]=1;
@@ -103,8 +103,8 @@ public class mainController extends ClockDomain{
     }
   }
 
-  public void thread4656(int [] tdone, int [] ends){
-        switch(S4605){
+  public void thread4647(int [] tdone, int [] ends){
+        switch(S4596){
       case 0 : 
         active[8]=0;
         ends[8]=0;
@@ -112,10 +112,10 @@ public class mainController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S4583){
+        switch(S4574){
           case 0 : 
             if(!capperEnable.getprestatus() && !fillerEnable.getprestatus()){//sysj\mainController.sysj line: 91, column: 10
-              S4583=1;
+              S4574=1;
               rotaryEnable.setPresent();//sysj\mainController.sysj line: 93, column: 5
               currsigs.addElement(rotaryEnable);
               active[8]=1;
@@ -131,7 +131,7 @@ public class mainController extends ClockDomain{
           
           case 1 : 
             if(capperEnable.getprestatus() || fillerEnable.getprestatus()){//sysj\mainController.sysj line: 92, column: 10
-              S4583=0;
+              S4574=0;
               active[8]=1;
               ends[8]=1;
               tdone[8]=1;
@@ -151,8 +151,8 @@ public class mainController extends ClockDomain{
     }
   }
 
-  public void thread4655(int [] tdone, int [] ends){
-        switch(S4573){
+  public void thread4646(int [] tdone, int [] ends){
+        switch(S4564){
       case 0 : 
         active[7]=0;
         ends[7]=0;
@@ -160,10 +160,10 @@ public class mainController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S4539){
+        switch(S4530){
           case 0 : 
             if(!NbottlePos2.getprestatus()){//sysj\mainController.sysj line: 79, column: 10
-              S4539=1;
+              S4530=1;
               active[7]=1;
               ends[7]=1;
               tdone[7]=1;
@@ -177,7 +177,7 @@ public class mainController extends ClockDomain{
           
           case 1 : 
             if(NbottlePos2.getprestatus()){//sysj\mainController.sysj line: 80, column: 10
-              S4539=2;
+              S4530=2;
               fillerEnable.setPresent();//sysj\mainController.sysj line: 82, column: 5
               currsigs.addElement(fillerEnable);
               active[7]=1;
@@ -193,7 +193,7 @@ public class mainController extends ClockDomain{
           
           case 2 : 
             if(fillerDone.getprestatus()){//sysj\mainController.sysj line: 81, column: 10
-              S4539=0;
+              S4530=0;
               active[7]=1;
               ends[7]=1;
               tdone[7]=1;
@@ -213,8 +213,8 @@ public class mainController extends ClockDomain{
     }
   }
 
-  public void thread4654(int [] tdone, int [] ends){
-        switch(S4535){
+  public void thread4645(int [] tdone, int [] ends){
+        switch(S4526){
       case 0 : 
         active[6]=0;
         ends[6]=0;
@@ -222,10 +222,10 @@ public class mainController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S4501){
+        switch(S4492){
           case 0 : 
             if(!NbottlePos4.getprestatus()){//sysj\mainController.sysj line: 67, column: 10
-              S4501=1;
+              S4492=1;
               active[6]=1;
               ends[6]=1;
               tdone[6]=1;
@@ -239,7 +239,7 @@ public class mainController extends ClockDomain{
           
           case 1 : 
             if(NbottlePos4.getprestatus()){//sysj\mainController.sysj line: 68, column: 10
-              S4501=2;
+              S4492=2;
               capperEnable.setPresent();//sysj\mainController.sysj line: 70, column: 5
               currsigs.addElement(capperEnable);
               active[6]=1;
@@ -255,7 +255,7 @@ public class mainController extends ClockDomain{
           
           case 2 : 
             if(capperDone.getprestatus()){//sysj\mainController.sysj line: 69, column: 10
-              S4501=0;
+              S4492=0;
               active[6]=1;
               ends[6]=1;
               tdone[6]=1;
@@ -275,8 +275,8 @@ public class mainController extends ClockDomain{
     }
   }
 
-  public void thread4653(int [] tdone, int [] ends){
-        switch(S4497){
+  public void thread4644(int [] tdone, int [] ends){
+        switch(S4488){
       case 0 : 
         active[5]=0;
         ends[5]=0;
@@ -284,10 +284,10 @@ public class mainController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S4463){
+        switch(S4454){
           case 0 : 
             if(bottleWaitAtEnd_1.getprestatus()){//sysj\mainController.sysj line: 54, column: 10
-              S4463=1;
+              S4454=1;
               active[5]=1;
               ends[5]=1;
               tdone[5]=1;
@@ -301,7 +301,7 @@ public class mainController extends ClockDomain{
           
           case 1 : 
             if(!unloaderDone.getprestatus()){//sysj\mainController.sysj line: 56, column: 10
-              S4463=2;
+              S4454=2;
               bottleToUnload.setPresent();//sysj\mainController.sysj line: 58, column: 5
               currsigs.addElement(bottleToUnload);
               active[5]=1;
@@ -317,7 +317,7 @@ public class mainController extends ClockDomain{
           
           case 2 : 
             if(unloaderDone.getprestatus()){//sysj\mainController.sysj line: 57, column: 10
-              S4463=0;
+              S4454=0;
               active[5]=1;
               ends[5]=1;
               tdone[5]=1;
@@ -337,8 +337,8 @@ public class mainController extends ClockDomain{
     }
   }
 
-  public void thread4652(int [] tdone, int [] ends){
-        switch(S4459){
+  public void thread4643(int [] tdone, int [] ends){
+        switch(S4450){
       case 0 : 
         active[4]=0;
         ends[4]=0;
@@ -346,10 +346,10 @@ public class mainController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S4425){
+        switch(S4416){
           case 0 : 
             if(!NbottleLeft5.getprestatus()){//sysj\mainController.sysj line: 44, column: 10
-              S4425=1;
+              S4416=1;
               active[4]=1;
               ends[4]=1;
               tdone[4]=1;
@@ -363,7 +363,7 @@ public class mainController extends ClockDomain{
           
           case 1 : 
             if(NbottleLeft5.getprestatus()){//sysj\mainController.sysj line: 45, column: 10
-              S4425=2;
+              S4416=2;
               bottleWaitAtEnd_1.setPresent();//sysj\mainController.sysj line: 47, column: 5
               currsigs.addElement(bottleWaitAtEnd_1);
               active[4]=1;
@@ -379,7 +379,7 @@ public class mainController extends ClockDomain{
           
           case 2 : 
             if(!bottleToUnload.getprestatus()){//sysj\mainController.sysj line: 46, column: 10
-              S4425=0;
+              S4416=0;
               active[4]=1;
               ends[4]=1;
               tdone[4]=1;
@@ -399,8 +399,8 @@ public class mainController extends ClockDomain{
     }
   }
 
-  public void thread4651(int [] tdone, int [] ends){
-        switch(S4421){
+  public void thread4642(int [] tdone, int [] ends){
+        switch(S4412){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -408,10 +408,10 @@ public class mainController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S4387){
+        switch(S4378){
           case 0 : 
             if(bottleWaitAtLoad_1.getprestatus()){//sysj\mainController.sysj line: 33, column: 10
-              S4387=1;
+              S4378=1;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
@@ -425,7 +425,7 @@ public class mainController extends ClockDomain{
           
           case 1 : 
             if(!loaderDone.getprestatus()){//sysj\mainController.sysj line: 35, column: 10
-              S4387=2;
+              S4378=2;
               bottleToLoad.setPresent();//sysj\mainController.sysj line: 37, column: 5
               currsigs.addElement(bottleToLoad);
               active[3]=1;
@@ -441,7 +441,7 @@ public class mainController extends ClockDomain{
           
           case 2 : 
             if(loaderDone.getprestatus()){//sysj\mainController.sysj line: 36, column: 10
-              S4387=0;
+              S4378=0;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
@@ -461,8 +461,8 @@ public class mainController extends ClockDomain{
     }
   }
 
-  public void thread4650(int [] tdone, int [] ends){
-        switch(S4383){
+  public void thread4641(int [] tdone, int [] ends){
+        switch(S4374){
       case 0 : 
         active[2]=0;
         ends[2]=0;
@@ -470,10 +470,10 @@ public class mainController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S4349){
+        switch(S4340){
           case 0 : 
             if(!bottleAtLoad.getprestatus()){//sysj\mainController.sysj line: 23, column: 10
-              S4349=1;
+              S4340=1;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -487,7 +487,7 @@ public class mainController extends ClockDomain{
           
           case 1 : 
             if(bottleAtLoad.getprestatus()){//sysj\mainController.sysj line: 24, column: 10
-              S4349=2;
+              S4340=2;
               bottleWaitAtLoad_1.setPresent();//sysj\mainController.sysj line: 26, column: 5
               currsigs.addElement(bottleWaitAtLoad_1);
               active[2]=1;
@@ -503,7 +503,7 @@ public class mainController extends ClockDomain{
           
           case 2 : 
             if(!bottleToLoad.getprestatus()){//sysj\mainController.sysj line: 25, column: 10
-              S4349=0;
+              S4340=0;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -523,65 +523,65 @@ public class mainController extends ClockDomain{
     }
   }
 
-  public void thread4648(int [] tdone, int [] ends){
-        S4637=1;
-    S4615=0;
+  public void thread4639(int [] tdone, int [] ends){
+        S4628=1;
+    S4606=0;
     active[9]=1;
     ends[9]=1;
     tdone[9]=1;
   }
 
-  public void thread4647(int [] tdone, int [] ends){
-        S4605=1;
-    S4583=0;
+  public void thread4638(int [] tdone, int [] ends){
+        S4596=1;
+    S4574=0;
     active[8]=1;
     ends[8]=1;
     tdone[8]=1;
   }
 
-  public void thread4646(int [] tdone, int [] ends){
-        S4573=1;
-    S4539=0;
+  public void thread4637(int [] tdone, int [] ends){
+        S4564=1;
+    S4530=0;
     active[7]=1;
     ends[7]=1;
     tdone[7]=1;
   }
 
-  public void thread4645(int [] tdone, int [] ends){
-        S4535=1;
-    S4501=0;
+  public void thread4636(int [] tdone, int [] ends){
+        S4526=1;
+    S4492=0;
     active[6]=1;
     ends[6]=1;
     tdone[6]=1;
   }
 
-  public void thread4644(int [] tdone, int [] ends){
-        S4497=1;
-    S4463=0;
+  public void thread4635(int [] tdone, int [] ends){
+        S4488=1;
+    S4454=0;
     active[5]=1;
     ends[5]=1;
     tdone[5]=1;
   }
 
-  public void thread4643(int [] tdone, int [] ends){
-        S4459=1;
-    S4425=0;
+  public void thread4634(int [] tdone, int [] ends){
+        S4450=1;
+    S4416=0;
     active[4]=1;
     ends[4]=1;
     tdone[4]=1;
   }
 
-  public void thread4642(int [] tdone, int [] ends){
-        S4421=1;
-    S4387=0;
+  public void thread4633(int [] tdone, int [] ends){
+        S4412=1;
+    S4378=0;
     active[3]=1;
     ends[3]=1;
     tdone[3]=1;
   }
 
-  public void thread4641(int [] tdone, int [] ends){
-        S4383=1;
-    S4349=0;
+  public void thread4632(int [] tdone, int [] ends){
+        S4374=1;
+    S4340=0;
     active[2]=1;
     ends[2]=1;
     tdone[2]=1;
@@ -594,14 +594,56 @@ public class mainController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S4639){
+      switch(S4630){
         case 0 : 
-          S4639=0;
+          S4630=0;
           break RUN;
         
         case 1 : 
-          S4639=2;
-          S4639=2;
+          S4630=2;
+          S4630=2;
+          bottleWaitAtLoad_1.setClear();//sysj\mainController.sysj line: 19, column: 2
+          bottleWaitAtEnd_1.setClear();//sysj\mainController.sysj line: 20, column: 2
+          thread4632(tdone,ends);
+          thread4633(tdone,ends);
+          thread4634(tdone,ends);
+          thread4635(tdone,ends);
+          thread4636(tdone,ends);
+          thread4637(tdone,ends);
+          thread4638(tdone,ends);
+          thread4639(tdone,ends);
+          int biggest4640 = 0;
+          if(ends[2]>=biggest4640){
+            biggest4640=ends[2];
+          }
+          if(ends[3]>=biggest4640){
+            biggest4640=ends[3];
+          }
+          if(ends[4]>=biggest4640){
+            biggest4640=ends[4];
+          }
+          if(ends[5]>=biggest4640){
+            biggest4640=ends[5];
+          }
+          if(ends[6]>=biggest4640){
+            biggest4640=ends[6];
+          }
+          if(ends[7]>=biggest4640){
+            biggest4640=ends[7];
+          }
+          if(ends[8]>=biggest4640){
+            biggest4640=ends[8];
+          }
+          if(ends[9]>=biggest4640){
+            biggest4640=ends[9];
+          }
+          if(biggest4640 == 1){
+            active[1]=1;
+            ends[1]=1;
+            break RUN;
+          }
+        
+        case 2 : 
           bottleWaitAtLoad_1.setClear();//sysj\mainController.sysj line: 19, column: 2
           bottleWaitAtEnd_1.setClear();//sysj\mainController.sysj line: 20, column: 2
           thread4641(tdone,ends);
@@ -642,54 +684,12 @@ public class mainController extends ClockDomain{
             ends[1]=1;
             break RUN;
           }
-        
-        case 2 : 
-          bottleWaitAtLoad_1.setClear();//sysj\mainController.sysj line: 19, column: 2
-          bottleWaitAtEnd_1.setClear();//sysj\mainController.sysj line: 20, column: 2
-          thread4650(tdone,ends);
-          thread4651(tdone,ends);
-          thread4652(tdone,ends);
-          thread4653(tdone,ends);
-          thread4654(tdone,ends);
-          thread4655(tdone,ends);
-          thread4656(tdone,ends);
-          thread4657(tdone,ends);
-          int biggest4658 = 0;
-          if(ends[2]>=biggest4658){
-            biggest4658=ends[2];
-          }
-          if(ends[3]>=biggest4658){
-            biggest4658=ends[3];
-          }
-          if(ends[4]>=biggest4658){
-            biggest4658=ends[4];
-          }
-          if(ends[5]>=biggest4658){
-            biggest4658=ends[5];
-          }
-          if(ends[6]>=biggest4658){
-            biggest4658=ends[6];
-          }
-          if(ends[7]>=biggest4658){
-            biggest4658=ends[7];
-          }
-          if(ends[8]>=biggest4658){
-            biggest4658=ends[8];
-          }
-          if(ends[9]>=biggest4658){
-            biggest4658=ends[9];
-          }
-          if(biggest4658 == 1){
-            active[1]=1;
-            ends[1]=1;
-            break RUN;
-          }
           //FINXME code
-          if(biggest4658 == 0){
-            S4639=0;
+          if(biggest4649 == 0){
+            S4630=0;
             active[1]=0;
             ends[1]=0;
-            S4639=0;
+            S4630=0;
             break RUN;
           }
         

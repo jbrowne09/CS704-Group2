@@ -163,6 +163,8 @@ fillerController(
 				}
 			}
 			
+			await(!tick);
+			await(tick);
 			abort(!fillerEnable){
 				sustain fillerDone;
 			}
