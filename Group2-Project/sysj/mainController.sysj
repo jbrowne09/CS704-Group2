@@ -67,10 +67,8 @@ mainController(
 			await(!NbottlePos4);
 			await(NbottlePos4);
 			abort(capperDone){
-				System.out.println("Capper Running");
 				sustain capperEnable;
 			}
-			System.out.println("Capper Stopping");
 		}
 	}
 	||
@@ -92,10 +90,8 @@ mainController(
 		while(true){
 			await(!capperEnable);
 			abort(capperEnable){
-				System.out.println("Enabled Rotary");
 				sustain rotaryEnable;
 			}
-			System.out.println("Disabled Rotary");
 		}
 	}
 	||

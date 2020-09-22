@@ -27,10 +27,11 @@ rotaryController(
 				halt;
 			}
 			
-			await(rotaryEnable);
 			abort(!aligned){
 				halt;
 			}
+			
+			await(rotaryEnable);
 			abort(aligned) {
 				sustain rotate;
 			}

@@ -16,6 +16,8 @@ rotaryPlant(
 	{
 		while(true){
 			await(CbottlePos1);
+			
+			await(!rotate);
 			await(rotate);
 			abort(bottlePos2 && !rotate){
 				sustain rotateTo2;
@@ -26,6 +28,8 @@ rotaryPlant(
 	{
 		while(true){
 			await(bottlePos2);
+			
+			await(!rotate);
 			await(rotate);
 			abort(bottlePos3 && !rotate){
 				sustain rotateTo3;
@@ -36,6 +40,8 @@ rotaryPlant(
 	{
 		while(true){
 			await(bottlePos3);
+			
+			await(!rotate);
 			await(rotate);
 			abort(bottlePos4 && !rotate){
 				sustain rotateTo4;
@@ -46,6 +52,8 @@ rotaryPlant(
 	{
 		while(true){
 			await(bottlePos4);
+			
+			await(!rotate);
 			await(rotate);
 			abort(bottlePos5 && !rotate){
 				sustain rotateTo5;
@@ -120,12 +128,8 @@ rotaryPlant(
 			}
 			
 			await(!tick);
-			await(tick);
+			await(tick && rotate);
 			await(!tick);
-			
-			abort(rotate){
-				sustain aligned;
-			}
 			
 			abort(!rotate){
 				sustain aligned;
