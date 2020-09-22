@@ -42,6 +42,9 @@ public class systemCanvas extends JPanel{
 	private boolean liquidPos2 = false;
 	private boolean liquidPos3 = false;
 	private boolean liquidPos4 = false;
+	private boolean canTop = false;
+	private boolean inletIsOn = false;
+	private boolean injectorIsOn = false;
 	private boolean NbottleFilled = false;
 	
 	//Bottle-Loader/Unloader
@@ -222,6 +225,9 @@ public class systemCanvas extends JPanel{
 		//this.liquidPos2 = States.liquidPos2;
 		//this.liquidPos3 = States.liquidPos3;
 		//this.liquidPos4 = States.liquidPos4;
+		this.canTop = States.canTop;
+		this.inletIsOn = States.inletIsOn;
+		this.injectorIsOn = States.injectorIsOn;
 		
 		//capper	
 		this.clampBottle = States.bottleClamped;
@@ -1001,14 +1007,30 @@ public class systemCanvas extends JPanel{
 			g.setColor(Color.BLACK);
 		}
 		g.drawString("liquidPos4", 520, 668);
-		if (this.NbottleFilled) {
+		if (this.canTop) {
 			g.setFont(bold);
 			g.setColor(new Color(50, 150, 50));
 		} else {
 			g.setFont(plain);
 			g.setColor(Color.BLACK);
 		}
-		g.drawString("NbottleFilled", 644, 668);	
+		g.drawString("canTop", 644, 668);
+		if (this.inletIsOn) {
+			g.setFont(bold);
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setFont(plain);
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("inletIsOn", 768, 668);
+		if (this.injectorIsOn) {
+			g.setFont(bold);
+			g.setColor(new Color(50, 150, 50));
+		} else {
+			g.setFont(plain);
+			g.setColor(Color.BLACK);
+		}
+		g.drawString("injectorIsOn", 892, 668);	
 		
 		//Capper
 		g.setFont(title);
