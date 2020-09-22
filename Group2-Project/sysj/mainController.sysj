@@ -88,8 +88,8 @@ mainController(
 	//Rotary Control
 	{
 		while(true){
-			await(!capperEnable && !fillerEnable);
-			abort(capperEnable || fillerEnable){
+			await(!capperEnable);
+			abort(capperEnable){
 				sustain rotaryEnable;
 			}
 		}
