@@ -1,5 +1,5 @@
 mainController(
-	input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, tick;
+	input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, getBottle, tick;
     output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable;
     
     //from request button
@@ -65,7 +65,7 @@ mainController(
 	{
 		while(true){
 			await(bottleAtLoad);
-			abort(!bottleAtLoad){
+			abort(getBottle){
 				sustain bottleAtLoadS;
 			}
 		}

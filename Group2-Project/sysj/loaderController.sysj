@@ -1,6 +1,6 @@
 loaderController(
 	input signal bottleToLoad, CMDfb, tick;
-    output signal loaderDone;
+    output signal loaderDone, getBottle;
     output String signal CMD;
     
     //To conveyorPlant
@@ -22,9 +22,11 @@ loaderController(
 			}
 	
 			await(!tick);
-			abort(tick) {
-				sustain CMD("C"); //Move to turntable pos1
-			}
+			abort(tick) { {
+				{sustain CMD("C");} //Move to turntable pos1
+				||
+				{sustain getBottle;}
+			} }
 	
 			await(!tick);
 			abort(tick) {
