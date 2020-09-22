@@ -23,16 +23,16 @@ public class caploaderController extends ClockDomain{
   public Signal pusherExtend = new Signal("pusherExtend", Signal.OUTPUT);
   public Signal vacOn = new Signal("vacOn", Signal.OUTPUT);
   public Signal caploaderDone = new Signal("caploaderDone", Signal.OUTPUT);
-  private int S166 = 1;
+  private int S178 = 1;
   private int S3 = 1;
-  private int S26 = 1;
-  private int S31 = 1;
+  private int S30 = 1;
+  private int S35 = 1;
   
   private int[] ends = new int[4];
   private int[] tdone = new int[4];
   
-  public void thread172(int [] tdone, int [] ends){
-        switch(S31){
+  public void thread184(int [] tdone, int [] ends){
+        switch(S35){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -40,7 +40,7 @@ public class caploaderController extends ClockDomain{
         break;
       
       case 1 : 
-        armDest.setPresent();//sysj\caploaderController.sysj line: 20, column: 5
+        armDest.setPresent();//sysj\caploaderController.sysj line: 22, column: 5
         currsigs.addElement(armDest);
         active[3]=1;
         ends[3]=1;
@@ -50,8 +50,8 @@ public class caploaderController extends ClockDomain{
     }
   }
 
-  public void thread171(int [] tdone, int [] ends){
-        switch(S26){
+  public void thread183(int [] tdone, int [] ends){
+        switch(S30){
       case 0 : 
         active[2]=0;
         ends[2]=0;
@@ -59,7 +59,7 @@ public class caploaderController extends ClockDomain{
         break;
       
       case 1 : 
-        vacOn.setPresent();//sysj\caploaderController.sysj line: 18, column: 5
+        vacOn.setPresent();//sysj\caploaderController.sysj line: 20, column: 5
         currsigs.addElement(vacOn);
         active[2]=1;
         ends[2]=1;
@@ -69,18 +69,18 @@ public class caploaderController extends ClockDomain{
     }
   }
 
-  public void thread169(int [] tdone, int [] ends){
-        S31=1;
-    armDest.setPresent();//sysj\caploaderController.sysj line: 20, column: 5
+  public void thread181(int [] tdone, int [] ends){
+        S35=1;
+    armDest.setPresent();//sysj\caploaderController.sysj line: 22, column: 5
     currsigs.addElement(armDest);
     active[3]=1;
     ends[3]=1;
     tdone[3]=1;
   }
 
-  public void thread168(int [] tdone, int [] ends){
-        S26=1;
-    vacOn.setPresent();//sysj\caploaderController.sysj line: 18, column: 5
+  public void thread180(int [] tdone, int [] ends){
+        S30=1;
+    vacOn.setPresent();//sysj\caploaderController.sysj line: 20, column: 5
     currsigs.addElement(vacOn);
     active[2]=1;
     ends[2]=1;
@@ -94,14 +94,14 @@ public class caploaderController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S166){
+      switch(S178){
         case 0 : 
-          S166=0;
+          S178=0;
           break RUN;
         
         case 1 : 
-          S166=2;
-          S166=2;
+          S178=2;
+          S178=2;
           S3=0;
           active[1]=1;
           ends[1]=1;
@@ -153,8 +153,6 @@ public class caploaderController extends ClockDomain{
             case 3 : 
               if(tick.getprestatus()){//sysj\caploaderController.sysj line: 11, column: 9
                 S3=4;
-                armSource.setPresent();//sysj\caploaderController.sysj line: 15, column: 4
-                currsigs.addElement(armSource);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -168,66 +166,94 @@ public class caploaderController extends ClockDomain{
               }
             
             case 4 : 
-              if(tick.getprestatus()){//sysj\caploaderController.sysj line: 14, column: 9
+              if(!tick.getprestatus()){//sysj\caploaderController.sysj line: 14, column: 9
                 S3=5;
-                thread168(tdone,ends);
-                thread169(tdone,ends);
-                int biggest170 = 0;
-                if(ends[2]>=biggest170){
-                  biggest170=ends[2];
-                }
-                if(ends[3]>=biggest170){
-                  biggest170=ends[3];
-                }
-                if(biggest170 == 1){
-                  active[1]=1;
-                  ends[1]=1;
-                  break RUN;
-                }
+                armSource.setPresent();//sysj\caploaderController.sysj line: 16, column: 4
+                currsigs.addElement(armSource);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
               }
               else {
-                armSource.setPresent();//sysj\caploaderController.sysj line: 15, column: 4
-                currsigs.addElement(armSource);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
             
             case 5 : 
-              if(tick.getprestatus()){//sysj\caploaderController.sysj line: 17, column: 9
+              if(tick.getprestatus()){//sysj\caploaderController.sysj line: 15, column: 9
                 S3=6;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                thread171(tdone,ends);
-                thread172(tdone,ends);
-                int biggest173 = 0;
-                if(ends[2]>=biggest173){
-                  biggest173=ends[2];
+                armSource.setPresent();//sysj\caploaderController.sysj line: 16, column: 4
+                currsigs.addElement(armSource);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 6 : 
+              if(!tick.getprestatus()){//sysj\caploaderController.sysj line: 18, column: 9
+                S3=7;
+                thread180(tdone,ends);
+                thread181(tdone,ends);
+                int biggest182 = 0;
+                if(ends[2]>=biggest182){
+                  biggest182=ends[2];
                 }
-                if(ends[3]>=biggest173){
-                  biggest173=ends[3];
+                if(ends[3]>=biggest182){
+                  biggest182=ends[3];
                 }
-                if(biggest173 == 1){
+                if(biggest182 == 1){
+                  active[1]=1;
+                  ends[1]=1;
+                  break RUN;
+                }
+              }
+              else {
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+            
+            case 7 : 
+              if(tick.getprestatus()){//sysj\caploaderController.sysj line: 19, column: 9
+                S3=8;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                thread183(tdone,ends);
+                thread184(tdone,ends);
+                int biggest185 = 0;
+                if(ends[2]>=biggest185){
+                  biggest185=ends[2];
+                }
+                if(ends[3]>=biggest185){
+                  biggest185=ends[3];
+                }
+                if(biggest185 == 1){
                   active[1]=1;
                   ends[1]=1;
                   break RUN;
                 }
                 //FINXME code
-                if(biggest173 == 0){
-                  S3=6;
+                if(biggest185 == 0){
+                  S3=8;
                   active[1]=1;
                   ends[1]=1;
                   break RUN;
                 }
               }
             
-            case 6 : 
-              if(!tick.getprestatus()){//sysj\caploaderController.sysj line: 22, column: 9
-                S3=7;
-                caploaderDone.setPresent();//sysj\caploaderController.sysj line: 24, column: 4
+            case 8 : 
+              if(!tick.getprestatus()){//sysj\caploaderController.sysj line: 24, column: 9
+                S3=9;
+                caploaderDone.setPresent();//sysj\caploaderController.sysj line: 26, column: 4
                 currsigs.addElement(caploaderDone);
                 active[1]=1;
                 ends[1]=1;
@@ -239,15 +265,15 @@ public class caploaderController extends ClockDomain{
                 break RUN;
               }
             
-            case 7 : 
-              if(!caploaderEnable.getprestatus()){//sysj\caploaderController.sysj line: 23, column: 9
+            case 9 : 
+              if(!caploaderEnable.getprestatus()){//sysj\caploaderController.sysj line: 25, column: 9
                 S3=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                caploaderDone.setPresent();//sysj\caploaderController.sysj line: 24, column: 4
+                caploaderDone.setPresent();//sysj\caploaderController.sysj line: 26, column: 4
                 currsigs.addElement(caploaderDone);
                 active[1]=1;
                 ends[1]=1;
