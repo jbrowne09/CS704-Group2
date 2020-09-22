@@ -1,0 +1,48 @@
+caploaderPlant(
+		input signal armSource, armDest, pusherExtend, vacOn;
+		output signal armAtDest, armAtSource, pusherRetracted, pusherExtended, WPgripped;
+		output signal pusherExtendS, toInitS, toDestS, vacOnS;
+)->{
+	{// Arm
+		while(true){
+			abort(armSource){
+				sustain armAtDest;
+			}
+			abort(armDest){
+				sustain armAtSource;
+			}
+		}
+	}
+	||
+	{// Pusher
+		while(true){
+			abort(pusherExtend){
+				sustain pusherRetracted;
+			}
+			abort(!pusherExtend){
+				sustain pusherExtended;
+			}
+		}
+	}
+	||
+	{// Vacuum
+		while(true){
+			present(vacOn && armAtSource){
+				abort(!vacOn){
+					sustain WPgripped; 
+				}
+			}
+			pause;
+		}
+	}
+	||
+	{// To viz
+		{while(true){present(pusherExtended){emit pusherExtendS;} pause;}}
+		||
+		{while(true){present(armAtSource){emit toInitS;} pause;}}
+		||
+		{while(true){present(armAtDest){emit toDestS;} pause;}}
+		||
+		{while(true){present(WPgripped){emit vacOnS;} pause;}}
+	}
+}

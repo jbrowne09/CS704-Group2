@@ -1,0 +1,23 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS2" Local="true">
+		<ClockDomain Name="CLPlantCD" Class="caploaderPlant">
+						
+			<iSignal Name="armSource" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10300" />
+			<iSignal Name="armDest" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10301" />
+			<iSignal Name="pusherExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10302" />
+			<iSignal Name="vacOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10303" />
+			
+			<oSignal Name="armAtDest" To="CLControllerCD.armAtDest"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10304" />
+			<oSignal Name="armAtSource" To="CLControllerCD.armAtSource" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10305" />
+			<oSignal Name="pusherRetracted" To="CLControllerCD.pusherRetracted"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10306" />
+			<oSignal Name="pusherExtended" To="CLControllerCD.pusherExtended"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10307" />
+			<oSignal Name="WPgripped" To="CLControllerCD.WPgripped"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10308" />
+			
+			<oSignal Name="pusherExtendS" To="UI.pusherExtendS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="toInitS" To="UI.toInitS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="toDestS" To="UI.toDestS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="vacOnS" To="UI.vacOnS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+
+		</ClockDomain>
+	</SubSystem>
+</System>
