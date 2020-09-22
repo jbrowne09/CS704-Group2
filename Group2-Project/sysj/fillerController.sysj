@@ -3,81 +3,110 @@ fillerController(
     output signal inletOn, injectorOn, valveRetract, valveExtend, fillerDone, fill1, fill2, fill3, fill4;
 )
 
-->{	
+->{	signal stop, fill;
 	{
 		while(true){
+			await(fill);
 			await(toFill1);
-			System.out.println("liquidPos1");
-			await(!toFill1);
+			{abort(stop){
+				sustain fill1;
+			}
+			}
+			||
+			{
+				waitl(2000 ms);
+				emit stop;
+			}
 		}
 	}
 	||
 	{
 		while(true){
+			await(fill);
 			await(toFill2);
-			System.out.println("liquidPos2");
-			await(!toFill2);
+			{abort(stop){
+				sustain fill2;
+			}
+			}
+			||
+			{
+				waitl(2000 ms);
+				emit stop;
+			}
 		}
 	}
 	||
 	{
 		while(true){
+			await(fill);
 			await(toFill3);
-			System.out.println("liquidPos3");
-			await(!toFill3);
+			{abort(stop){
+				sustain fill3;
+			}
+			}
+			||
+			{
+				waitl(2000 ms);
+				emit stop;
+			}
 		}
 	}
 	||
 	{
 		while(true){
+			await(fill);
 			await(toFill4);
-			System.out.println("liquidPos4");
-			await(!toFill4);
+			{abort(stop){
+				sustain fill4;
+			}
+			}
+			||
+			{
+				waitl(2000 ms);
+				emit stop;
+			}
 		}
 	}
 	||
 	{
+		await(tick);
+		await(!tick);
+		await(fill);
+		await(!fill);
+		await(fill);
+		await(!fill);
+		await(fill);
+		await(!fill);
+		await(fill);
+		await(!fill);
+		abort(!fillerEnable) {
+			sustain fillerDone;
+		}
+	}
+	||
+	{
+	await(tick);
 		while(true){
-		System.out.println("filler");
-			//await(fillerEnable);
-			//System.out.println("started filler");
-			await(tick);
+			await(fillerEnable);
 			abort(canTop) {
-				{
-				System.out.println("sustain injectoron");
-				sustain injectorOn;}
+				{sustain injectorOn;}
 				||
 				{present (canBottom) {
-				System.out.println("valve retract");
+				pause;
 					sustain valveRetract;
+					pause;
 				}
 				}
 			}
-			System.out.println("done pt1");
+			System.out.println("select a liquid");
+			abort(stop){
+				sustain fill;
+			}
 			abort(canBottom) {
-				{ System.out.println("sustain inlet on");
-				sustain inletOn;}
+				{sustain inletOn;}
 				||
-				{
-				System.out.println("sustain valve extend");
-				sustain valveExtend;}	
+				{sustain valveExtend;}	
 			}
-			System.out.println("done");
-			emit fillerDone;
 		}
-	}
-	||
-	{//To plant
-	//await(fillerEnable);
-	await(tick);
-	await(!tick);
-	await(tick);
-		{while(true) {present(toFill1) {emit fill1;} pause;}}
-		||
-		{while(true) {present(toFill2) {emit fill2;} pause;}}
-		||
-		{while(true) {present(toFill3) {emit fill3;} pause;}}
-		||
-		{while(true) {present(toFill4) {emit fill4;} pause;}}
 	}
 }

@@ -19,6 +19,7 @@ fillerPlant(
 	{	while(true) {
 			present (inletOn) {
 				emit inletIsOnS;
+				pause;
 			}
 			pause;
 		}
@@ -28,6 +29,7 @@ fillerPlant(
 		while(true) {
 			present (injectorOn) {
 				emit injectorIsOnS;
+				pause;
 			}
 			pause;
 		}
