@@ -37,7 +37,7 @@ public class systemCanvas extends JPanel{
 	private boolean bottlePos5 = false;
 	private boolean rotate = false;
 	
-	//Filler (ignoring valves/injector signals for now)
+	//Filler
 	private boolean liquidPos1 = false;
 	private boolean liquidPos2 = false;
 	private boolean liquidPos3 = false;
@@ -168,18 +168,6 @@ public class systemCanvas extends JPanel{
 	//actionListeners to update some filler signals from the GUI
 	public void updateSignals(String signal, boolean status) {
 		switch(signal) {
-			case "liquidPos1":
-				this.liquidPos1 = status;
-				break;
-			case "liquidPos2":
-				this.liquidPos2 = status;
-				break;
-			case "liquidPos3":
-				this.liquidPos3 = status;
-				break;
-			case "liquidPos4":
-				this.liquidPos4 = status;
-				break;
 			case "pusherExtend":
 				this.pusherExtend = status;
 				break;

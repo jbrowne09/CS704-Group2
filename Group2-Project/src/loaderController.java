@@ -18,18 +18,18 @@ public class loaderController extends ClockDomain{
   public Signal getBottle = new Signal("getBottle", Signal.OUTPUT);
   public Signal CMD = new Signal("CMD", Signal.OUTPUT);
   public Signal NloaderDone = new Signal("NloaderDone", Signal.OUTPUT);
-  private int S3034 = 1;
-  private int S3024 = 1;
-  private int S2783 = 1;
-  private int S2800 = 1;
-  private int S2805 = 1;
-  private int S3032 = 1;
+  private int S3031 = 1;
+  private int S3021 = 1;
+  private int S2780 = 1;
+  private int S2797 = 1;
+  private int S2802 = 1;
+  private int S3029 = 1;
   
   private int[] ends = new int[6];
   private int[] tdone = new int[6];
   
-  public void thread3046(int [] tdone, int [] ends){
-        switch(S3032){
+  public void thread3043(int [] tdone, int [] ends){
+        switch(S3029){
       case 0 : 
         active[5]=0;
         ends[5]=0;
@@ -54,8 +54,8 @@ public class loaderController extends ClockDomain{
     }
   }
 
-  public void thread3044(int [] tdone, int [] ends){
-        switch(S2805){
+  public void thread3041(int [] tdone, int [] ends){
+        switch(S2802){
       case 0 : 
         active[4]=0;
         ends[4]=0;
@@ -73,8 +73,8 @@ public class loaderController extends ClockDomain{
     }
   }
 
-  public void thread3043(int [] tdone, int [] ends){
-        switch(S2800){
+  public void thread3040(int [] tdone, int [] ends){
+        switch(S2797){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -93,8 +93,8 @@ public class loaderController extends ClockDomain{
     }
   }
 
-  public void thread3041(int [] tdone, int [] ends){
-        S2805=1;
+  public void thread3038(int [] tdone, int [] ends){
+        S2802=1;
     getBottle.setPresent();//sysj\loaderController.sysj line: 23, column: 6
     currsigs.addElement(getBottle);
     active[4]=1;
@@ -102,8 +102,8 @@ public class loaderController extends ClockDomain{
     tdone[4]=1;
   }
 
-  public void thread3040(int [] tdone, int [] ends){
-        S2800=1;
+  public void thread3037(int [] tdone, int [] ends){
+        S2797=1;
     CMD.setPresent();//sysj\loaderController.sysj line: 21, column: 6
     currsigs.addElement(CMD);
     CMD.setValue("G");//sysj\loaderController.sysj line: 21, column: 6
@@ -112,8 +112,8 @@ public class loaderController extends ClockDomain{
     tdone[3]=1;
   }
 
-  public void thread3039(int [] tdone, int [] ends){
-        switch(S3024){
+  public void thread3036(int [] tdone, int [] ends){
+        switch(S3021){
       case 0 : 
         active[2]=0;
         ends[2]=0;
@@ -121,10 +121,10 @@ public class loaderController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S2783){
+        switch(S2780){
           case 0 : 
             if(bottleToLoad.getprestatus()){//sysj\loaderController.sysj line: 12, column: 10
-              S2783=1;
+              S2780=1;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -138,7 +138,7 @@ public class loaderController extends ClockDomain{
           
           case 1 : 
             if(tick.getprestatus()){//sysj\loaderController.sysj line: 13, column: 10
-              S2783=2;
+              S2780=2;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -152,7 +152,7 @@ public class loaderController extends ClockDomain{
           
           case 2 : 
             if(!tick.getprestatus()){//sysj\loaderController.sysj line: 14, column: 10
-              S2783=3;
+              S2780=3;
               CMD.setPresent();//sysj\loaderController.sysj line: 16, column: 5
               currsigs.addElement(CMD);
               CMD.setValue("B");//sysj\loaderController.sysj line: 16, column: 5
@@ -169,7 +169,7 @@ public class loaderController extends ClockDomain{
           
           case 3 : 
             if(tick.getprestatus()){//sysj\loaderController.sysj line: 15, column: 10
-              S2783=4;
+              S2780=4;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -186,17 +186,17 @@ public class loaderController extends ClockDomain{
           
           case 4 : 
             if(!tick.getprestatus()){//sysj\loaderController.sysj line: 19, column: 10
-              S2783=5;
-              thread3040(tdone,ends);
-              thread3041(tdone,ends);
-              int biggest3042 = 0;
-              if(ends[3]>=biggest3042){
-                biggest3042=ends[3];
+              S2780=5;
+              thread3037(tdone,ends);
+              thread3038(tdone,ends);
+              int biggest3039 = 0;
+              if(ends[3]>=biggest3039){
+                biggest3039=ends[3];
               }
-              if(ends[4]>=biggest3042){
-                biggest3042=ends[4];
+              if(ends[4]>=biggest3039){
+                biggest3039=ends[4];
               }
-              if(biggest3042 == 1){
+              if(biggest3039 == 1){
                 active[2]=1;
                 ends[2]=1;
                 tdone[2]=1;
@@ -211,29 +211,29 @@ public class loaderController extends ClockDomain{
           
           case 5 : 
             if(tick.getprestatus()){//sysj\loaderController.sysj line: 20, column: 10
-              S2783=6;
+              S2780=6;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
             }
             else {
-              thread3043(tdone,ends);
-              thread3044(tdone,ends);
-              int biggest3045 = 0;
-              if(ends[3]>=biggest3045){
-                biggest3045=ends[3];
+              thread3040(tdone,ends);
+              thread3041(tdone,ends);
+              int biggest3042 = 0;
+              if(ends[3]>=biggest3042){
+                biggest3042=ends[3];
               }
-              if(ends[4]>=biggest3045){
-                biggest3045=ends[4];
+              if(ends[4]>=biggest3042){
+                biggest3042=ends[4];
               }
-              if(biggest3045 == 1){
+              if(biggest3042 == 1){
                 active[2]=1;
                 ends[2]=1;
                 tdone[2]=1;
               }
               //FINXME code
-              if(biggest3045 == 0){
-                S2783=6;
+              if(biggest3042 == 0){
+                S2780=6;
                 active[2]=1;
                 ends[2]=1;
                 tdone[2]=1;
@@ -243,7 +243,7 @@ public class loaderController extends ClockDomain{
           
           case 6 : 
             if(!tick.getprestatus()){//sysj\loaderController.sysj line: 26, column: 10
-              S2783=7;
+              S2780=7;
               CMD.setPresent();//sysj\loaderController.sysj line: 28, column: 5
               currsigs.addElement(CMD);
               CMD.setValue("C");//sysj\loaderController.sysj line: 28, column: 5
@@ -260,7 +260,7 @@ public class loaderController extends ClockDomain{
           
           case 7 : 
             if(tick.getprestatus()){//sysj\loaderController.sysj line: 27, column: 10
-              S2783=8;
+              S2780=8;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -277,7 +277,7 @@ public class loaderController extends ClockDomain{
           
           case 8 : 
             if(!tick.getprestatus()){//sysj\loaderController.sysj line: 32, column: 10
-              S2783=9;
+              S2780=9;
               CMD.setPresent();//sysj\loaderController.sysj line: 34, column: 5
               currsigs.addElement(CMD);
               CMD.setValue("O");//sysj\loaderController.sysj line: 34, column: 5
@@ -294,7 +294,7 @@ public class loaderController extends ClockDomain{
           
           case 9 : 
             if(tick.getprestatus()){//sysj\loaderController.sysj line: 33, column: 10
-              S2783=10;
+              S2780=10;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -311,7 +311,7 @@ public class loaderController extends ClockDomain{
           
           case 10 : 
             if(!tick.getprestatus()){//sysj\loaderController.sysj line: 37, column: 10
-              S2783=11;
+              S2780=11;
               CMD.setPresent();//sysj\loaderController.sysj line: 39, column: 5
               currsigs.addElement(CMD);
               CMD.setValue("A");//sysj\loaderController.sysj line: 39, column: 5
@@ -328,7 +328,7 @@ public class loaderController extends ClockDomain{
           
           case 11 : 
             if(tick.getprestatus()){//sysj\loaderController.sysj line: 38, column: 10
-              S2783=12;
+              S2780=12;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -345,7 +345,7 @@ public class loaderController extends ClockDomain{
           
           case 12 : 
             if(!tick.getprestatus()){//sysj\loaderController.sysj line: 42, column: 10
-              S2783=13;
+              S2780=13;
               loaderDone.setPresent();//sysj\loaderController.sysj line: 44, column: 5
               currsigs.addElement(loaderDone);
               active[2]=1;
@@ -361,7 +361,7 @@ public class loaderController extends ClockDomain{
           
           case 13 : 
             if(tick.getprestatus()){//sysj\loaderController.sysj line: 43, column: 10
-              S2783=14;
+              S2780=14;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -377,7 +377,7 @@ public class loaderController extends ClockDomain{
           
           case 14 : 
             if(!tick.getprestatus()){//sysj\loaderController.sysj line: 46, column: 10
-              S2783=0;
+              S2780=0;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -395,8 +395,8 @@ public class loaderController extends ClockDomain{
     }
   }
 
-  public void thread3037(int [] tdone, int [] ends){
-        S3032=1;
+  public void thread3034(int [] tdone, int [] ends){
+        S3029=1;
     if(loaderDone.getprestatus()){//sysj\loaderController.sysj line: 52, column: 24
       NloaderDone.setPresent();//sysj\loaderController.sysj line: 52, column: 37
       currsigs.addElement(NloaderDone);
@@ -411,9 +411,9 @@ public class loaderController extends ClockDomain{
     }
   }
 
-  public void thread3036(int [] tdone, int [] ends){
-        S3024=1;
-    S2783=0;
+  public void thread3033(int [] tdone, int [] ends){
+        S3021=1;
+    S2780=0;
     active[2]=1;
     ends[2]=1;
     tdone[2]=1;
@@ -426,50 +426,50 @@ public class loaderController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S3034){
+      switch(S3031){
         case 0 : 
-          S3034=0;
+          S3031=0;
           break RUN;
         
         case 1 : 
-          S3034=2;
-          S3034=2;
-          thread3036(tdone,ends);
-          thread3037(tdone,ends);
-          int biggest3038 = 0;
-          if(ends[2]>=biggest3038){
-            biggest3038=ends[2];
+          S3031=2;
+          S3031=2;
+          thread3033(tdone,ends);
+          thread3034(tdone,ends);
+          int biggest3035 = 0;
+          if(ends[2]>=biggest3035){
+            biggest3035=ends[2];
           }
-          if(ends[5]>=biggest3038){
-            biggest3038=ends[5];
+          if(ends[5]>=biggest3035){
+            biggest3035=ends[5];
           }
-          if(biggest3038 == 1){
+          if(biggest3035 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          thread3039(tdone,ends);
-          thread3046(tdone,ends);
-          int biggest3047 = 0;
-          if(ends[2]>=biggest3047){
-            biggest3047=ends[2];
+          thread3036(tdone,ends);
+          thread3043(tdone,ends);
+          int biggest3044 = 0;
+          if(ends[2]>=biggest3044){
+            biggest3044=ends[2];
           }
-          if(ends[5]>=biggest3047){
-            biggest3047=ends[5];
+          if(ends[5]>=biggest3044){
+            biggest3044=ends[5];
           }
-          if(biggest3047 == 1){
+          if(biggest3044 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest3047 == 0){
-            S3034=0;
+          if(biggest3044 == 0){
+            S3031=0;
             active[1]=0;
             ends[1]=0;
-            S3034=0;
+            S3031=0;
             break RUN;
           }
         
