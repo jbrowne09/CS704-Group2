@@ -5,9 +5,8 @@ caploaderController(
   
 )->{
 	while(true){
-		//await(caploaderEnable);
+		await(caploaderEnable);
 		await(tick);
-		System.out.println("working");
 		await(!tick);
 		abort(armAtDest && tick){
 			sustain pusherExtend;

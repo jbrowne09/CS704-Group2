@@ -1,6 +1,8 @@
 /Controller.class
 /GUI.class
 /Plant.class
+/caploaderController.class
+/caploaderPlant.class
 /capperController.class
 /capperPlant.class
 /conveyerController.class
@@ -18,6 +20,3 @@
 /systemGUI.class
 /unloaderController.class
 /unloaderPlant.class
-/snippet/
-/caploaderController.class
-/caploaderPlant.class
