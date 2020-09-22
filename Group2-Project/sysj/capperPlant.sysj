@@ -14,17 +14,19 @@ while(true){
 			abort(untwistGrip) {
 				sustain gripperLowered;
 			}
+			pause;
 		}
 	}
 	||
 	{
 		while(true) {
-			abort(twistGrip) {
+			abort(immediate twistGrip) {
 				sustain gripperInit;
 			}
-			abort(untwistGrip) {
+			abort(immediate untwistGrip) {
 				sustain gripperTurned;
 			}
+			pause;
 		}
 	}
 	||
@@ -40,7 +42,7 @@ while(true){
 	{
 		while(true){
 			await(clampBottle);
-			abort(untwistGrip) {
+			abort(immediate untwistGrip) {
 				sustain bottleClamped;
 			}
 		}

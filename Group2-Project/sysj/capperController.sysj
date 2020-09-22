@@ -6,18 +6,25 @@ capperController(
 ->{
 	while(true){
 		await(capperEnable);
-		await(tick);		
-		emit gripDown;
-		emit clampBottle;
-		await(!tick);
 		await(tick);
-		emit gripCap;
 		await(!tick);
-		await(tick);
-		emit twistGrip;
+		abort(tick){ {	
+			{sustain gripDown;} 
+			||
+			{sustain clampBottle;}
+		} }
 		await(!tick);
-		await(tick);
-		emit untwistGrip;
+		abort(tick) {
+			sustain gripCap;
+		}
+		await(!tick);
+		abort(tick){
+			sustain twistGrip;
+		}
+		await(!tick);
+		abort(gripperLifted){
+			sustain untwistGrip;
+		}
 		await(!tick);
 		await(tick);
 		abort(!capperEnable) {		
