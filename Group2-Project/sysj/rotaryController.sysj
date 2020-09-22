@@ -18,7 +18,6 @@ rotaryController(
 ->{ 	
 
 	//Rotary Control
-	//Considers multiple bottles but completely ignores filler/capper finish signals (NbottleFilled & NbottleCapped)
 	{
 		while(true){
 			abort(NbottlePos1 || bottlePos2 || bottlePos3 || bottlePos4) {
@@ -26,14 +25,13 @@ rotaryController(
 			}
 			
 			//await(rotaryEnable);
-			//abort(!rotaryEnable) {
-				abort(!aligned){
-					halt;
-				}
-				abort(aligned) {
-					sustain rotate;
-				}
-			//}
+			//await(!rotaryEnable);
+			abort(!aligned){
+				halt;
+			}
+			abort(aligned) {
+				sustain rotate;
+			}
 		}
 	}
 	||

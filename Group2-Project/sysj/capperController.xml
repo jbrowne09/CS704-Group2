@@ -16,7 +16,7 @@
 			<oSignal Name="gripDown" To="CapPlantCD.gripDown" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="12001" />
 			<oSignal Name="twistGrip" To="CapPlantCD.twistGrip" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10009" />
 			<oSignal Name="untwistGrip" To="CapPlantCD.untwistGrip" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10012" />
-			<oSignal Name="capperDone" To="MControllerCD.capperDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="capperDone" To="MControllerCD.capperDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20052" />
 			
 		</ClockDomain>
 	</SubSystem>
