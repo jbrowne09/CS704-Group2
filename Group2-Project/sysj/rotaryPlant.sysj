@@ -18,8 +18,9 @@ rotaryPlant(
 			await(CbottlePos1);
 			
 			await(!tick);
-			await(tick && rotate);
-			abort(bottlePos2 && !rotate){
+			await(tick);
+			await(rotate);
+			abort(bottlePos2){
 				sustain rotateTo2;
 			}
 		}
@@ -30,8 +31,9 @@ rotaryPlant(
 			await(bottlePos2);
 			
 			await(!tick);
-			await(tick && rotate);
-			abort(bottlePos3 && !rotate){
+			await(tick);
+			await(rotate);
+			abort(bottlePos3){
 				sustain rotateTo3;
 			}
 		}
@@ -42,8 +44,9 @@ rotaryPlant(
 			await(bottlePos3);
 			
 			await(!tick);
-			await(tick && rotate);
-			abort(bottlePos4 && !rotate){
+			await(tick);
+			await(rotate);
+			abort(bottlePos4){
 				sustain rotateTo4;
 			}
 		}
@@ -54,8 +57,9 @@ rotaryPlant(
 			await(bottlePos4);
 			
 			await(!tick);
-			await(tick && rotate);
-			abort(bottlePos5 && !rotate){
+			await(tick);
+			await(rotate);
+			abort(bottlePos5){
 				sustain rotateTo5;
 			}
 		}
@@ -119,8 +123,9 @@ rotaryPlant(
 				sustain aligned;
 			}
 			
+			await(rotate);
 			await(!tick);
-			await(tick && rotate);
+			await(tick);
 			await(!tick);
 			
 			abort(!rotate){
