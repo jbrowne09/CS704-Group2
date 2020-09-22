@@ -60,6 +60,7 @@ fillerController(
 				}
 			}
 			
+			await(!tick);
 			abort(tick) { 
 				{{sustain injectorOn;}
 				||
@@ -110,6 +111,8 @@ fillerController(
 					{sustain inletOn;}}
 				}
 			}
+			
+			await(!tick);
 			abort(tick) { 
 				{{sustain injectorOn;}
 				||
@@ -161,6 +164,7 @@ fillerController(
 				}
 			}
 			
+			await(!tick);
 			abort(tick) { 
 				{{sustain injectorOn;}
 				||
