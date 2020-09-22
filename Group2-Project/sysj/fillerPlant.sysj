@@ -12,30 +12,28 @@ fillerPlant(
 			abort(valveExtend) {
 				sustain canTop;
 			}
-			pause;
-		}
-	}
-	||
-	{	while(true) {
-			present (inletOn) {
-				emit inletIsOnS;
-				pause;
-			}
-			pause;
-		}
-	}
-	||
-	{
-		while(true) {
-			present (injectorOn) {
-				emit injectorIsOnS;
-				pause;
-			}
-			pause;
 		}
 	}
 	||
 	{//To viz
+		{
+			while(true){
+				await(injectorOn);
+				abort(!injectorOn) {
+					sustain injectorIsOnS;
+				}
+			}
+		}
+		||
+		{
+			while(true){
+				await(inletOn);
+				abort(!inletOn) {
+					sustain inletIsOnS;
+				}
+			}
+		}
+		||
 		{while(true) {present(canBottom) {emit canBottomS;} pause;}}
 		||
 		{while(true) {present(canTop) {emit canTopS;} pause;}}
