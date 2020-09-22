@@ -13,15 +13,18 @@
 			<iSignal Name="bottleAtLoad" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11007" />
 			<iSignal Name="getBottle" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11099" />
 			<iSignal Name="NbottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11008" />
+			<iSignal Name="NbottlePos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11009" />
+			<iSignal Name="NbottlePos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11010" />
 					
 			<oSignal Name="bottleToLoad" To="LControllerCD.bottleToLoad" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="bottleToUnload" To="ULControllerCD.bottleToUnload" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10051" />
 					
 			<oSignal Name="bottleAtLoadS" To="UI.bottleAtLoadS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="rotaryEnable" 	To="RControllerCD.rotaryEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10155" />
+			<oSignal Name="capperEnable" 	To="CapControllerCD.capperEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10256" />
+			<oSignal Name="fillerEnable" 	To="FControllerCD.fillerEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10200" />
+			
 			<!-- <oSignal Name="conveyorEnable" To="CControllerCD.conveyorEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10102" /> -->
-			<!-- <oSignal Name="rotaryEnable" 	To="RControllerCD.rotaryEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10155" /> -->
-			<!-- <oSignal Name="capperEnable" 	To="CapControllerCD.capperEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10008" /> -->
-			<!-- <oSignal Name="fillerEnable" 	To="FControllerCD.fillerEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" /> -->
 			
 		</ClockDomain>
 	</SubSystem>

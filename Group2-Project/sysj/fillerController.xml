@@ -4,7 +4,7 @@
 		
 			<iSignal Name="canBottom" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="canTop" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="fillerEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />	
+			<iSignal Name="fillerEnable" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10200" />	
 			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11004" />
 			
 			<oSignal Name="inletOn" To="FPlantCD.inletOn" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />

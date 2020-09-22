@@ -1,5 +1,5 @@
 capperController(
-    input signal gripperLowered, gripperLifted, gripperInit, gripperTurned, bottleClamped, bottlePos4, capperEnable, tick;
+    input signal gripperLowered, gripperLifted, gripperInit, gripperTurned, bottleClamped, capperEnable, tick;
     output signal clampBottle, gripCap, gripDown, twistGrip, untwistGrip, capperDone;
 )
 

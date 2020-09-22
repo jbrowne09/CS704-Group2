@@ -1,12 +1,12 @@
 mainController(
-	input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, getBottle, tick;
+	input signal conveyorDone, rotaryDone, capperDone, fillerDone, loaderDone, unloaderDone, getBottle, tick;
     output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable;
     
     //from request button
     input signal bottleAtLoad;
     
     //from rotaryController
-    input signal NbottleLeft5;
+    input signal NbottleLeft5, NbottlePos2, NbottlePos4;
     
     //to loader/unloader
     output signal bottleToLoad, bottleToUnload;
@@ -61,6 +61,45 @@ mainController(
 	}
 	||
 	
+	//Capper Control
+	{
+		while(true){
+			await(!NbottlePos4);
+			await(NbottlePos4);
+			abort(capperDone){
+				System.out.println("Capper Running");
+				sustain capperEnable;
+			}
+			System.out.println("Capper Stopping");
+		}
+	}
+	||
+	
+	//Filler Control
+	{
+		while(true){
+			await(!NbottlePos2);
+			await(NbottlePos2);
+			abort(fillerDone){
+				sustain fillerEnable;
+			}
+		}
+	}
+	||
+	
+	//Rotary Control
+	{
+		while(true){
+			await(!capperEnable);
+			abort(capperEnable){
+				System.out.println("Enabled Rotary");
+				sustain rotaryEnable;
+			}
+			System.out.println("Disabled Rotary");
+		}
+	}
+	||
+	
 	//To Visualiser
 	{
 		while(true){
@@ -70,47 +109,4 @@ mainController(
 			}
 		}
 	}
-	
-//	{
-//		while(true){
-//		
-//			await(tick);
-//	
-//			System.out.println("entering loader");
-//			abort(loaderDone) {
-//				sustain bottleToLoad;
-//			}
-//			System.out.println("exit loader");
-//			
-//			abort(capperDone) {
-//				System.out.println("entering capper");
-//				sustain capperEnable;
-//			}
-//			System.out.println("exit capper");
-//			
-//			
-//			halt;
-//			
-//			
-//			
-//			
-//			abort(conveyorDone) {
-//			System.out.println("entering conveyor");
-//				sustain conveyorEnable;
-//			}
-//			System.out.println("exit conveyor");
-//	
-//			abort(rotaryDone) {
-//				System.out.println("entering rotary");
-//				sustain rotaryEnable;
-//			}
-//			System.out.println("exit rotary");
-//			
-//			abort(capperDone) {
-//				System.out.println("entering capper");
-//				sustain capperEnable;
-//			}
-//			System.out.println("exit capper");
-//		}
-//	}
 }

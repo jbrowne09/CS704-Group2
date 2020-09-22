@@ -1,7 +1,7 @@
 capperPlant(
 		input signal clampBottle, gripCap, gripDown, twistGrip, untwistGrip;
-		output signal gripperLowered, gripperLifted, gripperInit, gripperTurned, bottleClamped, bottlePos4;
-		output signal gripperLoweredS, gripperLiftedS, gripperInitS, gripperTurnedS, gripCapS, bottleClampedS, bottlePos4S;
+		output signal gripperLowered, gripperLifted, gripperInit, gripperTurned, bottleClamped;
+		output signal gripperLoweredS, gripperLiftedS, gripperInitS, gripperTurnedS, gripCapS, bottleClampedS;
 		)
 ->
 {
@@ -57,8 +57,6 @@ while(true){
 		{while(true) {present(gripperTurned) {emit gripperTurnedS;} pause;}}
 		||
 		{while(true) {present(bottleClamped) {emit bottleClampedS;} pause;}}
-		||
-		{while(true) {present(bottlePos4) {emit bottlePos4S;} pause;}}
 	}
 }
 }

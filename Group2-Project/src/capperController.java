@@ -16,7 +16,6 @@ public class capperController extends ClockDomain{
   public Signal gripperInit = new Signal("gripperInit", Signal.INPUT);
   public Signal gripperTurned = new Signal("gripperTurned", Signal.INPUT);
   public Signal bottleClamped = new Signal("bottleClamped", Signal.INPUT);
-  public Signal bottlePos4 = new Signal("bottlePos4", Signal.INPUT);
   public Signal capperEnable = new Signal("capperEnable", Signal.INPUT);
   public Signal tick = new Signal("tick", Signal.INPUT);
   public Signal clampBottle = new Signal("clampBottle", Signal.OUTPUT);
@@ -217,7 +216,6 @@ public class capperController extends ClockDomain{
           gripperInit.gethook();
           gripperTurned.gethook();
           bottleClamped.gethook();
-          bottlePos4.gethook();
           capperEnable.gethook();
           tick.gethook();
           df = true;
@@ -229,7 +227,6 @@ public class capperController extends ClockDomain{
       gripperInit.setpreclear();
       gripperTurned.setpreclear();
       bottleClamped.setpreclear();
-      bottlePos4.setpreclear();
       capperEnable.setpreclear();
       tick.setpreclear();
       clampBottle.setpreclear();
@@ -259,9 +256,6 @@ public class capperController extends ClockDomain{
       dummyint = bottleClamped.getStatus() ? bottleClamped.setprepresent() : bottleClamped.setpreclear();
       bottleClamped.setpreval(bottleClamped.getValue());
       bottleClamped.setClear();
-      dummyint = bottlePos4.getStatus() ? bottlePos4.setprepresent() : bottlePos4.setpreclear();
-      bottlePos4.setpreval(bottlePos4.getValue());
-      bottlePos4.setClear();
       dummyint = capperEnable.getStatus() ? capperEnable.setprepresent() : capperEnable.setpreclear();
       capperEnable.setpreval(capperEnable.getValue());
       capperEnable.setClear();
@@ -287,7 +281,6 @@ public class capperController extends ClockDomain{
         gripperInit.gethook();
         gripperTurned.gethook();
         bottleClamped.gethook();
-        bottlePos4.gethook();
         capperEnable.gethook();
         tick.gethook();
       }

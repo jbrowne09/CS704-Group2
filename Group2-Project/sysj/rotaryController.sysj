@@ -14,6 +14,9 @@ rotaryController(
    	
    	//Controller to Plant
    	output signal rotate, CbottlePos1, Cmotor;
+   	
+   	//To Main
+   	output signal NbottlePos2, NbottlePos4;
 	)
 ->{ 	
 
@@ -24,8 +27,7 @@ rotaryController(
 				halt;
 			}
 			
-			//await(rotaryEnable);
-			//await(!rotaryEnable);
+			await(rotaryEnable);
 			abort(!aligned){
 				halt;
 			}
@@ -36,10 +38,14 @@ rotaryController(
 	}
 	||
 	
-	//signals to/from conveyorController and main
+	//signals to other controllers/main
 	{ while(true) { present (NbottlePos1) {emit CbottlePos1;} pause;}}
 	||
 	{ while(true) { present (Nmotor) {emit Cmotor;} pause;}}
 	||
 	{ while(true) { present (bottlePos5) {emit NbottlePos5;} pause;}}
+	||
+	{ while(true) { present (bottlePos2) {emit NbottlePos2;} pause;}}
+	||
+	{ while(true) { present (bottlePos4) {emit NbottlePos4;} pause;}}
 }

@@ -16,6 +16,8 @@
 			<oSignal Name="rotate" To="RPlantCD.rotate" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10158" />
 			
 			<oSignal Name="NbottlePos5" To="CControllerCD.NbottlePos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10103" />
+			<oSignal Name="NbottlePos2" To="MControllerCD.NbottlePos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="11009" />
+			<oSignal Name="NbottlePos4" To="MControllerCD.NbottlePos4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="11010" />
 			
 			<oSignal Name="CbottlePos1" To="RPlantCD.CbottlePos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10164" />
 			<oSignal Name="Cmotor" To="RPlantCD.Cmotor" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10165" />
