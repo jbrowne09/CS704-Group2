@@ -17,16 +17,17 @@ loaderController(
 			}
 	
 			await(!tick);
-			abort(tick) {
-				sustain CMD("G"); //Grip bottle
-			}
-	
-			await(!tick);
 			abort(tick) { {
-				{sustain CMD("C");} //Move to turntable pos1
+				{sustain CMD("G");} //Grip bottle
 				||
 				{sustain getBottle;}
 			} }
+	
+			await(!tick);
+			abort(tick) { 
+				sustain CMD("C"); //Move to turntable pos1
+				
+			} 
 	
 			await(!tick);
 			abort(tick) {
