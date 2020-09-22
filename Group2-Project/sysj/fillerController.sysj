@@ -6,6 +6,38 @@ fillerController(
 ->{	
 	{
 		while(true){
+			await(toFill1);
+			System.out.println("liquidPos1");
+			await(!toFill1);
+		}
+	}
+	||
+	{
+		while(true){
+			await(toFill2);
+			System.out.println("liquidPos2");
+			await(!toFill2);
+		}
+	}
+	||
+	{
+		while(true){
+			await(toFill3);
+			System.out.println("liquidPos3");
+			await(!toFill3);
+		}
+	}
+	||
+	{
+		while(true){
+			await(toFill4);
+			System.out.println("liquidPos4");
+			await(!toFill4);
+		}
+	}
+	||
+	{
+		while(true){
 		System.out.println("filler");
 			//await(fillerEnable);
 			//System.out.println("started filler");

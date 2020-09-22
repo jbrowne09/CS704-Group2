@@ -27,10 +27,10 @@ public class systemViz extends JFrame implements ActionListener {
 	JButton tick = new JButton("tick");
 	JButton request = new JButton("request");
 	
-	JCheckBox liquidPos1 = new JCheckBox("liquidPos1");
-	JCheckBox liquidPos2 = new JCheckBox("liquidPos2");
-	JCheckBox liquidPos3 = new JCheckBox("liquidPos3");
-	JCheckBox liquidPos4 = new JCheckBox("liquidPos4");
+	JButton liquidPos1 = new JButton("liquidPos1");
+	JButton liquidPos2 = new JButton("liquidPos2");
+	JButton liquidPos3 = new JButton("liquidPos3");
+	JButton liquidPos4 = new JButton("liquidPos4");
 	
 	public systemViz() {
 		
@@ -58,19 +58,19 @@ public class systemViz extends JFrame implements ActionListener {
 		request.setEnabled(true);
 		request.setFont(bold);
 		
-		//filler
+		//filler buttons
+		liquidPos1.addActionListener(new SignalClient(10203, "FControllerCD.toFill1"));
 		liquidPos1.setEnabled(true);
-		liquidPos1.addActionListener(this);
-		liquidPos1.setFont(normal);
+		liquidPos1.setFont(bold);
+		liquidPos2.addActionListener(new SignalClient(10204, "FControllerCD.toFill2"));
 		liquidPos2.setEnabled(true);
-		liquidPos2.addActionListener(this);
-		liquidPos2.setFont(normal);
+		liquidPos2.setFont(bold);
+		liquidPos3.addActionListener(new SignalClient(10205, "FControllerCD.toFill3"));
 		liquidPos3.setEnabled(true);
-		liquidPos3.addActionListener(this);
-		liquidPos3.setFont(normal);
+		liquidPos3.setFont(bold);
+		liquidPos4.addActionListener(new SignalClient(10206, "FControllerCD.toFill4"));
 		liquidPos4.setEnabled(true);
-		liquidPos4.addActionListener(this);
-		liquidPos4.setFont(normal);
+		liquidPos4.setFont(bold);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridBagLayout());
@@ -113,26 +113,6 @@ public class systemViz extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (liquidPos1.isSelected()) {
-			canvas.updateSignals("liquidPos1", true);
-		} else {
-			canvas.updateSignals("liquidPos1", false);
-		}
-		if (liquidPos2.isSelected()) {
-			canvas.updateSignals("liquidPos2", true);
-		} else {
-			canvas.updateSignals("liquidPos2", false);
-		}
-		if (liquidPos3.isSelected()) {
-			canvas.updateSignals("liquidPos3", true);
-		} else {
-			canvas.updateSignals("liquidPos3", false);
-		}
-		if (liquidPos4.isSelected()) {
-			canvas.updateSignals("liquidPos4", true);
-		} else {
-			canvas.updateSignals("liquidPos4", false);
-		}
 	}
 
 	public static void main(String[] args) {

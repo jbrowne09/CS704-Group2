@@ -2,17 +2,17 @@
 	<SubSystem Name="SS2" Local="true">
 		<ClockDomain Name="FPlantCD" Class="fillerPlant">
 			
-			<iSignal Name="inletOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="injectorOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="valveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="valveExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			<iSignal Name="fill1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
-			<iSignal Name="fill2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
-			<iSignal Name="fill3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
-			<iSignal Name="fill4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
+			<iSignal Name="inletOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10207" />
+			<iSignal Name="injectorOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10208" />
+			<iSignal Name="valveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10209" />
+			<iSignal Name="valveExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10210" />
+			<iSignal Name="fill1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10211" />
+			<iSignal Name="fill2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10212" />
+			<iSignal Name="fill3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10213" />
+			<iSignal Name="fill4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10214" />
 			
-			<oSignal Name="canBottom"  To="FControllerCD.canBottom"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="canTop" To="FControllerCD.canTop"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
+			<oSignal Name="canBottom"  To="FControllerCD.canBottom"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10201" />
+			<oSignal Name="canTop" To="FControllerCD.canTop"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10202" />			
 			
 			<oSignal Name="canBottomS" To="UI.canBottomS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="canTopS" To="UI.canTopS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
