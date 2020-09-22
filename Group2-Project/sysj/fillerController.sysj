@@ -3,110 +3,265 @@ fillerController(
     output signal inletOn, injectorOn, valveRetract, valveExtend, fillerDone, fill1, fill2, fill3, fill4;
 )
 
-->{	signal stop, fill;
+->{	
+	int signal liquidType;
 	{
-		while(true){
-			await(fill);
-			await(toFill1);
-			{abort(stop){
-				sustain fill1;
-			}
-			}
-			||
-			{
-				waitl(2000 ms);
-				emit stop;
-			}
-		}
-	}
-	||
-	{
-		while(true){
-			await(fill);
-			await(toFill2);
-			{abort(stop){
-				sustain fill2;
-			}
-			}
-			||
-			{
-				waitl(2000 ms);
-				emit stop;
-			}
-		}
-	}
-	||
-	{
-		while(true){
-			await(fill);
-			await(toFill3);
-			{abort(stop){
-				sustain fill3;
-			}
-			}
-			||
-			{
-				waitl(2000 ms);
-				emit stop;
-			}
-		}
-	}
-	||
-	{
-		while(true){
-			await(fill);
-			await(toFill4);
-			{abort(stop){
-				sustain fill4;
-			}
-			}
-			||
-			{
-				waitl(2000 ms);
-				emit stop;
-			}
-		}
-	}
-	||
-	{
-		await(tick);
-		await(!tick);
-		await(fill);
-		await(!fill);
-		await(fill);
-		await(!fill);
-		await(fill);
-		await(!fill);
-		await(fill);
-		await(!fill);
-		abort(!fillerEnable) {
-			sustain fillerDone;
-		}
-	}
-	||
-	{
-	await(tick);
 		while(true){
 			await(fillerEnable);
-			abort(canTop) {
-				{sustain injectorOn;}
+			await(tick);
+			await(!tick);
+			
+			System.out.println("Select Liquid 1");
+			
+			abort(liquidType){
+				{ await(toFill1); emit liquidType(1);}
 				||
-				{present (canBottom) {
-				pause;
-					sustain valveRetract;
-					pause;
-				}
+				{ await(toFill2); emit liquidType(2);}
+				||
+				{ await(toFill3); emit liquidType(3);}
+				||
+				{ await(toFill4); emit liquidType(4);}
+			}
+			
+			await(!tick);
+			System.out.println("Filling Liquid 1");
+			if(#liquidType == 1){
+				abort(tick){
+					sustain fill1;
 				}
 			}
-			System.out.println("select a liquid");
-			abort(stop){
-				sustain fill;
+			else if (#liquidType == 2) {
+				abort(tick){
+					sustain fill2;
+				}
 			}
-			abort(canBottom) {
-				{sustain inletOn;}
+			else if (#liquidType == 3) {
+				abort(tick){
+					sustain fill3;
+				}
+			}
+			else {
+				abort(tick){
+					sustain fill4;
+				}
+			}
+			
+			System.out.println("Select Liquid 2");
+			
+			abort(liquidType){
+				{ await(toFill1); emit liquidType(1);}
 				||
-				{sustain valveExtend;}	
+				{ await(toFill2); emit liquidType(2);}
+				||
+				{ await(toFill3); emit liquidType(3);}
+				||
+				{ await(toFill4); emit liquidType(4);}
+			}
+			
+			await(!tick);
+			System.out.println("Filling Liquid 2");
+			if(#liquidType == 1){
+				abort(tick){
+					sustain fill1;
+				}
+			}
+			else if (#liquidType == 2) {
+				abort(tick){
+					sustain fill2;
+				}
+			}
+			else if (#liquidType == 3) {
+				abort(tick){
+					sustain fill3;
+				}
+			}
+			else {
+				abort(tick){
+					sustain fill4;
+				}
+			}
+			
+			System.out.println("Select Liquid 3");
+			
+			abort(liquidType){
+				{ await(toFill1); emit liquidType(1);}
+				||
+				{ await(toFill2); emit liquidType(2);}
+				||
+				{ await(toFill3); emit liquidType(3);}
+				||
+				{ await(toFill4); emit liquidType(4);}
+			}
+			
+			await(!tick);
+			System.out.println("Filling Liquid 3");
+			if(#liquidType == 1){
+				abort(tick){
+					sustain fill1;
+				}
+			}
+			else if (#liquidType == 2) {
+				abort(tick){
+					sustain fill2;
+				}
+			}
+			else if (#liquidType == 3) {
+				abort(tick){
+					sustain fill3;
+				}
+			}
+			else {
+				abort(tick){
+					sustain fill4;
+				}
+			}
+			
+			System.out.println("Select Liquid 4");
+			
+			abort(liquidType){
+				{ await(toFill1); emit liquidType(1);}
+				||
+				{ await(toFill2); emit liquidType(2);}
+				||
+				{ await(toFill3); emit liquidType(3);}
+				||
+				{ await(toFill4); emit liquidType(4);}
+			}
+			
+			await(!tick);
+			System.out.println("Filling Liquid 4");
+			if(#liquidType == 1){
+				abort(tick){
+					sustain fill1;
+				}
+			}
+			else if (#liquidType == 2) {
+				abort(tick){
+					sustain fill2;
+				}
+			}
+			else if (#liquidType == 3) {
+				abort(tick){
+					sustain fill3;
+				}
+			}
+			else {
+				abort(tick){
+					sustain fill4;
+				}
+			}
+			
+			abort(!fillerEnable){
+				sustain fillerDone;
 			}
 		}
 	}
 }
+	
+//	||
+//	{
+//		while(true){
+//			await(fill);
+//			await(toFill1);
+//			{abort(stop){
+//				sustain fill1;
+//			}
+//			}
+//			||
+//			{
+//				waitl(2000 ms);
+//				emit stop;
+//			}
+//		}
+//	}
+//	||
+//	{
+//		while(true){
+//			await(fill);
+//			await(toFill2);
+//			{abort(stop){
+//				sustain fill2;
+//			}
+//			}
+//			||
+//			{
+//				waitl(2000 ms);
+//				emit stop;
+//			}
+//		}
+//	}
+//	||
+//	{
+//		while(true){
+//			await(fill);
+//			await(toFill3);
+//			{abort(stop){
+//				sustain fill3;
+//			}
+//			}
+//			||
+//			{
+//				waitl(2000 ms);
+//				emit stop;
+//			}
+//		}
+//	}
+//	||
+//	{
+//		while(true){
+//			await(fill);
+//			await(toFill4);
+//			{abort(stop){
+//				sustain fill4;
+//			}
+//			}
+//			||
+//			{
+//				waitl(2000 ms);
+//				emit stop;
+//			}
+//		}
+//	}
+//	||
+//	{
+//		await(tick);
+//		await(!tick);
+//		await(fill);
+//		await(!fill);
+//		await(fill);
+//		await(!fill);
+//		await(fill);
+//		await(!fill);
+//		await(fill);
+//		await(!fill);
+//		abort(!fillerEnable) {
+//			sustain fillerDone;
+//		}
+//	}
+//	||
+//	{
+//	await(tick);
+//		while(true){
+//			await(fillerEnable);
+//			abort(canTop) {
+//				{sustain injectorOn;}
+//				||
+//				{present (canBottom) {
+//				pause;
+//					sustain valveRetract;
+//					pause;
+//				}
+//				}
+//			}
+//			System.out.println("select a liquid");
+//			abort(stop){
+//				sustain fill;
+//			}
+//			abort(canBottom) {
+//				{sustain inletOn;}
+//				||
+//				{sustain valveExtend;}	
+//			}
+//		}
+//	}
+//}
