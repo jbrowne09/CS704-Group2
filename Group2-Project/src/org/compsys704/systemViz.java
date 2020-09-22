@@ -50,7 +50,7 @@ public class systemViz extends JFrame implements ActionListener {
 		tick.addActionListener(new SignalClient(11004, "FControllerCD.tick"));
 		tick.addActionListener(new SignalClient(11005, "CapControllerCD.tick"));
 		tick.addActionListener(new SignalClient(11006, "MControllerCD.tick"));
-		tick.addActionListener(new SignalClient(11007, "CLControllerCD.tick"));
+		tick.addActionListener(new SignalClient(11111, "CLControllerCD.tick"));
 		tick.setEnabled(true);
 		tick.setFont(bold);
 		

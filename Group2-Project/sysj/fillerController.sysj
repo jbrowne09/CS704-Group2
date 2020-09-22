@@ -5,12 +5,16 @@ fillerController(
 
 ->{	
 	int signal liquidType;
-	{
 		while(true){
-			await(fillerEnable);
+			//await(fillerEnable);
 			await(tick);
 			await(!tick);
-			
+			abort(tick) { 
+				sustain injectorOn;
+			}
+			abort(tick) { 
+				sustain canTop;
+			}
 			System.out.println("Select Liquid 1");
 			
 			abort(liquidType){
@@ -28,6 +32,11 @@ fillerController(
 				abort(tick){
 					System.out.println("Filling 1 to 25%\n");
 					sustain fill1;
+					abort(canBottom) {
+						{sustain inletOn;}
+						||
+						{sustain valveExtend;}	
+					}
 				}
 			}
 			else if (#liquidType == 2) {
@@ -49,6 +58,12 @@ fillerController(
 				}
 			}
 			
+			abort(tick) { 
+				sustain injectorOn;
+			}
+			abort(tick) { 
+				sustain canTop;
+			}
 			System.out.println("Select Liquid 2");
 			
 			abort(liquidType){
@@ -86,7 +101,12 @@ fillerController(
 					sustain fill4;
 				}
 			}
-			
+			abort(tick) { 
+				sustain injectorOn;
+			}
+			abort(tick) { 
+				sustain canTop;
+			}
 			System.out.println("Select Liquid 3");
 			
 			abort(liquidType){
@@ -123,6 +143,13 @@ fillerController(
 					System.out.println("Filling with 4 to 75%\n");
 					sustain fill4;
 				}
+			}
+			
+			abort(tick) { 
+				sustain injectorOn;
+			}
+			abort(tick) { 
+				sustain canTop;
 			}
 			
 			System.out.println("Select Liquid 4");
@@ -167,7 +194,7 @@ fillerController(
 				sustain fillerDone;
 			}
 		}
-	}
+}
 	
 //	||
 //	{
@@ -275,4 +302,3 @@ fillerController(
 //			}
 //		}
 //	}
-}

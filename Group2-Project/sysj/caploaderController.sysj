@@ -8,20 +8,18 @@ caploaderController(
 		await(caploaderEnable);
 		await(tick);
 		await(!tick);
-		abort(armAtDest && tick){
+		abort(tick){
 			sustain pusherExtend;
 		}
-		abort(armAtSource && tick){
+		abort(tick){
 			sustain armSource;
 		}
-		abort(WPgripped && tick){
-			sustain vacOn;
-		}
-		abort(armAtDest && tick){
+		abort(tick){{
 			{sustain vacOn;} 
 			||
 			{sustain armDest;}
-		}	
+		}	}
+		await(!tick);
 		abort(!caploaderEnable) {
 			sustain caploaderDone;
 		}

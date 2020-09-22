@@ -27,7 +27,7 @@ caploaderPlant(
 	||
 	{// Vacuum
 		while(true){
-			present(vacOn && armAtSource){
+			present(vacOn){
 				abort(!vacOn){
 					sustain WPgripped; 
 				}

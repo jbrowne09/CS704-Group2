@@ -6,7 +6,7 @@ mainController(
     input signal bottleAtLoad;
     
     //from rotaryController
-    input signal NbottleLeft5, NbottlePos2, NbottlePos4;
+    input signal NbottleLeft5, NbottlePos2, NbottlePos3, NbottlePos4;
     
     //to loader/unloader
     output signal bottleToLoad, bottleToUnload;
@@ -60,7 +60,17 @@ mainController(
 		}
 	}
 	||
-	
+	//Cap Loader Control
+	{
+		while(true){
+			await(!NbottlePos3);
+			await(NbottlePos3);
+			abort(caploaderDone){
+				sustain caploaderEnable;
+			}
+		}
+	}
+	||
 	//Capper Control
 	{
 		while(true){
@@ -72,7 +82,6 @@ mainController(
 		}
 	}
 	||
-	
 	//Filler Control
 	{
 		while(true){
@@ -84,12 +93,11 @@ mainController(
 		}
 	}
 	||
-	
 	//Rotary Control
 	{
 		while(true){
-			await(!capperEnable && !fillerEnable);
-			abort(capperEnable || fillerEnable){
+			await(!capperEnable && !fillerEnable && !caploaderEnable);
+			abort(capperEnable || fillerEnable || caploaderEnable){
 				sustain rotaryEnable;
 			}
 		}

@@ -16,6 +16,7 @@
 			<iSignal Name="NbottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11008" />
 			<iSignal Name="NbottlePos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11009" />
 			<iSignal Name="NbottlePos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11010" />
+			<iSignal Name="NbottlePos3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11011" />
 					
 			<oSignal Name="bottleToLoad" To="LControllerCD.bottleToLoad" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="bottleToUnload" To="ULControllerCD.bottleToUnload" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10051" />

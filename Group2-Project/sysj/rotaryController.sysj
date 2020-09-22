@@ -16,7 +16,7 @@ rotaryController(
    	output signal rotate, CbottlePos1, Cmotor;
    	
    	//To Main
-   	output signal NbottlePos2, NbottlePos4;
+   	output signal NbottlePos2, NbottlePos4, NbottlePos3;
 	)
 ->{ 	
 
@@ -47,6 +47,8 @@ rotaryController(
 	{ while(true) { present (bottlePos5) {emit NbottlePos5;} pause;}}
 	||
 	{ while(true) { present (bottlePos2) {emit NbottlePos2;} pause;}}
+	||
+	{ while(true) { present (bottlePos3) {emit NbottlePos3;} pause;}}
 	||
 	{ while(true) { present (bottlePos4) {emit NbottlePos4;} pause;}}
 }

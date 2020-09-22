@@ -2,7 +2,7 @@
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="CLControllerCD" Class="caploaderController">
 		
-			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11007" />
+			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11111" />
 			<iSignal Name="armAtDest" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10304" />
 			<iSignal Name="armAtSource" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10305" />
 			<iSignal Name="pusherRetracted" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10306" />
