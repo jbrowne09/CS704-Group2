@@ -114,17 +114,18 @@ public class systemViz extends JFrame implements ActionListener {
 		bc.gridy = 0;
 		buttonPanel.add(liquidPos4, bc);
 		
+		//TEMPORARY FOR TESTING LIDLOADER
 		bc.gridx = 0;
 		bc.gridy = 1;
 		buttonPanel.add(pusherExtend, bc);
-		bc.gridx = 0;
-		bc.gridy = 2;
+		bc.gridx = 1;
+		bc.gridy = 1;
 		buttonPanel.add(toDest, bc);
-		bc.gridx = 0;
-		bc.gridy = 3;
+		bc.gridx = 2;
+		bc.gridy = 1;
 		buttonPanel.add(toInit, bc);
-		bc.gridx = 0;
-		bc.gridy = 4;
+		bc.gridx = 3;
+		bc.gridy = 1;
 		buttonPanel.add(vacOn, bc);
 		
 		//setup grid layout 1x2 (canvas on top of button panel)
