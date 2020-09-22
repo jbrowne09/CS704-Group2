@@ -1,25 +1,37 @@
 fillerController(
-    input signal canBottom, canTop, fillerEnable, tick;
-    output signal inletOn, injectorOn, valveRetract, valveExtend, fillerDone;
+    input signal canBottom, canTop, fillerEnable, tick, toFill1, toFill2, toFill3, toFill4;
+    output signal inletOn, injectorOn, valveRetract, valveExtend, fillerDone, fill1, fill2, fill3, fill4;
 )
 
 ->{	
-	while(true){
-		//await(fillerEnable);
-		await(tick);
-		abort(canTop) {
-			{sustain injectorOn;}
-			||
-			{present (canBottom) {
-				emit valveRetract;
+	{
+		while(true){
+			await(fillerEnable);
+			await(tick);
+			abort(canTop) {
+				{sustain injectorOn;}
+				||
+				{present (canBottom) {
+					emit valveRetract;
+				}
+				}
 			}
+			abort(canBottom) {
+				{sustain inletOn;}
+				||
+				{sustain valveExtend;}	
 			}
+			emit fillerDone;
 		}
-		abort(canBottom) {
-			{sustain inletOn;}
-			||
-			{sustain valveExtend;}	
-		}
-		emit fillerDone;
+	}
+	||
+	{//To plant
+		{while(true) {present(toFill1) {emit fill1;} pause;}}
+		||
+		{while(true) {present(toFill2) {emit fill2;} pause;}}
+		||
+		{while(true) {present(toFill3) {emit fill3;} pause;}}
+		||
+		{while(true) {present(toFill4) {emit fill4;} pause;}}
 	}
 }
