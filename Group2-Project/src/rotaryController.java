@@ -26,22 +26,22 @@ public class rotaryController extends ClockDomain{
   public Signal NbottlePos2 = new Signal("NbottlePos2", Signal.OUTPUT);
   public Signal NbottlePos4 = new Signal("NbottlePos4", Signal.OUTPUT);
   public Signal NbottlePos3 = new Signal("NbottlePos3", Signal.OUTPUT);
-  private int S7633 = 1;
-  private int S7583 = 1;
-  private int S7543 = 1;
-  private int S7591 = 1;
-  private int S7585 = 1;
-  private int S7599 = 1;
-  private int S7607 = 1;
-  private int S7615 = 1;
-  private int S7623 = 1;
-  private int S7631 = 1;
+  private int S7597 = 1;
+  private int S7547 = 1;
+  private int S7507 = 1;
+  private int S7555 = 1;
+  private int S7549 = 1;
+  private int S7563 = 1;
+  private int S7571 = 1;
+  private int S7579 = 1;
+  private int S7587 = 1;
+  private int S7595 = 1;
   
   private int[] ends = new int[9];
   private int[] tdone = new int[9];
   
-  public void thread7649(int [] tdone, int [] ends){
-        switch(S7631){
+  public void thread7613(int [] tdone, int [] ends){
+        switch(S7595){
       case 0 : 
         active[8]=0;
         ends[8]=0;
@@ -66,8 +66,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7648(int [] tdone, int [] ends){
-        switch(S7623){
+  public void thread7612(int [] tdone, int [] ends){
+        switch(S7587){
       case 0 : 
         active[7]=0;
         ends[7]=0;
@@ -92,8 +92,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7647(int [] tdone, int [] ends){
-        switch(S7615){
+  public void thread7611(int [] tdone, int [] ends){
+        switch(S7579){
       case 0 : 
         active[6]=0;
         ends[6]=0;
@@ -118,8 +118,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7646(int [] tdone, int [] ends){
-        switch(S7607){
+  public void thread7610(int [] tdone, int [] ends){
+        switch(S7571){
       case 0 : 
         active[5]=0;
         ends[5]=0;
@@ -144,8 +144,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7645(int [] tdone, int [] ends){
-        switch(S7599){
+  public void thread7609(int [] tdone, int [] ends){
+        switch(S7563){
       case 0 : 
         active[4]=0;
         ends[4]=0;
@@ -170,8 +170,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7644(int [] tdone, int [] ends){
-        switch(S7591){
+  public void thread7608(int [] tdone, int [] ends){
+        switch(S7555){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -179,19 +179,19 @@ public class rotaryController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S7585){
+        switch(S7549){
           case 0 : 
-            S7585=0;
+            S7549=0;
             if(NbottlePos1.getprestatus()){//sysj\rotaryController.sysj line: 43, column: 27
               CbottlePos1.setPresent();//sysj\rotaryController.sysj line: 43, column: 41
               currsigs.addElement(CbottlePos1);
-              S7585=1;
+              S7549=1;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
             }
             else {
-              S7585=1;
+              S7549=1;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
@@ -199,18 +199,18 @@ public class rotaryController extends ClockDomain{
             break;
           
           case 1 : 
-            S7585=1;
-            S7585=0;
+            S7549=1;
+            S7549=0;
             if(NbottlePos1.getprestatus()){//sysj\rotaryController.sysj line: 43, column: 27
               CbottlePos1.setPresent();//sysj\rotaryController.sysj line: 43, column: 41
               currsigs.addElement(CbottlePos1);
-              S7585=1;
+              S7549=1;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
             }
             else {
-              S7585=1;
+              S7549=1;
               active[3]=1;
               ends[3]=1;
               tdone[3]=1;
@@ -223,8 +223,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7643(int [] tdone, int [] ends){
-        switch(S7583){
+  public void thread7607(int [] tdone, int [] ends){
+        switch(S7547){
       case 0 : 
         active[2]=0;
         ends[2]=0;
@@ -232,10 +232,10 @@ public class rotaryController extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S7543){
+        switch(S7507){
           case 0 : 
             if(NbottlePos1.getprestatus() || bottlePos2.getprestatus() || bottlePos3.getprestatus() || bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 26, column: 10
-              S7543=1;
+              S7507=1;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -249,7 +249,7 @@ public class rotaryController extends ClockDomain{
           
           case 1 : 
             if(!aligned.getprestatus()){//sysj\rotaryController.sysj line: 30, column: 10
-              S7543=2;
+              S7507=2;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -263,7 +263,7 @@ public class rotaryController extends ClockDomain{
           
           case 2 : 
             if(rotaryEnable.getprestatus()){//sysj\rotaryController.sysj line: 34, column: 10
-              S7543=3;
+              S7507=3;
               rotate.setPresent();//sysj\rotaryController.sysj line: 36, column: 5
               currsigs.addElement(rotate);
               active[2]=1;
@@ -279,7 +279,7 @@ public class rotaryController extends ClockDomain{
           
           case 3 : 
             if(aligned.getprestatus()){//sysj\rotaryController.sysj line: 35, column: 10
-              S7543=0;
+              S7507=0;
               active[2]=1;
               ends[2]=1;
               tdone[2]=1;
@@ -299,8 +299,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7641(int [] tdone, int [] ends){
-        S7631=1;
+  public void thread7605(int [] tdone, int [] ends){
+        S7595=1;
     if(bottlePos4.getprestatus()){//sysj\rotaryController.sysj line: 53, column: 27
       NbottlePos4.setPresent();//sysj\rotaryController.sysj line: 53, column: 40
       currsigs.addElement(NbottlePos4);
@@ -315,8 +315,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7640(int [] tdone, int [] ends){
-        S7623=1;
+  public void thread7604(int [] tdone, int [] ends){
+        S7587=1;
     if(bottlePos3.getprestatus()){//sysj\rotaryController.sysj line: 51, column: 27
       NbottlePos3.setPresent();//sysj\rotaryController.sysj line: 51, column: 40
       currsigs.addElement(NbottlePos3);
@@ -331,8 +331,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7639(int [] tdone, int [] ends){
-        S7615=1;
+  public void thread7603(int [] tdone, int [] ends){
+        S7579=1;
     if(bottlePos2.getprestatus()){//sysj\rotaryController.sysj line: 49, column: 27
       NbottlePos2.setPresent();//sysj\rotaryController.sysj line: 49, column: 40
       currsigs.addElement(NbottlePos2);
@@ -347,8 +347,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7638(int [] tdone, int [] ends){
-        S7607=1;
+  public void thread7602(int [] tdone, int [] ends){
+        S7571=1;
     if(bottlePos5.getprestatus()){//sysj\rotaryController.sysj line: 47, column: 27
       NbottlePos5.setPresent();//sysj\rotaryController.sysj line: 47, column: 40
       currsigs.addElement(NbottlePos5);
@@ -363,8 +363,8 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7637(int [] tdone, int [] ends){
-        S7599=1;
+  public void thread7601(int [] tdone, int [] ends){
+        S7563=1;
     if(Nmotor.getprestatus()){//sysj\rotaryController.sysj line: 45, column: 27
       Cmotor.setPresent();//sysj\rotaryController.sysj line: 45, column: 36
       currsigs.addElement(Cmotor);
@@ -379,28 +379,28 @@ public class rotaryController extends ClockDomain{
     }
   }
 
-  public void thread7636(int [] tdone, int [] ends){
-        S7591=1;
-    S7585=0;
+  public void thread7600(int [] tdone, int [] ends){
+        S7555=1;
+    S7549=0;
     if(NbottlePos1.getprestatus()){//sysj\rotaryController.sysj line: 43, column: 27
       CbottlePos1.setPresent();//sysj\rotaryController.sysj line: 43, column: 41
       currsigs.addElement(CbottlePos1);
-      S7585=1;
+      S7549=1;
       active[3]=1;
       ends[3]=1;
       tdone[3]=1;
     }
     else {
-      S7585=1;
+      S7549=1;
       active[3]=1;
       ends[3]=1;
       tdone[3]=1;
     }
   }
 
-  public void thread7635(int [] tdone, int [] ends){
-        S7583=1;
-    S7543=0;
+  public void thread7599(int [] tdone, int [] ends){
+        S7547=1;
+    S7507=0;
     active[2]=1;
     ends[2]=1;
     tdone[2]=1;
@@ -413,90 +413,90 @@ public class rotaryController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S7633){
+      switch(S7597){
         case 0 : 
-          S7633=0;
+          S7597=0;
           break RUN;
         
         case 1 : 
-          S7633=2;
-          S7633=2;
-          thread7635(tdone,ends);
-          thread7636(tdone,ends);
-          thread7637(tdone,ends);
-          thread7638(tdone,ends);
-          thread7639(tdone,ends);
-          thread7640(tdone,ends);
-          thread7641(tdone,ends);
-          int biggest7642 = 0;
-          if(ends[2]>=biggest7642){
-            biggest7642=ends[2];
+          S7597=2;
+          S7597=2;
+          thread7599(tdone,ends);
+          thread7600(tdone,ends);
+          thread7601(tdone,ends);
+          thread7602(tdone,ends);
+          thread7603(tdone,ends);
+          thread7604(tdone,ends);
+          thread7605(tdone,ends);
+          int biggest7606 = 0;
+          if(ends[2]>=biggest7606){
+            biggest7606=ends[2];
           }
-          if(ends[3]>=biggest7642){
-            biggest7642=ends[3];
+          if(ends[3]>=biggest7606){
+            biggest7606=ends[3];
           }
-          if(ends[4]>=biggest7642){
-            biggest7642=ends[4];
+          if(ends[4]>=biggest7606){
+            biggest7606=ends[4];
           }
-          if(ends[5]>=biggest7642){
-            biggest7642=ends[5];
+          if(ends[5]>=biggest7606){
+            biggest7606=ends[5];
           }
-          if(ends[6]>=biggest7642){
-            biggest7642=ends[6];
+          if(ends[6]>=biggest7606){
+            biggest7606=ends[6];
           }
-          if(ends[7]>=biggest7642){
-            biggest7642=ends[7];
+          if(ends[7]>=biggest7606){
+            biggest7606=ends[7];
           }
-          if(ends[8]>=biggest7642){
-            biggest7642=ends[8];
+          if(ends[8]>=biggest7606){
+            biggest7606=ends[8];
           }
-          if(biggest7642 == 1){
+          if(biggest7606 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
         
         case 2 : 
-          thread7643(tdone,ends);
-          thread7644(tdone,ends);
-          thread7645(tdone,ends);
-          thread7646(tdone,ends);
-          thread7647(tdone,ends);
-          thread7648(tdone,ends);
-          thread7649(tdone,ends);
-          int biggest7650 = 0;
-          if(ends[2]>=biggest7650){
-            biggest7650=ends[2];
+          thread7607(tdone,ends);
+          thread7608(tdone,ends);
+          thread7609(tdone,ends);
+          thread7610(tdone,ends);
+          thread7611(tdone,ends);
+          thread7612(tdone,ends);
+          thread7613(tdone,ends);
+          int biggest7614 = 0;
+          if(ends[2]>=biggest7614){
+            biggest7614=ends[2];
           }
-          if(ends[3]>=biggest7650){
-            biggest7650=ends[3];
+          if(ends[3]>=biggest7614){
+            biggest7614=ends[3];
           }
-          if(ends[4]>=biggest7650){
-            biggest7650=ends[4];
+          if(ends[4]>=biggest7614){
+            biggest7614=ends[4];
           }
-          if(ends[5]>=biggest7650){
-            biggest7650=ends[5];
+          if(ends[5]>=biggest7614){
+            biggest7614=ends[5];
           }
-          if(ends[6]>=biggest7650){
-            biggest7650=ends[6];
+          if(ends[6]>=biggest7614){
+            biggest7614=ends[6];
           }
-          if(ends[7]>=biggest7650){
-            biggest7650=ends[7];
+          if(ends[7]>=biggest7614){
+            biggest7614=ends[7];
           }
-          if(ends[8]>=biggest7650){
-            biggest7650=ends[8];
+          if(ends[8]>=biggest7614){
+            biggest7614=ends[8];
           }
-          if(biggest7650 == 1){
+          if(biggest7614 == 1){
             active[1]=1;
             ends[1]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest7650 == 0){
-            S7633=0;
+          if(biggest7614 == 0){
+            S7597=0;
             active[1]=0;
             ends[1]=0;
-            S7633=0;
+            S7597=0;
             break RUN;
           }
         
