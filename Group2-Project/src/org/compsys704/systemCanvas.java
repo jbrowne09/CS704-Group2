@@ -221,10 +221,11 @@ public class systemCanvas extends JPanel{
 		}
 		
 		//filler
-		//this.liquidPos1 = States.liquidPos1;
-		//this.liquidPos2 = States.liquidPos2;
-		//this.liquidPos3 = States.liquidPos3;
-		//this.liquidPos4 = States.liquidPos4;
+		this.liquidPos1 = States.fill1;
+		this.liquidPos2 = States.fill2;
+		this.liquidPos3 = States.fill3;
+		this.liquidPos4 = States.fill4;
+		
 		this.canTop = States.canTop;
 		this.inletIsOn = States.inletIsOn;
 		this.injectorIsOn = States.injectorIsOn;
