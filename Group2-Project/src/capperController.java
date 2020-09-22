@@ -24,16 +24,16 @@ public class capperController extends ClockDomain{
   public Signal twistGrip = new Signal("twistGrip", Signal.OUTPUT);
   public Signal untwistGrip = new Signal("untwistGrip", Signal.OUTPUT);
   public Signal capperDone = new Signal("capperDone", Signal.OUTPUT);
-  private int S214 = 1;
-  private int S3 = 1;
-  private int S10 = 1;
-  private int S15 = 1;
+  private int S574 = 1;
+  private int S363 = 1;
+  private int S370 = 1;
+  private int S375 = 1;
   
   private int[] ends = new int[4];
   private int[] tdone = new int[4];
   
-  public void thread220(int [] tdone, int [] ends){
-        switch(S15){
+  public void thread580(int [] tdone, int [] ends){
+        switch(S375){
       case 0 : 
         active[3]=0;
         ends[3]=0;
@@ -51,8 +51,8 @@ public class capperController extends ClockDomain{
     }
   }
 
-  public void thread219(int [] tdone, int [] ends){
-        switch(S10){
+  public void thread579(int [] tdone, int [] ends){
+        switch(S370){
       case 0 : 
         active[2]=0;
         ends[2]=0;
@@ -70,8 +70,8 @@ public class capperController extends ClockDomain{
     }
   }
 
-  public void thread217(int [] tdone, int [] ends){
-        S15=1;
+  public void thread577(int [] tdone, int [] ends){
+        S375=1;
     clampBottle.setPresent();//sysj\capperController.sysj line: 14, column: 5
     currsigs.addElement(clampBottle);
     active[3]=1;
@@ -79,8 +79,8 @@ public class capperController extends ClockDomain{
     tdone[3]=1;
   }
 
-  public void thread216(int [] tdone, int [] ends){
-        S10=1;
+  public void thread576(int [] tdone, int [] ends){
+        S370=1;
     gripDown.setPresent();//sysj\capperController.sysj line: 12, column: 5
     currsigs.addElement(gripDown);
     active[2]=1;
@@ -95,24 +95,24 @@ public class capperController extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S214){
+      switch(S574){
         case 0 : 
-          S214=0;
+          S574=0;
           break RUN;
         
         case 1 : 
-          S214=2;
-          S214=2;
-          S3=0;
+          S574=2;
+          S574=2;
+          S363=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S3){
+          switch(S363){
             case 0 : 
               if(capperEnable.getprestatus()){//sysj\capperController.sysj line: 8, column: 9
-                S3=1;
+                S363=1;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -125,7 +125,7 @@ public class capperController extends ClockDomain{
             
             case 1 : 
               if(tick.getprestatus()){//sysj\capperController.sysj line: 9, column: 9
-                S3=2;
+                S363=2;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -138,17 +138,17 @@ public class capperController extends ClockDomain{
             
             case 2 : 
               if(!tick.getprestatus()){//sysj\capperController.sysj line: 10, column: 9
-                S3=3;
-                thread216(tdone,ends);
-                thread217(tdone,ends);
-                int biggest218 = 0;
-                if(ends[2]>=biggest218){
-                  biggest218=ends[2];
+                S363=3;
+                thread576(tdone,ends);
+                thread577(tdone,ends);
+                int biggest578 = 0;
+                if(ends[2]>=biggest578){
+                  biggest578=ends[2];
                 }
-                if(ends[3]>=biggest218){
-                  biggest218=ends[3];
+                if(ends[3]>=biggest578){
+                  biggest578=ends[3];
                 }
-                if(biggest218 == 1){
+                if(biggest578 == 1){
                   active[1]=1;
                   ends[1]=1;
                   break RUN;
@@ -162,29 +162,29 @@ public class capperController extends ClockDomain{
             
             case 3 : 
               if(tick.getprestatus()){//sysj\capperController.sysj line: 11, column: 9
-                S3=4;
+                S363=4;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                thread219(tdone,ends);
-                thread220(tdone,ends);
-                int biggest221 = 0;
-                if(ends[2]>=biggest221){
-                  biggest221=ends[2];
+                thread579(tdone,ends);
+                thread580(tdone,ends);
+                int biggest581 = 0;
+                if(ends[2]>=biggest581){
+                  biggest581=ends[2];
                 }
-                if(ends[3]>=biggest221){
-                  biggest221=ends[3];
+                if(ends[3]>=biggest581){
+                  biggest581=ends[3];
                 }
-                if(biggest221 == 1){
+                if(biggest581 == 1){
                   active[1]=1;
                   ends[1]=1;
                   break RUN;
                 }
                 //FINXME code
-                if(biggest221 == 0){
-                  S3=4;
+                if(biggest581 == 0){
+                  S363=4;
                   active[1]=1;
                   ends[1]=1;
                   break RUN;
@@ -193,7 +193,7 @@ public class capperController extends ClockDomain{
             
             case 4 : 
               if(!tick.getprestatus()){//sysj\capperController.sysj line: 16, column: 9
-                S3=5;
+                S363=5;
                 gripCap.setPresent();//sysj\capperController.sysj line: 18, column: 4
                 currsigs.addElement(gripCap);
                 active[1]=1;
@@ -208,7 +208,7 @@ public class capperController extends ClockDomain{
             
             case 5 : 
               if(tick.getprestatus()){//sysj\capperController.sysj line: 17, column: 9
-                S3=6;
+                S363=6;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -223,7 +223,7 @@ public class capperController extends ClockDomain{
             
             case 6 : 
               if(!tick.getprestatus()){//sysj\capperController.sysj line: 20, column: 9
-                S3=7;
+                S363=7;
                 twistGrip.setPresent();//sysj\capperController.sysj line: 22, column: 4
                 currsigs.addElement(twistGrip);
                 active[1]=1;
@@ -238,7 +238,7 @@ public class capperController extends ClockDomain{
             
             case 7 : 
               if(tick.getprestatus()){//sysj\capperController.sysj line: 21, column: 9
-                S3=8;
+                S363=8;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -253,7 +253,7 @@ public class capperController extends ClockDomain{
             
             case 8 : 
               if(!tick.getprestatus()){//sysj\capperController.sysj line: 24, column: 9
-                S3=9;
+                S363=9;
                 untwistGrip.setPresent();//sysj\capperController.sysj line: 26, column: 4
                 currsigs.addElement(untwistGrip);
                 active[1]=1;
@@ -268,7 +268,7 @@ public class capperController extends ClockDomain{
             
             case 9 : 
               if(gripperLifted.getprestatus()){//sysj\capperController.sysj line: 25, column: 9
-                S3=10;
+                S363=10;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -283,7 +283,7 @@ public class capperController extends ClockDomain{
             
             case 10 : 
               if(!tick.getprestatus()){//sysj\capperController.sysj line: 28, column: 9
-                S3=11;
+                S363=11;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -296,7 +296,7 @@ public class capperController extends ClockDomain{
             
             case 11 : 
               if(tick.getprestatus()){//sysj\capperController.sysj line: 29, column: 9
-                S3=12;
+                S363=12;
                 capperDone.setPresent();//sysj\capperController.sysj line: 31, column: 4
                 currsigs.addElement(capperDone);
                 active[1]=1;
@@ -311,7 +311,7 @@ public class capperController extends ClockDomain{
             
             case 12 : 
               if(!capperEnable.getprestatus()){//sysj\capperController.sysj line: 30, column: 9
-                S3=0;
+                S363=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;

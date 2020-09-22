@@ -39,5 +39,9 @@ public class States {
 	public static volatile boolean fill2 = false;	
 	public static volatile boolean fill3 = false;	
 	public static volatile boolean fill4 = false;	
+	public static volatile boolean pusherExtend = false;	
+	public static volatile boolean toInit = false;	
+	public static volatile boolean toDest = false;	
+	public static volatile boolean vacOn = false;	
 }
 

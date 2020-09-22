@@ -1,0 +1,30 @@
+caploaderController(
+
+    input signal armAtDest, armAtSource, pusherRetracted, pusherExtended, WPgripped, tick, caploaderEnable;
+    output signal armSource, armDest, pusherExtend, vacOn, caploaderDone;
+  
+)->{
+	while(true){
+		await(caploaderEnable);
+		await(tick);
+		System.out.println("working");
+		await(!tick);
+		abort(armAtDest && tick){
+			sustain pusherExtend;
+		}
+		abort(armAtSource && tick){
+			sustain armSource;
+		}
+		abort(WPgripped && tick){
+			sustain vacOn;
+		}
+		abort(armAtDest && tick){
+			{sustain vacOn;} 
+			||
+			{sustain armDest;}
+		}	
+		abort(!caploaderEnable) {
+			sustain caploaderDone;
+		}
+	}
+}
