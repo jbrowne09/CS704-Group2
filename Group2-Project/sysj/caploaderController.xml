@@ -14,7 +14,7 @@
 			<oSignal Name="armDest" To="CLPlantCD.armDest" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10301" />
 			<oSignal Name="pusherExtend" To="CLPlantCD.pusherExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10302" />
 			<oSignal Name="vacOn" To="CLPlantCD.vacOn" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10303" />
-			<oSignal Name="caploaderDone" To="MControllerCD.caploaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10310" />
+			<oSignal Name="caploaderDone" To="MControllerCD.caploaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20056" />
 
 		</ClockDomain>
 	</SubSystem>
