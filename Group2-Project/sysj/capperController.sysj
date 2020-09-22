@@ -18,6 +18,8 @@ capperController(
 		await(!tick);
 		await(tick);
 		emit untwistGrip;
+		await(!tick);
+		await(tick);
 		abort(!capperEnable) {		
 			sustain capperDone;
 		}
