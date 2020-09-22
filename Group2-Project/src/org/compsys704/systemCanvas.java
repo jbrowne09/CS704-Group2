@@ -165,7 +165,7 @@ public class systemCanvas extends JPanel{
 		}
 	}
 	
-	//actionListeners to update some filler signals from the GUI
+	//TO BE REMOVED
 	public void updateSignals(String signal, boolean status) {
 		switch(signal) {
 			case "pusherExtend":

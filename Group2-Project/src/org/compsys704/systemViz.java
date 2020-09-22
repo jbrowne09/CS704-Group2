@@ -32,12 +32,6 @@ public class systemViz extends JFrame implements ActionListener {
 	JButton liquidPos3 = new JButton("liquidPos3");
 	JButton liquidPos4 = new JButton("liquidPos4");
 	
-	//TEMPORARY FOR TESTING LIDLOADER
-	JCheckBox pusherExtend = new JCheckBox("pusherExtend");
-	JCheckBox toDest = new JCheckBox("toDest");
-	JCheckBox toInit = new JCheckBox("toInit");
-	JCheckBox vacOn = new JCheckBox("vacOn");
-	
 	public systemViz() {
 		
 		//Frame elements
@@ -79,20 +73,6 @@ public class systemViz extends JFrame implements ActionListener {
 		liquidPos4.setEnabled(true);
 		liquidPos4.setFont(bold);
 		
-		//TEMPORARY FOR TESTING LIDLOADER
-		pusherExtend.addActionListener(this);
-		pusherExtend.setEnabled(true);
-		pusherExtend.setFont(bold);
-		toDest.addActionListener(this);
-		toDest.setEnabled(true);
-		toDest.setFont(bold);
-		toInit.addActionListener(this);
-		toInit.setEnabled(true);
-		toInit.setFont(bold);
-		vacOn.addActionListener(this);
-		vacOn.setEnabled(true);
-		vacOn.setFont(bold);
-		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridBagLayout());
 		GridBagConstraints bc = new GridBagConstraints();
@@ -116,20 +96,6 @@ public class systemViz extends JFrame implements ActionListener {
 		bc.gridy = 0;
 		buttonPanel.add(liquidPos4, bc);
 		
-		//TEMPORARY FOR TESTING LIDLOADER
-		bc.gridx = 0;
-		bc.gridy = 1;
-		buttonPanel.add(pusherExtend, bc);
-		bc.gridx = 1;
-		bc.gridy = 1;
-		buttonPanel.add(toDest, bc);
-		bc.gridx = 2;
-		bc.gridy = 1;
-		buttonPanel.add(toInit, bc);
-		bc.gridx = 3;
-		bc.gridy = 1;
-		buttonPanel.add(vacOn, bc);
-		
 		//setup grid layout 1x2 (canvas on top of button panel)
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -148,26 +114,6 @@ public class systemViz extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (pusherExtend.isSelected()) {
-			canvas.updateSignals("pusherExtend", true);
-		} else {
-			canvas.updateSignals("pusherExtend", false);
-		}
-		if (toDest.isSelected()) {
-			canvas.updateSignals("toDest", true);
-		} else {
-			canvas.updateSignals("toDest", false);
-		}
-		if (toInit.isSelected()) {
-			canvas.updateSignals("toInit", true);
-		} else {
-			canvas.updateSignals("toInit", false);
-		}
-		if (vacOn.isSelected()) {
-			canvas.updateSignals("vacOn", true);
-		} else {
-			canvas.updateSignals("vacOn", false);
-		}
 	}
 
 	public static void main(String[] args) {
