@@ -19,13 +19,13 @@ public class loaderPlant extends ClockDomain{
   public Signal closeGripperS = new Signal("closeGripperS", Signal.OUTPUT);
   public Signal openGripperS = new Signal("openGripperS", Signal.OUTPUT);
   public Signal CMDfb = new Signal("CMDfb", Signal.OUTPUT);
-  private int S2234 = 1;
-  private int S1736 = 1;
-  private int S1705 = 1;
-  private int S1704 = 1;
-  private int S1703 = 1;
-  private int S1702 = 1;
-  private int S1701 = 1;
+  private int S2453 = 1;
+  private int S1955 = 1;
+  private int S1924 = 1;
+  private int S1923 = 1;
+  private int S1922 = 1;
+  private int S1921 = 1;
+  private int S1920 = 1;
   
   private int[] ends = new int[2];
   private int[] tdone = new int[2];
@@ -37,26 +37,26 @@ public class loaderPlant extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S2234){
+      switch(S2453){
         case 0 : 
-          S2234=0;
+          S2453=0;
           break RUN;
         
         case 1 : 
-          S2234=2;
-          S2234=2;
-          S1736=0;
+          S2453=2;
+          S2453=2;
+          S1955=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S1736){
+          switch(S1955){
             case 0 : 
               if(CMD.getprestatus()){//sysj\loaderPlant.sysj line: 8, column: 9
-                S1736=1;
+                S1955=1;
                 if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("B")){//sysj\loaderPlant.sysj line: 10, column: 3
-                  S1705=0;
+                  S1924=0;
                   posBS.setPresent();//sysj\loaderPlant.sysj line: 12, column: 5
                   currsigs.addElement(posBS);
                   active[1]=1;
@@ -64,9 +64,9 @@ public class loaderPlant extends ClockDomain{
                   break RUN;
                 }
                 else {
-                  S1705=1;
+                  S1924=1;
                   if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("C")){//sysj\loaderPlant.sysj line: 15, column: 8
-                    S1704=0;
+                    S1923=0;
                     posCS.setPresent();//sysj\loaderPlant.sysj line: 17, column: 5
                     currsigs.addElement(posCS);
                     active[1]=1;
@@ -74,9 +74,9 @@ public class loaderPlant extends ClockDomain{
                     break RUN;
                   }
                   else {
-                    S1704=1;
+                    S1923=1;
                     if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("D")){//sysj\loaderPlant.sysj line: 20, column: 8
-                      S1703=0;
+                      S1922=0;
                       posDS.setPresent();//sysj\loaderPlant.sysj line: 22, column: 5
                       currsigs.addElement(posDS);
                       active[1]=1;
@@ -84,9 +84,9 @@ public class loaderPlant extends ClockDomain{
                       break RUN;
                     }
                     else {
-                      S1703=1;
+                      S1922=1;
                       if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("A")){//sysj\loaderPlant.sysj line: 25, column: 8
-                        S1702=0;
+                        S1921=0;
                         posAS.setPresent();//sysj\loaderPlant.sysj line: 27, column: 5
                         currsigs.addElement(posAS);
                         active[1]=1;
@@ -94,9 +94,9 @@ public class loaderPlant extends ClockDomain{
                         break RUN;
                       }
                       else {
-                        S1702=1;
+                        S1921=1;
                         if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("G")){//sysj\loaderPlant.sysj line: 30, column: 8
-                          S1701=0;
+                          S1920=0;
                           closeGripperS.setPresent();//sysj\loaderPlant.sysj line: 32, column: 5
                           currsigs.addElement(closeGripperS);
                           active[1]=1;
@@ -104,7 +104,7 @@ public class loaderPlant extends ClockDomain{
                           break RUN;
                         }
                         else {
-                          S1701=1;
+                          S1920=1;
                           if((CMD.getpreval() == null ? null : ((String)CMD.getpreval())).equals("O")){//sysj\loaderPlant.sysj line: 35, column: 8
                             openGripperS.setPresent();//sysj\loaderPlant.sysj line: 37, column: 5
                             currsigs.addElement(openGripperS);
@@ -114,7 +114,7 @@ public class loaderPlant extends ClockDomain{
                           }
                           else {
                             System.out.println("CMD not working " + (CMD.getpreval() == null ? null : ((String)CMD.getpreval())));//sysj\loaderPlant.sysj line: 41, column: 4
-                            S1736=0;
+                            S1955=0;
                             active[1]=1;
                             ends[1]=1;
                             break RUN;
@@ -132,10 +132,10 @@ public class loaderPlant extends ClockDomain{
               }
             
             case 1 : 
-              switch(S1705){
+              switch(S1924){
                 case 0 : 
                   if(!CMD.getprestatus()){//sysj\loaderPlant.sysj line: 11, column: 10
-                    S1736=0;
+                    S1955=0;
                     active[1]=1;
                     ends[1]=1;
                     break RUN;
@@ -149,10 +149,10 @@ public class loaderPlant extends ClockDomain{
                   }
                 
                 case 1 : 
-                  switch(S1704){
+                  switch(S1923){
                     case 0 : 
                       if(!CMD.getprestatus()){//sysj\loaderPlant.sysj line: 16, column: 10
-                        S1736=0;
+                        S1955=0;
                         active[1]=1;
                         ends[1]=1;
                         break RUN;
@@ -166,10 +166,10 @@ public class loaderPlant extends ClockDomain{
                       }
                     
                     case 1 : 
-                      switch(S1703){
+                      switch(S1922){
                         case 0 : 
                           if(!CMD.getprestatus()){//sysj\loaderPlant.sysj line: 21, column: 10
-                            S1736=0;
+                            S1955=0;
                             active[1]=1;
                             ends[1]=1;
                             break RUN;
@@ -183,10 +183,10 @@ public class loaderPlant extends ClockDomain{
                           }
                         
                         case 1 : 
-                          switch(S1702){
+                          switch(S1921){
                             case 0 : 
                               if(!CMD.getprestatus()){//sysj\loaderPlant.sysj line: 26, column: 10
-                                S1736=0;
+                                S1955=0;
                                 active[1]=1;
                                 ends[1]=1;
                                 break RUN;
@@ -200,10 +200,10 @@ public class loaderPlant extends ClockDomain{
                               }
                             
                             case 1 : 
-                              switch(S1701){
+                              switch(S1920){
                                 case 0 : 
                                   if(!CMD.getprestatus()){//sysj\loaderPlant.sysj line: 31, column: 10
-                                    S1736=0;
+                                    S1955=0;
                                     active[1]=1;
                                     ends[1]=1;
                                     break RUN;
@@ -218,7 +218,7 @@ public class loaderPlant extends ClockDomain{
                                 
                                 case 1 : 
                                   if(!CMD.getprestatus()){//sysj\loaderPlant.sysj line: 36, column: 10
-                                    S1736=0;
+                                    S1955=0;
                                     active[1]=1;
                                     ends[1]=1;
                                     break RUN;

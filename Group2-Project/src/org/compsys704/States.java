@@ -35,5 +35,9 @@ public class States {
 	public static volatile boolean armtoA2 = false;
 	public static volatile boolean gripContainer2 = false;
 	public static volatile boolean releaseContainer2 = false;	
+	public static volatile boolean fill1 = false;	
+	public static volatile boolean fill2 = false;	
+	public static volatile boolean fill3 = false;	
+	public static volatile boolean fill4 = false;	
 }
 

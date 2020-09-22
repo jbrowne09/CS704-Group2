@@ -1,11 +1,11 @@
 fillerPlant(
-		input signal inletOn, injectorOn, valveRetract, valveExtend;
+		input signal inletOn, injectorOn, valveRetract, valveExtend, fill1, fill2, fill3, fill4;
 		output signal canBottom, canTop;
-		output signal canBottomS, canTopS, inletIsOnS, injectorIsOnS;
+		output signal canBottomS, canTopS, inletIsOnS, injectorIsOnS, fill1S, fill2S, fill3S, fill4S;
 		)
-->
-{ 	while(true){
-		{
+->{
+	{ 
+		while(true){
 			abort(valveRetract){
 				sustain canBottom; 
 			}
@@ -13,23 +13,34 @@ fillerPlant(
 				sustain canTop;
 			}
 		}
-		||
-		{	
+	}
+	||
+	{	while(true) {
 			present (inletOn) {
 				emit inletIsOnS;
 			}
 		}
-		||
-		{
+	}
+	||
+	{
+		while(true) {
 			present (injectorOn) {
 				emit injectorIsOnS;
 			}
 		}
+	}
+	||
+	{//To viz
+		{while(true) {present(canBottom) {emit canBottomS;} pause;}}
 		||
-		{//To viz
-			{while(true) {present(canBottom) {emit canBottomS;} pause;}}
-			||
-			{while(true) {present(canTop) {emit canTopS;} pause;}}
-		}
+		{while(true) {present(canTop) {emit canTopS;} pause;}}
+		||
+		{while(true) {present(fill1) {emit fill1S;} pause;}}
+		||
+		{while(true) {present(fill2) {emit fill2S;} pause;}}
+		||
+		{while(true) {present(fill3) {emit fill3S;} pause;}}
+		||
+		{while(true) {present(fill4) {emit fill4S;} pause;}}
 	}
 }

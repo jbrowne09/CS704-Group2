@@ -6,6 +6,10 @@
 			<iSignal Name="injectorOn" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="valveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="valveExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="fill1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
+			<iSignal Name="fill2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
+			<iSignal Name="fill3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
+			<iSignal Name="fill4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10003" />
 			
 			<oSignal Name="canBottom"  To="FControllerCD.canBottom"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="canTop" To="FControllerCD.canTop"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />			
@@ -14,6 +18,10 @@
 			<oSignal Name="canTopS" To="UI.canTopS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="inletIsOnS" To="UI.inletIsOnS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="injectorIsOnS" To="UI.injectorIsOnS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="fill1S" To="UI.fill1S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="fill2S" To="UI.fill2S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="fill3S" To="UI.fill3S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="fill4S" To="UI.fill4S" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 	
 		</ClockDomain>
 	</SubSystem>

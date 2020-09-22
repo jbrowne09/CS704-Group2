@@ -112,13 +112,25 @@ public class LoaderVizWorker extends Worker{
 			case "openGripper2S":
 				States.releaseContainer2 = status;
 				break;
+			case "fill1S":
+				States.fill1 = status;
+				break;
+			case "fill2S":
+				States.fill2 = status;
+				break;
+			case "fill3S":
+				States.fill3 = status;
+				break;
+			case "fill4S":
+				States.fill4 = status;
+				break;
 			default:
 				System.err.println("Wrong sig name : "+signame);
 				System.exit(1);
 		}
 	}  
 	
-	static final List<String> signames = Arrays.asList("bottleAtLoadS","bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S", "bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "gripCapS", "bottleClampedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS", "posBS", "posCS", "posDS", "posAS", "closeGripperS", "openGripperS", "posB2S", "posC2S", "posD2S", "posA2S", "closeGripper2S", "openGripper2S");
+	static final List<String> signames = Arrays.asList("bottleAtLoadS","bottleLeft5S","motorS","bottlePos1S", "bottlePos2S", "bottlePos3S", "bottlePos4S", "bottlePos5S", "gripperLoweredS", "gripperLiftedS", "gripperInitS", "gripperTurnedS", "gripCapS", "bottleClampedS", "canBottomS", "canTopS", "inletIsOnS", "injectorIsOnS", "alignedS", "capPos1S", "rotateS", "posBS", "posCS", "posDS", "posAS", "closeGripperS", "openGripperS", "posB2S", "posC2S", "posD2S", "posA2S", "closeGripper2S", "openGripper2S", "fill1S", "fill2S", "fill3S", "fill4S");
 	@Override
 	public boolean hasSignal(String sn) {
 		return signames.contains(sn);
