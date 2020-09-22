@@ -1,34 +1,45 @@
 unloaderController(
-	input signal bottleAtEnd, CMDfd, tick;
+	input signal CMDfd, tick;
     output signal unloaderDone;
     output String signal CMD2;
-)
-
+    
+    //from Main
+    input signal bottleToUnload;
+	)
 ->{
 	await(tick);
 	while(true){
-		//await(bottleAtEnd);
+		await(bottleToUnload);
+		await(tick);
 		await(!tick);
 		abort(tick) {
 			sustain CMD2("C2"); //Move to bottle
 		}
+		
 		await(!tick);
 		abort(tick) {
 			sustain CMD2("G2"); //Grip bottle
 		}
+		
 		await(!tick);
 		abort(tick) {
 			sustain CMD2("B2"); //Move to shipping container
 		}
+		
 		await(!tick);
 		abort(tick) {
 			sustain CMD2("O2"); //Open gripper
 		}
+		
 		await(!tick);
 		abort(tick) {
 			sustain CMD2("A2"); //Move back to original position
 		}
-		emit unloaderDone;
-		pause;
+		
+		await(!tick);
+		abort(tick){
+			sustain unloaderDone;
+		}
+		await(!tick);
 	}
 }

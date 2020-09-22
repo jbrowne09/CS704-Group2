@@ -10,8 +10,10 @@
 			
 			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11006" />
 			<iSignal Name="bottleAtLoad" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11007" />
+			<iSignal Name="NbottleLeft5" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11008" />
 					
 			<oSignal Name="bottleToLoad" To="LControllerCD.bottleToLoad" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottleToUnload" To="ULControllerCD.bottleToUnload" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10051" />
 					
 			<oSignal Name="bottleAtLoadS" To="UI.bottleAtLoadS" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<!-- <oSignal Name="conveyorEnable" To="CControllerCD.conveyorEnable" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10102" /> -->

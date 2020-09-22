@@ -1,13 +1,23 @@
 mainController(
-	input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, tick, bottleAtLoad;
-    output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable, bottleToLoad;
+	input signal conveyorDone, rotaryDone, capperDone, loaderDone, unloaderDone, tick;
+    output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable;
+    
+    //from request button
+    input signal bottleAtLoad;
+    
+    //from rotaryController
+    input signal NbottleLeft5;
+    
+    //to loader/unloader
+    output signal bottleToLoad, bottleToUnload;
     
     //to visualiser
     output signal bottleAtLoadS;
 	)
 ->{
-	//Loader Control
+	//Loader/Unloader Control
 	signal bottleWaitAtLoad;
+	signal bottleWaitAtEnd;
 	{
 		while(true){
 			await(!bottleAtLoad);
@@ -29,6 +39,38 @@ mainController(
 		}
 	}
 	||
+	{
+		while(true){
+			await(!NbottleLeft5);
+			await(NbottleLeft5);
+			abort(!bottleToUnload){
+				sustain bottleWaitAtEnd;
+			}
+		}
+	}
+	||
+	{
+		while(true){
+			await(bottleWaitAtEnd);
+			
+			await(!unloaderDone);
+			abort(unloaderDone){
+				sustain bottleToUnload;
+			}
+		}
+	}
+	||
+	
+	//To Visualiser
+	{
+		while(true){
+			await(bottleAtLoad);
+			abort(!bottleAtLoad){
+				sustain bottleAtLoadS;
+			}
+		}
+	}
+	
 //	{
 //		while(true){
 //		
@@ -71,14 +113,4 @@ mainController(
 //			System.out.println("exit capper");
 //		}
 //	}
-	
-	//To Visualiser
-	{
-		while(true){
-			await(bottleAtLoad);
-			abort(!bottleAtLoad){
-				sustain bottleAtLoadS;
-			}
-		}
-	}
 }

@@ -12,6 +12,9 @@ conveyorController(
     //To RotaryController
     output signal NbottlePos1, Nmotor;
     
+    //To Main
+   	output signal NbottleLeft5;
+    
     //Controller to Plant
     output signal motor, CbottlePos5, CloaderDone;
     
@@ -58,4 +61,6 @@ conveyorController(
 	{ while(true) { present (bottlePos1) {emit NbottlePos1;} pause;}}
 	||
 	{ while(true) { present (motor) {emit Nmotor;} pause;}}
+	||
+	{ while(true) { present (bottleLeft5) {emit NbottleLeft5;} pause;}}
 }

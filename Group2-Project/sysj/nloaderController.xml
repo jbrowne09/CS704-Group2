@@ -2,12 +2,13 @@
 	<SubSystem Name="SS1" Local="true">
 		<ClockDomain Name="ULControllerCD" Class="unloaderController">
 	 	
-			<iSignal Name="bottleAtEnd" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="CMDfd" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="CMDfd" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10050" />
 			<iSignal Name="tick" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="11001" />
 				 	
-			<oSignal Name="CMD2" To="ULPlantCD.CMD2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
-			<oSignal Name="unloaderDone" To="MControllerCD.unloaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="bottleToUnload" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10051" />
+				 	
+			<oSignal Name="CMD2" To="ULPlantCD.CMD2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10052" />
+			<oSignal Name="unloaderDone" To="MControllerCD.unloaderDone" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20054" />
 					
 		</ClockDomain>
 	</SubSystem>

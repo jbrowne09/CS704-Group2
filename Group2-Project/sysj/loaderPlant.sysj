@@ -8,22 +8,34 @@ loaderPlant(
 		await(CMD);
 		
 		if (#CMD.equals("B")) {
-			emit posBS;
+			abort(!CMD){
+				sustain posBS;
+			}
 		}
 		else if (#CMD.equals("C")) {
-			emit posCS;
+			abort(!CMD){
+				sustain posCS;
+			}
 		}
 		else if (#CMD.equals("D")) {
-			emit posDS;
+			abort(!CMD){
+				sustain posDS;
+			}
 		}
 		else if (#CMD.equals("A")) {
-			emit posAS;
+			abort(!CMD){
+				sustain posAS;
+			}
 		}
 		else if (#CMD.equals("G")) {
-			emit closeGripperS;
+			abort(!CMD){
+				sustain closeGripperS;
+			}
 		}
 		else if (#CMD.equals("O")) {
-			emit openGripperS;
+			abort(!CMD){
+				sustain openGripperS;
+			}
 		}
 		else {
 			System.out.println("CMD not working " + #CMD);

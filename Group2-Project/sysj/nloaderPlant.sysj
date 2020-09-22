@@ -7,22 +7,34 @@ unloaderPlant(
 	while(true){
 		await(CMD2);
 		if (#CMD2.equals("B2")) {
-			emit posB2S;
+			abort(!CMD2){
+				sustain posB2S;
+			}
 		}
 		else if (#CMD2.equals("C2")) {
-			emit posC2S;
+			abort(!CMD2){
+				sustain posC2S;
+			}
 		}
 		else if (#CMD2.equals("D2")) {
-			emit posD2S;
+			abort(!CMD2){
+				sustain posD2S;
+			}
 		}
 		else if (#CMD2.equals("A2")) {
-			emit posA2S;
+			abort(!CMD2){
+				sustain posA2S;
+			}
 		}
 		else if (#CMD2.equals("G2")) {
-			emit closeGripper2S;
+			abort(!CMD2){
+				sustain closeGripper2S;
+			}
 		}
 		else if (#CMD2.equals("O2")) {
-			emit openGripper2S;
+			abort(!CMD2){
+				sustain openGripper2S;
+			}
 		}
 		else {
 			System.out.println("CMD2 not working " + #CMD2);

@@ -38,7 +38,7 @@ rotaryController(
 	}
 	||
 	
-	//signals to/from conveyorController
+	//signals to/from conveyorController and main
 	{ while(true) { present (NbottlePos1) {emit CbottlePos1;} pause;}}
 	||
 	{ while(true) { present (Nmotor) {emit Cmotor;} pause;}}
