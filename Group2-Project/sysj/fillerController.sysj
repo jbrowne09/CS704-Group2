@@ -24,24 +24,27 @@ fillerController(
 			}
 			
 			await(!tick);
-			System.out.println("Filling Liquid 1");
 			if(#liquidType == 1){
 				abort(tick){
+					System.out.println("Filling 1 to 25%\n");
 					sustain fill1;
 				}
 			}
 			else if (#liquidType == 2) {
 				abort(tick){
+					System.out.println("Filling with 2 to 25%\n");
 					sustain fill2;
 				}
 			}
 			else if (#liquidType == 3) {
 				abort(tick){
+					System.out.println("Filling with 3 to 25%\n");
 					sustain fill3;
 				}
 			}
 			else {
 				abort(tick){
+					System.out.println("Filling with 4 to 25%\n");
 					sustain fill4;
 				}
 			}
@@ -59,24 +62,27 @@ fillerController(
 			}
 			
 			await(!tick);
-			System.out.println("Filling Liquid 2");
 			if(#liquidType == 1){
 				abort(tick){
+					System.out.println("Filling with 1 to 50%\n");
 					sustain fill1;
 				}
 			}
 			else if (#liquidType == 2) {
 				abort(tick){
+					System.out.println("Filling with 2 to 50%\n");
 					sustain fill2;
 				}
 			}
 			else if (#liquidType == 3) {
 				abort(tick){
+					System.out.println("Filling with 3 to 50%\n");
 					sustain fill3;
 				}
 			}
 			else {
 				abort(tick){
+					System.out.println("Filling with 4 to 50%\n");
 					sustain fill4;
 				}
 			}
@@ -94,24 +100,27 @@ fillerController(
 			}
 			
 			await(!tick);
-			System.out.println("Filling Liquid 3");
 			if(#liquidType == 1){
 				abort(tick){
+					System.out.println("Filling with 1 to 75%\n");
 					sustain fill1;
 				}
 			}
 			else if (#liquidType == 2) {
 				abort(tick){
+					System.out.println("Filling with 2 to 75%\n");
 					sustain fill2;
 				}
 			}
 			else if (#liquidType == 3) {
 				abort(tick){
+					System.out.println("Filling with 3 to 75%\n");
 					sustain fill3;
 				}
 			}
 			else {
 				abort(tick){
+					System.out.println("Filling with 4 to 75%\n");
 					sustain fill4;
 				}
 			}
@@ -129,24 +138,27 @@ fillerController(
 			}
 			
 			await(!tick);
-			System.out.println("Filling Liquid 4");
 			if(#liquidType == 1){
 				abort(tick){
+					System.out.println("Filling with 1 to 100%\n");
 					sustain fill1;
 				}
 			}
 			else if (#liquidType == 2) {
 				abort(tick){
+					System.out.println("Filling with 2 to 100%\n");
 					sustain fill2;
 				}
 			}
 			else if (#liquidType == 3) {
 				abort(tick){
+					System.out.println("Filling with 3 to 100%\n");
 					sustain fill3;
 				}
 			}
 			else {
 				abort(tick){
+					System.out.println("Filling with 4 to 100%\n");
 					sustain fill4;
 				}
 			}

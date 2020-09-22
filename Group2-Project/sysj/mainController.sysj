@@ -1,6 +1,6 @@
 mainController(
-	input signal conveyorDone, rotaryDone, capperDone, fillerDone, loaderDone, unloaderDone, getBottle, tick;
-    output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable;
+	input signal conveyorDone, rotaryDone, capperDone, fillerDone, loaderDone, unloaderDone,caploaderDone, getBottle, tick;
+    output signal conveyorEnable, rotaryEnable, capperEnable, fillerEnable, caploaderEnable;
     
     //from request button
     input signal bottleAtLoad;
