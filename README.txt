@@ -2,6 +2,17 @@ This is the readme file for COMPSYS 704 Assigment 1
 Group 2 
 Authors: Kelsey Coronno and Jonathan Browne
 
+Code written for this project include all files in the /sysj folder (.sysj & .xml) and 
+the following .java files in the src/org/compsys704 directory:
+ Canvas.java
+ CapLoader.java
+ conveyorCanvas.java
+ conveyorViz.java
+ systemCanvas.java
+ systemViz.java
+All other files were provided/generated as part of the assignment
+The main aim of this project was developing control logic in the systemJ synchronous programming language
+
 To run the project follow these steps:
 
 1: Open Eclipse IDE (for java developers)
@@ -18,7 +29,8 @@ visualisation does not show up or the box is partially blank,
 you may need to use a computer with a taller monitor
 
 Steps for using the visualiser:
-(Please do not click tick until all animation has finished)
+(Please do not click tick until all animation has finished, this will break the animation/look strange)
+NOTE: some animation is known to be broken even when clicking tick appropriately
 
 1: Click request (this makes a container appear and can be used anytime after the 
 previous container has reached the rotary table)
